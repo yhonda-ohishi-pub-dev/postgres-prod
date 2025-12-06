@@ -10,11 +10,11 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
+| b92d74e | CLAUDE.md更新: Recent Changesを最新5コミットに更新 |
 | 6ae2d43 | ドキュメント・設定更新: Repository層完成を反映 |
 | 0612dfc | 統合テスト修正: go vet エラーを解消 |
 | 384217e | 統合テスト完成: 残り16テーブル分の統合テストを追加 |
 | f7710b3 | PLAN.md更新: Repository層29/29完了 |
-| 75521ad | Repository層完成: 残り17テーブルのCRUD実装 |
 
 ## Build and Run
 
