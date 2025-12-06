@@ -2,9 +2,14 @@
 
 ## 現状
 
-- Repository層: 29テーブル完了
-- gRPCサービス: OrganizationServiceのみ
-- Cloud Run: デプロイ済み、gRPC動作確認済み
+- Repository層: 29テーブル完了 ✅
+- Proto定義: 27サービス完了 ✅
+- gRPCサーバー実装: 27/27 完了 ✅
+- main.go: 全27サービス登録完了 ✅
+- ビルド確認: go build, go vet 成功 ✅
+- Cloud Run: デプロイ済み、gRPC動作確認済み ⏳ (再デプロイ必要)
+  - URL: https://postgres-prod-566bls5vfq-an.a.run.app
+  - 現在: OrganizationServiceのみ (Phase 2完了後は全27サービス利用可能)
 
 ## 目標
 
@@ -12,7 +17,20 @@
 
 ## 次のステップ（予定）
 
-### Phase 1: Proto定義追加
+### Phase 3: Cloud Runデプロイ確認
+
+```bash
+gcloud builds submit --config=cloudbuild.yaml \
+  --substitutions=_CLOUDSQL_INSTANCE=postgres-prod,_DB_USER=m.tama.ramu,_SERVICE_ACCOUNT=cloudsql-sv@cloudsql-sv.iam.gserviceaccount.com
+```
+
+デプロイ後、grpcurl等で全27サービスの動作確認。
+
+---
+
+## 完了したフェーズ
+
+### Phase 1: Proto定義追加 ✅
 
 proto/service.protoに26個のサービス定義を追加。以下の順で実装:
 
@@ -71,58 +89,11 @@ proto/service.protoに26個のサービス定義を追加。以下の順で実�
 buf generate
 ```
 
-### Phase 2: gRPCサーバー実装 (26ファイル)
+### Phase 2: gRPCサーバー実装 (26ファイル) ✅
 
-pkg/grpc/配下に作成するファイル一覧:
+**完了: 2025-12-07**
 
-| # | ファイル名 | サービス |
-|---|-----------|---------|
-| 1 | app_user_server.go | AppUserService |
-| 2 | user_organization_server.go | UserOrganizationService |
-| 3 | file_server.go | FileService |
-| 4 | flickr_photo_server.go | FlickrPhotoService |
-| 5 | cam_file_server.go | CamFileService |
-| 6 | cam_file_exe_server.go | CamFileExeService |
-| 7 | cam_file_exe_stage_server.go | CamFileExeStageService |
-| 8 | ichiban_car_server.go | IchibanCarService |
-| 9 | dtako_cars_ichiban_cars_server.go | DtakoCarsIchibanCarsService |
-| 10 | uriage_server.go | UriageService |
-| 11 | uriage_jisha_server.go | UriageJishaService |
-| 12 | car_inspection_server.go | CarInspectionService |
-| 13 | car_inspection_files_server.go | CarInspectionFilesService |
-| 14 | car_inspection_files_a_server.go | CarInspectionFilesAService |
-| 15 | car_inspection_files_b_server.go | CarInspectionFilesBService |
-| 16 | car_inspection_deregistration_server.go | CarInspectionDeregistrationService |
-| 17 | car_inspection_deregistration_files_server.go | CarInspectionDeregistrationFilesService |
-| 18 | car_ins_sheet_ichiban_cars_server.go | CarInsSheetIchibanCarsService |
-| 19 | car_ins_sheet_ichiban_cars_a_server.go | CarInsSheetIchibanCarsAService |
-| 20 | kudgfry_server.go | KudgfryService |
-| 21 | kudguri_server.go | KudguriService |
-| 22 | kudgcst_server.go | KudgcstService |
-| 23 | kudgful_server.go | KudgfulService |
-| 24 | kudgsir_server.go | KudgsirService |
-| 25 | kudgivt_server.go | KudgivtService |
-| 26 | dtakologs_server.go | DtakologsService |
-
-各サーバーは以下のRPCを実装:
-- Create
-- Get (主キーで取得)
-- Update
-- Delete
-- List (ページネーション付き)
-- ListByOrganization (組織IDでフィルタ)
-
-### Phase 3: main.go更新
-
-cmd/server/main.goに全27サービスを登録
-
-### Phase 4: ビルド・デプロイ確認
-
-```bash
-go build -o server ./cmd/server
-go test ./...
-gcloud builds submit --config=cloudbuild.yaml ...
-```
+全27サービスのgRPCサーバー実装完了。詳細は「Phase 2: gRPCサーバー実装 (26ファイル) - 完了 (2025-12-07)」セクション参照。
 
 ## 完了タスク
 
@@ -218,8 +189,47 @@ gcloud builds submit --config=cloudbuild.yaml ...
 
 **ビルド確認:** go build 成功
 
+### Phase 2: gRPCサーバー実装 (26ファイル) - 完了 (2025-12-07)
+
+**作成ファイル (27個):**
+- pkg/grpc/app_user_server.go (174行)
+- pkg/grpc/user_organization_server.go (191行)
+- pkg/grpc/file_server.go (216行)
+- pkg/grpc/flickr_photo_server.go (197行)
+- pkg/grpc/cam_file_server.go (203行)
+- pkg/grpc/cam_file_exe_server.go (175行)
+- pkg/grpc/cam_file_exe_stage_server.go (140行)
+- pkg/grpc/ichiban_car_server.go (289行)
+- pkg/grpc/dtako_cars_ichiban_cars_server.go (177行)
+- pkg/grpc/uriage_server.go (248行)
+- pkg/grpc/uriage_jisha_server.go (226行)
+- pkg/grpc/car_inspection_server.go (510行)
+- pkg/grpc/car_inspection_files_server.go (227行)
+- pkg/grpc/car_inspection_files_a_server.go (233行)
+- pkg/grpc/car_inspection_files_b_server.go (216行)
+- pkg/grpc/car_inspection_deregistration_server.go (239行)
+- pkg/grpc/car_inspection_deregistration_files_server.go (240行)
+- pkg/grpc/car_ins_sheet_ichiban_cars_server.go (287行)
+- pkg/grpc/car_ins_sheet_ichiban_cars_a_server.go (287行)
+- pkg/grpc/kudgfry_server.go (307行)
+- pkg/grpc/kudguri_server.go (328行)
+- pkg/grpc/kudgcst_server.go (293行)
+- pkg/grpc/kudgful_server.go (322行)
+- pkg/grpc/kudgsir_server.go (317行)
+- pkg/grpc/kudgivt_server.go (557行)
+- pkg/grpc/dtakologs_server.go (421行)
+- pkg/grpc/organization_server.go (既存)
+
+**更新ファイル:**
+- cmd/server/main.go: 全27サービス登録
+- pkg/pb/service.pb.go: protoc再生成
+- pkg/pb/service_grpc.pb.go: protoc再生成
+
+**ビルド確認:** go build, go vet 成功
+
 ## 参考
 
 - 完了タスクの履歴は [docs/PLAN-EXECUTED.md](docs/PLAN-EXECUTED.md) を参照
 - Repository層: 29/29 完了
 - 統合テスト: 27/27 完了（bumon_codes, bumon_code_refsは除外）
+- gRPCサーバー層: 27/27 完了
