@@ -3420,6 +3420,5274 @@ func (x *ListFlickrPhotosByOrganizationResponse) GetNextPageToken() string {
 	return ""
 }
 
+type CamFile struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
+	Hour           string                 `protobuf:"bytes,4,opt,name=hour,proto3" json:"hour,omitempty"`
+	Type           string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
+	Cam            string                 `protobuf:"bytes,6,opt,name=cam,proto3" json:"cam,omitempty"`
+	FlickrId       *string                `protobuf:"bytes,7,opt,name=flickr_id,json=flickrId,proto3,oneof" json:"flickr_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CamFile) Reset() {
+	*x = CamFile{}
+	mi := &file_service_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CamFile) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CamFile) ProtoMessage() {}
+
+func (x *CamFile) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CamFile.ProtoReflect.Descriptor instead.
+func (*CamFile) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *CamFile) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CamFile) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CamFile) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+func (x *CamFile) GetHour() string {
+	if x != nil {
+		return x.Hour
+	}
+	return ""
+}
+
+func (x *CamFile) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *CamFile) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *CamFile) GetFlickrId() string {
+	if x != nil && x.FlickrId != nil {
+		return *x.FlickrId
+	}
+	return ""
+}
+
+type CreateCamFileRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
+	Hour           string                 `protobuf:"bytes,4,opt,name=hour,proto3" json:"hour,omitempty"`
+	Type           string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
+	Cam            string                 `protobuf:"bytes,6,opt,name=cam,proto3" json:"cam,omitempty"`
+	FlickrId       *string                `protobuf:"bytes,7,opt,name=flickr_id,json=flickrId,proto3,oneof" json:"flickr_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateCamFileRequest) Reset() {
+	*x = CreateCamFileRequest{}
+	mi := &file_service_proto_msgTypes[66]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCamFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCamFileRequest) ProtoMessage() {}
+
+func (x *CreateCamFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[66]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCamFileRequest.ProtoReflect.Descriptor instead.
+func (*CreateCamFileRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{66}
+}
+
+func (x *CreateCamFileRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateCamFileRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CreateCamFileRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+func (x *CreateCamFileRequest) GetHour() string {
+	if x != nil {
+		return x.Hour
+	}
+	return ""
+}
+
+func (x *CreateCamFileRequest) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *CreateCamFileRequest) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *CreateCamFileRequest) GetFlickrId() string {
+	if x != nil && x.FlickrId != nil {
+		return *x.FlickrId
+	}
+	return ""
+}
+
+type CreateCamFileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFile       *CamFile               `protobuf:"bytes,1,opt,name=cam_file,json=camFile,proto3" json:"cam_file,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCamFileResponse) Reset() {
+	*x = CreateCamFileResponse{}
+	mi := &file_service_proto_msgTypes[67]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCamFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCamFileResponse) ProtoMessage() {}
+
+func (x *CreateCamFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[67]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCamFileResponse.ProtoReflect.Descriptor instead.
+func (*CreateCamFileResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{67}
+}
+
+func (x *CreateCamFileResponse) GetCamFile() *CamFile {
+	if x != nil {
+		return x.CamFile
+	}
+	return nil
+}
+
+type GetCamFileRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetCamFileRequest) Reset() {
+	*x = GetCamFileRequest{}
+	mi := &file_service_proto_msgTypes[68]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCamFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCamFileRequest) ProtoMessage() {}
+
+func (x *GetCamFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[68]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCamFileRequest.ProtoReflect.Descriptor instead.
+func (*GetCamFileRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{68}
+}
+
+func (x *GetCamFileRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GetCamFileRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type GetCamFileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFile       *CamFile               `protobuf:"bytes,1,opt,name=cam_file,json=camFile,proto3" json:"cam_file,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCamFileResponse) Reset() {
+	*x = GetCamFileResponse{}
+	mi := &file_service_proto_msgTypes[69]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCamFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCamFileResponse) ProtoMessage() {}
+
+func (x *GetCamFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[69]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCamFileResponse.ProtoReflect.Descriptor instead.
+func (*GetCamFileResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{69}
+}
+
+func (x *GetCamFileResponse) GetCamFile() *CamFile {
+	if x != nil {
+		return x.CamFile
+	}
+	return nil
+}
+
+type UpdateCamFileRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
+	Hour           string                 `protobuf:"bytes,4,opt,name=hour,proto3" json:"hour,omitempty"`
+	Type           string                 `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty"`
+	Cam            string                 `protobuf:"bytes,6,opt,name=cam,proto3" json:"cam,omitempty"`
+	FlickrId       *string                `protobuf:"bytes,7,opt,name=flickr_id,json=flickrId,proto3,oneof" json:"flickr_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateCamFileRequest) Reset() {
+	*x = UpdateCamFileRequest{}
+	mi := &file_service_proto_msgTypes[70]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCamFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCamFileRequest) ProtoMessage() {}
+
+func (x *UpdateCamFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[70]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCamFileRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCamFileRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{70}
+}
+
+func (x *UpdateCamFileRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateCamFileRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UpdateCamFileRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+func (x *UpdateCamFileRequest) GetHour() string {
+	if x != nil {
+		return x.Hour
+	}
+	return ""
+}
+
+func (x *UpdateCamFileRequest) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
+}
+
+func (x *UpdateCamFileRequest) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *UpdateCamFileRequest) GetFlickrId() string {
+	if x != nil && x.FlickrId != nil {
+		return *x.FlickrId
+	}
+	return ""
+}
+
+type UpdateCamFileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFile       *CamFile               `protobuf:"bytes,1,opt,name=cam_file,json=camFile,proto3" json:"cam_file,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCamFileResponse) Reset() {
+	*x = UpdateCamFileResponse{}
+	mi := &file_service_proto_msgTypes[71]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCamFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCamFileResponse) ProtoMessage() {}
+
+func (x *UpdateCamFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[71]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCamFileResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCamFileResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{71}
+}
+
+func (x *UpdateCamFileResponse) GetCamFile() *CamFile {
+	if x != nil {
+		return x.CamFile
+	}
+	return nil
+}
+
+type DeleteCamFileRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DeleteCamFileRequest) Reset() {
+	*x = DeleteCamFileRequest{}
+	mi := &file_service_proto_msgTypes[72]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCamFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCamFileRequest) ProtoMessage() {}
+
+func (x *DeleteCamFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[72]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCamFileRequest.ProtoReflect.Descriptor instead.
+func (*DeleteCamFileRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{72}
+}
+
+func (x *DeleteCamFileRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *DeleteCamFileRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type DeleteCamFileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteCamFileResponse) Reset() {
+	*x = DeleteCamFileResponse{}
+	mi := &file_service_proto_msgTypes[73]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCamFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCamFileResponse) ProtoMessage() {}
+
+func (x *DeleteCamFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[73]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCamFileResponse.ProtoReflect.Descriptor instead.
+func (*DeleteCamFileResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{73}
+}
+
+func (x *DeleteCamFileResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListCamFilesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCamFilesRequest) Reset() {
+	*x = ListCamFilesRequest{}
+	mi := &file_service_proto_msgTypes[74]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFilesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFilesRequest) ProtoMessage() {}
+
+func (x *ListCamFilesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[74]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFilesRequest.ProtoReflect.Descriptor instead.
+func (*ListCamFilesRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{74}
+}
+
+func (x *ListCamFilesRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCamFilesRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListCamFilesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFiles      []*CamFile             `protobuf:"bytes,1,rep,name=cam_files,json=camFiles,proto3" json:"cam_files,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCamFilesResponse) Reset() {
+	*x = ListCamFilesResponse{}
+	mi := &file_service_proto_msgTypes[75]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFilesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFilesResponse) ProtoMessage() {}
+
+func (x *ListCamFilesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[75]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFilesResponse.ProtoReflect.Descriptor instead.
+func (*ListCamFilesResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{75}
+}
+
+func (x *ListCamFilesResponse) GetCamFiles() []*CamFile {
+	if x != nil {
+		return x.CamFiles
+	}
+	return nil
+}
+
+func (x *ListCamFilesResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListCamFilesByOrganizationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	PageSize       int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken      string                 `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ListCamFilesByOrganizationRequest) Reset() {
+	*x = ListCamFilesByOrganizationRequest{}
+	mi := &file_service_proto_msgTypes[76]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFilesByOrganizationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFilesByOrganizationRequest) ProtoMessage() {}
+
+func (x *ListCamFilesByOrganizationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[76]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFilesByOrganizationRequest.ProtoReflect.Descriptor instead.
+func (*ListCamFilesByOrganizationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{76}
+}
+
+func (x *ListCamFilesByOrganizationRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ListCamFilesByOrganizationRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCamFilesByOrganizationRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListCamFilesByOrganizationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFiles      []*CamFile             `protobuf:"bytes,1,rep,name=cam_files,json=camFiles,proto3" json:"cam_files,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCamFilesByOrganizationResponse) Reset() {
+	*x = ListCamFilesByOrganizationResponse{}
+	mi := &file_service_proto_msgTypes[77]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFilesByOrganizationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFilesByOrganizationResponse) ProtoMessage() {}
+
+func (x *ListCamFilesByOrganizationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[77]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFilesByOrganizationResponse.ProtoReflect.Descriptor instead.
+func (*ListCamFilesByOrganizationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{77}
+}
+
+func (x *ListCamFilesByOrganizationResponse) GetCamFiles() []*CamFile {
+	if x != nil {
+		return x.CamFiles
+	}
+	return nil
+}
+
+func (x *ListCamFilesByOrganizationResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type CamFileExe struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Cam            string                 `protobuf:"bytes,2,opt,name=cam,proto3" json:"cam,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Stage          int32                  `protobuf:"varint,4,opt,name=stage,proto3" json:"stage,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CamFileExe) Reset() {
+	*x = CamFileExe{}
+	mi := &file_service_proto_msgTypes[78]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CamFileExe) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CamFileExe) ProtoMessage() {}
+
+func (x *CamFileExe) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[78]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CamFileExe.ProtoReflect.Descriptor instead.
+func (*CamFileExe) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{78}
+}
+
+func (x *CamFileExe) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CamFileExe) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *CamFileExe) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CamFileExe) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+type CreateCamFileExeRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Cam            string                 `protobuf:"bytes,2,opt,name=cam,proto3" json:"cam,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Stage          int32                  `protobuf:"varint,4,opt,name=stage,proto3" json:"stage,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateCamFileExeRequest) Reset() {
+	*x = CreateCamFileExeRequest{}
+	mi := &file_service_proto_msgTypes[79]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCamFileExeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCamFileExeRequest) ProtoMessage() {}
+
+func (x *CreateCamFileExeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[79]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCamFileExeRequest.ProtoReflect.Descriptor instead.
+func (*CreateCamFileExeRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{79}
+}
+
+func (x *CreateCamFileExeRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateCamFileExeRequest) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *CreateCamFileExeRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CreateCamFileExeRequest) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+type CreateCamFileExeResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExe    *CamFileExe            `protobuf:"bytes,1,opt,name=cam_file_exe,json=camFileExe,proto3" json:"cam_file_exe,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateCamFileExeResponse) Reset() {
+	*x = CreateCamFileExeResponse{}
+	mi := &file_service_proto_msgTypes[80]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCamFileExeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCamFileExeResponse) ProtoMessage() {}
+
+func (x *CreateCamFileExeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[80]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCamFileExeResponse.ProtoReflect.Descriptor instead.
+func (*CreateCamFileExeResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{80}
+}
+
+func (x *CreateCamFileExeResponse) GetCamFileExe() *CamFileExe {
+	if x != nil {
+		return x.CamFileExe
+	}
+	return nil
+}
+
+type GetCamFileExeRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Cam            string                 `protobuf:"bytes,2,opt,name=cam,proto3" json:"cam,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetCamFileExeRequest) Reset() {
+	*x = GetCamFileExeRequest{}
+	mi := &file_service_proto_msgTypes[81]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCamFileExeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCamFileExeRequest) ProtoMessage() {}
+
+func (x *GetCamFileExeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[81]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCamFileExeRequest.ProtoReflect.Descriptor instead.
+func (*GetCamFileExeRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{81}
+}
+
+func (x *GetCamFileExeRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GetCamFileExeRequest) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *GetCamFileExeRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type GetCamFileExeResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExe    *CamFileExe            `protobuf:"bytes,1,opt,name=cam_file_exe,json=camFileExe,proto3" json:"cam_file_exe,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCamFileExeResponse) Reset() {
+	*x = GetCamFileExeResponse{}
+	mi := &file_service_proto_msgTypes[82]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCamFileExeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCamFileExeResponse) ProtoMessage() {}
+
+func (x *GetCamFileExeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[82]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCamFileExeResponse.ProtoReflect.Descriptor instead.
+func (*GetCamFileExeResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{82}
+}
+
+func (x *GetCamFileExeResponse) GetCamFileExe() *CamFileExe {
+	if x != nil {
+		return x.CamFileExe
+	}
+	return nil
+}
+
+type UpdateCamFileExeRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Cam            string                 `protobuf:"bytes,2,opt,name=cam,proto3" json:"cam,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Stage          int32                  `protobuf:"varint,4,opt,name=stage,proto3" json:"stage,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateCamFileExeRequest) Reset() {
+	*x = UpdateCamFileExeRequest{}
+	mi := &file_service_proto_msgTypes[83]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCamFileExeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCamFileExeRequest) ProtoMessage() {}
+
+func (x *UpdateCamFileExeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[83]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCamFileExeRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCamFileExeRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{83}
+}
+
+func (x *UpdateCamFileExeRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateCamFileExeRequest) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *UpdateCamFileExeRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UpdateCamFileExeRequest) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+type UpdateCamFileExeResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExe    *CamFileExe            `protobuf:"bytes,1,opt,name=cam_file_exe,json=camFileExe,proto3" json:"cam_file_exe,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateCamFileExeResponse) Reset() {
+	*x = UpdateCamFileExeResponse{}
+	mi := &file_service_proto_msgTypes[84]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCamFileExeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCamFileExeResponse) ProtoMessage() {}
+
+func (x *UpdateCamFileExeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[84]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCamFileExeResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCamFileExeResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{84}
+}
+
+func (x *UpdateCamFileExeResponse) GetCamFileExe() *CamFileExe {
+	if x != nil {
+		return x.CamFileExe
+	}
+	return nil
+}
+
+type DeleteCamFileExeRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Cam            string                 `protobuf:"bytes,2,opt,name=cam,proto3" json:"cam,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DeleteCamFileExeRequest) Reset() {
+	*x = DeleteCamFileExeRequest{}
+	mi := &file_service_proto_msgTypes[85]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCamFileExeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCamFileExeRequest) ProtoMessage() {}
+
+func (x *DeleteCamFileExeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[85]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCamFileExeRequest.ProtoReflect.Descriptor instead.
+func (*DeleteCamFileExeRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{85}
+}
+
+func (x *DeleteCamFileExeRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *DeleteCamFileExeRequest) GetCam() string {
+	if x != nil {
+		return x.Cam
+	}
+	return ""
+}
+
+func (x *DeleteCamFileExeRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type DeleteCamFileExeResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteCamFileExeResponse) Reset() {
+	*x = DeleteCamFileExeResponse{}
+	mi := &file_service_proto_msgTypes[86]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCamFileExeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCamFileExeResponse) ProtoMessage() {}
+
+func (x *DeleteCamFileExeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[86]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCamFileExeResponse.ProtoReflect.Descriptor instead.
+func (*DeleteCamFileExeResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{86}
+}
+
+func (x *DeleteCamFileExeResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListCamFileExesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCamFileExesRequest) Reset() {
+	*x = ListCamFileExesRequest{}
+	mi := &file_service_proto_msgTypes[87]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExesRequest) ProtoMessage() {}
+
+func (x *ListCamFileExesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[87]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExesRequest.ProtoReflect.Descriptor instead.
+func (*ListCamFileExesRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{87}
+}
+
+func (x *ListCamFileExesRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCamFileExesRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListCamFileExesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExes   []*CamFileExe          `protobuf:"bytes,1,rep,name=cam_file_exes,json=camFileExes,proto3" json:"cam_file_exes,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCamFileExesResponse) Reset() {
+	*x = ListCamFileExesResponse{}
+	mi := &file_service_proto_msgTypes[88]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExesResponse) ProtoMessage() {}
+
+func (x *ListCamFileExesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[88]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExesResponse.ProtoReflect.Descriptor instead.
+func (*ListCamFileExesResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{88}
+}
+
+func (x *ListCamFileExesResponse) GetCamFileExes() []*CamFileExe {
+	if x != nil {
+		return x.CamFileExes
+	}
+	return nil
+}
+
+func (x *ListCamFileExesResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListCamFileExesByOrganizationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	PageSize       int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken      string                 `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ListCamFileExesByOrganizationRequest) Reset() {
+	*x = ListCamFileExesByOrganizationRequest{}
+	mi := &file_service_proto_msgTypes[89]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExesByOrganizationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExesByOrganizationRequest) ProtoMessage() {}
+
+func (x *ListCamFileExesByOrganizationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[89]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExesByOrganizationRequest.ProtoReflect.Descriptor instead.
+func (*ListCamFileExesByOrganizationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{89}
+}
+
+func (x *ListCamFileExesByOrganizationRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ListCamFileExesByOrganizationRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCamFileExesByOrganizationRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListCamFileExesByOrganizationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExes   []*CamFileExe          `protobuf:"bytes,1,rep,name=cam_file_exes,json=camFileExes,proto3" json:"cam_file_exes,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCamFileExesByOrganizationResponse) Reset() {
+	*x = ListCamFileExesByOrganizationResponse{}
+	mi := &file_service_proto_msgTypes[90]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExesByOrganizationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExesByOrganizationResponse) ProtoMessage() {}
+
+func (x *ListCamFileExesByOrganizationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[90]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExesByOrganizationResponse.ProtoReflect.Descriptor instead.
+func (*ListCamFileExesByOrganizationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{90}
+}
+
+func (x *ListCamFileExesByOrganizationResponse) GetCamFileExes() []*CamFileExe {
+	if x != nil {
+		return x.CamFileExes
+	}
+	return nil
+}
+
+func (x *ListCamFileExesByOrganizationResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type CamFileExeStage struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Stage          int32                  `protobuf:"varint,1,opt,name=stage,proto3" json:"stage,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Name           string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CamFileExeStage) Reset() {
+	*x = CamFileExeStage{}
+	mi := &file_service_proto_msgTypes[91]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CamFileExeStage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CamFileExeStage) ProtoMessage() {}
+
+func (x *CamFileExeStage) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[91]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CamFileExeStage.ProtoReflect.Descriptor instead.
+func (*CamFileExeStage) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{91}
+}
+
+func (x *CamFileExeStage) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+func (x *CamFileExeStage) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CamFileExeStage) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type CreateCamFileExeStageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Stage          int32                  `protobuf:"varint,1,opt,name=stage,proto3" json:"stage,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Name           string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateCamFileExeStageRequest) Reset() {
+	*x = CreateCamFileExeStageRequest{}
+	mi := &file_service_proto_msgTypes[92]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCamFileExeStageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCamFileExeStageRequest) ProtoMessage() {}
+
+func (x *CreateCamFileExeStageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[92]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCamFileExeStageRequest.ProtoReflect.Descriptor instead.
+func (*CreateCamFileExeStageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{92}
+}
+
+func (x *CreateCamFileExeStageRequest) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+func (x *CreateCamFileExeStageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CreateCamFileExeStageRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type CreateCamFileExeStageResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExeStage *CamFileExeStage       `protobuf:"bytes,1,opt,name=cam_file_exe_stage,json=camFileExeStage,proto3" json:"cam_file_exe_stage,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CreateCamFileExeStageResponse) Reset() {
+	*x = CreateCamFileExeStageResponse{}
+	mi := &file_service_proto_msgTypes[93]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateCamFileExeStageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateCamFileExeStageResponse) ProtoMessage() {}
+
+func (x *CreateCamFileExeStageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[93]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateCamFileExeStageResponse.ProtoReflect.Descriptor instead.
+func (*CreateCamFileExeStageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{93}
+}
+
+func (x *CreateCamFileExeStageResponse) GetCamFileExeStage() *CamFileExeStage {
+	if x != nil {
+		return x.CamFileExeStage
+	}
+	return nil
+}
+
+type GetCamFileExeStageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Stage          int32                  `protobuf:"varint,1,opt,name=stage,proto3" json:"stage,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetCamFileExeStageRequest) Reset() {
+	*x = GetCamFileExeStageRequest{}
+	mi := &file_service_proto_msgTypes[94]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCamFileExeStageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCamFileExeStageRequest) ProtoMessage() {}
+
+func (x *GetCamFileExeStageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[94]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCamFileExeStageRequest.ProtoReflect.Descriptor instead.
+func (*GetCamFileExeStageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{94}
+}
+
+func (x *GetCamFileExeStageRequest) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+func (x *GetCamFileExeStageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type GetCamFileExeStageResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExeStage *CamFileExeStage       `protobuf:"bytes,1,opt,name=cam_file_exe_stage,json=camFileExeStage,proto3" json:"cam_file_exe_stage,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *GetCamFileExeStageResponse) Reset() {
+	*x = GetCamFileExeStageResponse{}
+	mi := &file_service_proto_msgTypes[95]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCamFileExeStageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCamFileExeStageResponse) ProtoMessage() {}
+
+func (x *GetCamFileExeStageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[95]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCamFileExeStageResponse.ProtoReflect.Descriptor instead.
+func (*GetCamFileExeStageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{95}
+}
+
+func (x *GetCamFileExeStageResponse) GetCamFileExeStage() *CamFileExeStage {
+	if x != nil {
+		return x.CamFileExeStage
+	}
+	return nil
+}
+
+type UpdateCamFileExeStageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Stage          int32                  `protobuf:"varint,1,opt,name=stage,proto3" json:"stage,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Name           string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateCamFileExeStageRequest) Reset() {
+	*x = UpdateCamFileExeStageRequest{}
+	mi := &file_service_proto_msgTypes[96]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCamFileExeStageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCamFileExeStageRequest) ProtoMessage() {}
+
+func (x *UpdateCamFileExeStageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[96]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCamFileExeStageRequest.ProtoReflect.Descriptor instead.
+func (*UpdateCamFileExeStageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{96}
+}
+
+func (x *UpdateCamFileExeStageRequest) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+func (x *UpdateCamFileExeStageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UpdateCamFileExeStageRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type UpdateCamFileExeStageResponse struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExeStage *CamFileExeStage       `protobuf:"bytes,1,opt,name=cam_file_exe_stage,json=camFileExeStage,proto3" json:"cam_file_exe_stage,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *UpdateCamFileExeStageResponse) Reset() {
+	*x = UpdateCamFileExeStageResponse{}
+	mi := &file_service_proto_msgTypes[97]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateCamFileExeStageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateCamFileExeStageResponse) ProtoMessage() {}
+
+func (x *UpdateCamFileExeStageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[97]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateCamFileExeStageResponse.ProtoReflect.Descriptor instead.
+func (*UpdateCamFileExeStageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{97}
+}
+
+func (x *UpdateCamFileExeStageResponse) GetCamFileExeStage() *CamFileExeStage {
+	if x != nil {
+		return x.CamFileExeStage
+	}
+	return nil
+}
+
+type DeleteCamFileExeStageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Stage          int32                  `protobuf:"varint,1,opt,name=stage,proto3" json:"stage,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DeleteCamFileExeStageRequest) Reset() {
+	*x = DeleteCamFileExeStageRequest{}
+	mi := &file_service_proto_msgTypes[98]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCamFileExeStageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCamFileExeStageRequest) ProtoMessage() {}
+
+func (x *DeleteCamFileExeStageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[98]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCamFileExeStageRequest.ProtoReflect.Descriptor instead.
+func (*DeleteCamFileExeStageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{98}
+}
+
+func (x *DeleteCamFileExeStageRequest) GetStage() int32 {
+	if x != nil {
+		return x.Stage
+	}
+	return 0
+}
+
+func (x *DeleteCamFileExeStageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type DeleteCamFileExeStageResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteCamFileExeStageResponse) Reset() {
+	*x = DeleteCamFileExeStageResponse{}
+	mi := &file_service_proto_msgTypes[99]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteCamFileExeStageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteCamFileExeStageResponse) ProtoMessage() {}
+
+func (x *DeleteCamFileExeStageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[99]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteCamFileExeStageResponse.ProtoReflect.Descriptor instead.
+func (*DeleteCamFileExeStageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{99}
+}
+
+func (x *DeleteCamFileExeStageResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListCamFileExeStagesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListCamFileExeStagesRequest) Reset() {
+	*x = ListCamFileExeStagesRequest{}
+	mi := &file_service_proto_msgTypes[100]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExeStagesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExeStagesRequest) ProtoMessage() {}
+
+func (x *ListCamFileExeStagesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[100]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExeStagesRequest.ProtoReflect.Descriptor instead.
+func (*ListCamFileExeStagesRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{100}
+}
+
+func (x *ListCamFileExeStagesRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCamFileExeStagesRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListCamFileExeStagesResponse struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExeStages []*CamFileExeStage     `protobuf:"bytes,1,rep,name=cam_file_exe_stages,json=camFileExeStages,proto3" json:"cam_file_exe_stages,omitempty"`
+	NextPageToken    string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ListCamFileExeStagesResponse) Reset() {
+	*x = ListCamFileExeStagesResponse{}
+	mi := &file_service_proto_msgTypes[101]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExeStagesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExeStagesResponse) ProtoMessage() {}
+
+func (x *ListCamFileExeStagesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[101]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExeStagesResponse.ProtoReflect.Descriptor instead.
+func (*ListCamFileExeStagesResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{101}
+}
+
+func (x *ListCamFileExeStagesResponse) GetCamFileExeStages() []*CamFileExeStage {
+	if x != nil {
+		return x.CamFileExeStages
+	}
+	return nil
+}
+
+func (x *ListCamFileExeStagesResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListCamFileExeStagesByOrganizationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	PageSize       int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken      string                 `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ListCamFileExeStagesByOrganizationRequest) Reset() {
+	*x = ListCamFileExeStagesByOrganizationRequest{}
+	mi := &file_service_proto_msgTypes[102]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExeStagesByOrganizationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExeStagesByOrganizationRequest) ProtoMessage() {}
+
+func (x *ListCamFileExeStagesByOrganizationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[102]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExeStagesByOrganizationRequest.ProtoReflect.Descriptor instead.
+func (*ListCamFileExeStagesByOrganizationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{102}
+}
+
+func (x *ListCamFileExeStagesByOrganizationRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ListCamFileExeStagesByOrganizationRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListCamFileExeStagesByOrganizationRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListCamFileExeStagesByOrganizationResponse struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	CamFileExeStages []*CamFileExeStage     `protobuf:"bytes,1,rep,name=cam_file_exe_stages,json=camFileExeStages,proto3" json:"cam_file_exe_stages,omitempty"`
+	NextPageToken    string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *ListCamFileExeStagesByOrganizationResponse) Reset() {
+	*x = ListCamFileExeStagesByOrganizationResponse{}
+	mi := &file_service_proto_msgTypes[103]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListCamFileExeStagesByOrganizationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListCamFileExeStagesByOrganizationResponse) ProtoMessage() {}
+
+func (x *ListCamFileExeStagesByOrganizationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[103]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListCamFileExeStagesByOrganizationResponse.ProtoReflect.Descriptor instead.
+func (*ListCamFileExeStagesByOrganizationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{103}
+}
+
+func (x *ListCamFileExeStagesByOrganizationResponse) GetCamFileExeStages() []*CamFileExeStage {
+	if x != nil {
+		return x.CamFileExeStages
+	}
+	return nil
+}
+
+func (x *ListCamFileExeStagesByOrganizationResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type IchibanCar struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Id4            string                 `protobuf:"bytes,3,opt,name=id4,proto3" json:"id4,omitempty"`
+	Name           *string                `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	NameR          *string                `protobuf:"bytes,5,opt,name=name_r,json=nameR,proto3,oneof" json:"name_r,omitempty"`
+	Shashu         string                 `protobuf:"bytes,6,opt,name=shashu,proto3" json:"shashu,omitempty"`
+	Sekisai        *float64               `protobuf:"fixed64,7,opt,name=sekisai,proto3,oneof" json:"sekisai,omitempty"`
+	RegDate        *string                `protobuf:"bytes,8,opt,name=reg_date,json=regDate,proto3,oneof" json:"reg_date,omitempty"`
+	ParchDate      *string                `protobuf:"bytes,9,opt,name=parch_date,json=parchDate,proto3,oneof" json:"parch_date,omitempty"`
+	ScrapDate      *string                `protobuf:"bytes,10,opt,name=scrap_date,json=scrapDate,proto3,oneof" json:"scrap_date,omitempty"`
+	BumonCodeId    *string                `protobuf:"bytes,11,opt,name=bumon_code_id,json=bumonCodeId,proto3,oneof" json:"bumon_code_id,omitempty"`
+	DriverId       *string                `protobuf:"bytes,12,opt,name=driver_id,json=driverId,proto3,oneof" json:"driver_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *IchibanCar) Reset() {
+	*x = IchibanCar{}
+	mi := &file_service_proto_msgTypes[104]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *IchibanCar) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*IchibanCar) ProtoMessage() {}
+
+func (x *IchibanCar) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[104]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use IchibanCar.ProtoReflect.Descriptor instead.
+func (*IchibanCar) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{104}
+}
+
+func (x *IchibanCar) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetId4() string {
+	if x != nil {
+		return x.Id4
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetNameR() string {
+	if x != nil && x.NameR != nil {
+		return *x.NameR
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetShashu() string {
+	if x != nil {
+		return x.Shashu
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetSekisai() float64 {
+	if x != nil && x.Sekisai != nil {
+		return *x.Sekisai
+	}
+	return 0
+}
+
+func (x *IchibanCar) GetRegDate() string {
+	if x != nil && x.RegDate != nil {
+		return *x.RegDate
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetParchDate() string {
+	if x != nil && x.ParchDate != nil {
+		return *x.ParchDate
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetScrapDate() string {
+	if x != nil && x.ScrapDate != nil {
+		return *x.ScrapDate
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetBumonCodeId() string {
+	if x != nil && x.BumonCodeId != nil {
+		return *x.BumonCodeId
+	}
+	return ""
+}
+
+func (x *IchibanCar) GetDriverId() string {
+	if x != nil && x.DriverId != nil {
+		return *x.DriverId
+	}
+	return ""
+}
+
+type CreateIchibanCarRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Id4            string                 `protobuf:"bytes,2,opt,name=id4,proto3" json:"id4,omitempty"`
+	Shashu         string                 `protobuf:"bytes,3,opt,name=shashu,proto3" json:"shashu,omitempty"`
+	Name           *string                `protobuf:"bytes,4,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	NameR          *string                `protobuf:"bytes,5,opt,name=name_r,json=nameR,proto3,oneof" json:"name_r,omitempty"`
+	Sekisai        *float64               `protobuf:"fixed64,6,opt,name=sekisai,proto3,oneof" json:"sekisai,omitempty"`
+	RegDate        *string                `protobuf:"bytes,7,opt,name=reg_date,json=regDate,proto3,oneof" json:"reg_date,omitempty"`
+	ParchDate      *string                `protobuf:"bytes,8,opt,name=parch_date,json=parchDate,proto3,oneof" json:"parch_date,omitempty"`
+	ScrapDate      *string                `protobuf:"bytes,9,opt,name=scrap_date,json=scrapDate,proto3,oneof" json:"scrap_date,omitempty"`
+	BumonCodeId    *string                `protobuf:"bytes,10,opt,name=bumon_code_id,json=bumonCodeId,proto3,oneof" json:"bumon_code_id,omitempty"`
+	DriverId       *string                `protobuf:"bytes,11,opt,name=driver_id,json=driverId,proto3,oneof" json:"driver_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateIchibanCarRequest) Reset() {
+	*x = CreateIchibanCarRequest{}
+	mi := &file_service_proto_msgTypes[105]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateIchibanCarRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateIchibanCarRequest) ProtoMessage() {}
+
+func (x *CreateIchibanCarRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[105]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateIchibanCarRequest.ProtoReflect.Descriptor instead.
+func (*CreateIchibanCarRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{105}
+}
+
+func (x *CreateIchibanCarRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetId4() string {
+	if x != nil {
+		return x.Id4
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetShashu() string {
+	if x != nil {
+		return x.Shashu
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetNameR() string {
+	if x != nil && x.NameR != nil {
+		return *x.NameR
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetSekisai() float64 {
+	if x != nil && x.Sekisai != nil {
+		return *x.Sekisai
+	}
+	return 0
+}
+
+func (x *CreateIchibanCarRequest) GetRegDate() string {
+	if x != nil && x.RegDate != nil {
+		return *x.RegDate
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetParchDate() string {
+	if x != nil && x.ParchDate != nil {
+		return *x.ParchDate
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetScrapDate() string {
+	if x != nil && x.ScrapDate != nil {
+		return *x.ScrapDate
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetBumonCodeId() string {
+	if x != nil && x.BumonCodeId != nil {
+		return *x.BumonCodeId
+	}
+	return ""
+}
+
+func (x *CreateIchibanCarRequest) GetDriverId() string {
+	if x != nil && x.DriverId != nil {
+		return *x.DriverId
+	}
+	return ""
+}
+
+type CreateIchibanCarResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IchibanCar    *IchibanCar            `protobuf:"bytes,1,opt,name=ichiban_car,json=ichibanCar,proto3" json:"ichiban_car,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateIchibanCarResponse) Reset() {
+	*x = CreateIchibanCarResponse{}
+	mi := &file_service_proto_msgTypes[106]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateIchibanCarResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateIchibanCarResponse) ProtoMessage() {}
+
+func (x *CreateIchibanCarResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[106]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateIchibanCarResponse.ProtoReflect.Descriptor instead.
+func (*CreateIchibanCarResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{106}
+}
+
+func (x *CreateIchibanCarResponse) GetIchibanCar() *IchibanCar {
+	if x != nil {
+		return x.IchibanCar
+	}
+	return nil
+}
+
+type GetIchibanCarRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetIchibanCarRequest) Reset() {
+	*x = GetIchibanCarRequest{}
+	mi := &file_service_proto_msgTypes[107]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetIchibanCarRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetIchibanCarRequest) ProtoMessage() {}
+
+func (x *GetIchibanCarRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[107]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetIchibanCarRequest.ProtoReflect.Descriptor instead.
+func (*GetIchibanCarRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{107}
+}
+
+func (x *GetIchibanCarRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *GetIchibanCarRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type GetIchibanCarResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IchibanCar    *IchibanCar            `protobuf:"bytes,1,opt,name=ichiban_car,json=ichibanCar,proto3" json:"ichiban_car,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetIchibanCarResponse) Reset() {
+	*x = GetIchibanCarResponse{}
+	mi := &file_service_proto_msgTypes[108]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetIchibanCarResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetIchibanCarResponse) ProtoMessage() {}
+
+func (x *GetIchibanCarResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[108]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetIchibanCarResponse.ProtoReflect.Descriptor instead.
+func (*GetIchibanCarResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{108}
+}
+
+func (x *GetIchibanCarResponse) GetIchibanCar() *IchibanCar {
+	if x != nil {
+		return x.IchibanCar
+	}
+	return nil
+}
+
+type UpdateIchibanCarRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Id4            string                 `protobuf:"bytes,3,opt,name=id4,proto3" json:"id4,omitempty"`
+	Shashu         string                 `protobuf:"bytes,4,opt,name=shashu,proto3" json:"shashu,omitempty"`
+	Name           *string                `protobuf:"bytes,5,opt,name=name,proto3,oneof" json:"name,omitempty"`
+	NameR          *string                `protobuf:"bytes,6,opt,name=name_r,json=nameR,proto3,oneof" json:"name_r,omitempty"`
+	Sekisai        *float64               `protobuf:"fixed64,7,opt,name=sekisai,proto3,oneof" json:"sekisai,omitempty"`
+	RegDate        *string                `protobuf:"bytes,8,opt,name=reg_date,json=regDate,proto3,oneof" json:"reg_date,omitempty"`
+	ParchDate      *string                `protobuf:"bytes,9,opt,name=parch_date,json=parchDate,proto3,oneof" json:"parch_date,omitempty"`
+	ScrapDate      *string                `protobuf:"bytes,10,opt,name=scrap_date,json=scrapDate,proto3,oneof" json:"scrap_date,omitempty"`
+	BumonCodeId    *string                `protobuf:"bytes,11,opt,name=bumon_code_id,json=bumonCodeId,proto3,oneof" json:"bumon_code_id,omitempty"`
+	DriverId       *string                `protobuf:"bytes,12,opt,name=driver_id,json=driverId,proto3,oneof" json:"driver_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateIchibanCarRequest) Reset() {
+	*x = UpdateIchibanCarRequest{}
+	mi := &file_service_proto_msgTypes[109]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateIchibanCarRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateIchibanCarRequest) ProtoMessage() {}
+
+func (x *UpdateIchibanCarRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[109]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateIchibanCarRequest.ProtoReflect.Descriptor instead.
+func (*UpdateIchibanCarRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{109}
+}
+
+func (x *UpdateIchibanCarRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetId4() string {
+	if x != nil {
+		return x.Id4
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetShashu() string {
+	if x != nil {
+		return x.Shashu
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetName() string {
+	if x != nil && x.Name != nil {
+		return *x.Name
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetNameR() string {
+	if x != nil && x.NameR != nil {
+		return *x.NameR
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetSekisai() float64 {
+	if x != nil && x.Sekisai != nil {
+		return *x.Sekisai
+	}
+	return 0
+}
+
+func (x *UpdateIchibanCarRequest) GetRegDate() string {
+	if x != nil && x.RegDate != nil {
+		return *x.RegDate
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetParchDate() string {
+	if x != nil && x.ParchDate != nil {
+		return *x.ParchDate
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetScrapDate() string {
+	if x != nil && x.ScrapDate != nil {
+		return *x.ScrapDate
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetBumonCodeId() string {
+	if x != nil && x.BumonCodeId != nil {
+		return *x.BumonCodeId
+	}
+	return ""
+}
+
+func (x *UpdateIchibanCarRequest) GetDriverId() string {
+	if x != nil && x.DriverId != nil {
+		return *x.DriverId
+	}
+	return ""
+}
+
+type UpdateIchibanCarResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IchibanCar    *IchibanCar            `protobuf:"bytes,1,opt,name=ichiban_car,json=ichibanCar,proto3" json:"ichiban_car,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateIchibanCarResponse) Reset() {
+	*x = UpdateIchibanCarResponse{}
+	mi := &file_service_proto_msgTypes[110]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateIchibanCarResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateIchibanCarResponse) ProtoMessage() {}
+
+func (x *UpdateIchibanCarResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[110]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateIchibanCarResponse.ProtoReflect.Descriptor instead.
+func (*UpdateIchibanCarResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{110}
+}
+
+func (x *UpdateIchibanCarResponse) GetIchibanCar() *IchibanCar {
+	if x != nil {
+		return x.IchibanCar
+	}
+	return nil
+}
+
+type DeleteIchibanCarRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DeleteIchibanCarRequest) Reset() {
+	*x = DeleteIchibanCarRequest{}
+	mi := &file_service_proto_msgTypes[111]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteIchibanCarRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteIchibanCarRequest) ProtoMessage() {}
+
+func (x *DeleteIchibanCarRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[111]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteIchibanCarRequest.ProtoReflect.Descriptor instead.
+func (*DeleteIchibanCarRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{111}
+}
+
+func (x *DeleteIchibanCarRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+func (x *DeleteIchibanCarRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type DeleteIchibanCarResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteIchibanCarResponse) Reset() {
+	*x = DeleteIchibanCarResponse{}
+	mi := &file_service_proto_msgTypes[112]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteIchibanCarResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteIchibanCarResponse) ProtoMessage() {}
+
+func (x *DeleteIchibanCarResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[112]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteIchibanCarResponse.ProtoReflect.Descriptor instead.
+func (*DeleteIchibanCarResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{112}
+}
+
+func (x *DeleteIchibanCarResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListIchibanCarsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIchibanCarsRequest) Reset() {
+	*x = ListIchibanCarsRequest{}
+	mi := &file_service_proto_msgTypes[113]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIchibanCarsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIchibanCarsRequest) ProtoMessage() {}
+
+func (x *ListIchibanCarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[113]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIchibanCarsRequest.ProtoReflect.Descriptor instead.
+func (*ListIchibanCarsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{113}
+}
+
+func (x *ListIchibanCarsRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListIchibanCarsRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListIchibanCarsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IchibanCars   []*IchibanCar          `protobuf:"bytes,1,rep,name=ichiban_cars,json=ichibanCars,proto3" json:"ichiban_cars,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIchibanCarsResponse) Reset() {
+	*x = ListIchibanCarsResponse{}
+	mi := &file_service_proto_msgTypes[114]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIchibanCarsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIchibanCarsResponse) ProtoMessage() {}
+
+func (x *ListIchibanCarsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[114]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIchibanCarsResponse.ProtoReflect.Descriptor instead.
+func (*ListIchibanCarsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{114}
+}
+
+func (x *ListIchibanCarsResponse) GetIchibanCars() []*IchibanCar {
+	if x != nil {
+		return x.IchibanCars
+	}
+	return nil
+}
+
+func (x *ListIchibanCarsResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListIchibanCarsByOrganizationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	PageSize       int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken      string                 `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ListIchibanCarsByOrganizationRequest) Reset() {
+	*x = ListIchibanCarsByOrganizationRequest{}
+	mi := &file_service_proto_msgTypes[115]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIchibanCarsByOrganizationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIchibanCarsByOrganizationRequest) ProtoMessage() {}
+
+func (x *ListIchibanCarsByOrganizationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[115]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIchibanCarsByOrganizationRequest.ProtoReflect.Descriptor instead.
+func (*ListIchibanCarsByOrganizationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{115}
+}
+
+func (x *ListIchibanCarsByOrganizationRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ListIchibanCarsByOrganizationRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListIchibanCarsByOrganizationRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListIchibanCarsByOrganizationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IchibanCars   []*IchibanCar          `protobuf:"bytes,1,rep,name=ichiban_cars,json=ichibanCars,proto3" json:"ichiban_cars,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListIchibanCarsByOrganizationResponse) Reset() {
+	*x = ListIchibanCarsByOrganizationResponse{}
+	mi := &file_service_proto_msgTypes[116]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListIchibanCarsByOrganizationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListIchibanCarsByOrganizationResponse) ProtoMessage() {}
+
+func (x *ListIchibanCarsByOrganizationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[116]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListIchibanCarsByOrganizationResponse.ProtoReflect.Descriptor instead.
+func (*ListIchibanCarsByOrganizationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{116}
+}
+
+func (x *ListIchibanCarsByOrganizationResponse) GetIchibanCars() []*IchibanCar {
+	if x != nil {
+		return x.IchibanCars
+	}
+	return nil
+}
+
+func (x *ListIchibanCarsByOrganizationResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type DtakoCarsIchibanCars struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	IdDtako        string                 `protobuf:"bytes,1,opt,name=id_dtako,json=idDtako,proto3" json:"id_dtako,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Id             *string                `protobuf:"bytes,3,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DtakoCarsIchibanCars) Reset() {
+	*x = DtakoCarsIchibanCars{}
+	mi := &file_service_proto_msgTypes[117]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DtakoCarsIchibanCars) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DtakoCarsIchibanCars) ProtoMessage() {}
+
+func (x *DtakoCarsIchibanCars) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[117]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DtakoCarsIchibanCars.ProtoReflect.Descriptor instead.
+func (*DtakoCarsIchibanCars) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{117}
+}
+
+func (x *DtakoCarsIchibanCars) GetIdDtako() string {
+	if x != nil {
+		return x.IdDtako
+	}
+	return ""
+}
+
+func (x *DtakoCarsIchibanCars) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *DtakoCarsIchibanCars) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+type CreateDtakoCarsIchibanCarsRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	IdDtako        string                 `protobuf:"bytes,1,opt,name=id_dtako,json=idDtako,proto3" json:"id_dtako,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Id             *string                `protobuf:"bytes,3,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateDtakoCarsIchibanCarsRequest) Reset() {
+	*x = CreateDtakoCarsIchibanCarsRequest{}
+	mi := &file_service_proto_msgTypes[118]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateDtakoCarsIchibanCarsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateDtakoCarsIchibanCarsRequest) ProtoMessage() {}
+
+func (x *CreateDtakoCarsIchibanCarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[118]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateDtakoCarsIchibanCarsRequest.ProtoReflect.Descriptor instead.
+func (*CreateDtakoCarsIchibanCarsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{118}
+}
+
+func (x *CreateDtakoCarsIchibanCarsRequest) GetIdDtako() string {
+	if x != nil {
+		return x.IdDtako
+	}
+	return ""
+}
+
+func (x *CreateDtakoCarsIchibanCarsRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CreateDtakoCarsIchibanCarsRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+type CreateDtakoCarsIchibanCarsResponse struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	DtakoCarsIchibanCars *DtakoCarsIchibanCars  `protobuf:"bytes,1,opt,name=dtako_cars_ichiban_cars,json=dtakoCarsIchibanCars,proto3" json:"dtako_cars_ichiban_cars,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *CreateDtakoCarsIchibanCarsResponse) Reset() {
+	*x = CreateDtakoCarsIchibanCarsResponse{}
+	mi := &file_service_proto_msgTypes[119]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateDtakoCarsIchibanCarsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateDtakoCarsIchibanCarsResponse) ProtoMessage() {}
+
+func (x *CreateDtakoCarsIchibanCarsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[119]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateDtakoCarsIchibanCarsResponse.ProtoReflect.Descriptor instead.
+func (*CreateDtakoCarsIchibanCarsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{119}
+}
+
+func (x *CreateDtakoCarsIchibanCarsResponse) GetDtakoCarsIchibanCars() *DtakoCarsIchibanCars {
+	if x != nil {
+		return x.DtakoCarsIchibanCars
+	}
+	return nil
+}
+
+type GetDtakoCarsIchibanCarsRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	IdDtako        string                 `protobuf:"bytes,1,opt,name=id_dtako,json=idDtako,proto3" json:"id_dtako,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetDtakoCarsIchibanCarsRequest) Reset() {
+	*x = GetDtakoCarsIchibanCarsRequest{}
+	mi := &file_service_proto_msgTypes[120]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDtakoCarsIchibanCarsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDtakoCarsIchibanCarsRequest) ProtoMessage() {}
+
+func (x *GetDtakoCarsIchibanCarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[120]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDtakoCarsIchibanCarsRequest.ProtoReflect.Descriptor instead.
+func (*GetDtakoCarsIchibanCarsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{120}
+}
+
+func (x *GetDtakoCarsIchibanCarsRequest) GetIdDtako() string {
+	if x != nil {
+		return x.IdDtako
+	}
+	return ""
+}
+
+func (x *GetDtakoCarsIchibanCarsRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type GetDtakoCarsIchibanCarsResponse struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	DtakoCarsIchibanCars *DtakoCarsIchibanCars  `protobuf:"bytes,1,opt,name=dtako_cars_ichiban_cars,json=dtakoCarsIchibanCars,proto3" json:"dtako_cars_ichiban_cars,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *GetDtakoCarsIchibanCarsResponse) Reset() {
+	*x = GetDtakoCarsIchibanCarsResponse{}
+	mi := &file_service_proto_msgTypes[121]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetDtakoCarsIchibanCarsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetDtakoCarsIchibanCarsResponse) ProtoMessage() {}
+
+func (x *GetDtakoCarsIchibanCarsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[121]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetDtakoCarsIchibanCarsResponse.ProtoReflect.Descriptor instead.
+func (*GetDtakoCarsIchibanCarsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{121}
+}
+
+func (x *GetDtakoCarsIchibanCarsResponse) GetDtakoCarsIchibanCars() *DtakoCarsIchibanCars {
+	if x != nil {
+		return x.DtakoCarsIchibanCars
+	}
+	return nil
+}
+
+type UpdateDtakoCarsIchibanCarsRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	IdDtako        string                 `protobuf:"bytes,1,opt,name=id_dtako,json=idDtako,proto3" json:"id_dtako,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Id             *string                `protobuf:"bytes,3,opt,name=id,proto3,oneof" json:"id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateDtakoCarsIchibanCarsRequest) Reset() {
+	*x = UpdateDtakoCarsIchibanCarsRequest{}
+	mi := &file_service_proto_msgTypes[122]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateDtakoCarsIchibanCarsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateDtakoCarsIchibanCarsRequest) ProtoMessage() {}
+
+func (x *UpdateDtakoCarsIchibanCarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[122]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateDtakoCarsIchibanCarsRequest.ProtoReflect.Descriptor instead.
+func (*UpdateDtakoCarsIchibanCarsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{122}
+}
+
+func (x *UpdateDtakoCarsIchibanCarsRequest) GetIdDtako() string {
+	if x != nil {
+		return x.IdDtako
+	}
+	return ""
+}
+
+func (x *UpdateDtakoCarsIchibanCarsRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UpdateDtakoCarsIchibanCarsRequest) GetId() string {
+	if x != nil && x.Id != nil {
+		return *x.Id
+	}
+	return ""
+}
+
+type UpdateDtakoCarsIchibanCarsResponse struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	DtakoCarsIchibanCars *DtakoCarsIchibanCars  `protobuf:"bytes,1,opt,name=dtako_cars_ichiban_cars,json=dtakoCarsIchibanCars,proto3" json:"dtako_cars_ichiban_cars,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *UpdateDtakoCarsIchibanCarsResponse) Reset() {
+	*x = UpdateDtakoCarsIchibanCarsResponse{}
+	mi := &file_service_proto_msgTypes[123]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateDtakoCarsIchibanCarsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateDtakoCarsIchibanCarsResponse) ProtoMessage() {}
+
+func (x *UpdateDtakoCarsIchibanCarsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[123]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateDtakoCarsIchibanCarsResponse.ProtoReflect.Descriptor instead.
+func (*UpdateDtakoCarsIchibanCarsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{123}
+}
+
+func (x *UpdateDtakoCarsIchibanCarsResponse) GetDtakoCarsIchibanCars() *DtakoCarsIchibanCars {
+	if x != nil {
+		return x.DtakoCarsIchibanCars
+	}
+	return nil
+}
+
+type DeleteDtakoCarsIchibanCarsRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	IdDtako        string                 `protobuf:"bytes,1,opt,name=id_dtako,json=idDtako,proto3" json:"id_dtako,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DeleteDtakoCarsIchibanCarsRequest) Reset() {
+	*x = DeleteDtakoCarsIchibanCarsRequest{}
+	mi := &file_service_proto_msgTypes[124]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteDtakoCarsIchibanCarsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteDtakoCarsIchibanCarsRequest) ProtoMessage() {}
+
+func (x *DeleteDtakoCarsIchibanCarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[124]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteDtakoCarsIchibanCarsRequest.ProtoReflect.Descriptor instead.
+func (*DeleteDtakoCarsIchibanCarsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{124}
+}
+
+func (x *DeleteDtakoCarsIchibanCarsRequest) GetIdDtako() string {
+	if x != nil {
+		return x.IdDtako
+	}
+	return ""
+}
+
+func (x *DeleteDtakoCarsIchibanCarsRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+type DeleteDtakoCarsIchibanCarsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteDtakoCarsIchibanCarsResponse) Reset() {
+	*x = DeleteDtakoCarsIchibanCarsResponse{}
+	mi := &file_service_proto_msgTypes[125]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteDtakoCarsIchibanCarsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteDtakoCarsIchibanCarsResponse) ProtoMessage() {}
+
+func (x *DeleteDtakoCarsIchibanCarsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[125]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteDtakoCarsIchibanCarsResponse.ProtoReflect.Descriptor instead.
+func (*DeleteDtakoCarsIchibanCarsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{125}
+}
+
+func (x *DeleteDtakoCarsIchibanCarsResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListDtakoCarsIchibanCarsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListDtakoCarsIchibanCarsRequest) Reset() {
+	*x = ListDtakoCarsIchibanCarsRequest{}
+	mi := &file_service_proto_msgTypes[126]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDtakoCarsIchibanCarsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDtakoCarsIchibanCarsRequest) ProtoMessage() {}
+
+func (x *ListDtakoCarsIchibanCarsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[126]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDtakoCarsIchibanCarsRequest.ProtoReflect.Descriptor instead.
+func (*ListDtakoCarsIchibanCarsRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{126}
+}
+
+func (x *ListDtakoCarsIchibanCarsRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListDtakoCarsIchibanCarsRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListDtakoCarsIchibanCarsResponse struct {
+	state                protoimpl.MessageState  `protogen:"open.v1"`
+	DtakoCarsIchibanCars []*DtakoCarsIchibanCars `protobuf:"bytes,1,rep,name=dtako_cars_ichiban_cars,json=dtakoCarsIchibanCars,proto3" json:"dtako_cars_ichiban_cars,omitempty"`
+	NextPageToken        string                  `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *ListDtakoCarsIchibanCarsResponse) Reset() {
+	*x = ListDtakoCarsIchibanCarsResponse{}
+	mi := &file_service_proto_msgTypes[127]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDtakoCarsIchibanCarsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDtakoCarsIchibanCarsResponse) ProtoMessage() {}
+
+func (x *ListDtakoCarsIchibanCarsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[127]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDtakoCarsIchibanCarsResponse.ProtoReflect.Descriptor instead.
+func (*ListDtakoCarsIchibanCarsResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{127}
+}
+
+func (x *ListDtakoCarsIchibanCarsResponse) GetDtakoCarsIchibanCars() []*DtakoCarsIchibanCars {
+	if x != nil {
+		return x.DtakoCarsIchibanCars
+	}
+	return nil
+}
+
+func (x *ListDtakoCarsIchibanCarsResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListDtakoCarsIchibanCarsByOrganizationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	PageSize       int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken      string                 `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationRequest) Reset() {
+	*x = ListDtakoCarsIchibanCarsByOrganizationRequest{}
+	mi := &file_service_proto_msgTypes[128]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDtakoCarsIchibanCarsByOrganizationRequest) ProtoMessage() {}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[128]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDtakoCarsIchibanCarsByOrganizationRequest.ProtoReflect.Descriptor instead.
+func (*ListDtakoCarsIchibanCarsByOrganizationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{128}
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListDtakoCarsIchibanCarsByOrganizationResponse struct {
+	state                protoimpl.MessageState  `protogen:"open.v1"`
+	DtakoCarsIchibanCars []*DtakoCarsIchibanCars `protobuf:"bytes,1,rep,name=dtako_cars_ichiban_cars,json=dtakoCarsIchibanCars,proto3" json:"dtako_cars_ichiban_cars,omitempty"`
+	NextPageToken        string                  `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationResponse) Reset() {
+	*x = ListDtakoCarsIchibanCarsByOrganizationResponse{}
+	mi := &file_service_proto_msgTypes[129]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListDtakoCarsIchibanCarsByOrganizationResponse) ProtoMessage() {}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[129]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListDtakoCarsIchibanCarsByOrganizationResponse.ProtoReflect.Descriptor instead.
+func (*ListDtakoCarsIchibanCarsByOrganizationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{129}
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationResponse) GetDtakoCarsIchibanCars() []*DtakoCarsIchibanCars {
+	if x != nil {
+		return x.DtakoCarsIchibanCars
+	}
+	return nil
+}
+
+func (x *ListDtakoCarsIchibanCarsByOrganizationResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type Uriage struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Bumon          string                 `protobuf:"bytes,2,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Kingaku        *int32                 `protobuf:"varint,4,opt,name=kingaku,proto3,oneof" json:"kingaku,omitempty"`
+	Type           *int32                 `protobuf:"varint,5,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	Cam            *int32                 `protobuf:"varint,6,opt,name=cam,proto3,oneof" json:"cam,omitempty"`
+	Date           string                 `protobuf:"bytes,7,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *Uriage) Reset() {
+	*x = Uriage{}
+	mi := &file_service_proto_msgTypes[130]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Uriage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Uriage) ProtoMessage() {}
+
+func (x *Uriage) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[130]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Uriage.ProtoReflect.Descriptor instead.
+func (*Uriage) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{130}
+}
+
+func (x *Uriage) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Uriage) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *Uriage) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *Uriage) GetKingaku() int32 {
+	if x != nil && x.Kingaku != nil {
+		return *x.Kingaku
+	}
+	return 0
+}
+
+func (x *Uriage) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return 0
+}
+
+func (x *Uriage) GetCam() int32 {
+	if x != nil && x.Cam != nil {
+		return *x.Cam
+	}
+	return 0
+}
+
+func (x *Uriage) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type CreateUriageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Bumon          string                 `protobuf:"bytes,2,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Kingaku        *int32                 `protobuf:"varint,4,opt,name=kingaku,proto3,oneof" json:"kingaku,omitempty"`
+	Type           *int32                 `protobuf:"varint,5,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	Cam            *int32                 `protobuf:"varint,6,opt,name=cam,proto3,oneof" json:"cam,omitempty"`
+	Date           string                 `protobuf:"bytes,7,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateUriageRequest) Reset() {
+	*x = CreateUriageRequest{}
+	mi := &file_service_proto_msgTypes[131]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUriageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUriageRequest) ProtoMessage() {}
+
+func (x *CreateUriageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[131]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUriageRequest.ProtoReflect.Descriptor instead.
+func (*CreateUriageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{131}
+}
+
+func (x *CreateUriageRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *CreateUriageRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *CreateUriageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CreateUriageRequest) GetKingaku() int32 {
+	if x != nil && x.Kingaku != nil {
+		return *x.Kingaku
+	}
+	return 0
+}
+
+func (x *CreateUriageRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return 0
+}
+
+func (x *CreateUriageRequest) GetCam() int32 {
+	if x != nil && x.Cam != nil {
+		return *x.Cam
+	}
+	return 0
+}
+
+func (x *CreateUriageRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type CreateUriageResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uriage        *Uriage                `protobuf:"bytes,1,opt,name=uriage,proto3" json:"uriage,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUriageResponse) Reset() {
+	*x = CreateUriageResponse{}
+	mi := &file_service_proto_msgTypes[132]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUriageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUriageResponse) ProtoMessage() {}
+
+func (x *CreateUriageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[132]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUriageResponse.ProtoReflect.Descriptor instead.
+func (*CreateUriageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{132}
+}
+
+func (x *CreateUriageResponse) GetUriage() *Uriage {
+	if x != nil {
+		return x.Uriage
+	}
+	return nil
+}
+
+type GetUriageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Bumon          string                 `protobuf:"bytes,2,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,4,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetUriageRequest) Reset() {
+	*x = GetUriageRequest{}
+	mi := &file_service_proto_msgTypes[133]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUriageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUriageRequest) ProtoMessage() {}
+
+func (x *GetUriageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[133]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUriageRequest.ProtoReflect.Descriptor instead.
+func (*GetUriageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{133}
+}
+
+func (x *GetUriageRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *GetUriageRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *GetUriageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *GetUriageRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type GetUriageResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uriage        *Uriage                `protobuf:"bytes,1,opt,name=uriage,proto3" json:"uriage,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUriageResponse) Reset() {
+	*x = GetUriageResponse{}
+	mi := &file_service_proto_msgTypes[134]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUriageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUriageResponse) ProtoMessage() {}
+
+func (x *GetUriageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[134]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUriageResponse.ProtoReflect.Descriptor instead.
+func (*GetUriageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{134}
+}
+
+func (x *GetUriageResponse) GetUriage() *Uriage {
+	if x != nil {
+		return x.Uriage
+	}
+	return nil
+}
+
+type UpdateUriageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Bumon          string                 `protobuf:"bytes,2,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,4,opt,name=date,proto3" json:"date,omitempty"`
+	Kingaku        *int32                 `protobuf:"varint,5,opt,name=kingaku,proto3,oneof" json:"kingaku,omitempty"`
+	Type           *int32                 `protobuf:"varint,6,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	Cam            *int32                 `protobuf:"varint,7,opt,name=cam,proto3,oneof" json:"cam,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateUriageRequest) Reset() {
+	*x = UpdateUriageRequest{}
+	mi := &file_service_proto_msgTypes[135]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUriageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUriageRequest) ProtoMessage() {}
+
+func (x *UpdateUriageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[135]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUriageRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUriageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{135}
+}
+
+func (x *UpdateUriageRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *UpdateUriageRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *UpdateUriageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UpdateUriageRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+func (x *UpdateUriageRequest) GetKingaku() int32 {
+	if x != nil && x.Kingaku != nil {
+		return *x.Kingaku
+	}
+	return 0
+}
+
+func (x *UpdateUriageRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return 0
+}
+
+func (x *UpdateUriageRequest) GetCam() int32 {
+	if x != nil && x.Cam != nil {
+		return *x.Cam
+	}
+	return 0
+}
+
+type UpdateUriageResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uriage        *Uriage                `protobuf:"bytes,1,opt,name=uriage,proto3" json:"uriage,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUriageResponse) Reset() {
+	*x = UpdateUriageResponse{}
+	mi := &file_service_proto_msgTypes[136]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUriageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUriageResponse) ProtoMessage() {}
+
+func (x *UpdateUriageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[136]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUriageResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUriageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{136}
+}
+
+func (x *UpdateUriageResponse) GetUriage() *Uriage {
+	if x != nil {
+		return x.Uriage
+	}
+	return nil
+}
+
+type DeleteUriageRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Name           string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Bumon          string                 `protobuf:"bytes,2,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,3,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,4,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DeleteUriageRequest) Reset() {
+	*x = DeleteUriageRequest{}
+	mi := &file_service_proto_msgTypes[137]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUriageRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUriageRequest) ProtoMessage() {}
+
+func (x *DeleteUriageRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[137]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUriageRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUriageRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{137}
+}
+
+func (x *DeleteUriageRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *DeleteUriageRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *DeleteUriageRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *DeleteUriageRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type DeleteUriageResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUriageResponse) Reset() {
+	*x = DeleteUriageResponse{}
+	mi := &file_service_proto_msgTypes[138]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUriageResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUriageResponse) ProtoMessage() {}
+
+func (x *DeleteUriageResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[138]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUriageResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUriageResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{138}
+}
+
+func (x *DeleteUriageResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListUriagesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUriagesRequest) Reset() {
+	*x = ListUriagesRequest{}
+	mi := &file_service_proto_msgTypes[139]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriagesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriagesRequest) ProtoMessage() {}
+
+func (x *ListUriagesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[139]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriagesRequest.ProtoReflect.Descriptor instead.
+func (*ListUriagesRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{139}
+}
+
+func (x *ListUriagesRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListUriagesRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListUriagesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uriages       []*Uriage              `protobuf:"bytes,1,rep,name=uriages,proto3" json:"uriages,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUriagesResponse) Reset() {
+	*x = ListUriagesResponse{}
+	mi := &file_service_proto_msgTypes[140]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriagesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriagesResponse) ProtoMessage() {}
+
+func (x *ListUriagesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[140]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriagesResponse.ProtoReflect.Descriptor instead.
+func (*ListUriagesResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{140}
+}
+
+func (x *ListUriagesResponse) GetUriages() []*Uriage {
+	if x != nil {
+		return x.Uriages
+	}
+	return nil
+}
+
+func (x *ListUriagesResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListUriagesByOrganizationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	PageSize       int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken      string                 `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ListUriagesByOrganizationRequest) Reset() {
+	*x = ListUriagesByOrganizationRequest{}
+	mi := &file_service_proto_msgTypes[141]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriagesByOrganizationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriagesByOrganizationRequest) ProtoMessage() {}
+
+func (x *ListUriagesByOrganizationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[141]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriagesByOrganizationRequest.ProtoReflect.Descriptor instead.
+func (*ListUriagesByOrganizationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{141}
+}
+
+func (x *ListUriagesByOrganizationRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ListUriagesByOrganizationRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListUriagesByOrganizationRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListUriagesByOrganizationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Uriages       []*Uriage              `protobuf:"bytes,1,rep,name=uriages,proto3" json:"uriages,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUriagesByOrganizationResponse) Reset() {
+	*x = ListUriagesByOrganizationResponse{}
+	mi := &file_service_proto_msgTypes[142]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriagesByOrganizationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriagesByOrganizationResponse) ProtoMessage() {}
+
+func (x *ListUriagesByOrganizationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[142]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriagesByOrganizationResponse.ProtoReflect.Descriptor instead.
+func (*ListUriagesByOrganizationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{142}
+}
+
+func (x *ListUriagesByOrganizationResponse) GetUriages() []*Uriage {
+	if x != nil {
+		return x.Uriages
+	}
+	return nil
+}
+
+func (x *ListUriagesByOrganizationResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type UriageJisha struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Bumon          string                 `protobuf:"bytes,1,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Kingaku        *int32                 `protobuf:"varint,3,opt,name=kingaku,proto3,oneof" json:"kingaku,omitempty"`
+	Type           *int32                 `protobuf:"varint,4,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	Date           string                 `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UriageJisha) Reset() {
+	*x = UriageJisha{}
+	mi := &file_service_proto_msgTypes[143]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UriageJisha) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UriageJisha) ProtoMessage() {}
+
+func (x *UriageJisha) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[143]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UriageJisha.ProtoReflect.Descriptor instead.
+func (*UriageJisha) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{143}
+}
+
+func (x *UriageJisha) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *UriageJisha) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UriageJisha) GetKingaku() int32 {
+	if x != nil && x.Kingaku != nil {
+		return *x.Kingaku
+	}
+	return 0
+}
+
+func (x *UriageJisha) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return 0
+}
+
+func (x *UriageJisha) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type CreateUriageJishaRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Bumon          string                 `protobuf:"bytes,1,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Kingaku        *int32                 `protobuf:"varint,3,opt,name=kingaku,proto3,oneof" json:"kingaku,omitempty"`
+	Type           *int32                 `protobuf:"varint,4,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	Date           string                 `protobuf:"bytes,5,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CreateUriageJishaRequest) Reset() {
+	*x = CreateUriageJishaRequest{}
+	mi := &file_service_proto_msgTypes[144]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUriageJishaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUriageJishaRequest) ProtoMessage() {}
+
+func (x *CreateUriageJishaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[144]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUriageJishaRequest.ProtoReflect.Descriptor instead.
+func (*CreateUriageJishaRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{144}
+}
+
+func (x *CreateUriageJishaRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *CreateUriageJishaRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *CreateUriageJishaRequest) GetKingaku() int32 {
+	if x != nil && x.Kingaku != nil {
+		return *x.Kingaku
+	}
+	return 0
+}
+
+func (x *CreateUriageJishaRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return 0
+}
+
+func (x *CreateUriageJishaRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type CreateUriageJishaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UriageJisha   *UriageJisha           `protobuf:"bytes,1,opt,name=uriage_jisha,json=uriageJisha,proto3" json:"uriage_jisha,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateUriageJishaResponse) Reset() {
+	*x = CreateUriageJishaResponse{}
+	mi := &file_service_proto_msgTypes[145]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateUriageJishaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateUriageJishaResponse) ProtoMessage() {}
+
+func (x *CreateUriageJishaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[145]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateUriageJishaResponse.ProtoReflect.Descriptor instead.
+func (*CreateUriageJishaResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{145}
+}
+
+func (x *CreateUriageJishaResponse) GetUriageJisha() *UriageJisha {
+	if x != nil {
+		return x.UriageJisha
+	}
+	return nil
+}
+
+type GetUriageJishaRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Bumon          string                 `protobuf:"bytes,1,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *GetUriageJishaRequest) Reset() {
+	*x = GetUriageJishaRequest{}
+	mi := &file_service_proto_msgTypes[146]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUriageJishaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUriageJishaRequest) ProtoMessage() {}
+
+func (x *GetUriageJishaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[146]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUriageJishaRequest.ProtoReflect.Descriptor instead.
+func (*GetUriageJishaRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{146}
+}
+
+func (x *GetUriageJishaRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *GetUriageJishaRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *GetUriageJishaRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type GetUriageJishaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UriageJisha   *UriageJisha           `protobuf:"bytes,1,opt,name=uriage_jisha,json=uriageJisha,proto3" json:"uriage_jisha,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUriageJishaResponse) Reset() {
+	*x = GetUriageJishaResponse{}
+	mi := &file_service_proto_msgTypes[147]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUriageJishaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUriageJishaResponse) ProtoMessage() {}
+
+func (x *GetUriageJishaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[147]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUriageJishaResponse.ProtoReflect.Descriptor instead.
+func (*GetUriageJishaResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{147}
+}
+
+func (x *GetUriageJishaResponse) GetUriageJisha() *UriageJisha {
+	if x != nil {
+		return x.UriageJisha
+	}
+	return nil
+}
+
+type UpdateUriageJishaRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Bumon          string                 `protobuf:"bytes,1,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
+	Kingaku        *int32                 `protobuf:"varint,4,opt,name=kingaku,proto3,oneof" json:"kingaku,omitempty"`
+	Type           *int32                 `protobuf:"varint,5,opt,name=type,proto3,oneof" json:"type,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *UpdateUriageJishaRequest) Reset() {
+	*x = UpdateUriageJishaRequest{}
+	mi := &file_service_proto_msgTypes[148]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUriageJishaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUriageJishaRequest) ProtoMessage() {}
+
+func (x *UpdateUriageJishaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[148]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUriageJishaRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUriageJishaRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{148}
+}
+
+func (x *UpdateUriageJishaRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *UpdateUriageJishaRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *UpdateUriageJishaRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+func (x *UpdateUriageJishaRequest) GetKingaku() int32 {
+	if x != nil && x.Kingaku != nil {
+		return *x.Kingaku
+	}
+	return 0
+}
+
+func (x *UpdateUriageJishaRequest) GetType() int32 {
+	if x != nil && x.Type != nil {
+		return *x.Type
+	}
+	return 0
+}
+
+type UpdateUriageJishaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UriageJisha   *UriageJisha           `protobuf:"bytes,1,opt,name=uriage_jisha,json=uriageJisha,proto3" json:"uriage_jisha,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUriageJishaResponse) Reset() {
+	*x = UpdateUriageJishaResponse{}
+	mi := &file_service_proto_msgTypes[149]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUriageJishaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUriageJishaResponse) ProtoMessage() {}
+
+func (x *UpdateUriageJishaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[149]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUriageJishaResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUriageJishaResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{149}
+}
+
+func (x *UpdateUriageJishaResponse) GetUriageJisha() *UriageJisha {
+	if x != nil {
+		return x.UriageJisha
+	}
+	return nil
+}
+
+type DeleteUriageJishaRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Bumon          string                 `protobuf:"bytes,1,opt,name=bumon,proto3" json:"bumon,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	Date           string                 `protobuf:"bytes,3,opt,name=date,proto3" json:"date,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *DeleteUriageJishaRequest) Reset() {
+	*x = DeleteUriageJishaRequest{}
+	mi := &file_service_proto_msgTypes[150]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUriageJishaRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUriageJishaRequest) ProtoMessage() {}
+
+func (x *DeleteUriageJishaRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[150]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUriageJishaRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUriageJishaRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{150}
+}
+
+func (x *DeleteUriageJishaRequest) GetBumon() string {
+	if x != nil {
+		return x.Bumon
+	}
+	return ""
+}
+
+func (x *DeleteUriageJishaRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *DeleteUriageJishaRequest) GetDate() string {
+	if x != nil {
+		return x.Date
+	}
+	return ""
+}
+
+type DeleteUriageJishaResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUriageJishaResponse) Reset() {
+	*x = DeleteUriageJishaResponse{}
+	mi := &file_service_proto_msgTypes[151]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUriageJishaResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUriageJishaResponse) ProtoMessage() {}
+
+func (x *DeleteUriageJishaResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[151]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUriageJishaResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUriageJishaResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{151}
+}
+
+func (x *DeleteUriageJishaResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListUriageJishasRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUriageJishasRequest) Reset() {
+	*x = ListUriageJishasRequest{}
+	mi := &file_service_proto_msgTypes[152]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriageJishasRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriageJishasRequest) ProtoMessage() {}
+
+func (x *ListUriageJishasRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[152]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriageJishasRequest.ProtoReflect.Descriptor instead.
+func (*ListUriageJishasRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{152}
+}
+
+func (x *ListUriageJishasRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListUriageJishasRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListUriageJishasResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UriageJishas  []*UriageJisha         `protobuf:"bytes,1,rep,name=uriage_jishas,json=uriageJishas,proto3" json:"uriage_jishas,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUriageJishasResponse) Reset() {
+	*x = ListUriageJishasResponse{}
+	mi := &file_service_proto_msgTypes[153]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriageJishasResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriageJishasResponse) ProtoMessage() {}
+
+func (x *ListUriageJishasResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[153]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriageJishasResponse.ProtoReflect.Descriptor instead.
+func (*ListUriageJishasResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{153}
+}
+
+func (x *ListUriageJishasResponse) GetUriageJishas() []*UriageJisha {
+	if x != nil {
+		return x.UriageJishas
+	}
+	return nil
+}
+
+func (x *ListUriageJishasResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+type ListUriageJishasByOrganizationRequest struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	OrganizationId string                 `protobuf:"bytes,1,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	PageSize       int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken      string                 `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ListUriageJishasByOrganizationRequest) Reset() {
+	*x = ListUriageJishasByOrganizationRequest{}
+	mi := &file_service_proto_msgTypes[154]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriageJishasByOrganizationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriageJishasByOrganizationRequest) ProtoMessage() {}
+
+func (x *ListUriageJishasByOrganizationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[154]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriageJishasByOrganizationRequest.ProtoReflect.Descriptor instead.
+func (*ListUriageJishasByOrganizationRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{154}
+}
+
+func (x *ListUriageJishasByOrganizationRequest) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ListUriageJishasByOrganizationRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListUriageJishasByOrganizationRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+type ListUriageJishasByOrganizationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UriageJishas  []*UriageJisha         `protobuf:"bytes,1,rep,name=uriage_jishas,json=uriageJishas,proto3" json:"uriage_jishas,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListUriageJishasByOrganizationResponse) Reset() {
+	*x = ListUriageJishasByOrganizationResponse{}
+	mi := &file_service_proto_msgTypes[155]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListUriageJishasByOrganizationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListUriageJishasByOrganizationResponse) ProtoMessage() {}
+
+func (x *ListUriageJishasByOrganizationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[155]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListUriageJishasByOrganizationResponse.ProtoReflect.Descriptor instead.
+func (*ListUriageJishasByOrganizationResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{155}
+}
+
+func (x *ListUriageJishasByOrganizationResponse) GetUriageJishas() []*UriageJisha {
+	if x != nil {
+		return x.UriageJishas
+	}
+	return nil
+}
+
+func (x *ListUriageJishasByOrganizationResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
 var File_service_proto protoreflect.FileDescriptor
 
 const file_service_proto_rawDesc = "" +
@@ -3644,6 +8912,437 @@ const file_service_proto_rawDesc = "" +
 	"page_token\x18\x03 \x01(\tR\tpageToken\"\x90\x01\n" +
 	"&ListFlickrPhotosByOrganizationResponse\x12>\n" +
 	"\rflickr_photos\x18\x01 \x03(\v2\x19.organization.FlickrPhotoR\fflickrPhotos\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\xc4\x01\n" +
+	"\aCamFile\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x03 \x01(\tR\x04date\x12\x12\n" +
+	"\x04hour\x18\x04 \x01(\tR\x04hour\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\tR\x04type\x12\x10\n" +
+	"\x03cam\x18\x06 \x01(\tR\x03cam\x12 \n" +
+	"\tflickr_id\x18\a \x01(\tH\x00R\bflickrId\x88\x01\x01B\f\n" +
+	"\n" +
+	"_flickr_id\"\xd1\x01\n" +
+	"\x14CreateCamFileRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x03 \x01(\tR\x04date\x12\x12\n" +
+	"\x04hour\x18\x04 \x01(\tR\x04hour\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\tR\x04type\x12\x10\n" +
+	"\x03cam\x18\x06 \x01(\tR\x03cam\x12 \n" +
+	"\tflickr_id\x18\a \x01(\tH\x00R\bflickrId\x88\x01\x01B\f\n" +
+	"\n" +
+	"_flickr_id\"I\n" +
+	"\x15CreateCamFileResponse\x120\n" +
+	"\bcam_file\x18\x01 \x01(\v2\x15.organization.CamFileR\acamFile\"P\n" +
+	"\x11GetCamFileRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\"F\n" +
+	"\x12GetCamFileResponse\x120\n" +
+	"\bcam_file\x18\x01 \x01(\v2\x15.organization.CamFileR\acamFile\"\xd1\x01\n" +
+	"\x14UpdateCamFileRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x03 \x01(\tR\x04date\x12\x12\n" +
+	"\x04hour\x18\x04 \x01(\tR\x04hour\x12\x12\n" +
+	"\x04type\x18\x05 \x01(\tR\x04type\x12\x10\n" +
+	"\x03cam\x18\x06 \x01(\tR\x03cam\x12 \n" +
+	"\tflickr_id\x18\a \x01(\tH\x00R\bflickrId\x88\x01\x01B\f\n" +
+	"\n" +
+	"_flickr_id\"I\n" +
+	"\x15UpdateCamFileResponse\x120\n" +
+	"\bcam_file\x18\x01 \x01(\v2\x15.organization.CamFileR\acamFile\"S\n" +
+	"\x14DeleteCamFileRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\"1\n" +
+	"\x15DeleteCamFileResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"Q\n" +
+	"\x13ListCamFilesRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"r\n" +
+	"\x14ListCamFilesResponse\x122\n" +
+	"\tcam_files\x18\x01 \x03(\v2\x15.organization.CamFileR\bcamFiles\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x88\x01\n" +
+	"!ListCamFilesByOrganizationRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x03 \x01(\tR\tpageToken\"\x80\x01\n" +
+	"\"ListCamFilesByOrganizationResponse\x122\n" +
+	"\tcam_files\x18\x01 \x03(\v2\x15.organization.CamFileR\bcamFiles\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"q\n" +
+	"\n" +
+	"CamFileExe\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03cam\x18\x02 \x01(\tR\x03cam\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x14\n" +
+	"\x05stage\x18\x04 \x01(\x05R\x05stage\"~\n" +
+	"\x17CreateCamFileExeRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03cam\x18\x02 \x01(\tR\x03cam\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x14\n" +
+	"\x05stage\x18\x04 \x01(\x05R\x05stage\"V\n" +
+	"\x18CreateCamFileExeResponse\x12:\n" +
+	"\fcam_file_exe\x18\x01 \x01(\v2\x18.organization.CamFileExeR\n" +
+	"camFileExe\"e\n" +
+	"\x14GetCamFileExeRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03cam\x18\x02 \x01(\tR\x03cam\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\"S\n" +
+	"\x15GetCamFileExeResponse\x12:\n" +
+	"\fcam_file_exe\x18\x01 \x01(\v2\x18.organization.CamFileExeR\n" +
+	"camFileExe\"~\n" +
+	"\x17UpdateCamFileExeRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03cam\x18\x02 \x01(\tR\x03cam\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x14\n" +
+	"\x05stage\x18\x04 \x01(\x05R\x05stage\"V\n" +
+	"\x18UpdateCamFileExeResponse\x12:\n" +
+	"\fcam_file_exe\x18\x01 \x01(\v2\x18.organization.CamFileExeR\n" +
+	"camFileExe\"h\n" +
+	"\x17DeleteCamFileExeRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x10\n" +
+	"\x03cam\x18\x02 \x01(\tR\x03cam\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\"4\n" +
+	"\x18DeleteCamFileExeResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"T\n" +
+	"\x16ListCamFileExesRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"\x7f\n" +
+	"\x17ListCamFileExesResponse\x12<\n" +
+	"\rcam_file_exes\x18\x01 \x03(\v2\x18.organization.CamFileExeR\vcamFileExes\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x8b\x01\n" +
+	"$ListCamFileExesByOrganizationRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x03 \x01(\tR\tpageToken\"\x8d\x01\n" +
+	"%ListCamFileExesByOrganizationResponse\x12<\n" +
+	"\rcam_file_exes\x18\x01 \x03(\v2\x18.organization.CamFileExeR\vcamFileExes\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"d\n" +
+	"\x0fCamFileExeStage\x12\x14\n" +
+	"\x05stage\x18\x01 \x01(\x05R\x05stage\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"q\n" +
+	"\x1cCreateCamFileExeStageRequest\x12\x14\n" +
+	"\x05stage\x18\x01 \x01(\x05R\x05stage\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"k\n" +
+	"\x1dCreateCamFileExeStageResponse\x12J\n" +
+	"\x12cam_file_exe_stage\x18\x01 \x01(\v2\x1d.organization.CamFileExeStageR\x0fcamFileExeStage\"Z\n" +
+	"\x19GetCamFileExeStageRequest\x12\x14\n" +
+	"\x05stage\x18\x01 \x01(\x05R\x05stage\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\"h\n" +
+	"\x1aGetCamFileExeStageResponse\x12J\n" +
+	"\x12cam_file_exe_stage\x18\x01 \x01(\v2\x1d.organization.CamFileExeStageR\x0fcamFileExeStage\"q\n" +
+	"\x1cUpdateCamFileExeStageRequest\x12\x14\n" +
+	"\x05stage\x18\x01 \x01(\x05R\x05stage\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"k\n" +
+	"\x1dUpdateCamFileExeStageResponse\x12J\n" +
+	"\x12cam_file_exe_stage\x18\x01 \x01(\v2\x1d.organization.CamFileExeStageR\x0fcamFileExeStage\"]\n" +
+	"\x1cDeleteCamFileExeStageRequest\x12\x14\n" +
+	"\x05stage\x18\x01 \x01(\x05R\x05stage\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\"9\n" +
+	"\x1dDeleteCamFileExeStageResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"Y\n" +
+	"\x1bListCamFileExeStagesRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"\x94\x01\n" +
+	"\x1cListCamFileExeStagesResponse\x12L\n" +
+	"\x13cam_file_exe_stages\x18\x01 \x03(\v2\x1d.organization.CamFileExeStageR\x10camFileExeStages\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x90\x01\n" +
+	")ListCamFileExeStagesByOrganizationRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x03 \x01(\tR\tpageToken\"\xa2\x01\n" +
+	"*ListCamFileExeStagesByOrganizationResponse\x12L\n" +
+	"\x13cam_file_exe_stages\x18\x01 \x03(\v2\x1d.organization.CamFileExeStageR\x10camFileExeStages\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\xe1\x03\n" +
+	"\n" +
+	"IchibanCar\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x10\n" +
+	"\x03id4\x18\x03 \x01(\tR\x03id4\x12\x17\n" +
+	"\x04name\x18\x04 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1a\n" +
+	"\x06name_r\x18\x05 \x01(\tH\x01R\x05nameR\x88\x01\x01\x12\x16\n" +
+	"\x06shashu\x18\x06 \x01(\tR\x06shashu\x12\x1d\n" +
+	"\asekisai\x18\a \x01(\x01H\x02R\asekisai\x88\x01\x01\x12\x1e\n" +
+	"\breg_date\x18\b \x01(\tH\x03R\aregDate\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"parch_date\x18\t \x01(\tH\x04R\tparchDate\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"scrap_date\x18\n" +
+	" \x01(\tH\x05R\tscrapDate\x88\x01\x01\x12'\n" +
+	"\rbumon_code_id\x18\v \x01(\tH\x06R\vbumonCodeId\x88\x01\x01\x12 \n" +
+	"\tdriver_id\x18\f \x01(\tH\aR\bdriverId\x88\x01\x01B\a\n" +
+	"\x05_nameB\t\n" +
+	"\a_name_rB\n" +
+	"\n" +
+	"\b_sekisaiB\v\n" +
+	"\t_reg_dateB\r\n" +
+	"\v_parch_dateB\r\n" +
+	"\v_scrap_dateB\x10\n" +
+	"\x0e_bumon_code_idB\f\n" +
+	"\n" +
+	"_driver_id\"\xde\x03\n" +
+	"\x17CreateIchibanCarRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x10\n" +
+	"\x03id4\x18\x02 \x01(\tR\x03id4\x12\x16\n" +
+	"\x06shashu\x18\x03 \x01(\tR\x06shashu\x12\x17\n" +
+	"\x04name\x18\x04 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1a\n" +
+	"\x06name_r\x18\x05 \x01(\tH\x01R\x05nameR\x88\x01\x01\x12\x1d\n" +
+	"\asekisai\x18\x06 \x01(\x01H\x02R\asekisai\x88\x01\x01\x12\x1e\n" +
+	"\breg_date\x18\a \x01(\tH\x03R\aregDate\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"parch_date\x18\b \x01(\tH\x04R\tparchDate\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"scrap_date\x18\t \x01(\tH\x05R\tscrapDate\x88\x01\x01\x12'\n" +
+	"\rbumon_code_id\x18\n" +
+	" \x01(\tH\x06R\vbumonCodeId\x88\x01\x01\x12 \n" +
+	"\tdriver_id\x18\v \x01(\tH\aR\bdriverId\x88\x01\x01B\a\n" +
+	"\x05_nameB\t\n" +
+	"\a_name_rB\n" +
+	"\n" +
+	"\b_sekisaiB\v\n" +
+	"\t_reg_dateB\r\n" +
+	"\v_parch_dateB\r\n" +
+	"\v_scrap_dateB\x10\n" +
+	"\x0e_bumon_code_idB\f\n" +
+	"\n" +
+	"_driver_id\"U\n" +
+	"\x18CreateIchibanCarResponse\x129\n" +
+	"\vichiban_car\x18\x01 \x01(\v2\x18.organization.IchibanCarR\n" +
+	"ichibanCar\"O\n" +
+	"\x14GetIchibanCarRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\"R\n" +
+	"\x15GetIchibanCarResponse\x129\n" +
+	"\vichiban_car\x18\x01 \x01(\v2\x18.organization.IchibanCarR\n" +
+	"ichibanCar\"\xee\x03\n" +
+	"\x17UpdateIchibanCarRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x10\n" +
+	"\x03id4\x18\x03 \x01(\tR\x03id4\x12\x16\n" +
+	"\x06shashu\x18\x04 \x01(\tR\x06shashu\x12\x17\n" +
+	"\x04name\x18\x05 \x01(\tH\x00R\x04name\x88\x01\x01\x12\x1a\n" +
+	"\x06name_r\x18\x06 \x01(\tH\x01R\x05nameR\x88\x01\x01\x12\x1d\n" +
+	"\asekisai\x18\a \x01(\x01H\x02R\asekisai\x88\x01\x01\x12\x1e\n" +
+	"\breg_date\x18\b \x01(\tH\x03R\aregDate\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"parch_date\x18\t \x01(\tH\x04R\tparchDate\x88\x01\x01\x12\"\n" +
+	"\n" +
+	"scrap_date\x18\n" +
+	" \x01(\tH\x05R\tscrapDate\x88\x01\x01\x12'\n" +
+	"\rbumon_code_id\x18\v \x01(\tH\x06R\vbumonCodeId\x88\x01\x01\x12 \n" +
+	"\tdriver_id\x18\f \x01(\tH\aR\bdriverId\x88\x01\x01B\a\n" +
+	"\x05_nameB\t\n" +
+	"\a_name_rB\n" +
+	"\n" +
+	"\b_sekisaiB\v\n" +
+	"\t_reg_dateB\r\n" +
+	"\v_parch_dateB\r\n" +
+	"\v_scrap_dateB\x10\n" +
+	"\x0e_bumon_code_idB\f\n" +
+	"\n" +
+	"_driver_id\"U\n" +
+	"\x18UpdateIchibanCarResponse\x129\n" +
+	"\vichiban_car\x18\x01 \x01(\v2\x18.organization.IchibanCarR\n" +
+	"ichibanCar\"R\n" +
+	"\x17DeleteIchibanCarRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\"4\n" +
+	"\x18DeleteIchibanCarResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"T\n" +
+	"\x16ListIchibanCarsRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"~\n" +
+	"\x17ListIchibanCarsResponse\x12;\n" +
+	"\fichiban_cars\x18\x01 \x03(\v2\x18.organization.IchibanCarR\vichibanCars\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x8b\x01\n" +
+	"$ListIchibanCarsByOrganizationRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x03 \x01(\tR\tpageToken\"\x8c\x01\n" +
+	"%ListIchibanCarsByOrganizationResponse\x12;\n" +
+	"\fichiban_cars\x18\x01 \x03(\v2\x18.organization.IchibanCarR\vichibanCars\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"v\n" +
+	"\x14DtakoCarsIchibanCars\x12\x19\n" +
+	"\bid_dtako\x18\x01 \x01(\tR\aidDtako\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x13\n" +
+	"\x02id\x18\x03 \x01(\tH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"\x83\x01\n" +
+	"!CreateDtakoCarsIchibanCarsRequest\x12\x19\n" +
+	"\bid_dtako\x18\x01 \x01(\tR\aidDtako\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x13\n" +
+	"\x02id\x18\x03 \x01(\tH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"\x7f\n" +
+	"\"CreateDtakoCarsIchibanCarsResponse\x12Y\n" +
+	"\x17dtako_cars_ichiban_cars\x18\x01 \x01(\v2\".organization.DtakoCarsIchibanCarsR\x14dtakoCarsIchibanCars\"d\n" +
+	"\x1eGetDtakoCarsIchibanCarsRequest\x12\x19\n" +
+	"\bid_dtako\x18\x01 \x01(\tR\aidDtako\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\"|\n" +
+	"\x1fGetDtakoCarsIchibanCarsResponse\x12Y\n" +
+	"\x17dtako_cars_ichiban_cars\x18\x01 \x01(\v2\".organization.DtakoCarsIchibanCarsR\x14dtakoCarsIchibanCars\"\x83\x01\n" +
+	"!UpdateDtakoCarsIchibanCarsRequest\x12\x19\n" +
+	"\bid_dtako\x18\x01 \x01(\tR\aidDtako\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x13\n" +
+	"\x02id\x18\x03 \x01(\tH\x00R\x02id\x88\x01\x01B\x05\n" +
+	"\x03_id\"\x7f\n" +
+	"\"UpdateDtakoCarsIchibanCarsResponse\x12Y\n" +
+	"\x17dtako_cars_ichiban_cars\x18\x01 \x01(\v2\".organization.DtakoCarsIchibanCarsR\x14dtakoCarsIchibanCars\"g\n" +
+	"!DeleteDtakoCarsIchibanCarsRequest\x12\x19\n" +
+	"\bid_dtako\x18\x01 \x01(\tR\aidDtako\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\">\n" +
+	"\"DeleteDtakoCarsIchibanCarsResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"]\n" +
+	"\x1fListDtakoCarsIchibanCarsRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"\xa5\x01\n" +
+	" ListDtakoCarsIchibanCarsResponse\x12Y\n" +
+	"\x17dtako_cars_ichiban_cars\x18\x01 \x03(\v2\".organization.DtakoCarsIchibanCarsR\x14dtakoCarsIchibanCars\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x94\x01\n" +
+	"-ListDtakoCarsIchibanCarsByOrganizationRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x03 \x01(\tR\tpageToken\"\xb3\x01\n" +
+	".ListDtakoCarsIchibanCarsByOrganizationResponse\x12Y\n" +
+	"\x17dtako_cars_ichiban_cars\x18\x01 \x03(\v2\".organization.DtakoCarsIchibanCarsR\x14dtakoCarsIchibanCars\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\xdb\x01\n" +
+	"\x06Uriage\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
+	"\x05bumon\x18\x02 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x1d\n" +
+	"\akingaku\x18\x04 \x01(\x05H\x00R\akingaku\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\x05 \x01(\x05H\x01R\x04type\x88\x01\x01\x12\x15\n" +
+	"\x03cam\x18\x06 \x01(\x05H\x02R\x03cam\x88\x01\x01\x12\x12\n" +
+	"\x04date\x18\a \x01(\tR\x04dateB\n" +
+	"\n" +
+	"\b_kingakuB\a\n" +
+	"\x05_typeB\x06\n" +
+	"\x04_cam\"\xe8\x01\n" +
+	"\x13CreateUriageRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
+	"\x05bumon\x18\x02 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x1d\n" +
+	"\akingaku\x18\x04 \x01(\x05H\x00R\akingaku\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\x05 \x01(\x05H\x01R\x04type\x88\x01\x01\x12\x15\n" +
+	"\x03cam\x18\x06 \x01(\x05H\x02R\x03cam\x88\x01\x01\x12\x12\n" +
+	"\x04date\x18\a \x01(\tR\x04dateB\n" +
+	"\n" +
+	"\b_kingakuB\a\n" +
+	"\x05_typeB\x06\n" +
+	"\x04_cam\"D\n" +
+	"\x14CreateUriageResponse\x12,\n" +
+	"\x06uriage\x18\x01 \x01(\v2\x14.organization.UriageR\x06uriage\"y\n" +
+	"\x10GetUriageRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
+	"\x05bumon\x18\x02 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x04 \x01(\tR\x04date\"A\n" +
+	"\x11GetUriageResponse\x12,\n" +
+	"\x06uriage\x18\x01 \x01(\v2\x14.organization.UriageR\x06uriage\"\xe8\x01\n" +
+	"\x13UpdateUriageRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
+	"\x05bumon\x18\x02 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x04 \x01(\tR\x04date\x12\x1d\n" +
+	"\akingaku\x18\x05 \x01(\x05H\x00R\akingaku\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\x06 \x01(\x05H\x01R\x04type\x88\x01\x01\x12\x15\n" +
+	"\x03cam\x18\a \x01(\x05H\x02R\x03cam\x88\x01\x01B\n" +
+	"\n" +
+	"\b_kingakuB\a\n" +
+	"\x05_typeB\x06\n" +
+	"\x04_cam\"D\n" +
+	"\x14UpdateUriageResponse\x12,\n" +
+	"\x06uriage\x18\x01 \x01(\v2\x14.organization.UriageR\x06uriage\"|\n" +
+	"\x13DeleteUriageRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
+	"\x05bumon\x18\x02 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x03 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x04 \x01(\tR\x04date\"0\n" +
+	"\x14DeleteUriageResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"P\n" +
+	"\x12ListUriagesRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"m\n" +
+	"\x13ListUriagesResponse\x12.\n" +
+	"\auriages\x18\x01 \x03(\v2\x14.organization.UriageR\auriages\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x87\x01\n" +
+	" ListUriagesByOrganizationRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x03 \x01(\tR\tpageToken\"{\n" +
+	"!ListUriagesByOrganizationResponse\x12.\n" +
+	"\auriages\x18\x01 \x03(\v2\x14.organization.UriageR\auriages\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\xad\x01\n" +
+	"\vUriageJisha\x12\x14\n" +
+	"\x05bumon\x18\x01 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x1d\n" +
+	"\akingaku\x18\x03 \x01(\x05H\x00R\akingaku\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\x04 \x01(\x05H\x01R\x04type\x88\x01\x01\x12\x12\n" +
+	"\x04date\x18\x05 \x01(\tR\x04dateB\n" +
+	"\n" +
+	"\b_kingakuB\a\n" +
+	"\x05_type\"\xba\x01\n" +
+	"\x18CreateUriageJishaRequest\x12\x14\n" +
+	"\x05bumon\x18\x01 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x1d\n" +
+	"\akingaku\x18\x03 \x01(\x05H\x00R\akingaku\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\x04 \x01(\x05H\x01R\x04type\x88\x01\x01\x12\x12\n" +
+	"\x04date\x18\x05 \x01(\tR\x04dateB\n" +
+	"\n" +
+	"\b_kingakuB\a\n" +
+	"\x05_type\"Y\n" +
+	"\x19CreateUriageJishaResponse\x12<\n" +
+	"\furiage_jisha\x18\x01 \x01(\v2\x19.organization.UriageJishaR\vuriageJisha\"j\n" +
+	"\x15GetUriageJishaRequest\x12\x14\n" +
+	"\x05bumon\x18\x01 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x03 \x01(\tR\x04date\"V\n" +
+	"\x16GetUriageJishaResponse\x12<\n" +
+	"\furiage_jisha\x18\x01 \x01(\v2\x19.organization.UriageJishaR\vuriageJisha\"\xba\x01\n" +
+	"\x18UpdateUriageJishaRequest\x12\x14\n" +
+	"\x05bumon\x18\x01 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x03 \x01(\tR\x04date\x12\x1d\n" +
+	"\akingaku\x18\x04 \x01(\x05H\x00R\akingaku\x88\x01\x01\x12\x17\n" +
+	"\x04type\x18\x05 \x01(\x05H\x01R\x04type\x88\x01\x01B\n" +
+	"\n" +
+	"\b_kingakuB\a\n" +
+	"\x05_type\"Y\n" +
+	"\x19UpdateUriageJishaResponse\x12<\n" +
+	"\furiage_jisha\x18\x01 \x01(\v2\x19.organization.UriageJishaR\vuriageJisha\"m\n" +
+	"\x18DeleteUriageJishaRequest\x12\x14\n" +
+	"\x05bumon\x18\x01 \x01(\tR\x05bumon\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x12\x12\n" +
+	"\x04date\x18\x03 \x01(\tR\x04date\"5\n" +
+	"\x19DeleteUriageJishaResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"U\n" +
+	"\x17ListUriageJishasRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"\x82\x01\n" +
+	"\x18ListUriageJishasResponse\x12>\n" +
+	"\ruriage_jishas\x18\x01 \x03(\v2\x19.organization.UriageJishaR\furiageJishas\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\x8c\x01\n" +
+	"%ListUriageJishasByOrganizationRequest\x12'\n" +
+	"\x0forganization_id\x18\x01 \x01(\tR\x0eorganizationId\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x03 \x01(\tR\tpageToken\"\x90\x01\n" +
+	"&ListUriageJishasByOrganizationResponse\x12>\n" +
+	"\ruriage_jishas\x18\x01 \x03(\v2\x19.organization.UriageJishaR\furiageJishas\x12&\n" +
 	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken2\x96\x04\n" +
 	"\x13OrganizationService\x12g\n" +
 	"\x12CreateOrganization\x12'.organization.CreateOrganizationRequest\x1a(.organization.CreateOrganizationResponse\x12^\n" +
@@ -3683,7 +9382,57 @@ const file_service_proto_rawDesc = "" +
 	"\x11UpdateFlickrPhoto\x12&.organization.UpdateFlickrPhotoRequest\x1a'.organization.UpdateFlickrPhotoResponse\x12d\n" +
 	"\x11DeleteFlickrPhoto\x12&.organization.DeleteFlickrPhotoRequest\x1a'.organization.DeleteFlickrPhotoResponse\x12a\n" +
 	"\x10ListFlickrPhotos\x12%.organization.ListFlickrPhotosRequest\x1a&.organization.ListFlickrPhotosResponse\x12\x8b\x01\n" +
-	"\x1eListFlickrPhotosByOrganization\x123.organization.ListFlickrPhotosByOrganizationRequest\x1a4.organization.ListFlickrPhotosByOrganizationResponseB:Z8github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/pb;pbb\x06proto3"
+	"\x1eListFlickrPhotosByOrganization\x123.organization.ListFlickrPhotosByOrganizationRequest\x1a4.organization.ListFlickrPhotosByOrganizationResponse2\xc7\x04\n" +
+	"\x0eCamFileService\x12X\n" +
+	"\rCreateCamFile\x12\".organization.CreateCamFileRequest\x1a#.organization.CreateCamFileResponse\x12O\n" +
+	"\n" +
+	"GetCamFile\x12\x1f.organization.GetCamFileRequest\x1a .organization.GetCamFileResponse\x12X\n" +
+	"\rUpdateCamFile\x12\".organization.UpdateCamFileRequest\x1a#.organization.UpdateCamFileResponse\x12X\n" +
+	"\rDeleteCamFile\x12\".organization.DeleteCamFileRequest\x1a#.organization.DeleteCamFileResponse\x12U\n" +
+	"\fListCamFiles\x12!.organization.ListCamFilesRequest\x1a\".organization.ListCamFilesResponse\x12\x7f\n" +
+	"\x1aListCamFilesByOrganization\x12/.organization.ListCamFilesByOrganizationRequest\x1a0.organization.ListCamFilesByOrganizationResponse2\x81\x05\n" +
+	"\x11CamFileExeService\x12a\n" +
+	"\x10CreateCamFileExe\x12%.organization.CreateCamFileExeRequest\x1a&.organization.CreateCamFileExeResponse\x12X\n" +
+	"\rGetCamFileExe\x12\".organization.GetCamFileExeRequest\x1a#.organization.GetCamFileExeResponse\x12a\n" +
+	"\x10UpdateCamFileExe\x12%.organization.UpdateCamFileExeRequest\x1a&.organization.UpdateCamFileExeResponse\x12a\n" +
+	"\x10DeleteCamFileExe\x12%.organization.DeleteCamFileExeRequest\x1a&.organization.DeleteCamFileExeResponse\x12^\n" +
+	"\x0fListCamFileExes\x12$.organization.ListCamFileExesRequest\x1a%.organization.ListCamFileExesResponse\x12\x88\x01\n" +
+	"\x1dListCamFileExesByOrganization\x122.organization.ListCamFileExesByOrganizationRequest\x1a3.organization.ListCamFileExesByOrganizationResponse2\xe0\x05\n" +
+	"\x16CamFileExeStageService\x12p\n" +
+	"\x15CreateCamFileExeStage\x12*.organization.CreateCamFileExeStageRequest\x1a+.organization.CreateCamFileExeStageResponse\x12g\n" +
+	"\x12GetCamFileExeStage\x12'.organization.GetCamFileExeStageRequest\x1a(.organization.GetCamFileExeStageResponse\x12p\n" +
+	"\x15UpdateCamFileExeStage\x12*.organization.UpdateCamFileExeStageRequest\x1a+.organization.UpdateCamFileExeStageResponse\x12p\n" +
+	"\x15DeleteCamFileExeStage\x12*.organization.DeleteCamFileExeStageRequest\x1a+.organization.DeleteCamFileExeStageResponse\x12m\n" +
+	"\x14ListCamFileExeStages\x12).organization.ListCamFileExeStagesRequest\x1a*.organization.ListCamFileExeStagesResponse\x12\x97\x01\n" +
+	"\"ListCamFileExeStagesByOrganization\x127.organization.ListCamFileExeStagesByOrganizationRequest\x1a8.organization.ListCamFileExeStagesByOrganizationResponse2\x81\x05\n" +
+	"\x11IchibanCarService\x12a\n" +
+	"\x10CreateIchibanCar\x12%.organization.CreateIchibanCarRequest\x1a&.organization.CreateIchibanCarResponse\x12X\n" +
+	"\rGetIchibanCar\x12\".organization.GetIchibanCarRequest\x1a#.organization.GetIchibanCarResponse\x12a\n" +
+	"\x10UpdateIchibanCar\x12%.organization.UpdateIchibanCarRequest\x1a&.organization.UpdateIchibanCarResponse\x12a\n" +
+	"\x10DeleteIchibanCar\x12%.organization.DeleteIchibanCarRequest\x1a&.organization.DeleteIchibanCarResponse\x12^\n" +
+	"\x0fListIchibanCars\x12$.organization.ListIchibanCarsRequest\x1a%.organization.ListIchibanCarsResponse\x12\x88\x01\n" +
+	"\x1dListIchibanCarsByOrganization\x122.organization.ListIchibanCarsByOrganizationRequest\x1a3.organization.ListIchibanCarsByOrganizationResponse2\xb9\x06\n" +
+	"\x1bDtakoCarsIchibanCarsService\x12\x7f\n" +
+	"\x1aCreateDtakoCarsIchibanCars\x12/.organization.CreateDtakoCarsIchibanCarsRequest\x1a0.organization.CreateDtakoCarsIchibanCarsResponse\x12v\n" +
+	"\x17GetDtakoCarsIchibanCars\x12,.organization.GetDtakoCarsIchibanCarsRequest\x1a-.organization.GetDtakoCarsIchibanCarsResponse\x12\x7f\n" +
+	"\x1aUpdateDtakoCarsIchibanCars\x12/.organization.UpdateDtakoCarsIchibanCarsRequest\x1a0.organization.UpdateDtakoCarsIchibanCarsResponse\x12\x7f\n" +
+	"\x1aDeleteDtakoCarsIchibanCars\x12/.organization.DeleteDtakoCarsIchibanCarsRequest\x1a0.organization.DeleteDtakoCarsIchibanCarsResponse\x12y\n" +
+	"\x18ListDtakoCarsIchibanCars\x12-.organization.ListDtakoCarsIchibanCarsRequest\x1a..organization.ListDtakoCarsIchibanCarsResponse\x12\xa3\x01\n" +
+	"&ListDtakoCarsIchibanCarsByOrganization\x12;.organization.ListDtakoCarsIchibanCarsByOrganizationRequest\x1a<.organization.ListDtakoCarsIchibanCarsByOrganizationResponse2\xb4\x04\n" +
+	"\rUriageService\x12U\n" +
+	"\fCreateUriage\x12!.organization.CreateUriageRequest\x1a\".organization.CreateUriageResponse\x12L\n" +
+	"\tGetUriage\x12\x1e.organization.GetUriageRequest\x1a\x1f.organization.GetUriageResponse\x12U\n" +
+	"\fUpdateUriage\x12!.organization.UpdateUriageRequest\x1a\".organization.UpdateUriageResponse\x12U\n" +
+	"\fDeleteUriage\x12!.organization.DeleteUriageRequest\x1a\".organization.DeleteUriageResponse\x12R\n" +
+	"\vListUriages\x12 .organization.ListUriagesRequest\x1a!.organization.ListUriagesResponse\x12|\n" +
+	"\x19ListUriagesByOrganization\x12..organization.ListUriagesByOrganizationRequest\x1a/.organization.ListUriagesByOrganizationResponse2\x94\x05\n" +
+	"\x12UriageJishaService\x12d\n" +
+	"\x11CreateUriageJisha\x12&.organization.CreateUriageJishaRequest\x1a'.organization.CreateUriageJishaResponse\x12[\n" +
+	"\x0eGetUriageJisha\x12#.organization.GetUriageJishaRequest\x1a$.organization.GetUriageJishaResponse\x12d\n" +
+	"\x11UpdateUriageJisha\x12&.organization.UpdateUriageJishaRequest\x1a'.organization.UpdateUriageJishaResponse\x12d\n" +
+	"\x11DeleteUriageJisha\x12&.organization.DeleteUriageJishaRequest\x1a'.organization.DeleteUriageJishaResponse\x12a\n" +
+	"\x10ListUriageJishas\x12%.organization.ListUriageJishasRequest\x1a&.organization.ListUriageJishasResponse\x12\x8b\x01\n" +
+	"\x1eListUriageJishasByOrganization\x123.organization.ListUriageJishasByOrganizationRequest\x1a4.organization.ListUriageJishasByOrganizationResponseB:Z8github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/pb;pbb\x06proto3"
 
 var (
 	file_service_proto_rawDescOnce sync.Once
@@ -3697,7 +9446,7 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 65)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 156)
 var file_service_proto_goTypes = []any{
 	(*Organization)(nil),                        // 0: organization.Organization
 	(*CreateOrganizationRequest)(nil),           // 1: organization.CreateOrganizationRequest
@@ -3738,133 +9487,343 @@ var file_service_proto_goTypes = []any{
 	(*ListUserOrganizationsByUserResponse)(nil), // 36: organization.ListUserOrganizationsByUserResponse
 	(*ListUserOrganizationsByOrgRequest)(nil),   // 37: organization.ListUserOrganizationsByOrgRequest
 	(*ListUserOrganizationsByOrgResponse)(nil),  // 38: organization.ListUserOrganizationsByOrgResponse
-	(*File)(nil),                                   // 39: organization.File
-	(*CreateFileRequest)(nil),                      // 40: organization.CreateFileRequest
-	(*CreateFileResponse)(nil),                     // 41: organization.CreateFileResponse
-	(*GetFileRequest)(nil),                         // 42: organization.GetFileRequest
-	(*GetFileResponse)(nil),                        // 43: organization.GetFileResponse
-	(*UpdateFileRequest)(nil),                      // 44: organization.UpdateFileRequest
-	(*UpdateFileResponse)(nil),                     // 45: organization.UpdateFileResponse
-	(*DeleteFileRequest)(nil),                      // 46: organization.DeleteFileRequest
-	(*DeleteFileResponse)(nil),                     // 47: organization.DeleteFileResponse
-	(*ListFilesRequest)(nil),                       // 48: organization.ListFilesRequest
-	(*ListFilesResponse)(nil),                      // 49: organization.ListFilesResponse
-	(*ListFilesByOrganizationRequest)(nil),         // 50: organization.ListFilesByOrganizationRequest
-	(*ListFilesByOrganizationResponse)(nil),        // 51: organization.ListFilesByOrganizationResponse
-	(*FlickrPhoto)(nil),                            // 52: organization.FlickrPhoto
-	(*CreateFlickrPhotoRequest)(nil),               // 53: organization.CreateFlickrPhotoRequest
-	(*CreateFlickrPhotoResponse)(nil),              // 54: organization.CreateFlickrPhotoResponse
-	(*GetFlickrPhotoRequest)(nil),                  // 55: organization.GetFlickrPhotoRequest
-	(*GetFlickrPhotoResponse)(nil),                 // 56: organization.GetFlickrPhotoResponse
-	(*UpdateFlickrPhotoRequest)(nil),               // 57: organization.UpdateFlickrPhotoRequest
-	(*UpdateFlickrPhotoResponse)(nil),              // 58: organization.UpdateFlickrPhotoResponse
-	(*DeleteFlickrPhotoRequest)(nil),               // 59: organization.DeleteFlickrPhotoRequest
-	(*DeleteFlickrPhotoResponse)(nil),              // 60: organization.DeleteFlickrPhotoResponse
-	(*ListFlickrPhotosRequest)(nil),                // 61: organization.ListFlickrPhotosRequest
-	(*ListFlickrPhotosResponse)(nil),               // 62: organization.ListFlickrPhotosResponse
-	(*ListFlickrPhotosByOrganizationRequest)(nil),  // 63: organization.ListFlickrPhotosByOrganizationRequest
-	(*ListFlickrPhotosByOrganizationResponse)(nil), // 64: organization.ListFlickrPhotosByOrganizationResponse
-	(*timestamppb.Timestamp)(nil),                  // 65: google.protobuf.Timestamp
+	(*File)(nil),                                           // 39: organization.File
+	(*CreateFileRequest)(nil),                              // 40: organization.CreateFileRequest
+	(*CreateFileResponse)(nil),                             // 41: organization.CreateFileResponse
+	(*GetFileRequest)(nil),                                 // 42: organization.GetFileRequest
+	(*GetFileResponse)(nil),                                // 43: organization.GetFileResponse
+	(*UpdateFileRequest)(nil),                              // 44: organization.UpdateFileRequest
+	(*UpdateFileResponse)(nil),                             // 45: organization.UpdateFileResponse
+	(*DeleteFileRequest)(nil),                              // 46: organization.DeleteFileRequest
+	(*DeleteFileResponse)(nil),                             // 47: organization.DeleteFileResponse
+	(*ListFilesRequest)(nil),                               // 48: organization.ListFilesRequest
+	(*ListFilesResponse)(nil),                              // 49: organization.ListFilesResponse
+	(*ListFilesByOrganizationRequest)(nil),                 // 50: organization.ListFilesByOrganizationRequest
+	(*ListFilesByOrganizationResponse)(nil),                // 51: organization.ListFilesByOrganizationResponse
+	(*FlickrPhoto)(nil),                                    // 52: organization.FlickrPhoto
+	(*CreateFlickrPhotoRequest)(nil),                       // 53: organization.CreateFlickrPhotoRequest
+	(*CreateFlickrPhotoResponse)(nil),                      // 54: organization.CreateFlickrPhotoResponse
+	(*GetFlickrPhotoRequest)(nil),                          // 55: organization.GetFlickrPhotoRequest
+	(*GetFlickrPhotoResponse)(nil),                         // 56: organization.GetFlickrPhotoResponse
+	(*UpdateFlickrPhotoRequest)(nil),                       // 57: organization.UpdateFlickrPhotoRequest
+	(*UpdateFlickrPhotoResponse)(nil),                      // 58: organization.UpdateFlickrPhotoResponse
+	(*DeleteFlickrPhotoRequest)(nil),                       // 59: organization.DeleteFlickrPhotoRequest
+	(*DeleteFlickrPhotoResponse)(nil),                      // 60: organization.DeleteFlickrPhotoResponse
+	(*ListFlickrPhotosRequest)(nil),                        // 61: organization.ListFlickrPhotosRequest
+	(*ListFlickrPhotosResponse)(nil),                       // 62: organization.ListFlickrPhotosResponse
+	(*ListFlickrPhotosByOrganizationRequest)(nil),          // 63: organization.ListFlickrPhotosByOrganizationRequest
+	(*ListFlickrPhotosByOrganizationResponse)(nil),         // 64: organization.ListFlickrPhotosByOrganizationResponse
+	(*CamFile)(nil),                                        // 65: organization.CamFile
+	(*CreateCamFileRequest)(nil),                           // 66: organization.CreateCamFileRequest
+	(*CreateCamFileResponse)(nil),                          // 67: organization.CreateCamFileResponse
+	(*GetCamFileRequest)(nil),                              // 68: organization.GetCamFileRequest
+	(*GetCamFileResponse)(nil),                             // 69: organization.GetCamFileResponse
+	(*UpdateCamFileRequest)(nil),                           // 70: organization.UpdateCamFileRequest
+	(*UpdateCamFileResponse)(nil),                          // 71: organization.UpdateCamFileResponse
+	(*DeleteCamFileRequest)(nil),                           // 72: organization.DeleteCamFileRequest
+	(*DeleteCamFileResponse)(nil),                          // 73: organization.DeleteCamFileResponse
+	(*ListCamFilesRequest)(nil),                            // 74: organization.ListCamFilesRequest
+	(*ListCamFilesResponse)(nil),                           // 75: organization.ListCamFilesResponse
+	(*ListCamFilesByOrganizationRequest)(nil),              // 76: organization.ListCamFilesByOrganizationRequest
+	(*ListCamFilesByOrganizationResponse)(nil),             // 77: organization.ListCamFilesByOrganizationResponse
+	(*CamFileExe)(nil),                                     // 78: organization.CamFileExe
+	(*CreateCamFileExeRequest)(nil),                        // 79: organization.CreateCamFileExeRequest
+	(*CreateCamFileExeResponse)(nil),                       // 80: organization.CreateCamFileExeResponse
+	(*GetCamFileExeRequest)(nil),                           // 81: organization.GetCamFileExeRequest
+	(*GetCamFileExeResponse)(nil),                          // 82: organization.GetCamFileExeResponse
+	(*UpdateCamFileExeRequest)(nil),                        // 83: organization.UpdateCamFileExeRequest
+	(*UpdateCamFileExeResponse)(nil),                       // 84: organization.UpdateCamFileExeResponse
+	(*DeleteCamFileExeRequest)(nil),                        // 85: organization.DeleteCamFileExeRequest
+	(*DeleteCamFileExeResponse)(nil),                       // 86: organization.DeleteCamFileExeResponse
+	(*ListCamFileExesRequest)(nil),                         // 87: organization.ListCamFileExesRequest
+	(*ListCamFileExesResponse)(nil),                        // 88: organization.ListCamFileExesResponse
+	(*ListCamFileExesByOrganizationRequest)(nil),           // 89: organization.ListCamFileExesByOrganizationRequest
+	(*ListCamFileExesByOrganizationResponse)(nil),          // 90: organization.ListCamFileExesByOrganizationResponse
+	(*CamFileExeStage)(nil),                                // 91: organization.CamFileExeStage
+	(*CreateCamFileExeStageRequest)(nil),                   // 92: organization.CreateCamFileExeStageRequest
+	(*CreateCamFileExeStageResponse)(nil),                  // 93: organization.CreateCamFileExeStageResponse
+	(*GetCamFileExeStageRequest)(nil),                      // 94: organization.GetCamFileExeStageRequest
+	(*GetCamFileExeStageResponse)(nil),                     // 95: organization.GetCamFileExeStageResponse
+	(*UpdateCamFileExeStageRequest)(nil),                   // 96: organization.UpdateCamFileExeStageRequest
+	(*UpdateCamFileExeStageResponse)(nil),                  // 97: organization.UpdateCamFileExeStageResponse
+	(*DeleteCamFileExeStageRequest)(nil),                   // 98: organization.DeleteCamFileExeStageRequest
+	(*DeleteCamFileExeStageResponse)(nil),                  // 99: organization.DeleteCamFileExeStageResponse
+	(*ListCamFileExeStagesRequest)(nil),                    // 100: organization.ListCamFileExeStagesRequest
+	(*ListCamFileExeStagesResponse)(nil),                   // 101: organization.ListCamFileExeStagesResponse
+	(*ListCamFileExeStagesByOrganizationRequest)(nil),      // 102: organization.ListCamFileExeStagesByOrganizationRequest
+	(*ListCamFileExeStagesByOrganizationResponse)(nil),     // 103: organization.ListCamFileExeStagesByOrganizationResponse
+	(*IchibanCar)(nil),                                     // 104: organization.IchibanCar
+	(*CreateIchibanCarRequest)(nil),                        // 105: organization.CreateIchibanCarRequest
+	(*CreateIchibanCarResponse)(nil),                       // 106: organization.CreateIchibanCarResponse
+	(*GetIchibanCarRequest)(nil),                           // 107: organization.GetIchibanCarRequest
+	(*GetIchibanCarResponse)(nil),                          // 108: organization.GetIchibanCarResponse
+	(*UpdateIchibanCarRequest)(nil),                        // 109: organization.UpdateIchibanCarRequest
+	(*UpdateIchibanCarResponse)(nil),                       // 110: organization.UpdateIchibanCarResponse
+	(*DeleteIchibanCarRequest)(nil),                        // 111: organization.DeleteIchibanCarRequest
+	(*DeleteIchibanCarResponse)(nil),                       // 112: organization.DeleteIchibanCarResponse
+	(*ListIchibanCarsRequest)(nil),                         // 113: organization.ListIchibanCarsRequest
+	(*ListIchibanCarsResponse)(nil),                        // 114: organization.ListIchibanCarsResponse
+	(*ListIchibanCarsByOrganizationRequest)(nil),           // 115: organization.ListIchibanCarsByOrganizationRequest
+	(*ListIchibanCarsByOrganizationResponse)(nil),          // 116: organization.ListIchibanCarsByOrganizationResponse
+	(*DtakoCarsIchibanCars)(nil),                           // 117: organization.DtakoCarsIchibanCars
+	(*CreateDtakoCarsIchibanCarsRequest)(nil),              // 118: organization.CreateDtakoCarsIchibanCarsRequest
+	(*CreateDtakoCarsIchibanCarsResponse)(nil),             // 119: organization.CreateDtakoCarsIchibanCarsResponse
+	(*GetDtakoCarsIchibanCarsRequest)(nil),                 // 120: organization.GetDtakoCarsIchibanCarsRequest
+	(*GetDtakoCarsIchibanCarsResponse)(nil),                // 121: organization.GetDtakoCarsIchibanCarsResponse
+	(*UpdateDtakoCarsIchibanCarsRequest)(nil),              // 122: organization.UpdateDtakoCarsIchibanCarsRequest
+	(*UpdateDtakoCarsIchibanCarsResponse)(nil),             // 123: organization.UpdateDtakoCarsIchibanCarsResponse
+	(*DeleteDtakoCarsIchibanCarsRequest)(nil),              // 124: organization.DeleteDtakoCarsIchibanCarsRequest
+	(*DeleteDtakoCarsIchibanCarsResponse)(nil),             // 125: organization.DeleteDtakoCarsIchibanCarsResponse
+	(*ListDtakoCarsIchibanCarsRequest)(nil),                // 126: organization.ListDtakoCarsIchibanCarsRequest
+	(*ListDtakoCarsIchibanCarsResponse)(nil),               // 127: organization.ListDtakoCarsIchibanCarsResponse
+	(*ListDtakoCarsIchibanCarsByOrganizationRequest)(nil),  // 128: organization.ListDtakoCarsIchibanCarsByOrganizationRequest
+	(*ListDtakoCarsIchibanCarsByOrganizationResponse)(nil), // 129: organization.ListDtakoCarsIchibanCarsByOrganizationResponse
+	(*Uriage)(nil),                                         // 130: organization.Uriage
+	(*CreateUriageRequest)(nil),                            // 131: organization.CreateUriageRequest
+	(*CreateUriageResponse)(nil),                           // 132: organization.CreateUriageResponse
+	(*GetUriageRequest)(nil),                               // 133: organization.GetUriageRequest
+	(*GetUriageResponse)(nil),                              // 134: organization.GetUriageResponse
+	(*UpdateUriageRequest)(nil),                            // 135: organization.UpdateUriageRequest
+	(*UpdateUriageResponse)(nil),                           // 136: organization.UpdateUriageResponse
+	(*DeleteUriageRequest)(nil),                            // 137: organization.DeleteUriageRequest
+	(*DeleteUriageResponse)(nil),                           // 138: organization.DeleteUriageResponse
+	(*ListUriagesRequest)(nil),                             // 139: organization.ListUriagesRequest
+	(*ListUriagesResponse)(nil),                            // 140: organization.ListUriagesResponse
+	(*ListUriagesByOrganizationRequest)(nil),               // 141: organization.ListUriagesByOrganizationRequest
+	(*ListUriagesByOrganizationResponse)(nil),              // 142: organization.ListUriagesByOrganizationResponse
+	(*UriageJisha)(nil),                                    // 143: organization.UriageJisha
+	(*CreateUriageJishaRequest)(nil),                       // 144: organization.CreateUriageJishaRequest
+	(*CreateUriageJishaResponse)(nil),                      // 145: organization.CreateUriageJishaResponse
+	(*GetUriageJishaRequest)(nil),                          // 146: organization.GetUriageJishaRequest
+	(*GetUriageJishaResponse)(nil),                         // 147: organization.GetUriageJishaResponse
+	(*UpdateUriageJishaRequest)(nil),                       // 148: organization.UpdateUriageJishaRequest
+	(*UpdateUriageJishaResponse)(nil),                      // 149: organization.UpdateUriageJishaResponse
+	(*DeleteUriageJishaRequest)(nil),                       // 150: organization.DeleteUriageJishaRequest
+	(*DeleteUriageJishaResponse)(nil),                      // 151: organization.DeleteUriageJishaResponse
+	(*ListUriageJishasRequest)(nil),                        // 152: organization.ListUriageJishasRequest
+	(*ListUriageJishasResponse)(nil),                       // 153: organization.ListUriageJishasResponse
+	(*ListUriageJishasByOrganizationRequest)(nil),          // 154: organization.ListUriageJishasByOrganizationRequest
+	(*ListUriageJishasByOrganizationResponse)(nil),         // 155: organization.ListUriageJishasByOrganizationResponse
+	(*timestamppb.Timestamp)(nil),                          // 156: google.protobuf.Timestamp
 }
 var file_service_proto_depIdxs = []int32{
-	65, // 0: organization.Organization.created_at:type_name -> google.protobuf.Timestamp
-	65, // 1: organization.Organization.updated_at:type_name -> google.protobuf.Timestamp
-	65, // 2: organization.Organization.deleted_at:type_name -> google.protobuf.Timestamp
-	0,  // 3: organization.CreateOrganizationResponse.organization:type_name -> organization.Organization
-	0,  // 4: organization.GetOrganizationResponse.organization:type_name -> organization.Organization
-	0,  // 5: organization.UpdateOrganizationResponse.organization:type_name -> organization.Organization
-	0,  // 6: organization.ListOrganizationsResponse.organizations:type_name -> organization.Organization
-	65, // 7: organization.AppUser.created_at:type_name -> google.protobuf.Timestamp
-	65, // 8: organization.AppUser.updated_at:type_name -> google.protobuf.Timestamp
-	65, // 9: organization.AppUser.deleted_at:type_name -> google.protobuf.Timestamp
-	11, // 10: organization.CreateAppUserResponse.app_user:type_name -> organization.AppUser
-	11, // 11: organization.GetAppUserResponse.app_user:type_name -> organization.AppUser
-	11, // 12: organization.GetAppUserByIamEmailResponse.app_user:type_name -> organization.AppUser
-	11, // 13: organization.UpdateAppUserResponse.app_user:type_name -> organization.AppUser
-	11, // 14: organization.ListAppUsersResponse.app_users:type_name -> organization.AppUser
-	65, // 15: organization.UserOrganization.created_at:type_name -> google.protobuf.Timestamp
-	65, // 16: organization.UserOrganization.updated_at:type_name -> google.protobuf.Timestamp
-	24, // 17: organization.CreateUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
-	24, // 18: organization.GetUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
-	24, // 19: organization.UpdateUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
-	24, // 20: organization.ListUserOrganizationsResponse.user_organizations:type_name -> organization.UserOrganization
-	24, // 21: organization.ListUserOrganizationsByUserResponse.user_organizations:type_name -> organization.UserOrganization
-	24, // 22: organization.ListUserOrganizationsByOrgResponse.user_organizations:type_name -> organization.UserOrganization
-	39, // 23: organization.CreateFileResponse.file:type_name -> organization.File
-	39, // 24: organization.GetFileResponse.file:type_name -> organization.File
-	39, // 25: organization.UpdateFileResponse.file:type_name -> organization.File
-	39, // 26: organization.ListFilesResponse.files:type_name -> organization.File
-	39, // 27: organization.ListFilesByOrganizationResponse.files:type_name -> organization.File
-	52, // 28: organization.CreateFlickrPhotoResponse.flickr_photo:type_name -> organization.FlickrPhoto
-	52, // 29: organization.GetFlickrPhotoResponse.flickr_photo:type_name -> organization.FlickrPhoto
-	52, // 30: organization.UpdateFlickrPhotoResponse.flickr_photo:type_name -> organization.FlickrPhoto
-	52, // 31: organization.ListFlickrPhotosResponse.flickr_photos:type_name -> organization.FlickrPhoto
-	52, // 32: organization.ListFlickrPhotosByOrganizationResponse.flickr_photos:type_name -> organization.FlickrPhoto
-	1,  // 33: organization.OrganizationService.CreateOrganization:input_type -> organization.CreateOrganizationRequest
-	3,  // 34: organization.OrganizationService.GetOrganization:input_type -> organization.GetOrganizationRequest
-	5,  // 35: organization.OrganizationService.UpdateOrganization:input_type -> organization.UpdateOrganizationRequest
-	7,  // 36: organization.OrganizationService.DeleteOrganization:input_type -> organization.DeleteOrganizationRequest
-	9,  // 37: organization.OrganizationService.ListOrganizations:input_type -> organization.ListOrganizationsRequest
-	12, // 38: organization.AppUserService.CreateAppUser:input_type -> organization.CreateAppUserRequest
-	14, // 39: organization.AppUserService.GetAppUser:input_type -> organization.GetAppUserRequest
-	16, // 40: organization.AppUserService.GetAppUserByIamEmail:input_type -> organization.GetAppUserByIamEmailRequest
-	18, // 41: organization.AppUserService.UpdateAppUser:input_type -> organization.UpdateAppUserRequest
-	20, // 42: organization.AppUserService.DeleteAppUser:input_type -> organization.DeleteAppUserRequest
-	22, // 43: organization.AppUserService.ListAppUsers:input_type -> organization.ListAppUsersRequest
-	25, // 44: organization.UserOrganizationService.CreateUserOrganization:input_type -> organization.CreateUserOrganizationRequest
-	27, // 45: organization.UserOrganizationService.GetUserOrganization:input_type -> organization.GetUserOrganizationRequest
-	29, // 46: organization.UserOrganizationService.UpdateUserOrganization:input_type -> organization.UpdateUserOrganizationRequest
-	31, // 47: organization.UserOrganizationService.DeleteUserOrganization:input_type -> organization.DeleteUserOrganizationRequest
-	33, // 48: organization.UserOrganizationService.ListUserOrganizations:input_type -> organization.ListUserOrganizationsRequest
-	35, // 49: organization.UserOrganizationService.ListUserOrganizationsByUser:input_type -> organization.ListUserOrganizationsByUserRequest
-	37, // 50: organization.UserOrganizationService.ListUserOrganizationsByOrg:input_type -> organization.ListUserOrganizationsByOrgRequest
-	40, // 51: organization.FileService.CreateFile:input_type -> organization.CreateFileRequest
-	42, // 52: organization.FileService.GetFile:input_type -> organization.GetFileRequest
-	44, // 53: organization.FileService.UpdateFile:input_type -> organization.UpdateFileRequest
-	46, // 54: organization.FileService.DeleteFile:input_type -> organization.DeleteFileRequest
-	48, // 55: organization.FileService.ListFiles:input_type -> organization.ListFilesRequest
-	50, // 56: organization.FileService.ListFilesByOrganization:input_type -> organization.ListFilesByOrganizationRequest
-	53, // 57: organization.FlickrPhotoService.CreateFlickrPhoto:input_type -> organization.CreateFlickrPhotoRequest
-	55, // 58: organization.FlickrPhotoService.GetFlickrPhoto:input_type -> organization.GetFlickrPhotoRequest
-	57, // 59: organization.FlickrPhotoService.UpdateFlickrPhoto:input_type -> organization.UpdateFlickrPhotoRequest
-	59, // 60: organization.FlickrPhotoService.DeleteFlickrPhoto:input_type -> organization.DeleteFlickrPhotoRequest
-	61, // 61: organization.FlickrPhotoService.ListFlickrPhotos:input_type -> organization.ListFlickrPhotosRequest
-	63, // 62: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:input_type -> organization.ListFlickrPhotosByOrganizationRequest
-	2,  // 63: organization.OrganizationService.CreateOrganization:output_type -> organization.CreateOrganizationResponse
-	4,  // 64: organization.OrganizationService.GetOrganization:output_type -> organization.GetOrganizationResponse
-	6,  // 65: organization.OrganizationService.UpdateOrganization:output_type -> organization.UpdateOrganizationResponse
-	8,  // 66: organization.OrganizationService.DeleteOrganization:output_type -> organization.DeleteOrganizationResponse
-	10, // 67: organization.OrganizationService.ListOrganizations:output_type -> organization.ListOrganizationsResponse
-	13, // 68: organization.AppUserService.CreateAppUser:output_type -> organization.CreateAppUserResponse
-	15, // 69: organization.AppUserService.GetAppUser:output_type -> organization.GetAppUserResponse
-	17, // 70: organization.AppUserService.GetAppUserByIamEmail:output_type -> organization.GetAppUserByIamEmailResponse
-	19, // 71: organization.AppUserService.UpdateAppUser:output_type -> organization.UpdateAppUserResponse
-	21, // 72: organization.AppUserService.DeleteAppUser:output_type -> organization.DeleteAppUserResponse
-	23, // 73: organization.AppUserService.ListAppUsers:output_type -> organization.ListAppUsersResponse
-	26, // 74: organization.UserOrganizationService.CreateUserOrganization:output_type -> organization.CreateUserOrganizationResponse
-	28, // 75: organization.UserOrganizationService.GetUserOrganization:output_type -> organization.GetUserOrganizationResponse
-	30, // 76: organization.UserOrganizationService.UpdateUserOrganization:output_type -> organization.UpdateUserOrganizationResponse
-	32, // 77: organization.UserOrganizationService.DeleteUserOrganization:output_type -> organization.DeleteUserOrganizationResponse
-	34, // 78: organization.UserOrganizationService.ListUserOrganizations:output_type -> organization.ListUserOrganizationsResponse
-	36, // 79: organization.UserOrganizationService.ListUserOrganizationsByUser:output_type -> organization.ListUserOrganizationsByUserResponse
-	38, // 80: organization.UserOrganizationService.ListUserOrganizationsByOrg:output_type -> organization.ListUserOrganizationsByOrgResponse
-	41, // 81: organization.FileService.CreateFile:output_type -> organization.CreateFileResponse
-	43, // 82: organization.FileService.GetFile:output_type -> organization.GetFileResponse
-	45, // 83: organization.FileService.UpdateFile:output_type -> organization.UpdateFileResponse
-	47, // 84: organization.FileService.DeleteFile:output_type -> organization.DeleteFileResponse
-	49, // 85: organization.FileService.ListFiles:output_type -> organization.ListFilesResponse
-	51, // 86: organization.FileService.ListFilesByOrganization:output_type -> organization.ListFilesByOrganizationResponse
-	54, // 87: organization.FlickrPhotoService.CreateFlickrPhoto:output_type -> organization.CreateFlickrPhotoResponse
-	56, // 88: organization.FlickrPhotoService.GetFlickrPhoto:output_type -> organization.GetFlickrPhotoResponse
-	58, // 89: organization.FlickrPhotoService.UpdateFlickrPhoto:output_type -> organization.UpdateFlickrPhotoResponse
-	60, // 90: organization.FlickrPhotoService.DeleteFlickrPhoto:output_type -> organization.DeleteFlickrPhotoResponse
-	62, // 91: organization.FlickrPhotoService.ListFlickrPhotos:output_type -> organization.ListFlickrPhotosResponse
-	64, // 92: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:output_type -> organization.ListFlickrPhotosByOrganizationResponse
-	63, // [63:93] is the sub-list for method output_type
-	33, // [33:63] is the sub-list for method input_type
-	33, // [33:33] is the sub-list for extension type_name
-	33, // [33:33] is the sub-list for extension extendee
-	0,  // [0:33] is the sub-list for field type_name
+	156, // 0: organization.Organization.created_at:type_name -> google.protobuf.Timestamp
+	156, // 1: organization.Organization.updated_at:type_name -> google.protobuf.Timestamp
+	156, // 2: organization.Organization.deleted_at:type_name -> google.protobuf.Timestamp
+	0,   // 3: organization.CreateOrganizationResponse.organization:type_name -> organization.Organization
+	0,   // 4: organization.GetOrganizationResponse.organization:type_name -> organization.Organization
+	0,   // 5: organization.UpdateOrganizationResponse.organization:type_name -> organization.Organization
+	0,   // 6: organization.ListOrganizationsResponse.organizations:type_name -> organization.Organization
+	156, // 7: organization.AppUser.created_at:type_name -> google.protobuf.Timestamp
+	156, // 8: organization.AppUser.updated_at:type_name -> google.protobuf.Timestamp
+	156, // 9: organization.AppUser.deleted_at:type_name -> google.protobuf.Timestamp
+	11,  // 10: organization.CreateAppUserResponse.app_user:type_name -> organization.AppUser
+	11,  // 11: organization.GetAppUserResponse.app_user:type_name -> organization.AppUser
+	11,  // 12: organization.GetAppUserByIamEmailResponse.app_user:type_name -> organization.AppUser
+	11,  // 13: organization.UpdateAppUserResponse.app_user:type_name -> organization.AppUser
+	11,  // 14: organization.ListAppUsersResponse.app_users:type_name -> organization.AppUser
+	156, // 15: organization.UserOrganization.created_at:type_name -> google.protobuf.Timestamp
+	156, // 16: organization.UserOrganization.updated_at:type_name -> google.protobuf.Timestamp
+	24,  // 17: organization.CreateUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
+	24,  // 18: organization.GetUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
+	24,  // 19: organization.UpdateUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
+	24,  // 20: organization.ListUserOrganizationsResponse.user_organizations:type_name -> organization.UserOrganization
+	24,  // 21: organization.ListUserOrganizationsByUserResponse.user_organizations:type_name -> organization.UserOrganization
+	24,  // 22: organization.ListUserOrganizationsByOrgResponse.user_organizations:type_name -> organization.UserOrganization
+	39,  // 23: organization.CreateFileResponse.file:type_name -> organization.File
+	39,  // 24: organization.GetFileResponse.file:type_name -> organization.File
+	39,  // 25: organization.UpdateFileResponse.file:type_name -> organization.File
+	39,  // 26: organization.ListFilesResponse.files:type_name -> organization.File
+	39,  // 27: organization.ListFilesByOrganizationResponse.files:type_name -> organization.File
+	52,  // 28: organization.CreateFlickrPhotoResponse.flickr_photo:type_name -> organization.FlickrPhoto
+	52,  // 29: organization.GetFlickrPhotoResponse.flickr_photo:type_name -> organization.FlickrPhoto
+	52,  // 30: organization.UpdateFlickrPhotoResponse.flickr_photo:type_name -> organization.FlickrPhoto
+	52,  // 31: organization.ListFlickrPhotosResponse.flickr_photos:type_name -> organization.FlickrPhoto
+	52,  // 32: organization.ListFlickrPhotosByOrganizationResponse.flickr_photos:type_name -> organization.FlickrPhoto
+	65,  // 33: organization.CreateCamFileResponse.cam_file:type_name -> organization.CamFile
+	65,  // 34: organization.GetCamFileResponse.cam_file:type_name -> organization.CamFile
+	65,  // 35: organization.UpdateCamFileResponse.cam_file:type_name -> organization.CamFile
+	65,  // 36: organization.ListCamFilesResponse.cam_files:type_name -> organization.CamFile
+	65,  // 37: organization.ListCamFilesByOrganizationResponse.cam_files:type_name -> organization.CamFile
+	78,  // 38: organization.CreateCamFileExeResponse.cam_file_exe:type_name -> organization.CamFileExe
+	78,  // 39: organization.GetCamFileExeResponse.cam_file_exe:type_name -> organization.CamFileExe
+	78,  // 40: organization.UpdateCamFileExeResponse.cam_file_exe:type_name -> organization.CamFileExe
+	78,  // 41: organization.ListCamFileExesResponse.cam_file_exes:type_name -> organization.CamFileExe
+	78,  // 42: organization.ListCamFileExesByOrganizationResponse.cam_file_exes:type_name -> organization.CamFileExe
+	91,  // 43: organization.CreateCamFileExeStageResponse.cam_file_exe_stage:type_name -> organization.CamFileExeStage
+	91,  // 44: organization.GetCamFileExeStageResponse.cam_file_exe_stage:type_name -> organization.CamFileExeStage
+	91,  // 45: organization.UpdateCamFileExeStageResponse.cam_file_exe_stage:type_name -> organization.CamFileExeStage
+	91,  // 46: organization.ListCamFileExeStagesResponse.cam_file_exe_stages:type_name -> organization.CamFileExeStage
+	91,  // 47: organization.ListCamFileExeStagesByOrganizationResponse.cam_file_exe_stages:type_name -> organization.CamFileExeStage
+	104, // 48: organization.CreateIchibanCarResponse.ichiban_car:type_name -> organization.IchibanCar
+	104, // 49: organization.GetIchibanCarResponse.ichiban_car:type_name -> organization.IchibanCar
+	104, // 50: organization.UpdateIchibanCarResponse.ichiban_car:type_name -> organization.IchibanCar
+	104, // 51: organization.ListIchibanCarsResponse.ichiban_cars:type_name -> organization.IchibanCar
+	104, // 52: organization.ListIchibanCarsByOrganizationResponse.ichiban_cars:type_name -> organization.IchibanCar
+	117, // 53: organization.CreateDtakoCarsIchibanCarsResponse.dtako_cars_ichiban_cars:type_name -> organization.DtakoCarsIchibanCars
+	117, // 54: organization.GetDtakoCarsIchibanCarsResponse.dtako_cars_ichiban_cars:type_name -> organization.DtakoCarsIchibanCars
+	117, // 55: organization.UpdateDtakoCarsIchibanCarsResponse.dtako_cars_ichiban_cars:type_name -> organization.DtakoCarsIchibanCars
+	117, // 56: organization.ListDtakoCarsIchibanCarsResponse.dtako_cars_ichiban_cars:type_name -> organization.DtakoCarsIchibanCars
+	117, // 57: organization.ListDtakoCarsIchibanCarsByOrganizationResponse.dtako_cars_ichiban_cars:type_name -> organization.DtakoCarsIchibanCars
+	130, // 58: organization.CreateUriageResponse.uriage:type_name -> organization.Uriage
+	130, // 59: organization.GetUriageResponse.uriage:type_name -> organization.Uriage
+	130, // 60: organization.UpdateUriageResponse.uriage:type_name -> organization.Uriage
+	130, // 61: organization.ListUriagesResponse.uriages:type_name -> organization.Uriage
+	130, // 62: organization.ListUriagesByOrganizationResponse.uriages:type_name -> organization.Uriage
+	143, // 63: organization.CreateUriageJishaResponse.uriage_jisha:type_name -> organization.UriageJisha
+	143, // 64: organization.GetUriageJishaResponse.uriage_jisha:type_name -> organization.UriageJisha
+	143, // 65: organization.UpdateUriageJishaResponse.uriage_jisha:type_name -> organization.UriageJisha
+	143, // 66: organization.ListUriageJishasResponse.uriage_jishas:type_name -> organization.UriageJisha
+	143, // 67: organization.ListUriageJishasByOrganizationResponse.uriage_jishas:type_name -> organization.UriageJisha
+	1,   // 68: organization.OrganizationService.CreateOrganization:input_type -> organization.CreateOrganizationRequest
+	3,   // 69: organization.OrganizationService.GetOrganization:input_type -> organization.GetOrganizationRequest
+	5,   // 70: organization.OrganizationService.UpdateOrganization:input_type -> organization.UpdateOrganizationRequest
+	7,   // 71: organization.OrganizationService.DeleteOrganization:input_type -> organization.DeleteOrganizationRequest
+	9,   // 72: organization.OrganizationService.ListOrganizations:input_type -> organization.ListOrganizationsRequest
+	12,  // 73: organization.AppUserService.CreateAppUser:input_type -> organization.CreateAppUserRequest
+	14,  // 74: organization.AppUserService.GetAppUser:input_type -> organization.GetAppUserRequest
+	16,  // 75: organization.AppUserService.GetAppUserByIamEmail:input_type -> organization.GetAppUserByIamEmailRequest
+	18,  // 76: organization.AppUserService.UpdateAppUser:input_type -> organization.UpdateAppUserRequest
+	20,  // 77: organization.AppUserService.DeleteAppUser:input_type -> organization.DeleteAppUserRequest
+	22,  // 78: organization.AppUserService.ListAppUsers:input_type -> organization.ListAppUsersRequest
+	25,  // 79: organization.UserOrganizationService.CreateUserOrganization:input_type -> organization.CreateUserOrganizationRequest
+	27,  // 80: organization.UserOrganizationService.GetUserOrganization:input_type -> organization.GetUserOrganizationRequest
+	29,  // 81: organization.UserOrganizationService.UpdateUserOrganization:input_type -> organization.UpdateUserOrganizationRequest
+	31,  // 82: organization.UserOrganizationService.DeleteUserOrganization:input_type -> organization.DeleteUserOrganizationRequest
+	33,  // 83: organization.UserOrganizationService.ListUserOrganizations:input_type -> organization.ListUserOrganizationsRequest
+	35,  // 84: organization.UserOrganizationService.ListUserOrganizationsByUser:input_type -> organization.ListUserOrganizationsByUserRequest
+	37,  // 85: organization.UserOrganizationService.ListUserOrganizationsByOrg:input_type -> organization.ListUserOrganizationsByOrgRequest
+	40,  // 86: organization.FileService.CreateFile:input_type -> organization.CreateFileRequest
+	42,  // 87: organization.FileService.GetFile:input_type -> organization.GetFileRequest
+	44,  // 88: organization.FileService.UpdateFile:input_type -> organization.UpdateFileRequest
+	46,  // 89: organization.FileService.DeleteFile:input_type -> organization.DeleteFileRequest
+	48,  // 90: organization.FileService.ListFiles:input_type -> organization.ListFilesRequest
+	50,  // 91: organization.FileService.ListFilesByOrganization:input_type -> organization.ListFilesByOrganizationRequest
+	53,  // 92: organization.FlickrPhotoService.CreateFlickrPhoto:input_type -> organization.CreateFlickrPhotoRequest
+	55,  // 93: organization.FlickrPhotoService.GetFlickrPhoto:input_type -> organization.GetFlickrPhotoRequest
+	57,  // 94: organization.FlickrPhotoService.UpdateFlickrPhoto:input_type -> organization.UpdateFlickrPhotoRequest
+	59,  // 95: organization.FlickrPhotoService.DeleteFlickrPhoto:input_type -> organization.DeleteFlickrPhotoRequest
+	61,  // 96: organization.FlickrPhotoService.ListFlickrPhotos:input_type -> organization.ListFlickrPhotosRequest
+	63,  // 97: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:input_type -> organization.ListFlickrPhotosByOrganizationRequest
+	66,  // 98: organization.CamFileService.CreateCamFile:input_type -> organization.CreateCamFileRequest
+	68,  // 99: organization.CamFileService.GetCamFile:input_type -> organization.GetCamFileRequest
+	70,  // 100: organization.CamFileService.UpdateCamFile:input_type -> organization.UpdateCamFileRequest
+	72,  // 101: organization.CamFileService.DeleteCamFile:input_type -> organization.DeleteCamFileRequest
+	74,  // 102: organization.CamFileService.ListCamFiles:input_type -> organization.ListCamFilesRequest
+	76,  // 103: organization.CamFileService.ListCamFilesByOrganization:input_type -> organization.ListCamFilesByOrganizationRequest
+	79,  // 104: organization.CamFileExeService.CreateCamFileExe:input_type -> organization.CreateCamFileExeRequest
+	81,  // 105: organization.CamFileExeService.GetCamFileExe:input_type -> organization.GetCamFileExeRequest
+	83,  // 106: organization.CamFileExeService.UpdateCamFileExe:input_type -> organization.UpdateCamFileExeRequest
+	85,  // 107: organization.CamFileExeService.DeleteCamFileExe:input_type -> organization.DeleteCamFileExeRequest
+	87,  // 108: organization.CamFileExeService.ListCamFileExes:input_type -> organization.ListCamFileExesRequest
+	89,  // 109: organization.CamFileExeService.ListCamFileExesByOrganization:input_type -> organization.ListCamFileExesByOrganizationRequest
+	92,  // 110: organization.CamFileExeStageService.CreateCamFileExeStage:input_type -> organization.CreateCamFileExeStageRequest
+	94,  // 111: organization.CamFileExeStageService.GetCamFileExeStage:input_type -> organization.GetCamFileExeStageRequest
+	96,  // 112: organization.CamFileExeStageService.UpdateCamFileExeStage:input_type -> organization.UpdateCamFileExeStageRequest
+	98,  // 113: organization.CamFileExeStageService.DeleteCamFileExeStage:input_type -> organization.DeleteCamFileExeStageRequest
+	100, // 114: organization.CamFileExeStageService.ListCamFileExeStages:input_type -> organization.ListCamFileExeStagesRequest
+	102, // 115: organization.CamFileExeStageService.ListCamFileExeStagesByOrganization:input_type -> organization.ListCamFileExeStagesByOrganizationRequest
+	105, // 116: organization.IchibanCarService.CreateIchibanCar:input_type -> organization.CreateIchibanCarRequest
+	107, // 117: organization.IchibanCarService.GetIchibanCar:input_type -> organization.GetIchibanCarRequest
+	109, // 118: organization.IchibanCarService.UpdateIchibanCar:input_type -> organization.UpdateIchibanCarRequest
+	111, // 119: organization.IchibanCarService.DeleteIchibanCar:input_type -> organization.DeleteIchibanCarRequest
+	113, // 120: organization.IchibanCarService.ListIchibanCars:input_type -> organization.ListIchibanCarsRequest
+	115, // 121: organization.IchibanCarService.ListIchibanCarsByOrganization:input_type -> organization.ListIchibanCarsByOrganizationRequest
+	118, // 122: organization.DtakoCarsIchibanCarsService.CreateDtakoCarsIchibanCars:input_type -> organization.CreateDtakoCarsIchibanCarsRequest
+	120, // 123: organization.DtakoCarsIchibanCarsService.GetDtakoCarsIchibanCars:input_type -> organization.GetDtakoCarsIchibanCarsRequest
+	122, // 124: organization.DtakoCarsIchibanCarsService.UpdateDtakoCarsIchibanCars:input_type -> organization.UpdateDtakoCarsIchibanCarsRequest
+	124, // 125: organization.DtakoCarsIchibanCarsService.DeleteDtakoCarsIchibanCars:input_type -> organization.DeleteDtakoCarsIchibanCarsRequest
+	126, // 126: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCars:input_type -> organization.ListDtakoCarsIchibanCarsRequest
+	128, // 127: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCarsByOrganization:input_type -> organization.ListDtakoCarsIchibanCarsByOrganizationRequest
+	131, // 128: organization.UriageService.CreateUriage:input_type -> organization.CreateUriageRequest
+	133, // 129: organization.UriageService.GetUriage:input_type -> organization.GetUriageRequest
+	135, // 130: organization.UriageService.UpdateUriage:input_type -> organization.UpdateUriageRequest
+	137, // 131: organization.UriageService.DeleteUriage:input_type -> organization.DeleteUriageRequest
+	139, // 132: organization.UriageService.ListUriages:input_type -> organization.ListUriagesRequest
+	141, // 133: organization.UriageService.ListUriagesByOrganization:input_type -> organization.ListUriagesByOrganizationRequest
+	144, // 134: organization.UriageJishaService.CreateUriageJisha:input_type -> organization.CreateUriageJishaRequest
+	146, // 135: organization.UriageJishaService.GetUriageJisha:input_type -> organization.GetUriageJishaRequest
+	148, // 136: organization.UriageJishaService.UpdateUriageJisha:input_type -> organization.UpdateUriageJishaRequest
+	150, // 137: organization.UriageJishaService.DeleteUriageJisha:input_type -> organization.DeleteUriageJishaRequest
+	152, // 138: organization.UriageJishaService.ListUriageJishas:input_type -> organization.ListUriageJishasRequest
+	154, // 139: organization.UriageJishaService.ListUriageJishasByOrganization:input_type -> organization.ListUriageJishasByOrganizationRequest
+	2,   // 140: organization.OrganizationService.CreateOrganization:output_type -> organization.CreateOrganizationResponse
+	4,   // 141: organization.OrganizationService.GetOrganization:output_type -> organization.GetOrganizationResponse
+	6,   // 142: organization.OrganizationService.UpdateOrganization:output_type -> organization.UpdateOrganizationResponse
+	8,   // 143: organization.OrganizationService.DeleteOrganization:output_type -> organization.DeleteOrganizationResponse
+	10,  // 144: organization.OrganizationService.ListOrganizations:output_type -> organization.ListOrganizationsResponse
+	13,  // 145: organization.AppUserService.CreateAppUser:output_type -> organization.CreateAppUserResponse
+	15,  // 146: organization.AppUserService.GetAppUser:output_type -> organization.GetAppUserResponse
+	17,  // 147: organization.AppUserService.GetAppUserByIamEmail:output_type -> organization.GetAppUserByIamEmailResponse
+	19,  // 148: organization.AppUserService.UpdateAppUser:output_type -> organization.UpdateAppUserResponse
+	21,  // 149: organization.AppUserService.DeleteAppUser:output_type -> organization.DeleteAppUserResponse
+	23,  // 150: organization.AppUserService.ListAppUsers:output_type -> organization.ListAppUsersResponse
+	26,  // 151: organization.UserOrganizationService.CreateUserOrganization:output_type -> organization.CreateUserOrganizationResponse
+	28,  // 152: organization.UserOrganizationService.GetUserOrganization:output_type -> organization.GetUserOrganizationResponse
+	30,  // 153: organization.UserOrganizationService.UpdateUserOrganization:output_type -> organization.UpdateUserOrganizationResponse
+	32,  // 154: organization.UserOrganizationService.DeleteUserOrganization:output_type -> organization.DeleteUserOrganizationResponse
+	34,  // 155: organization.UserOrganizationService.ListUserOrganizations:output_type -> organization.ListUserOrganizationsResponse
+	36,  // 156: organization.UserOrganizationService.ListUserOrganizationsByUser:output_type -> organization.ListUserOrganizationsByUserResponse
+	38,  // 157: organization.UserOrganizationService.ListUserOrganizationsByOrg:output_type -> organization.ListUserOrganizationsByOrgResponse
+	41,  // 158: organization.FileService.CreateFile:output_type -> organization.CreateFileResponse
+	43,  // 159: organization.FileService.GetFile:output_type -> organization.GetFileResponse
+	45,  // 160: organization.FileService.UpdateFile:output_type -> organization.UpdateFileResponse
+	47,  // 161: organization.FileService.DeleteFile:output_type -> organization.DeleteFileResponse
+	49,  // 162: organization.FileService.ListFiles:output_type -> organization.ListFilesResponse
+	51,  // 163: organization.FileService.ListFilesByOrganization:output_type -> organization.ListFilesByOrganizationResponse
+	54,  // 164: organization.FlickrPhotoService.CreateFlickrPhoto:output_type -> organization.CreateFlickrPhotoResponse
+	56,  // 165: organization.FlickrPhotoService.GetFlickrPhoto:output_type -> organization.GetFlickrPhotoResponse
+	58,  // 166: organization.FlickrPhotoService.UpdateFlickrPhoto:output_type -> organization.UpdateFlickrPhotoResponse
+	60,  // 167: organization.FlickrPhotoService.DeleteFlickrPhoto:output_type -> organization.DeleteFlickrPhotoResponse
+	62,  // 168: organization.FlickrPhotoService.ListFlickrPhotos:output_type -> organization.ListFlickrPhotosResponse
+	64,  // 169: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:output_type -> organization.ListFlickrPhotosByOrganizationResponse
+	67,  // 170: organization.CamFileService.CreateCamFile:output_type -> organization.CreateCamFileResponse
+	69,  // 171: organization.CamFileService.GetCamFile:output_type -> organization.GetCamFileResponse
+	71,  // 172: organization.CamFileService.UpdateCamFile:output_type -> organization.UpdateCamFileResponse
+	73,  // 173: organization.CamFileService.DeleteCamFile:output_type -> organization.DeleteCamFileResponse
+	75,  // 174: organization.CamFileService.ListCamFiles:output_type -> organization.ListCamFilesResponse
+	77,  // 175: organization.CamFileService.ListCamFilesByOrganization:output_type -> organization.ListCamFilesByOrganizationResponse
+	80,  // 176: organization.CamFileExeService.CreateCamFileExe:output_type -> organization.CreateCamFileExeResponse
+	82,  // 177: organization.CamFileExeService.GetCamFileExe:output_type -> organization.GetCamFileExeResponse
+	84,  // 178: organization.CamFileExeService.UpdateCamFileExe:output_type -> organization.UpdateCamFileExeResponse
+	86,  // 179: organization.CamFileExeService.DeleteCamFileExe:output_type -> organization.DeleteCamFileExeResponse
+	88,  // 180: organization.CamFileExeService.ListCamFileExes:output_type -> organization.ListCamFileExesResponse
+	90,  // 181: organization.CamFileExeService.ListCamFileExesByOrganization:output_type -> organization.ListCamFileExesByOrganizationResponse
+	93,  // 182: organization.CamFileExeStageService.CreateCamFileExeStage:output_type -> organization.CreateCamFileExeStageResponse
+	95,  // 183: organization.CamFileExeStageService.GetCamFileExeStage:output_type -> organization.GetCamFileExeStageResponse
+	97,  // 184: organization.CamFileExeStageService.UpdateCamFileExeStage:output_type -> organization.UpdateCamFileExeStageResponse
+	99,  // 185: organization.CamFileExeStageService.DeleteCamFileExeStage:output_type -> organization.DeleteCamFileExeStageResponse
+	101, // 186: organization.CamFileExeStageService.ListCamFileExeStages:output_type -> organization.ListCamFileExeStagesResponse
+	103, // 187: organization.CamFileExeStageService.ListCamFileExeStagesByOrganization:output_type -> organization.ListCamFileExeStagesByOrganizationResponse
+	106, // 188: organization.IchibanCarService.CreateIchibanCar:output_type -> organization.CreateIchibanCarResponse
+	108, // 189: organization.IchibanCarService.GetIchibanCar:output_type -> organization.GetIchibanCarResponse
+	110, // 190: organization.IchibanCarService.UpdateIchibanCar:output_type -> organization.UpdateIchibanCarResponse
+	112, // 191: organization.IchibanCarService.DeleteIchibanCar:output_type -> organization.DeleteIchibanCarResponse
+	114, // 192: organization.IchibanCarService.ListIchibanCars:output_type -> organization.ListIchibanCarsResponse
+	116, // 193: organization.IchibanCarService.ListIchibanCarsByOrganization:output_type -> organization.ListIchibanCarsByOrganizationResponse
+	119, // 194: organization.DtakoCarsIchibanCarsService.CreateDtakoCarsIchibanCars:output_type -> organization.CreateDtakoCarsIchibanCarsResponse
+	121, // 195: organization.DtakoCarsIchibanCarsService.GetDtakoCarsIchibanCars:output_type -> organization.GetDtakoCarsIchibanCarsResponse
+	123, // 196: organization.DtakoCarsIchibanCarsService.UpdateDtakoCarsIchibanCars:output_type -> organization.UpdateDtakoCarsIchibanCarsResponse
+	125, // 197: organization.DtakoCarsIchibanCarsService.DeleteDtakoCarsIchibanCars:output_type -> organization.DeleteDtakoCarsIchibanCarsResponse
+	127, // 198: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCars:output_type -> organization.ListDtakoCarsIchibanCarsResponse
+	129, // 199: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCarsByOrganization:output_type -> organization.ListDtakoCarsIchibanCarsByOrganizationResponse
+	132, // 200: organization.UriageService.CreateUriage:output_type -> organization.CreateUriageResponse
+	134, // 201: organization.UriageService.GetUriage:output_type -> organization.GetUriageResponse
+	136, // 202: organization.UriageService.UpdateUriage:output_type -> organization.UpdateUriageResponse
+	138, // 203: organization.UriageService.DeleteUriage:output_type -> organization.DeleteUriageResponse
+	140, // 204: organization.UriageService.ListUriages:output_type -> organization.ListUriagesResponse
+	142, // 205: organization.UriageService.ListUriagesByOrganization:output_type -> organization.ListUriagesByOrganizationResponse
+	145, // 206: organization.UriageJishaService.CreateUriageJisha:output_type -> organization.CreateUriageJishaResponse
+	147, // 207: organization.UriageJishaService.GetUriageJisha:output_type -> organization.GetUriageJishaResponse
+	149, // 208: organization.UriageJishaService.UpdateUriageJisha:output_type -> organization.UpdateUriageJishaResponse
+	151, // 209: organization.UriageJishaService.DeleteUriageJisha:output_type -> organization.DeleteUriageJishaResponse
+	153, // 210: organization.UriageJishaService.ListUriageJishas:output_type -> organization.ListUriageJishasResponse
+	155, // 211: organization.UriageJishaService.ListUriageJishasByOrganization:output_type -> organization.ListUriageJishasByOrganizationResponse
+	140, // [140:212] is the sub-list for method output_type
+	68,  // [68:140] is the sub-list for method input_type
+	68,  // [68:68] is the sub-list for extension type_name
+	68,  // [68:68] is the sub-list for extension extendee
+	0,   // [0:68] is the sub-list for field type_name
 }
 
 func init() { file_service_proto_init() }
@@ -3877,15 +9836,30 @@ func file_service_proto_init() {
 	file_service_proto_msgTypes[39].OneofWrappers = []any{}
 	file_service_proto_msgTypes[40].OneofWrappers = []any{}
 	file_service_proto_msgTypes[44].OneofWrappers = []any{}
+	file_service_proto_msgTypes[65].OneofWrappers = []any{}
+	file_service_proto_msgTypes[66].OneofWrappers = []any{}
+	file_service_proto_msgTypes[70].OneofWrappers = []any{}
+	file_service_proto_msgTypes[104].OneofWrappers = []any{}
+	file_service_proto_msgTypes[105].OneofWrappers = []any{}
+	file_service_proto_msgTypes[109].OneofWrappers = []any{}
+	file_service_proto_msgTypes[117].OneofWrappers = []any{}
+	file_service_proto_msgTypes[118].OneofWrappers = []any{}
+	file_service_proto_msgTypes[122].OneofWrappers = []any{}
+	file_service_proto_msgTypes[130].OneofWrappers = []any{}
+	file_service_proto_msgTypes[131].OneofWrappers = []any{}
+	file_service_proto_msgTypes[135].OneofWrappers = []any{}
+	file_service_proto_msgTypes[143].OneofWrappers = []any{}
+	file_service_proto_msgTypes[144].OneofWrappers = []any{}
+	file_service_proto_msgTypes[148].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_service_proto_rawDesc), len(file_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   65,
+			NumMessages:   156,
 			NumExtensions: 0,
-			NumServices:   5,
+			NumServices:   12,
 		},
 		GoTypes:           file_service_proto_goTypes,
 		DependencyIndexes: file_service_proto_depIdxs,

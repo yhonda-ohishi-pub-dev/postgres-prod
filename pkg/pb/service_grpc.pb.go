@@ -1482,3 +1482,2049 @@ var FlickrPhotoService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "service.proto",
 }
+
+const (
+	CamFileService_CreateCamFile_FullMethodName              = "/organization.CamFileService/CreateCamFile"
+	CamFileService_GetCamFile_FullMethodName                 = "/organization.CamFileService/GetCamFile"
+	CamFileService_UpdateCamFile_FullMethodName              = "/organization.CamFileService/UpdateCamFile"
+	CamFileService_DeleteCamFile_FullMethodName              = "/organization.CamFileService/DeleteCamFile"
+	CamFileService_ListCamFiles_FullMethodName               = "/organization.CamFileService/ListCamFiles"
+	CamFileService_ListCamFilesByOrganization_FullMethodName = "/organization.CamFileService/ListCamFilesByOrganization"
+)
+
+// CamFileServiceClient is the client API for CamFileService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CamFileServiceClient interface {
+	CreateCamFile(ctx context.Context, in *CreateCamFileRequest, opts ...grpc.CallOption) (*CreateCamFileResponse, error)
+	GetCamFile(ctx context.Context, in *GetCamFileRequest, opts ...grpc.CallOption) (*GetCamFileResponse, error)
+	UpdateCamFile(ctx context.Context, in *UpdateCamFileRequest, opts ...grpc.CallOption) (*UpdateCamFileResponse, error)
+	DeleteCamFile(ctx context.Context, in *DeleteCamFileRequest, opts ...grpc.CallOption) (*DeleteCamFileResponse, error)
+	ListCamFiles(ctx context.Context, in *ListCamFilesRequest, opts ...grpc.CallOption) (*ListCamFilesResponse, error)
+	ListCamFilesByOrganization(ctx context.Context, in *ListCamFilesByOrganizationRequest, opts ...grpc.CallOption) (*ListCamFilesByOrganizationResponse, error)
+}
+
+type camFileServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCamFileServiceClient(cc grpc.ClientConnInterface) CamFileServiceClient {
+	return &camFileServiceClient{cc}
+}
+
+func (c *camFileServiceClient) CreateCamFile(ctx context.Context, in *CreateCamFileRequest, opts ...grpc.CallOption) (*CreateCamFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCamFileResponse)
+	err := c.cc.Invoke(ctx, CamFileService_CreateCamFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileServiceClient) GetCamFile(ctx context.Context, in *GetCamFileRequest, opts ...grpc.CallOption) (*GetCamFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCamFileResponse)
+	err := c.cc.Invoke(ctx, CamFileService_GetCamFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileServiceClient) UpdateCamFile(ctx context.Context, in *UpdateCamFileRequest, opts ...grpc.CallOption) (*UpdateCamFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCamFileResponse)
+	err := c.cc.Invoke(ctx, CamFileService_UpdateCamFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileServiceClient) DeleteCamFile(ctx context.Context, in *DeleteCamFileRequest, opts ...grpc.CallOption) (*DeleteCamFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCamFileResponse)
+	err := c.cc.Invoke(ctx, CamFileService_DeleteCamFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileServiceClient) ListCamFiles(ctx context.Context, in *ListCamFilesRequest, opts ...grpc.CallOption) (*ListCamFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCamFilesResponse)
+	err := c.cc.Invoke(ctx, CamFileService_ListCamFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileServiceClient) ListCamFilesByOrganization(ctx context.Context, in *ListCamFilesByOrganizationRequest, opts ...grpc.CallOption) (*ListCamFilesByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCamFilesByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CamFileService_ListCamFilesByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CamFileServiceServer is the server API for CamFileService service.
+// All implementations must embed UnimplementedCamFileServiceServer
+// for forward compatibility.
+type CamFileServiceServer interface {
+	CreateCamFile(context.Context, *CreateCamFileRequest) (*CreateCamFileResponse, error)
+	GetCamFile(context.Context, *GetCamFileRequest) (*GetCamFileResponse, error)
+	UpdateCamFile(context.Context, *UpdateCamFileRequest) (*UpdateCamFileResponse, error)
+	DeleteCamFile(context.Context, *DeleteCamFileRequest) (*DeleteCamFileResponse, error)
+	ListCamFiles(context.Context, *ListCamFilesRequest) (*ListCamFilesResponse, error)
+	ListCamFilesByOrganization(context.Context, *ListCamFilesByOrganizationRequest) (*ListCamFilesByOrganizationResponse, error)
+	mustEmbedUnimplementedCamFileServiceServer()
+}
+
+// UnimplementedCamFileServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCamFileServiceServer struct{}
+
+func (UnimplementedCamFileServiceServer) CreateCamFile(context.Context, *CreateCamFileRequest) (*CreateCamFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCamFile not implemented")
+}
+func (UnimplementedCamFileServiceServer) GetCamFile(context.Context, *GetCamFileRequest) (*GetCamFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCamFile not implemented")
+}
+func (UnimplementedCamFileServiceServer) UpdateCamFile(context.Context, *UpdateCamFileRequest) (*UpdateCamFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCamFile not implemented")
+}
+func (UnimplementedCamFileServiceServer) DeleteCamFile(context.Context, *DeleteCamFileRequest) (*DeleteCamFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCamFile not implemented")
+}
+func (UnimplementedCamFileServiceServer) ListCamFiles(context.Context, *ListCamFilesRequest) (*ListCamFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCamFiles not implemented")
+}
+func (UnimplementedCamFileServiceServer) ListCamFilesByOrganization(context.Context, *ListCamFilesByOrganizationRequest) (*ListCamFilesByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCamFilesByOrganization not implemented")
+}
+func (UnimplementedCamFileServiceServer) mustEmbedUnimplementedCamFileServiceServer() {}
+func (UnimplementedCamFileServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeCamFileServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CamFileServiceServer will
+// result in compilation errors.
+type UnsafeCamFileServiceServer interface {
+	mustEmbedUnimplementedCamFileServiceServer()
+}
+
+func RegisterCamFileServiceServer(s grpc.ServiceRegistrar, srv CamFileServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCamFileServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CamFileService_ServiceDesc, srv)
+}
+
+func _CamFileService_CreateCamFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCamFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileServiceServer).CreateCamFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileService_CreateCamFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileServiceServer).CreateCamFile(ctx, req.(*CreateCamFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileService_GetCamFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCamFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileServiceServer).GetCamFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileService_GetCamFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileServiceServer).GetCamFile(ctx, req.(*GetCamFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileService_UpdateCamFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCamFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileServiceServer).UpdateCamFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileService_UpdateCamFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileServiceServer).UpdateCamFile(ctx, req.(*UpdateCamFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileService_DeleteCamFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCamFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileServiceServer).DeleteCamFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileService_DeleteCamFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileServiceServer).DeleteCamFile(ctx, req.(*DeleteCamFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileService_ListCamFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCamFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileServiceServer).ListCamFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileService_ListCamFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileServiceServer).ListCamFiles(ctx, req.(*ListCamFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileService_ListCamFilesByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCamFilesByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileServiceServer).ListCamFilesByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileService_ListCamFilesByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileServiceServer).ListCamFilesByOrganization(ctx, req.(*ListCamFilesByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CamFileService_ServiceDesc is the grpc.ServiceDesc for CamFileService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CamFileService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CamFileService",
+	HandlerType: (*CamFileServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCamFile",
+			Handler:    _CamFileService_CreateCamFile_Handler,
+		},
+		{
+			MethodName: "GetCamFile",
+			Handler:    _CamFileService_GetCamFile_Handler,
+		},
+		{
+			MethodName: "UpdateCamFile",
+			Handler:    _CamFileService_UpdateCamFile_Handler,
+		},
+		{
+			MethodName: "DeleteCamFile",
+			Handler:    _CamFileService_DeleteCamFile_Handler,
+		},
+		{
+			MethodName: "ListCamFiles",
+			Handler:    _CamFileService_ListCamFiles_Handler,
+		},
+		{
+			MethodName: "ListCamFilesByOrganization",
+			Handler:    _CamFileService_ListCamFilesByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	CamFileExeService_CreateCamFileExe_FullMethodName              = "/organization.CamFileExeService/CreateCamFileExe"
+	CamFileExeService_GetCamFileExe_FullMethodName                 = "/organization.CamFileExeService/GetCamFileExe"
+	CamFileExeService_UpdateCamFileExe_FullMethodName              = "/organization.CamFileExeService/UpdateCamFileExe"
+	CamFileExeService_DeleteCamFileExe_FullMethodName              = "/organization.CamFileExeService/DeleteCamFileExe"
+	CamFileExeService_ListCamFileExes_FullMethodName               = "/organization.CamFileExeService/ListCamFileExes"
+	CamFileExeService_ListCamFileExesByOrganization_FullMethodName = "/organization.CamFileExeService/ListCamFileExesByOrganization"
+)
+
+// CamFileExeServiceClient is the client API for CamFileExeService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CamFileExeServiceClient interface {
+	CreateCamFileExe(ctx context.Context, in *CreateCamFileExeRequest, opts ...grpc.CallOption) (*CreateCamFileExeResponse, error)
+	GetCamFileExe(ctx context.Context, in *GetCamFileExeRequest, opts ...grpc.CallOption) (*GetCamFileExeResponse, error)
+	UpdateCamFileExe(ctx context.Context, in *UpdateCamFileExeRequest, opts ...grpc.CallOption) (*UpdateCamFileExeResponse, error)
+	DeleteCamFileExe(ctx context.Context, in *DeleteCamFileExeRequest, opts ...grpc.CallOption) (*DeleteCamFileExeResponse, error)
+	ListCamFileExes(ctx context.Context, in *ListCamFileExesRequest, opts ...grpc.CallOption) (*ListCamFileExesResponse, error)
+	ListCamFileExesByOrganization(ctx context.Context, in *ListCamFileExesByOrganizationRequest, opts ...grpc.CallOption) (*ListCamFileExesByOrganizationResponse, error)
+}
+
+type camFileExeServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCamFileExeServiceClient(cc grpc.ClientConnInterface) CamFileExeServiceClient {
+	return &camFileExeServiceClient{cc}
+}
+
+func (c *camFileExeServiceClient) CreateCamFileExe(ctx context.Context, in *CreateCamFileExeRequest, opts ...grpc.CallOption) (*CreateCamFileExeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCamFileExeResponse)
+	err := c.cc.Invoke(ctx, CamFileExeService_CreateCamFileExe_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeServiceClient) GetCamFileExe(ctx context.Context, in *GetCamFileExeRequest, opts ...grpc.CallOption) (*GetCamFileExeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCamFileExeResponse)
+	err := c.cc.Invoke(ctx, CamFileExeService_GetCamFileExe_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeServiceClient) UpdateCamFileExe(ctx context.Context, in *UpdateCamFileExeRequest, opts ...grpc.CallOption) (*UpdateCamFileExeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCamFileExeResponse)
+	err := c.cc.Invoke(ctx, CamFileExeService_UpdateCamFileExe_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeServiceClient) DeleteCamFileExe(ctx context.Context, in *DeleteCamFileExeRequest, opts ...grpc.CallOption) (*DeleteCamFileExeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCamFileExeResponse)
+	err := c.cc.Invoke(ctx, CamFileExeService_DeleteCamFileExe_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeServiceClient) ListCamFileExes(ctx context.Context, in *ListCamFileExesRequest, opts ...grpc.CallOption) (*ListCamFileExesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCamFileExesResponse)
+	err := c.cc.Invoke(ctx, CamFileExeService_ListCamFileExes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeServiceClient) ListCamFileExesByOrganization(ctx context.Context, in *ListCamFileExesByOrganizationRequest, opts ...grpc.CallOption) (*ListCamFileExesByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCamFileExesByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CamFileExeService_ListCamFileExesByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CamFileExeServiceServer is the server API for CamFileExeService service.
+// All implementations must embed UnimplementedCamFileExeServiceServer
+// for forward compatibility.
+type CamFileExeServiceServer interface {
+	CreateCamFileExe(context.Context, *CreateCamFileExeRequest) (*CreateCamFileExeResponse, error)
+	GetCamFileExe(context.Context, *GetCamFileExeRequest) (*GetCamFileExeResponse, error)
+	UpdateCamFileExe(context.Context, *UpdateCamFileExeRequest) (*UpdateCamFileExeResponse, error)
+	DeleteCamFileExe(context.Context, *DeleteCamFileExeRequest) (*DeleteCamFileExeResponse, error)
+	ListCamFileExes(context.Context, *ListCamFileExesRequest) (*ListCamFileExesResponse, error)
+	ListCamFileExesByOrganization(context.Context, *ListCamFileExesByOrganizationRequest) (*ListCamFileExesByOrganizationResponse, error)
+	mustEmbedUnimplementedCamFileExeServiceServer()
+}
+
+// UnimplementedCamFileExeServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCamFileExeServiceServer struct{}
+
+func (UnimplementedCamFileExeServiceServer) CreateCamFileExe(context.Context, *CreateCamFileExeRequest) (*CreateCamFileExeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCamFileExe not implemented")
+}
+func (UnimplementedCamFileExeServiceServer) GetCamFileExe(context.Context, *GetCamFileExeRequest) (*GetCamFileExeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCamFileExe not implemented")
+}
+func (UnimplementedCamFileExeServiceServer) UpdateCamFileExe(context.Context, *UpdateCamFileExeRequest) (*UpdateCamFileExeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCamFileExe not implemented")
+}
+func (UnimplementedCamFileExeServiceServer) DeleteCamFileExe(context.Context, *DeleteCamFileExeRequest) (*DeleteCamFileExeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCamFileExe not implemented")
+}
+func (UnimplementedCamFileExeServiceServer) ListCamFileExes(context.Context, *ListCamFileExesRequest) (*ListCamFileExesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCamFileExes not implemented")
+}
+func (UnimplementedCamFileExeServiceServer) ListCamFileExesByOrganization(context.Context, *ListCamFileExesByOrganizationRequest) (*ListCamFileExesByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCamFileExesByOrganization not implemented")
+}
+func (UnimplementedCamFileExeServiceServer) mustEmbedUnimplementedCamFileExeServiceServer() {}
+func (UnimplementedCamFileExeServiceServer) testEmbeddedByValue()                           {}
+
+// UnsafeCamFileExeServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CamFileExeServiceServer will
+// result in compilation errors.
+type UnsafeCamFileExeServiceServer interface {
+	mustEmbedUnimplementedCamFileExeServiceServer()
+}
+
+func RegisterCamFileExeServiceServer(s grpc.ServiceRegistrar, srv CamFileExeServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCamFileExeServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CamFileExeService_ServiceDesc, srv)
+}
+
+func _CamFileExeService_CreateCamFileExe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCamFileExeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeServiceServer).CreateCamFileExe(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeService_CreateCamFileExe_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeServiceServer).CreateCamFileExe(ctx, req.(*CreateCamFileExeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeService_GetCamFileExe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCamFileExeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeServiceServer).GetCamFileExe(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeService_GetCamFileExe_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeServiceServer).GetCamFileExe(ctx, req.(*GetCamFileExeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeService_UpdateCamFileExe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCamFileExeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeServiceServer).UpdateCamFileExe(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeService_UpdateCamFileExe_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeServiceServer).UpdateCamFileExe(ctx, req.(*UpdateCamFileExeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeService_DeleteCamFileExe_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCamFileExeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeServiceServer).DeleteCamFileExe(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeService_DeleteCamFileExe_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeServiceServer).DeleteCamFileExe(ctx, req.(*DeleteCamFileExeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeService_ListCamFileExes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCamFileExesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeServiceServer).ListCamFileExes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeService_ListCamFileExes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeServiceServer).ListCamFileExes(ctx, req.(*ListCamFileExesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeService_ListCamFileExesByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCamFileExesByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeServiceServer).ListCamFileExesByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeService_ListCamFileExesByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeServiceServer).ListCamFileExesByOrganization(ctx, req.(*ListCamFileExesByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CamFileExeService_ServiceDesc is the grpc.ServiceDesc for CamFileExeService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CamFileExeService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CamFileExeService",
+	HandlerType: (*CamFileExeServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCamFileExe",
+			Handler:    _CamFileExeService_CreateCamFileExe_Handler,
+		},
+		{
+			MethodName: "GetCamFileExe",
+			Handler:    _CamFileExeService_GetCamFileExe_Handler,
+		},
+		{
+			MethodName: "UpdateCamFileExe",
+			Handler:    _CamFileExeService_UpdateCamFileExe_Handler,
+		},
+		{
+			MethodName: "DeleteCamFileExe",
+			Handler:    _CamFileExeService_DeleteCamFileExe_Handler,
+		},
+		{
+			MethodName: "ListCamFileExes",
+			Handler:    _CamFileExeService_ListCamFileExes_Handler,
+		},
+		{
+			MethodName: "ListCamFileExesByOrganization",
+			Handler:    _CamFileExeService_ListCamFileExesByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	CamFileExeStageService_CreateCamFileExeStage_FullMethodName              = "/organization.CamFileExeStageService/CreateCamFileExeStage"
+	CamFileExeStageService_GetCamFileExeStage_FullMethodName                 = "/organization.CamFileExeStageService/GetCamFileExeStage"
+	CamFileExeStageService_UpdateCamFileExeStage_FullMethodName              = "/organization.CamFileExeStageService/UpdateCamFileExeStage"
+	CamFileExeStageService_DeleteCamFileExeStage_FullMethodName              = "/organization.CamFileExeStageService/DeleteCamFileExeStage"
+	CamFileExeStageService_ListCamFileExeStages_FullMethodName               = "/organization.CamFileExeStageService/ListCamFileExeStages"
+	CamFileExeStageService_ListCamFileExeStagesByOrganization_FullMethodName = "/organization.CamFileExeStageService/ListCamFileExeStagesByOrganization"
+)
+
+// CamFileExeStageServiceClient is the client API for CamFileExeStageService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CamFileExeStageServiceClient interface {
+	CreateCamFileExeStage(ctx context.Context, in *CreateCamFileExeStageRequest, opts ...grpc.CallOption) (*CreateCamFileExeStageResponse, error)
+	GetCamFileExeStage(ctx context.Context, in *GetCamFileExeStageRequest, opts ...grpc.CallOption) (*GetCamFileExeStageResponse, error)
+	UpdateCamFileExeStage(ctx context.Context, in *UpdateCamFileExeStageRequest, opts ...grpc.CallOption) (*UpdateCamFileExeStageResponse, error)
+	DeleteCamFileExeStage(ctx context.Context, in *DeleteCamFileExeStageRequest, opts ...grpc.CallOption) (*DeleteCamFileExeStageResponse, error)
+	ListCamFileExeStages(ctx context.Context, in *ListCamFileExeStagesRequest, opts ...grpc.CallOption) (*ListCamFileExeStagesResponse, error)
+	ListCamFileExeStagesByOrganization(ctx context.Context, in *ListCamFileExeStagesByOrganizationRequest, opts ...grpc.CallOption) (*ListCamFileExeStagesByOrganizationResponse, error)
+}
+
+type camFileExeStageServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCamFileExeStageServiceClient(cc grpc.ClientConnInterface) CamFileExeStageServiceClient {
+	return &camFileExeStageServiceClient{cc}
+}
+
+func (c *camFileExeStageServiceClient) CreateCamFileExeStage(ctx context.Context, in *CreateCamFileExeStageRequest, opts ...grpc.CallOption) (*CreateCamFileExeStageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCamFileExeStageResponse)
+	err := c.cc.Invoke(ctx, CamFileExeStageService_CreateCamFileExeStage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeStageServiceClient) GetCamFileExeStage(ctx context.Context, in *GetCamFileExeStageRequest, opts ...grpc.CallOption) (*GetCamFileExeStageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCamFileExeStageResponse)
+	err := c.cc.Invoke(ctx, CamFileExeStageService_GetCamFileExeStage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeStageServiceClient) UpdateCamFileExeStage(ctx context.Context, in *UpdateCamFileExeStageRequest, opts ...grpc.CallOption) (*UpdateCamFileExeStageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCamFileExeStageResponse)
+	err := c.cc.Invoke(ctx, CamFileExeStageService_UpdateCamFileExeStage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeStageServiceClient) DeleteCamFileExeStage(ctx context.Context, in *DeleteCamFileExeStageRequest, opts ...grpc.CallOption) (*DeleteCamFileExeStageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCamFileExeStageResponse)
+	err := c.cc.Invoke(ctx, CamFileExeStageService_DeleteCamFileExeStage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeStageServiceClient) ListCamFileExeStages(ctx context.Context, in *ListCamFileExeStagesRequest, opts ...grpc.CallOption) (*ListCamFileExeStagesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCamFileExeStagesResponse)
+	err := c.cc.Invoke(ctx, CamFileExeStageService_ListCamFileExeStages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *camFileExeStageServiceClient) ListCamFileExeStagesByOrganization(ctx context.Context, in *ListCamFileExeStagesByOrganizationRequest, opts ...grpc.CallOption) (*ListCamFileExeStagesByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCamFileExeStagesByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CamFileExeStageService_ListCamFileExeStagesByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CamFileExeStageServiceServer is the server API for CamFileExeStageService service.
+// All implementations must embed UnimplementedCamFileExeStageServiceServer
+// for forward compatibility.
+type CamFileExeStageServiceServer interface {
+	CreateCamFileExeStage(context.Context, *CreateCamFileExeStageRequest) (*CreateCamFileExeStageResponse, error)
+	GetCamFileExeStage(context.Context, *GetCamFileExeStageRequest) (*GetCamFileExeStageResponse, error)
+	UpdateCamFileExeStage(context.Context, *UpdateCamFileExeStageRequest) (*UpdateCamFileExeStageResponse, error)
+	DeleteCamFileExeStage(context.Context, *DeleteCamFileExeStageRequest) (*DeleteCamFileExeStageResponse, error)
+	ListCamFileExeStages(context.Context, *ListCamFileExeStagesRequest) (*ListCamFileExeStagesResponse, error)
+	ListCamFileExeStagesByOrganization(context.Context, *ListCamFileExeStagesByOrganizationRequest) (*ListCamFileExeStagesByOrganizationResponse, error)
+	mustEmbedUnimplementedCamFileExeStageServiceServer()
+}
+
+// UnimplementedCamFileExeStageServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCamFileExeStageServiceServer struct{}
+
+func (UnimplementedCamFileExeStageServiceServer) CreateCamFileExeStage(context.Context, *CreateCamFileExeStageRequest) (*CreateCamFileExeStageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCamFileExeStage not implemented")
+}
+func (UnimplementedCamFileExeStageServiceServer) GetCamFileExeStage(context.Context, *GetCamFileExeStageRequest) (*GetCamFileExeStageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCamFileExeStage not implemented")
+}
+func (UnimplementedCamFileExeStageServiceServer) UpdateCamFileExeStage(context.Context, *UpdateCamFileExeStageRequest) (*UpdateCamFileExeStageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCamFileExeStage not implemented")
+}
+func (UnimplementedCamFileExeStageServiceServer) DeleteCamFileExeStage(context.Context, *DeleteCamFileExeStageRequest) (*DeleteCamFileExeStageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCamFileExeStage not implemented")
+}
+func (UnimplementedCamFileExeStageServiceServer) ListCamFileExeStages(context.Context, *ListCamFileExeStagesRequest) (*ListCamFileExeStagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCamFileExeStages not implemented")
+}
+func (UnimplementedCamFileExeStageServiceServer) ListCamFileExeStagesByOrganization(context.Context, *ListCamFileExeStagesByOrganizationRequest) (*ListCamFileExeStagesByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCamFileExeStagesByOrganization not implemented")
+}
+func (UnimplementedCamFileExeStageServiceServer) mustEmbedUnimplementedCamFileExeStageServiceServer() {
+}
+func (UnimplementedCamFileExeStageServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCamFileExeStageServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CamFileExeStageServiceServer will
+// result in compilation errors.
+type UnsafeCamFileExeStageServiceServer interface {
+	mustEmbedUnimplementedCamFileExeStageServiceServer()
+}
+
+func RegisterCamFileExeStageServiceServer(s grpc.ServiceRegistrar, srv CamFileExeStageServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCamFileExeStageServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CamFileExeStageService_ServiceDesc, srv)
+}
+
+func _CamFileExeStageService_CreateCamFileExeStage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCamFileExeStageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeStageServiceServer).CreateCamFileExeStage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeStageService_CreateCamFileExeStage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeStageServiceServer).CreateCamFileExeStage(ctx, req.(*CreateCamFileExeStageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeStageService_GetCamFileExeStage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCamFileExeStageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeStageServiceServer).GetCamFileExeStage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeStageService_GetCamFileExeStage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeStageServiceServer).GetCamFileExeStage(ctx, req.(*GetCamFileExeStageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeStageService_UpdateCamFileExeStage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCamFileExeStageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeStageServiceServer).UpdateCamFileExeStage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeStageService_UpdateCamFileExeStage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeStageServiceServer).UpdateCamFileExeStage(ctx, req.(*UpdateCamFileExeStageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeStageService_DeleteCamFileExeStage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCamFileExeStageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeStageServiceServer).DeleteCamFileExeStage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeStageService_DeleteCamFileExeStage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeStageServiceServer).DeleteCamFileExeStage(ctx, req.(*DeleteCamFileExeStageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeStageService_ListCamFileExeStages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCamFileExeStagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeStageServiceServer).ListCamFileExeStages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeStageService_ListCamFileExeStages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeStageServiceServer).ListCamFileExeStages(ctx, req.(*ListCamFileExeStagesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CamFileExeStageService_ListCamFileExeStagesByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCamFileExeStagesByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CamFileExeStageServiceServer).ListCamFileExeStagesByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CamFileExeStageService_ListCamFileExeStagesByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CamFileExeStageServiceServer).ListCamFileExeStagesByOrganization(ctx, req.(*ListCamFileExeStagesByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CamFileExeStageService_ServiceDesc is the grpc.ServiceDesc for CamFileExeStageService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CamFileExeStageService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CamFileExeStageService",
+	HandlerType: (*CamFileExeStageServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCamFileExeStage",
+			Handler:    _CamFileExeStageService_CreateCamFileExeStage_Handler,
+		},
+		{
+			MethodName: "GetCamFileExeStage",
+			Handler:    _CamFileExeStageService_GetCamFileExeStage_Handler,
+		},
+		{
+			MethodName: "UpdateCamFileExeStage",
+			Handler:    _CamFileExeStageService_UpdateCamFileExeStage_Handler,
+		},
+		{
+			MethodName: "DeleteCamFileExeStage",
+			Handler:    _CamFileExeStageService_DeleteCamFileExeStage_Handler,
+		},
+		{
+			MethodName: "ListCamFileExeStages",
+			Handler:    _CamFileExeStageService_ListCamFileExeStages_Handler,
+		},
+		{
+			MethodName: "ListCamFileExeStagesByOrganization",
+			Handler:    _CamFileExeStageService_ListCamFileExeStagesByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	IchibanCarService_CreateIchibanCar_FullMethodName              = "/organization.IchibanCarService/CreateIchibanCar"
+	IchibanCarService_GetIchibanCar_FullMethodName                 = "/organization.IchibanCarService/GetIchibanCar"
+	IchibanCarService_UpdateIchibanCar_FullMethodName              = "/organization.IchibanCarService/UpdateIchibanCar"
+	IchibanCarService_DeleteIchibanCar_FullMethodName              = "/organization.IchibanCarService/DeleteIchibanCar"
+	IchibanCarService_ListIchibanCars_FullMethodName               = "/organization.IchibanCarService/ListIchibanCars"
+	IchibanCarService_ListIchibanCarsByOrganization_FullMethodName = "/organization.IchibanCarService/ListIchibanCarsByOrganization"
+)
+
+// IchibanCarServiceClient is the client API for IchibanCarService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type IchibanCarServiceClient interface {
+	CreateIchibanCar(ctx context.Context, in *CreateIchibanCarRequest, opts ...grpc.CallOption) (*CreateIchibanCarResponse, error)
+	GetIchibanCar(ctx context.Context, in *GetIchibanCarRequest, opts ...grpc.CallOption) (*GetIchibanCarResponse, error)
+	UpdateIchibanCar(ctx context.Context, in *UpdateIchibanCarRequest, opts ...grpc.CallOption) (*UpdateIchibanCarResponse, error)
+	DeleteIchibanCar(ctx context.Context, in *DeleteIchibanCarRequest, opts ...grpc.CallOption) (*DeleteIchibanCarResponse, error)
+	ListIchibanCars(ctx context.Context, in *ListIchibanCarsRequest, opts ...grpc.CallOption) (*ListIchibanCarsResponse, error)
+	ListIchibanCarsByOrganization(ctx context.Context, in *ListIchibanCarsByOrganizationRequest, opts ...grpc.CallOption) (*ListIchibanCarsByOrganizationResponse, error)
+}
+
+type ichibanCarServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewIchibanCarServiceClient(cc grpc.ClientConnInterface) IchibanCarServiceClient {
+	return &ichibanCarServiceClient{cc}
+}
+
+func (c *ichibanCarServiceClient) CreateIchibanCar(ctx context.Context, in *CreateIchibanCarRequest, opts ...grpc.CallOption) (*CreateIchibanCarResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateIchibanCarResponse)
+	err := c.cc.Invoke(ctx, IchibanCarService_CreateIchibanCar_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *ichibanCarServiceClient) GetIchibanCar(ctx context.Context, in *GetIchibanCarRequest, opts ...grpc.CallOption) (*GetIchibanCarResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetIchibanCarResponse)
+	err := c.cc.Invoke(ctx, IchibanCarService_GetIchibanCar_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *ichibanCarServiceClient) UpdateIchibanCar(ctx context.Context, in *UpdateIchibanCarRequest, opts ...grpc.CallOption) (*UpdateIchibanCarResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateIchibanCarResponse)
+	err := c.cc.Invoke(ctx, IchibanCarService_UpdateIchibanCar_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *ichibanCarServiceClient) DeleteIchibanCar(ctx context.Context, in *DeleteIchibanCarRequest, opts ...grpc.CallOption) (*DeleteIchibanCarResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteIchibanCarResponse)
+	err := c.cc.Invoke(ctx, IchibanCarService_DeleteIchibanCar_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *ichibanCarServiceClient) ListIchibanCars(ctx context.Context, in *ListIchibanCarsRequest, opts ...grpc.CallOption) (*ListIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, IchibanCarService_ListIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *ichibanCarServiceClient) ListIchibanCarsByOrganization(ctx context.Context, in *ListIchibanCarsByOrganizationRequest, opts ...grpc.CallOption) (*ListIchibanCarsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListIchibanCarsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, IchibanCarService_ListIchibanCarsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// IchibanCarServiceServer is the server API for IchibanCarService service.
+// All implementations must embed UnimplementedIchibanCarServiceServer
+// for forward compatibility.
+type IchibanCarServiceServer interface {
+	CreateIchibanCar(context.Context, *CreateIchibanCarRequest) (*CreateIchibanCarResponse, error)
+	GetIchibanCar(context.Context, *GetIchibanCarRequest) (*GetIchibanCarResponse, error)
+	UpdateIchibanCar(context.Context, *UpdateIchibanCarRequest) (*UpdateIchibanCarResponse, error)
+	DeleteIchibanCar(context.Context, *DeleteIchibanCarRequest) (*DeleteIchibanCarResponse, error)
+	ListIchibanCars(context.Context, *ListIchibanCarsRequest) (*ListIchibanCarsResponse, error)
+	ListIchibanCarsByOrganization(context.Context, *ListIchibanCarsByOrganizationRequest) (*ListIchibanCarsByOrganizationResponse, error)
+	mustEmbedUnimplementedIchibanCarServiceServer()
+}
+
+// UnimplementedIchibanCarServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedIchibanCarServiceServer struct{}
+
+func (UnimplementedIchibanCarServiceServer) CreateIchibanCar(context.Context, *CreateIchibanCarRequest) (*CreateIchibanCarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateIchibanCar not implemented")
+}
+func (UnimplementedIchibanCarServiceServer) GetIchibanCar(context.Context, *GetIchibanCarRequest) (*GetIchibanCarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIchibanCar not implemented")
+}
+func (UnimplementedIchibanCarServiceServer) UpdateIchibanCar(context.Context, *UpdateIchibanCarRequest) (*UpdateIchibanCarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateIchibanCar not implemented")
+}
+func (UnimplementedIchibanCarServiceServer) DeleteIchibanCar(context.Context, *DeleteIchibanCarRequest) (*DeleteIchibanCarResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteIchibanCar not implemented")
+}
+func (UnimplementedIchibanCarServiceServer) ListIchibanCars(context.Context, *ListIchibanCarsRequest) (*ListIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIchibanCars not implemented")
+}
+func (UnimplementedIchibanCarServiceServer) ListIchibanCarsByOrganization(context.Context, *ListIchibanCarsByOrganizationRequest) (*ListIchibanCarsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIchibanCarsByOrganization not implemented")
+}
+func (UnimplementedIchibanCarServiceServer) mustEmbedUnimplementedIchibanCarServiceServer() {}
+func (UnimplementedIchibanCarServiceServer) testEmbeddedByValue()                           {}
+
+// UnsafeIchibanCarServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to IchibanCarServiceServer will
+// result in compilation errors.
+type UnsafeIchibanCarServiceServer interface {
+	mustEmbedUnimplementedIchibanCarServiceServer()
+}
+
+func RegisterIchibanCarServiceServer(s grpc.ServiceRegistrar, srv IchibanCarServiceServer) {
+	// If the following call pancis, it indicates UnimplementedIchibanCarServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&IchibanCarService_ServiceDesc, srv)
+}
+
+func _IchibanCarService_CreateIchibanCar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateIchibanCarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IchibanCarServiceServer).CreateIchibanCar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IchibanCarService_CreateIchibanCar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IchibanCarServiceServer).CreateIchibanCar(ctx, req.(*CreateIchibanCarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IchibanCarService_GetIchibanCar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetIchibanCarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IchibanCarServiceServer).GetIchibanCar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IchibanCarService_GetIchibanCar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IchibanCarServiceServer).GetIchibanCar(ctx, req.(*GetIchibanCarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IchibanCarService_UpdateIchibanCar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateIchibanCarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IchibanCarServiceServer).UpdateIchibanCar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IchibanCarService_UpdateIchibanCar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IchibanCarServiceServer).UpdateIchibanCar(ctx, req.(*UpdateIchibanCarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IchibanCarService_DeleteIchibanCar_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteIchibanCarRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IchibanCarServiceServer).DeleteIchibanCar(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IchibanCarService_DeleteIchibanCar_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IchibanCarServiceServer).DeleteIchibanCar(ctx, req.(*DeleteIchibanCarRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IchibanCarService_ListIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IchibanCarServiceServer).ListIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IchibanCarService_ListIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IchibanCarServiceServer).ListIchibanCars(ctx, req.(*ListIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _IchibanCarService_ListIchibanCarsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListIchibanCarsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(IchibanCarServiceServer).ListIchibanCarsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: IchibanCarService_ListIchibanCarsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(IchibanCarServiceServer).ListIchibanCarsByOrganization(ctx, req.(*ListIchibanCarsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// IchibanCarService_ServiceDesc is the grpc.ServiceDesc for IchibanCarService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var IchibanCarService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.IchibanCarService",
+	HandlerType: (*IchibanCarServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateIchibanCar",
+			Handler:    _IchibanCarService_CreateIchibanCar_Handler,
+		},
+		{
+			MethodName: "GetIchibanCar",
+			Handler:    _IchibanCarService_GetIchibanCar_Handler,
+		},
+		{
+			MethodName: "UpdateIchibanCar",
+			Handler:    _IchibanCarService_UpdateIchibanCar_Handler,
+		},
+		{
+			MethodName: "DeleteIchibanCar",
+			Handler:    _IchibanCarService_DeleteIchibanCar_Handler,
+		},
+		{
+			MethodName: "ListIchibanCars",
+			Handler:    _IchibanCarService_ListIchibanCars_Handler,
+		},
+		{
+			MethodName: "ListIchibanCarsByOrganization",
+			Handler:    _IchibanCarService_ListIchibanCarsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	DtakoCarsIchibanCarsService_CreateDtakoCarsIchibanCars_FullMethodName             = "/organization.DtakoCarsIchibanCarsService/CreateDtakoCarsIchibanCars"
+	DtakoCarsIchibanCarsService_GetDtakoCarsIchibanCars_FullMethodName                = "/organization.DtakoCarsIchibanCarsService/GetDtakoCarsIchibanCars"
+	DtakoCarsIchibanCarsService_UpdateDtakoCarsIchibanCars_FullMethodName             = "/organization.DtakoCarsIchibanCarsService/UpdateDtakoCarsIchibanCars"
+	DtakoCarsIchibanCarsService_DeleteDtakoCarsIchibanCars_FullMethodName             = "/organization.DtakoCarsIchibanCarsService/DeleteDtakoCarsIchibanCars"
+	DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCars_FullMethodName               = "/organization.DtakoCarsIchibanCarsService/ListDtakoCarsIchibanCars"
+	DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCarsByOrganization_FullMethodName = "/organization.DtakoCarsIchibanCarsService/ListDtakoCarsIchibanCarsByOrganization"
+)
+
+// DtakoCarsIchibanCarsServiceClient is the client API for DtakoCarsIchibanCarsService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type DtakoCarsIchibanCarsServiceClient interface {
+	CreateDtakoCarsIchibanCars(ctx context.Context, in *CreateDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*CreateDtakoCarsIchibanCarsResponse, error)
+	GetDtakoCarsIchibanCars(ctx context.Context, in *GetDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*GetDtakoCarsIchibanCarsResponse, error)
+	UpdateDtakoCarsIchibanCars(ctx context.Context, in *UpdateDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*UpdateDtakoCarsIchibanCarsResponse, error)
+	DeleteDtakoCarsIchibanCars(ctx context.Context, in *DeleteDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*DeleteDtakoCarsIchibanCarsResponse, error)
+	ListDtakoCarsIchibanCars(ctx context.Context, in *ListDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*ListDtakoCarsIchibanCarsResponse, error)
+	ListDtakoCarsIchibanCarsByOrganization(ctx context.Context, in *ListDtakoCarsIchibanCarsByOrganizationRequest, opts ...grpc.CallOption) (*ListDtakoCarsIchibanCarsByOrganizationResponse, error)
+}
+
+type dtakoCarsIchibanCarsServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewDtakoCarsIchibanCarsServiceClient(cc grpc.ClientConnInterface) DtakoCarsIchibanCarsServiceClient {
+	return &dtakoCarsIchibanCarsServiceClient{cc}
+}
+
+func (c *dtakoCarsIchibanCarsServiceClient) CreateDtakoCarsIchibanCars(ctx context.Context, in *CreateDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*CreateDtakoCarsIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateDtakoCarsIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, DtakoCarsIchibanCarsService_CreateDtakoCarsIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dtakoCarsIchibanCarsServiceClient) GetDtakoCarsIchibanCars(ctx context.Context, in *GetDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*GetDtakoCarsIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetDtakoCarsIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, DtakoCarsIchibanCarsService_GetDtakoCarsIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dtakoCarsIchibanCarsServiceClient) UpdateDtakoCarsIchibanCars(ctx context.Context, in *UpdateDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*UpdateDtakoCarsIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateDtakoCarsIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, DtakoCarsIchibanCarsService_UpdateDtakoCarsIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dtakoCarsIchibanCarsServiceClient) DeleteDtakoCarsIchibanCars(ctx context.Context, in *DeleteDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*DeleteDtakoCarsIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteDtakoCarsIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, DtakoCarsIchibanCarsService_DeleteDtakoCarsIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dtakoCarsIchibanCarsServiceClient) ListDtakoCarsIchibanCars(ctx context.Context, in *ListDtakoCarsIchibanCarsRequest, opts ...grpc.CallOption) (*ListDtakoCarsIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListDtakoCarsIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *dtakoCarsIchibanCarsServiceClient) ListDtakoCarsIchibanCarsByOrganization(ctx context.Context, in *ListDtakoCarsIchibanCarsByOrganizationRequest, opts ...grpc.CallOption) (*ListDtakoCarsIchibanCarsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListDtakoCarsIchibanCarsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCarsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// DtakoCarsIchibanCarsServiceServer is the server API for DtakoCarsIchibanCarsService service.
+// All implementations must embed UnimplementedDtakoCarsIchibanCarsServiceServer
+// for forward compatibility.
+type DtakoCarsIchibanCarsServiceServer interface {
+	CreateDtakoCarsIchibanCars(context.Context, *CreateDtakoCarsIchibanCarsRequest) (*CreateDtakoCarsIchibanCarsResponse, error)
+	GetDtakoCarsIchibanCars(context.Context, *GetDtakoCarsIchibanCarsRequest) (*GetDtakoCarsIchibanCarsResponse, error)
+	UpdateDtakoCarsIchibanCars(context.Context, *UpdateDtakoCarsIchibanCarsRequest) (*UpdateDtakoCarsIchibanCarsResponse, error)
+	DeleteDtakoCarsIchibanCars(context.Context, *DeleteDtakoCarsIchibanCarsRequest) (*DeleteDtakoCarsIchibanCarsResponse, error)
+	ListDtakoCarsIchibanCars(context.Context, *ListDtakoCarsIchibanCarsRequest) (*ListDtakoCarsIchibanCarsResponse, error)
+	ListDtakoCarsIchibanCarsByOrganization(context.Context, *ListDtakoCarsIchibanCarsByOrganizationRequest) (*ListDtakoCarsIchibanCarsByOrganizationResponse, error)
+	mustEmbedUnimplementedDtakoCarsIchibanCarsServiceServer()
+}
+
+// UnimplementedDtakoCarsIchibanCarsServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedDtakoCarsIchibanCarsServiceServer struct{}
+
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) CreateDtakoCarsIchibanCars(context.Context, *CreateDtakoCarsIchibanCarsRequest) (*CreateDtakoCarsIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDtakoCarsIchibanCars not implemented")
+}
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) GetDtakoCarsIchibanCars(context.Context, *GetDtakoCarsIchibanCarsRequest) (*GetDtakoCarsIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetDtakoCarsIchibanCars not implemented")
+}
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) UpdateDtakoCarsIchibanCars(context.Context, *UpdateDtakoCarsIchibanCarsRequest) (*UpdateDtakoCarsIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDtakoCarsIchibanCars not implemented")
+}
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) DeleteDtakoCarsIchibanCars(context.Context, *DeleteDtakoCarsIchibanCarsRequest) (*DeleteDtakoCarsIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteDtakoCarsIchibanCars not implemented")
+}
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) ListDtakoCarsIchibanCars(context.Context, *ListDtakoCarsIchibanCarsRequest) (*ListDtakoCarsIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDtakoCarsIchibanCars not implemented")
+}
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) ListDtakoCarsIchibanCarsByOrganization(context.Context, *ListDtakoCarsIchibanCarsByOrganizationRequest) (*ListDtakoCarsIchibanCarsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListDtakoCarsIchibanCarsByOrganization not implemented")
+}
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) mustEmbedUnimplementedDtakoCarsIchibanCarsServiceServer() {
+}
+func (UnimplementedDtakoCarsIchibanCarsServiceServer) testEmbeddedByValue() {}
+
+// UnsafeDtakoCarsIchibanCarsServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to DtakoCarsIchibanCarsServiceServer will
+// result in compilation errors.
+type UnsafeDtakoCarsIchibanCarsServiceServer interface {
+	mustEmbedUnimplementedDtakoCarsIchibanCarsServiceServer()
+}
+
+func RegisterDtakoCarsIchibanCarsServiceServer(s grpc.ServiceRegistrar, srv DtakoCarsIchibanCarsServiceServer) {
+	// If the following call pancis, it indicates UnimplementedDtakoCarsIchibanCarsServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&DtakoCarsIchibanCarsService_ServiceDesc, srv)
+}
+
+func _DtakoCarsIchibanCarsService_CreateDtakoCarsIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateDtakoCarsIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DtakoCarsIchibanCarsServiceServer).CreateDtakoCarsIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DtakoCarsIchibanCarsService_CreateDtakoCarsIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DtakoCarsIchibanCarsServiceServer).CreateDtakoCarsIchibanCars(ctx, req.(*CreateDtakoCarsIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DtakoCarsIchibanCarsService_GetDtakoCarsIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetDtakoCarsIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DtakoCarsIchibanCarsServiceServer).GetDtakoCarsIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DtakoCarsIchibanCarsService_GetDtakoCarsIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DtakoCarsIchibanCarsServiceServer).GetDtakoCarsIchibanCars(ctx, req.(*GetDtakoCarsIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DtakoCarsIchibanCarsService_UpdateDtakoCarsIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDtakoCarsIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DtakoCarsIchibanCarsServiceServer).UpdateDtakoCarsIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DtakoCarsIchibanCarsService_UpdateDtakoCarsIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DtakoCarsIchibanCarsServiceServer).UpdateDtakoCarsIchibanCars(ctx, req.(*UpdateDtakoCarsIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DtakoCarsIchibanCarsService_DeleteDtakoCarsIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteDtakoCarsIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DtakoCarsIchibanCarsServiceServer).DeleteDtakoCarsIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DtakoCarsIchibanCarsService_DeleteDtakoCarsIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DtakoCarsIchibanCarsServiceServer).DeleteDtakoCarsIchibanCars(ctx, req.(*DeleteDtakoCarsIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDtakoCarsIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DtakoCarsIchibanCarsServiceServer).ListDtakoCarsIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DtakoCarsIchibanCarsServiceServer).ListDtakoCarsIchibanCars(ctx, req.(*ListDtakoCarsIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCarsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListDtakoCarsIchibanCarsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DtakoCarsIchibanCarsServiceServer).ListDtakoCarsIchibanCarsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCarsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DtakoCarsIchibanCarsServiceServer).ListDtakoCarsIchibanCarsByOrganization(ctx, req.(*ListDtakoCarsIchibanCarsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// DtakoCarsIchibanCarsService_ServiceDesc is the grpc.ServiceDesc for DtakoCarsIchibanCarsService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var DtakoCarsIchibanCarsService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.DtakoCarsIchibanCarsService",
+	HandlerType: (*DtakoCarsIchibanCarsServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateDtakoCarsIchibanCars",
+			Handler:    _DtakoCarsIchibanCarsService_CreateDtakoCarsIchibanCars_Handler,
+		},
+		{
+			MethodName: "GetDtakoCarsIchibanCars",
+			Handler:    _DtakoCarsIchibanCarsService_GetDtakoCarsIchibanCars_Handler,
+		},
+		{
+			MethodName: "UpdateDtakoCarsIchibanCars",
+			Handler:    _DtakoCarsIchibanCarsService_UpdateDtakoCarsIchibanCars_Handler,
+		},
+		{
+			MethodName: "DeleteDtakoCarsIchibanCars",
+			Handler:    _DtakoCarsIchibanCarsService_DeleteDtakoCarsIchibanCars_Handler,
+		},
+		{
+			MethodName: "ListDtakoCarsIchibanCars",
+			Handler:    _DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCars_Handler,
+		},
+		{
+			MethodName: "ListDtakoCarsIchibanCarsByOrganization",
+			Handler:    _DtakoCarsIchibanCarsService_ListDtakoCarsIchibanCarsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	UriageService_CreateUriage_FullMethodName              = "/organization.UriageService/CreateUriage"
+	UriageService_GetUriage_FullMethodName                 = "/organization.UriageService/GetUriage"
+	UriageService_UpdateUriage_FullMethodName              = "/organization.UriageService/UpdateUriage"
+	UriageService_DeleteUriage_FullMethodName              = "/organization.UriageService/DeleteUriage"
+	UriageService_ListUriages_FullMethodName               = "/organization.UriageService/ListUriages"
+	UriageService_ListUriagesByOrganization_FullMethodName = "/organization.UriageService/ListUriagesByOrganization"
+)
+
+// UriageServiceClient is the client API for UriageService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type UriageServiceClient interface {
+	CreateUriage(ctx context.Context, in *CreateUriageRequest, opts ...grpc.CallOption) (*CreateUriageResponse, error)
+	GetUriage(ctx context.Context, in *GetUriageRequest, opts ...grpc.CallOption) (*GetUriageResponse, error)
+	UpdateUriage(ctx context.Context, in *UpdateUriageRequest, opts ...grpc.CallOption) (*UpdateUriageResponse, error)
+	DeleteUriage(ctx context.Context, in *DeleteUriageRequest, opts ...grpc.CallOption) (*DeleteUriageResponse, error)
+	ListUriages(ctx context.Context, in *ListUriagesRequest, opts ...grpc.CallOption) (*ListUriagesResponse, error)
+	ListUriagesByOrganization(ctx context.Context, in *ListUriagesByOrganizationRequest, opts ...grpc.CallOption) (*ListUriagesByOrganizationResponse, error)
+}
+
+type uriageServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewUriageServiceClient(cc grpc.ClientConnInterface) UriageServiceClient {
+	return &uriageServiceClient{cc}
+}
+
+func (c *uriageServiceClient) CreateUriage(ctx context.Context, in *CreateUriageRequest, opts ...grpc.CallOption) (*CreateUriageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateUriageResponse)
+	err := c.cc.Invoke(ctx, UriageService_CreateUriage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageServiceClient) GetUriage(ctx context.Context, in *GetUriageRequest, opts ...grpc.CallOption) (*GetUriageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUriageResponse)
+	err := c.cc.Invoke(ctx, UriageService_GetUriage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageServiceClient) UpdateUriage(ctx context.Context, in *UpdateUriageRequest, opts ...grpc.CallOption) (*UpdateUriageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUriageResponse)
+	err := c.cc.Invoke(ctx, UriageService_UpdateUriage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageServiceClient) DeleteUriage(ctx context.Context, in *DeleteUriageRequest, opts ...grpc.CallOption) (*DeleteUriageResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUriageResponse)
+	err := c.cc.Invoke(ctx, UriageService_DeleteUriage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageServiceClient) ListUriages(ctx context.Context, in *ListUriagesRequest, opts ...grpc.CallOption) (*ListUriagesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUriagesResponse)
+	err := c.cc.Invoke(ctx, UriageService_ListUriages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageServiceClient) ListUriagesByOrganization(ctx context.Context, in *ListUriagesByOrganizationRequest, opts ...grpc.CallOption) (*ListUriagesByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUriagesByOrganizationResponse)
+	err := c.cc.Invoke(ctx, UriageService_ListUriagesByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// UriageServiceServer is the server API for UriageService service.
+// All implementations must embed UnimplementedUriageServiceServer
+// for forward compatibility.
+type UriageServiceServer interface {
+	CreateUriage(context.Context, *CreateUriageRequest) (*CreateUriageResponse, error)
+	GetUriage(context.Context, *GetUriageRequest) (*GetUriageResponse, error)
+	UpdateUriage(context.Context, *UpdateUriageRequest) (*UpdateUriageResponse, error)
+	DeleteUriage(context.Context, *DeleteUriageRequest) (*DeleteUriageResponse, error)
+	ListUriages(context.Context, *ListUriagesRequest) (*ListUriagesResponse, error)
+	ListUriagesByOrganization(context.Context, *ListUriagesByOrganizationRequest) (*ListUriagesByOrganizationResponse, error)
+	mustEmbedUnimplementedUriageServiceServer()
+}
+
+// UnimplementedUriageServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedUriageServiceServer struct{}
+
+func (UnimplementedUriageServiceServer) CreateUriage(context.Context, *CreateUriageRequest) (*CreateUriageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUriage not implemented")
+}
+func (UnimplementedUriageServiceServer) GetUriage(context.Context, *GetUriageRequest) (*GetUriageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUriage not implemented")
+}
+func (UnimplementedUriageServiceServer) UpdateUriage(context.Context, *UpdateUriageRequest) (*UpdateUriageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUriage not implemented")
+}
+func (UnimplementedUriageServiceServer) DeleteUriage(context.Context, *DeleteUriageRequest) (*DeleteUriageResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUriage not implemented")
+}
+func (UnimplementedUriageServiceServer) ListUriages(context.Context, *ListUriagesRequest) (*ListUriagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUriages not implemented")
+}
+func (UnimplementedUriageServiceServer) ListUriagesByOrganization(context.Context, *ListUriagesByOrganizationRequest) (*ListUriagesByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUriagesByOrganization not implemented")
+}
+func (UnimplementedUriageServiceServer) mustEmbedUnimplementedUriageServiceServer() {}
+func (UnimplementedUriageServiceServer) testEmbeddedByValue()                       {}
+
+// UnsafeUriageServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UriageServiceServer will
+// result in compilation errors.
+type UnsafeUriageServiceServer interface {
+	mustEmbedUnimplementedUriageServiceServer()
+}
+
+func RegisterUriageServiceServer(s grpc.ServiceRegistrar, srv UriageServiceServer) {
+	// If the following call pancis, it indicates UnimplementedUriageServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&UriageService_ServiceDesc, srv)
+}
+
+func _UriageService_CreateUriage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUriageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageServiceServer).CreateUriage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageService_CreateUriage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageServiceServer).CreateUriage(ctx, req.(*CreateUriageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageService_GetUriage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUriageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageServiceServer).GetUriage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageService_GetUriage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageServiceServer).GetUriage(ctx, req.(*GetUriageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageService_UpdateUriage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUriageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageServiceServer).UpdateUriage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageService_UpdateUriage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageServiceServer).UpdateUriage(ctx, req.(*UpdateUriageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageService_DeleteUriage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUriageRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageServiceServer).DeleteUriage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageService_DeleteUriage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageServiceServer).DeleteUriage(ctx, req.(*DeleteUriageRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageService_ListUriages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUriagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageServiceServer).ListUriages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageService_ListUriages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageServiceServer).ListUriages(ctx, req.(*ListUriagesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageService_ListUriagesByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUriagesByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageServiceServer).ListUriagesByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageService_ListUriagesByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageServiceServer).ListUriagesByOrganization(ctx, req.(*ListUriagesByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// UriageService_ServiceDesc is the grpc.ServiceDesc for UriageService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var UriageService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.UriageService",
+	HandlerType: (*UriageServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateUriage",
+			Handler:    _UriageService_CreateUriage_Handler,
+		},
+		{
+			MethodName: "GetUriage",
+			Handler:    _UriageService_GetUriage_Handler,
+		},
+		{
+			MethodName: "UpdateUriage",
+			Handler:    _UriageService_UpdateUriage_Handler,
+		},
+		{
+			MethodName: "DeleteUriage",
+			Handler:    _UriageService_DeleteUriage_Handler,
+		},
+		{
+			MethodName: "ListUriages",
+			Handler:    _UriageService_ListUriages_Handler,
+		},
+		{
+			MethodName: "ListUriagesByOrganization",
+			Handler:    _UriageService_ListUriagesByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	UriageJishaService_CreateUriageJisha_FullMethodName              = "/organization.UriageJishaService/CreateUriageJisha"
+	UriageJishaService_GetUriageJisha_FullMethodName                 = "/organization.UriageJishaService/GetUriageJisha"
+	UriageJishaService_UpdateUriageJisha_FullMethodName              = "/organization.UriageJishaService/UpdateUriageJisha"
+	UriageJishaService_DeleteUriageJisha_FullMethodName              = "/organization.UriageJishaService/DeleteUriageJisha"
+	UriageJishaService_ListUriageJishas_FullMethodName               = "/organization.UriageJishaService/ListUriageJishas"
+	UriageJishaService_ListUriageJishasByOrganization_FullMethodName = "/organization.UriageJishaService/ListUriageJishasByOrganization"
+)
+
+// UriageJishaServiceClient is the client API for UriageJishaService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type UriageJishaServiceClient interface {
+	CreateUriageJisha(ctx context.Context, in *CreateUriageJishaRequest, opts ...grpc.CallOption) (*CreateUriageJishaResponse, error)
+	GetUriageJisha(ctx context.Context, in *GetUriageJishaRequest, opts ...grpc.CallOption) (*GetUriageJishaResponse, error)
+	UpdateUriageJisha(ctx context.Context, in *UpdateUriageJishaRequest, opts ...grpc.CallOption) (*UpdateUriageJishaResponse, error)
+	DeleteUriageJisha(ctx context.Context, in *DeleteUriageJishaRequest, opts ...grpc.CallOption) (*DeleteUriageJishaResponse, error)
+	ListUriageJishas(ctx context.Context, in *ListUriageJishasRequest, opts ...grpc.CallOption) (*ListUriageJishasResponse, error)
+	ListUriageJishasByOrganization(ctx context.Context, in *ListUriageJishasByOrganizationRequest, opts ...grpc.CallOption) (*ListUriageJishasByOrganizationResponse, error)
+}
+
+type uriageJishaServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewUriageJishaServiceClient(cc grpc.ClientConnInterface) UriageJishaServiceClient {
+	return &uriageJishaServiceClient{cc}
+}
+
+func (c *uriageJishaServiceClient) CreateUriageJisha(ctx context.Context, in *CreateUriageJishaRequest, opts ...grpc.CallOption) (*CreateUriageJishaResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateUriageJishaResponse)
+	err := c.cc.Invoke(ctx, UriageJishaService_CreateUriageJisha_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageJishaServiceClient) GetUriageJisha(ctx context.Context, in *GetUriageJishaRequest, opts ...grpc.CallOption) (*GetUriageJishaResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUriageJishaResponse)
+	err := c.cc.Invoke(ctx, UriageJishaService_GetUriageJisha_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageJishaServiceClient) UpdateUriageJisha(ctx context.Context, in *UpdateUriageJishaRequest, opts ...grpc.CallOption) (*UpdateUriageJishaResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUriageJishaResponse)
+	err := c.cc.Invoke(ctx, UriageJishaService_UpdateUriageJisha_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageJishaServiceClient) DeleteUriageJisha(ctx context.Context, in *DeleteUriageJishaRequest, opts ...grpc.CallOption) (*DeleteUriageJishaResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUriageJishaResponse)
+	err := c.cc.Invoke(ctx, UriageJishaService_DeleteUriageJisha_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageJishaServiceClient) ListUriageJishas(ctx context.Context, in *ListUriageJishasRequest, opts ...grpc.CallOption) (*ListUriageJishasResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUriageJishasResponse)
+	err := c.cc.Invoke(ctx, UriageJishaService_ListUriageJishas_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *uriageJishaServiceClient) ListUriageJishasByOrganization(ctx context.Context, in *ListUriageJishasByOrganizationRequest, opts ...grpc.CallOption) (*ListUriageJishasByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUriageJishasByOrganizationResponse)
+	err := c.cc.Invoke(ctx, UriageJishaService_ListUriageJishasByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// UriageJishaServiceServer is the server API for UriageJishaService service.
+// All implementations must embed UnimplementedUriageJishaServiceServer
+// for forward compatibility.
+type UriageJishaServiceServer interface {
+	CreateUriageJisha(context.Context, *CreateUriageJishaRequest) (*CreateUriageJishaResponse, error)
+	GetUriageJisha(context.Context, *GetUriageJishaRequest) (*GetUriageJishaResponse, error)
+	UpdateUriageJisha(context.Context, *UpdateUriageJishaRequest) (*UpdateUriageJishaResponse, error)
+	DeleteUriageJisha(context.Context, *DeleteUriageJishaRequest) (*DeleteUriageJishaResponse, error)
+	ListUriageJishas(context.Context, *ListUriageJishasRequest) (*ListUriageJishasResponse, error)
+	ListUriageJishasByOrganization(context.Context, *ListUriageJishasByOrganizationRequest) (*ListUriageJishasByOrganizationResponse, error)
+	mustEmbedUnimplementedUriageJishaServiceServer()
+}
+
+// UnimplementedUriageJishaServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedUriageJishaServiceServer struct{}
+
+func (UnimplementedUriageJishaServiceServer) CreateUriageJisha(context.Context, *CreateUriageJishaRequest) (*CreateUriageJishaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUriageJisha not implemented")
+}
+func (UnimplementedUriageJishaServiceServer) GetUriageJisha(context.Context, *GetUriageJishaRequest) (*GetUriageJishaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUriageJisha not implemented")
+}
+func (UnimplementedUriageJishaServiceServer) UpdateUriageJisha(context.Context, *UpdateUriageJishaRequest) (*UpdateUriageJishaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUriageJisha not implemented")
+}
+func (UnimplementedUriageJishaServiceServer) DeleteUriageJisha(context.Context, *DeleteUriageJishaRequest) (*DeleteUriageJishaResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUriageJisha not implemented")
+}
+func (UnimplementedUriageJishaServiceServer) ListUriageJishas(context.Context, *ListUriageJishasRequest) (*ListUriageJishasResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUriageJishas not implemented")
+}
+func (UnimplementedUriageJishaServiceServer) ListUriageJishasByOrganization(context.Context, *ListUriageJishasByOrganizationRequest) (*ListUriageJishasByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUriageJishasByOrganization not implemented")
+}
+func (UnimplementedUriageJishaServiceServer) mustEmbedUnimplementedUriageJishaServiceServer() {}
+func (UnimplementedUriageJishaServiceServer) testEmbeddedByValue()                            {}
+
+// UnsafeUriageJishaServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UriageJishaServiceServer will
+// result in compilation errors.
+type UnsafeUriageJishaServiceServer interface {
+	mustEmbedUnimplementedUriageJishaServiceServer()
+}
+
+func RegisterUriageJishaServiceServer(s grpc.ServiceRegistrar, srv UriageJishaServiceServer) {
+	// If the following call pancis, it indicates UnimplementedUriageJishaServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&UriageJishaService_ServiceDesc, srv)
+}
+
+func _UriageJishaService_CreateUriageJisha_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUriageJishaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageJishaServiceServer).CreateUriageJisha(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageJishaService_CreateUriageJisha_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageJishaServiceServer).CreateUriageJisha(ctx, req.(*CreateUriageJishaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageJishaService_GetUriageJisha_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUriageJishaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageJishaServiceServer).GetUriageJisha(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageJishaService_GetUriageJisha_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageJishaServiceServer).GetUriageJisha(ctx, req.(*GetUriageJishaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageJishaService_UpdateUriageJisha_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUriageJishaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageJishaServiceServer).UpdateUriageJisha(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageJishaService_UpdateUriageJisha_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageJishaServiceServer).UpdateUriageJisha(ctx, req.(*UpdateUriageJishaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageJishaService_DeleteUriageJisha_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUriageJishaRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageJishaServiceServer).DeleteUriageJisha(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageJishaService_DeleteUriageJisha_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageJishaServiceServer).DeleteUriageJisha(ctx, req.(*DeleteUriageJishaRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageJishaService_ListUriageJishas_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUriageJishasRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageJishaServiceServer).ListUriageJishas(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageJishaService_ListUriageJishas_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageJishaServiceServer).ListUriageJishas(ctx, req.(*ListUriageJishasRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UriageJishaService_ListUriageJishasByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUriageJishasByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UriageJishaServiceServer).ListUriageJishasByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UriageJishaService_ListUriageJishasByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UriageJishaServiceServer).ListUriageJishasByOrganization(ctx, req.(*ListUriageJishasByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// UriageJishaService_ServiceDesc is the grpc.ServiceDesc for UriageJishaService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var UriageJishaService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.UriageJishaService",
+	HandlerType: (*UriageJishaServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateUriageJisha",
+			Handler:    _UriageJishaService_CreateUriageJisha_Handler,
+		},
+		{
+			MethodName: "GetUriageJisha",
+			Handler:    _UriageJishaService_GetUriageJisha_Handler,
+		},
+		{
+			MethodName: "UpdateUriageJisha",
+			Handler:    _UriageJishaService_UpdateUriageJisha_Handler,
+		},
+		{
+			MethodName: "DeleteUriageJisha",
+			Handler:    _UriageJishaService_DeleteUriageJisha_Handler,
+		},
+		{
+			MethodName: "ListUriageJishas",
+			Handler:    _UriageJishaService_ListUriageJishas_Handler,
+		},
+		{
+			MethodName: "ListUriageJishasByOrganization",
+			Handler:    _UriageJishaService_ListUriageJishasByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}

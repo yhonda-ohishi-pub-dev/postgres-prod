@@ -647,3 +647,1385 @@ service CamFileExeStageService {
   rpc ListCamFileExeStages(ListCamFileExeStagesRequest) returns (ListCamFileExeStagesResponse);
   rpc ListCamFileExeStagesByOrganization(ListCamFileExeStagesByOrganizationRequest) returns (ListCamFileExeStagesByOrganizationResponse);
 }
+
+// ============================================================
+// IchibanCar - Phase 1-3
+// ============================================================
+
+message IchibanCar {
+  string id = 1;
+  string organization_id = 2;
+  string id4 = 3;
+  optional string name = 4;
+  optional string name_r = 5;
+  string shashu = 6;
+  optional double sekisai = 7;
+  optional string reg_date = 8;
+  optional string parch_date = 9;
+  optional string scrap_date = 10;
+  optional string bumon_code_id = 11;
+  optional string driver_id = 12;
+}
+
+message CreateIchibanCarRequest {
+  string organization_id = 1;
+  string id4 = 2;
+  string shashu = 3;
+  optional string name = 4;
+  optional string name_r = 5;
+  optional double sekisai = 6;
+  optional string reg_date = 7;
+  optional string parch_date = 8;
+  optional string scrap_date = 9;
+  optional string bumon_code_id = 10;
+  optional string driver_id = 11;
+}
+
+message CreateIchibanCarResponse {
+  IchibanCar ichiban_car = 1;
+}
+
+message GetIchibanCarRequest {
+  string id = 1;
+  string organization_id = 2;
+}
+
+message GetIchibanCarResponse {
+  IchibanCar ichiban_car = 1;
+}
+
+message UpdateIchibanCarRequest {
+  string id = 1;
+  string organization_id = 2;
+  string id4 = 3;
+  string shashu = 4;
+  optional string name = 5;
+  optional string name_r = 6;
+  optional double sekisai = 7;
+  optional string reg_date = 8;
+  optional string parch_date = 9;
+  optional string scrap_date = 10;
+  optional string bumon_code_id = 11;
+  optional string driver_id = 12;
+}
+
+message UpdateIchibanCarResponse {
+  IchibanCar ichiban_car = 1;
+}
+
+message DeleteIchibanCarRequest {
+  string id = 1;
+  string organization_id = 2;
+}
+
+message DeleteIchibanCarResponse {
+  bool success = 1;
+}
+
+message ListIchibanCarsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListIchibanCarsResponse {
+  repeated IchibanCar ichiban_cars = 1;
+  string next_page_token = 2;
+}
+
+message ListIchibanCarsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListIchibanCarsByOrganizationResponse {
+  repeated IchibanCar ichiban_cars = 1;
+  string next_page_token = 2;
+}
+
+service IchibanCarService {
+  rpc CreateIchibanCar(CreateIchibanCarRequest) returns (CreateIchibanCarResponse);
+  rpc GetIchibanCar(GetIchibanCarRequest) returns (GetIchibanCarResponse);
+  rpc UpdateIchibanCar(UpdateIchibanCarRequest) returns (UpdateIchibanCarResponse);
+  rpc DeleteIchibanCar(DeleteIchibanCarRequest) returns (DeleteIchibanCarResponse);
+  rpc ListIchibanCars(ListIchibanCarsRequest) returns (ListIchibanCarsResponse);
+  rpc ListIchibanCarsByOrganization(ListIchibanCarsByOrganizationRequest) returns (ListIchibanCarsByOrganizationResponse);
+}
+
+// ============================================================
+// DtakoCarsIchibanCars - Phase 1-3
+// ============================================================
+
+message DtakoCarsIchibanCars {
+  string id_dtako = 1;
+  string organization_id = 2;
+  optional string id = 3;
+}
+
+message CreateDtakoCarsIchibanCarsRequest {
+  string id_dtako = 1;
+  string organization_id = 2;
+  optional string id = 3;
+}
+
+message CreateDtakoCarsIchibanCarsResponse {
+  DtakoCarsIchibanCars dtako_cars_ichiban_cars = 1;
+}
+
+message GetDtakoCarsIchibanCarsRequest {
+  string id_dtako = 1;
+  string organization_id = 2;
+}
+
+message GetDtakoCarsIchibanCarsResponse {
+  DtakoCarsIchibanCars dtako_cars_ichiban_cars = 1;
+}
+
+message UpdateDtakoCarsIchibanCarsRequest {
+  string id_dtako = 1;
+  string organization_id = 2;
+  optional string id = 3;
+}
+
+message UpdateDtakoCarsIchibanCarsResponse {
+  DtakoCarsIchibanCars dtako_cars_ichiban_cars = 1;
+}
+
+message DeleteDtakoCarsIchibanCarsRequest {
+  string id_dtako = 1;
+  string organization_id = 2;
+}
+
+message DeleteDtakoCarsIchibanCarsResponse {
+  bool success = 1;
+}
+
+message ListDtakoCarsIchibanCarsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListDtakoCarsIchibanCarsResponse {
+  repeated DtakoCarsIchibanCars dtako_cars_ichiban_cars = 1;
+  string next_page_token = 2;
+}
+
+message ListDtakoCarsIchibanCarsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListDtakoCarsIchibanCarsByOrganizationResponse {
+  repeated DtakoCarsIchibanCars dtako_cars_ichiban_cars = 1;
+  string next_page_token = 2;
+}
+
+service DtakoCarsIchibanCarsService {
+  rpc CreateDtakoCarsIchibanCars(CreateDtakoCarsIchibanCarsRequest) returns (CreateDtakoCarsIchibanCarsResponse);
+  rpc GetDtakoCarsIchibanCars(GetDtakoCarsIchibanCarsRequest) returns (GetDtakoCarsIchibanCarsResponse);
+  rpc UpdateDtakoCarsIchibanCars(UpdateDtakoCarsIchibanCarsRequest) returns (UpdateDtakoCarsIchibanCarsResponse);
+  rpc DeleteDtakoCarsIchibanCars(DeleteDtakoCarsIchibanCarsRequest) returns (DeleteDtakoCarsIchibanCarsResponse);
+  rpc ListDtakoCarsIchibanCars(ListDtakoCarsIchibanCarsRequest) returns (ListDtakoCarsIchibanCarsResponse);
+  rpc ListDtakoCarsIchibanCarsByOrganization(ListDtakoCarsIchibanCarsByOrganizationRequest) returns (ListDtakoCarsIchibanCarsByOrganizationResponse);
+}
+
+// ============================================================
+// Uriage - Phase 1-3
+// ============================================================
+
+message Uriage {
+  string name = 1;
+  string bumon = 2;
+  string organization_id = 3;
+  optional int32 kingaku = 4;
+  optional int32 type = 5;
+  optional int32 cam = 6;
+  string date = 7;
+}
+
+message CreateUriageRequest {
+  string name = 1;
+  string bumon = 2;
+  string organization_id = 3;
+  optional int32 kingaku = 4;
+  optional int32 type = 5;
+  optional int32 cam = 6;
+  string date = 7;
+}
+
+message CreateUriageResponse {
+  Uriage uriage = 1;
+}
+
+message GetUriageRequest {
+  string name = 1;
+  string bumon = 2;
+  string organization_id = 3;
+  string date = 4;
+}
+
+message GetUriageResponse {
+  Uriage uriage = 1;
+}
+
+message UpdateUriageRequest {
+  string name = 1;
+  string bumon = 2;
+  string organization_id = 3;
+  string date = 4;
+  optional int32 kingaku = 5;
+  optional int32 type = 6;
+  optional int32 cam = 7;
+}
+
+message UpdateUriageResponse {
+  Uriage uriage = 1;
+}
+
+message DeleteUriageRequest {
+  string name = 1;
+  string bumon = 2;
+  string organization_id = 3;
+  string date = 4;
+}
+
+message DeleteUriageResponse {
+  bool success = 1;
+}
+
+message ListUriagesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListUriagesResponse {
+  repeated Uriage uriages = 1;
+  string next_page_token = 2;
+}
+
+message ListUriagesByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListUriagesByOrganizationResponse {
+  repeated Uriage uriages = 1;
+  string next_page_token = 2;
+}
+
+service UriageService {
+  rpc CreateUriage(CreateUriageRequest) returns (CreateUriageResponse);
+  rpc GetUriage(GetUriageRequest) returns (GetUriageResponse);
+  rpc UpdateUriage(UpdateUriageRequest) returns (UpdateUriageResponse);
+  rpc DeleteUriage(DeleteUriageRequest) returns (DeleteUriageResponse);
+  rpc ListUriages(ListUriagesRequest) returns (ListUriagesResponse);
+  rpc ListUriagesByOrganization(ListUriagesByOrganizationRequest) returns (ListUriagesByOrganizationResponse);
+}
+
+// ============================================================
+// UriageJisha - Phase 1-3
+// ============================================================
+
+message UriageJisha {
+  string bumon = 1;
+  string organization_id = 2;
+  optional int32 kingaku = 3;
+  optional int32 type = 4;
+  string date = 5;
+}
+
+message CreateUriageJishaRequest {
+  string bumon = 1;
+  string organization_id = 2;
+  optional int32 kingaku = 3;
+  optional int32 type = 4;
+  string date = 5;
+}
+
+message CreateUriageJishaResponse {
+  UriageJisha uriage_jisha = 1;
+}
+
+message GetUriageJishaRequest {
+  string bumon = 1;
+  string organization_id = 2;
+  string date = 3;
+}
+
+message GetUriageJishaResponse {
+  UriageJisha uriage_jisha = 1;
+}
+
+message UpdateUriageJishaRequest {
+  string bumon = 1;
+  string organization_id = 2;
+  string date = 3;
+  optional int32 kingaku = 4;
+  optional int32 type = 5;
+}
+
+message UpdateUriageJishaResponse {
+  UriageJisha uriage_jisha = 1;
+}
+
+message DeleteUriageJishaRequest {
+  string bumon = 1;
+  string organization_id = 2;
+  string date = 3;
+}
+
+message DeleteUriageJishaResponse {
+  bool success = 1;
+}
+
+message ListUriageJishasRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListUriageJishasResponse {
+  repeated UriageJisha uriage_jishas = 1;
+  string next_page_token = 2;
+}
+
+message ListUriageJishasByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListUriageJishasByOrganizationResponse {
+  repeated UriageJisha uriage_jishas = 1;
+  string next_page_token = 2;
+}
+
+service UriageJishaService {
+  rpc CreateUriageJisha(CreateUriageJishaRequest) returns (CreateUriageJishaResponse);
+  rpc GetUriageJisha(GetUriageJishaRequest) returns (GetUriageJishaResponse);
+  rpc UpdateUriageJisha(UpdateUriageJishaRequest) returns (UpdateUriageJishaResponse);
+  rpc DeleteUriageJisha(DeleteUriageJishaRequest) returns (DeleteUriageJishaResponse);
+  rpc ListUriageJishas(ListUriageJishasRequest) returns (ListUriageJishasResponse);
+  rpc ListUriageJishasByOrganization(ListUriageJishasByOrganizationRequest) returns (ListUriageJishasByOrganizationResponse);
+}
+
+// ============================================================
+// CarInspection - Phase 1-4
+// ============================================================
+
+message CarInspection {
+  string organization_id = 1;
+  string cert_info_import_file_version = 2;
+  string accept_output_no = 3;
+  string form_type = 4;
+  string elect_cert_mg_no = 5;
+  string car_id = 6;
+  string elect_cert_publishdate_e = 7;
+  string elect_cert_publishdate_y = 8;
+  string elect_cert_publishdate_m = 9;
+  string elect_cert_publishdate_d = 10;
+  string grantdate_e = 11;
+  string grantdate_y = 12;
+  string grantdate_m = 13;
+  string grantdate_d = 14;
+  string transpotation_bureau_chief_name = 15;
+  string entry_no_car_no = 16;
+  string reg_grantdate_e = 17;
+  string reg_grantdate_y = 18;
+  string reg_grantdate_m = 19;
+  string reg_grantdate_d = 20;
+  string first_regist_date_e = 21;
+  string first_regist_date_y = 22;
+  string first_regist_date_m = 23;
+  string car_name = 24;
+  string car_name_code = 25;
+  string car_no = 26;
+  string model = 27;
+  string engine_model = 28;
+  string owner_name_low_level_char = 29;
+  string owner_name_high_level_char = 30;
+  string owner_address_char = 31;
+  string owner_address_num_value = 32;
+  string owner_address_code = 33;
+  string user_name_low_level_char = 34;
+  string user_name_high_level_char = 35;
+  string user_address_char = 36;
+  string user_address_num_value = 37;
+  string user_address_code = 38;
+  string use_headqurter_char = 39;
+  string use_headqurter_num_value = 40;
+  string use_headqurter_code = 41;
+  string car_kind = 42;
+  string use = 43;
+  string private_business = 44;
+  string car_shape = 45;
+  string car_shape_code = 46;
+  string note_cap = 47;
+  string cap = 48;
+  string note_max_loadage = 49;
+  string max_loadage = 50;
+  string note_car_wgt = 51;
+  string car_wgt = 52;
+  string note_car_total_wgt = 53;
+  string car_total_wgt = 54;
+  string note_length = 55;
+  string length = 56;
+  string note_width = 57;
+  string width = 58;
+  string note_height = 59;
+  string height = 60;
+  string ff_ax_wgt = 61;
+  string fr_ax_wgt = 62;
+  string rf_ax_wgt = 63;
+  string rr_ax_wgt = 64;
+  string displacement = 65;
+  string fuel_class = 66;
+  string model_specify_no = 67;
+  string classify_around_no = 68;
+  string valid_period_expir_date_e = 69;
+  string valid_period_expir_date_y = 70;
+  string valid_period_expir_date_m = 71;
+  string valid_period_expir_date_d = 72;
+  string note_info = 73;
+  string twodimension_code_info_entry_no_car_no = 74;
+  string twodimension_code_info_car_no = 75;
+  string twodimension_code_info_valid_period_expir_date = 76;
+  string twodimension_code_info_model = 77;
+  string twodimension_code_info_model_specify_no_classify_around_no = 78;
+  string twodimension_code_info_char_info = 79;
+  string twodimension_code_info_engine_model = 80;
+  string twodimension_code_info_car_no_stamp_place = 81;
+  string twodimension_code_info_first_regist_date = 82;
+  string twodimension_code_info_ff_ax_wgt = 83;
+  string twodimension_code_info_fr_ax_wgt = 84;
+  string twodimension_code_info_rf_ax_wgt = 85;
+  string twodimension_code_info_rr_ax_wgt = 86;
+  string twodimension_code_info_noise_reg = 87;
+  string twodimension_code_info_near_noise_reg = 88;
+  string twodimension_code_info_drive_method = 89;
+  string twodimension_code_info_opacimeter_meas_car = 90;
+  string twodimension_code_info_nox_pm_meas_mode = 91;
+  string twodimension_code_info_nox_value = 92;
+  string twodimension_code_info_pm_value = 93;
+  string twodimension_code_info_safe_std_date = 94;
+  string twodimension_code_info_fuel_class_code = 95;
+  string regist_car_light_car = 96;
+  string created = 97;
+  string modified = 98;
+}
+
+message CreateCarInspectionRequest {
+  string organization_id = 1;
+  string cert_info_import_file_version = 2;
+  string accept_output_no = 3;
+  string form_type = 4;
+  string elect_cert_mg_no = 5;
+  string car_id = 6;
+  string elect_cert_publishdate_e = 7;
+  string elect_cert_publishdate_y = 8;
+  string elect_cert_publishdate_m = 9;
+  string elect_cert_publishdate_d = 10;
+  string grantdate_e = 11;
+  string grantdate_y = 12;
+  string grantdate_m = 13;
+  string grantdate_d = 14;
+  string transpotation_bureau_chief_name = 15;
+  string entry_no_car_no = 16;
+  string reg_grantdate_e = 17;
+  string reg_grantdate_y = 18;
+  string reg_grantdate_m = 19;
+  string reg_grantdate_d = 20;
+  string first_regist_date_e = 21;
+  string first_regist_date_y = 22;
+  string first_regist_date_m = 23;
+  string car_name = 24;
+  string car_name_code = 25;
+  string car_no = 26;
+  string model = 27;
+  string engine_model = 28;
+  string owner_name_low_level_char = 29;
+  string owner_name_high_level_char = 30;
+  string owner_address_char = 31;
+  string owner_address_num_value = 32;
+  string owner_address_code = 33;
+  string user_name_low_level_char = 34;
+  string user_name_high_level_char = 35;
+  string user_address_char = 36;
+  string user_address_num_value = 37;
+  string user_address_code = 38;
+  string use_headqurter_char = 39;
+  string use_headqurter_num_value = 40;
+  string use_headqurter_code = 41;
+  string car_kind = 42;
+  string use = 43;
+  string private_business = 44;
+  string car_shape = 45;
+  string car_shape_code = 46;
+  string note_cap = 47;
+  string cap = 48;
+  string note_max_loadage = 49;
+  string max_loadage = 50;
+  string note_car_wgt = 51;
+  string car_wgt = 52;
+  string note_car_total_wgt = 53;
+  string car_total_wgt = 54;
+  string note_length = 55;
+  string length = 56;
+  string note_width = 57;
+  string width = 58;
+  string note_height = 59;
+  string height = 60;
+  string ff_ax_wgt = 61;
+  string fr_ax_wgt = 62;
+  string rf_ax_wgt = 63;
+  string rr_ax_wgt = 64;
+  string displacement = 65;
+  string fuel_class = 66;
+  string model_specify_no = 67;
+  string classify_around_no = 68;
+  string valid_period_expir_date_e = 69;
+  string valid_period_expir_date_y = 70;
+  string valid_period_expir_date_m = 71;
+  string valid_period_expir_date_d = 72;
+  string note_info = 73;
+  string twodimension_code_info_entry_no_car_no = 74;
+  string twodimension_code_info_car_no = 75;
+  string twodimension_code_info_valid_period_expir_date = 76;
+  string twodimension_code_info_model = 77;
+  string twodimension_code_info_model_specify_no_classify_around_no = 78;
+  string twodimension_code_info_char_info = 79;
+  string twodimension_code_info_engine_model = 80;
+  string twodimension_code_info_car_no_stamp_place = 81;
+  string twodimension_code_info_first_regist_date = 82;
+  string twodimension_code_info_ff_ax_wgt = 83;
+  string twodimension_code_info_fr_ax_wgt = 84;
+  string twodimension_code_info_rf_ax_wgt = 85;
+  string twodimension_code_info_rr_ax_wgt = 86;
+  string twodimension_code_info_noise_reg = 87;
+  string twodimension_code_info_near_noise_reg = 88;
+  string twodimension_code_info_drive_method = 89;
+  string twodimension_code_info_opacimeter_meas_car = 90;
+  string twodimension_code_info_nox_pm_meas_mode = 91;
+  string twodimension_code_info_nox_value = 92;
+  string twodimension_code_info_pm_value = 93;
+  string twodimension_code_info_safe_std_date = 94;
+  string twodimension_code_info_fuel_class_code = 95;
+  string regist_car_light_car = 96;
+  string created = 97;
+  string modified = 98;
+}
+
+message CreateCarInspectionResponse {
+  CarInspection car_inspection = 1;
+}
+
+message GetCarInspectionRequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string elect_cert_publishdate_e = 3;
+  string elect_cert_publishdate_y = 4;
+  string elect_cert_publishdate_m = 5;
+  string elect_cert_publishdate_d = 6;
+}
+
+message GetCarInspectionResponse {
+  CarInspection car_inspection = 1;
+}
+
+message UpdateCarInspectionRequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string elect_cert_publishdate_e = 3;
+  string elect_cert_publishdate_y = 4;
+  string elect_cert_publishdate_m = 5;
+  string elect_cert_publishdate_d = 6;
+  // All updateable fields
+  string cert_info_import_file_version = 7;
+  string accept_output_no = 8;
+  string form_type = 9;
+  string car_id = 10;
+  string grantdate_e = 11;
+  string grantdate_y = 12;
+  string grantdate_m = 13;
+  string grantdate_d = 14;
+  string transpotation_bureau_chief_name = 15;
+  string entry_no_car_no = 16;
+  string reg_grantdate_e = 17;
+  string reg_grantdate_y = 18;
+  string reg_grantdate_m = 19;
+  string reg_grantdate_d = 20;
+  string first_regist_date_e = 21;
+  string first_regist_date_y = 22;
+  string first_regist_date_m = 23;
+  string car_name = 24;
+  string car_name_code = 25;
+  string car_no = 26;
+  string model = 27;
+  string engine_model = 28;
+  string owner_name_low_level_char = 29;
+  string owner_name_high_level_char = 30;
+  string owner_address_char = 31;
+  string owner_address_num_value = 32;
+  string owner_address_code = 33;
+  string user_name_low_level_char = 34;
+  string user_name_high_level_char = 35;
+  string user_address_char = 36;
+  string user_address_num_value = 37;
+  string user_address_code = 38;
+  string use_headqurter_char = 39;
+  string use_headqurter_num_value = 40;
+  string use_headqurter_code = 41;
+  string car_kind = 42;
+  string use = 43;
+  string private_business = 44;
+  string car_shape = 45;
+  string car_shape_code = 46;
+  string note_cap = 47;
+  string cap = 48;
+  string note_max_loadage = 49;
+  string max_loadage = 50;
+  string note_car_wgt = 51;
+  string car_wgt = 52;
+  string note_car_total_wgt = 53;
+  string car_total_wgt = 54;
+  string note_length = 55;
+  string length = 56;
+  string note_width = 57;
+  string width = 58;
+  string note_height = 59;
+  string height = 60;
+  string ff_ax_wgt = 61;
+  string fr_ax_wgt = 62;
+  string rf_ax_wgt = 63;
+  string rr_ax_wgt = 64;
+  string displacement = 65;
+  string fuel_class = 66;
+  string model_specify_no = 67;
+  string classify_around_no = 68;
+  string valid_period_expir_date_e = 69;
+  string valid_period_expir_date_y = 70;
+  string valid_period_expir_date_m = 71;
+  string valid_period_expir_date_d = 72;
+  string note_info = 73;
+  string twodimension_code_info_entry_no_car_no = 74;
+  string twodimension_code_info_car_no = 75;
+  string twodimension_code_info_valid_period_expir_date = 76;
+  string twodimension_code_info_model = 77;
+  string twodimension_code_info_model_specify_no_classify_around_no = 78;
+  string twodimension_code_info_char_info = 79;
+  string twodimension_code_info_engine_model = 80;
+  string twodimension_code_info_car_no_stamp_place = 81;
+  string twodimension_code_info_first_regist_date = 82;
+  string twodimension_code_info_ff_ax_wgt = 83;
+  string twodimension_code_info_fr_ax_wgt = 84;
+  string twodimension_code_info_rf_ax_wgt = 85;
+  string twodimension_code_info_rr_ax_wgt = 86;
+  string twodimension_code_info_noise_reg = 87;
+  string twodimension_code_info_near_noise_reg = 88;
+  string twodimension_code_info_drive_method = 89;
+  string twodimension_code_info_opacimeter_meas_car = 90;
+  string twodimension_code_info_nox_pm_meas_mode = 91;
+  string twodimension_code_info_nox_value = 92;
+  string twodimension_code_info_pm_value = 93;
+  string twodimension_code_info_safe_std_date = 94;
+  string twodimension_code_info_fuel_class_code = 95;
+  string regist_car_light_car = 96;
+  string modified = 97;
+}
+
+message UpdateCarInspectionResponse {
+  CarInspection car_inspection = 1;
+}
+
+message DeleteCarInspectionRequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string elect_cert_publishdate_e = 3;
+  string elect_cert_publishdate_y = 4;
+  string elect_cert_publishdate_m = 5;
+  string elect_cert_publishdate_d = 6;
+}
+
+message DeleteCarInspectionResponse {
+  bool success = 1;
+}
+
+message ListCarInspectionsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInspectionsResponse {
+  repeated CarInspection car_inspections = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInspectionsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInspectionsByOrganizationResponse {
+  repeated CarInspection car_inspections = 1;
+  string next_page_token = 2;
+}
+
+service CarInspectionService {
+  rpc CreateCarInspection(CreateCarInspectionRequest) returns (CreateCarInspectionResponse);
+  rpc GetCarInspection(GetCarInspectionRequest) returns (GetCarInspectionResponse);
+  rpc UpdateCarInspection(UpdateCarInspectionRequest) returns (UpdateCarInspectionResponse);
+  rpc DeleteCarInspection(DeleteCarInspectionRequest) returns (DeleteCarInspectionResponse);
+  rpc ListCarInspections(ListCarInspectionsRequest) returns (ListCarInspectionsResponse);
+  rpc ListCarInspectionsByOrganization(ListCarInspectionsByOrganizationRequest) returns (ListCarInspectionsByOrganizationResponse);
+}
+
+// ============================================================
+// CarInspectionFiles - Phase 1-4
+// ============================================================
+
+message CarInspectionFile {
+  string uuid = 1;
+  string organization_id = 2;
+  string type = 3;
+  string elect_cert_mg_no = 4;
+  string elect_cert_publishdate_e = 5;
+  string elect_cert_publishdate_y = 6;
+  string elect_cert_publishdate_m = 7;
+  string elect_cert_publishdate_d = 8;
+  string created = 9;
+  string modified = 10;
+  optional string deleted = 11;
+}
+
+message CreateCarInspectionFileRequest {
+  string organization_id = 1;
+  string type = 2;
+  string elect_cert_mg_no = 3;
+  string elect_cert_publishdate_e = 4;
+  string elect_cert_publishdate_y = 5;
+  string elect_cert_publishdate_m = 6;
+  string elect_cert_publishdate_d = 7;
+  string created = 8;
+  string modified = 9;
+}
+
+message CreateCarInspectionFileResponse {
+  CarInspectionFile car_inspection_file = 1;
+}
+
+message GetCarInspectionFileRequest {
+  string uuid = 1;
+}
+
+message GetCarInspectionFileResponse {
+  CarInspectionFile car_inspection_file = 1;
+}
+
+message UpdateCarInspectionFileRequest {
+  string uuid = 1;
+  string type = 2;
+  string modified = 3;
+}
+
+message UpdateCarInspectionFileResponse {
+  CarInspectionFile car_inspection_file = 1;
+}
+
+message DeleteCarInspectionFileRequest {
+  string uuid = 1;
+}
+
+message DeleteCarInspectionFileResponse {
+  bool success = 1;
+}
+
+message ListCarInspectionFilesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInspectionFilesResponse {
+  repeated CarInspectionFile car_inspection_files = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInspectionFilesByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInspectionFilesByOrganizationResponse {
+  repeated CarInspectionFile car_inspection_files = 1;
+  string next_page_token = 2;
+}
+
+service CarInspectionFilesService {
+  rpc CreateCarInspectionFile(CreateCarInspectionFileRequest) returns (CreateCarInspectionFileResponse);
+  rpc GetCarInspectionFile(GetCarInspectionFileRequest) returns (GetCarInspectionFileResponse);
+  rpc UpdateCarInspectionFile(UpdateCarInspectionFileRequest) returns (UpdateCarInspectionFileResponse);
+  rpc DeleteCarInspectionFile(DeleteCarInspectionFileRequest) returns (DeleteCarInspectionFileResponse);
+  rpc ListCarInspectionFiles(ListCarInspectionFilesRequest) returns (ListCarInspectionFilesResponse);
+  rpc ListCarInspectionFilesByOrganization(ListCarInspectionFilesByOrganizationRequest) returns (ListCarInspectionFilesByOrganizationResponse);
+}
+
+// ============================================================
+// CarInspectionFilesA - Phase 1-4
+// ============================================================
+
+message CarInspectionFilesA {
+  string uuid = 1;
+  string organization_id = 2;
+  string type = 3;
+  string elect_cert_mg_no = 4;
+  string grantdate_e = 5;
+  string grantdate_y = 6;
+  string grantdate_m = 7;
+  string grantdate_d = 8;
+  string created = 9;
+  string modified = 10;
+  optional string deleted = 11;
+}
+
+message CreateCarInspectionFilesARequest {
+  string organization_id = 1;
+  string type = 2;
+  string elect_cert_mg_no = 3;
+  string grantdate_e = 4;
+  string grantdate_y = 5;
+  string grantdate_m = 6;
+  string grantdate_d = 7;
+  string created = 8;
+  string modified = 9;
+}
+
+message CreateCarInspectionFilesAResponse {
+  CarInspectionFilesA car_inspection_files_a = 1;
+}
+
+message GetCarInspectionFilesARequest {
+  string uuid = 1;
+}
+
+message GetCarInspectionFilesAResponse {
+  CarInspectionFilesA car_inspection_files_a = 1;
+}
+
+message UpdateCarInspectionFilesARequest {
+  string uuid = 1;
+  string type = 2;
+  string modified = 3;
+}
+
+message UpdateCarInspectionFilesAResponse {
+  CarInspectionFilesA car_inspection_files_a = 1;
+}
+
+message DeleteCarInspectionFilesARequest {
+  string uuid = 1;
+}
+
+message DeleteCarInspectionFilesAResponse {
+  bool success = 1;
+}
+
+message ListCarInspectionFilesAsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInspectionFilesAsResponse {
+  repeated CarInspectionFilesA car_inspection_files_as = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInspectionFilesAsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInspectionFilesAsByOrganizationResponse {
+  repeated CarInspectionFilesA car_inspection_files_as = 1;
+  string next_page_token = 2;
+}
+
+service CarInspectionFilesAService {
+  rpc CreateCarInspectionFilesA(CreateCarInspectionFilesARequest) returns (CreateCarInspectionFilesAResponse);
+  rpc GetCarInspectionFilesA(GetCarInspectionFilesARequest) returns (GetCarInspectionFilesAResponse);
+  rpc UpdateCarInspectionFilesA(UpdateCarInspectionFilesARequest) returns (UpdateCarInspectionFilesAResponse);
+  rpc DeleteCarInspectionFilesA(DeleteCarInspectionFilesARequest) returns (DeleteCarInspectionFilesAResponse);
+  rpc ListCarInspectionFilesAs(ListCarInspectionFilesAsRequest) returns (ListCarInspectionFilesAsResponse);
+  rpc ListCarInspectionFilesAsByOrganization(ListCarInspectionFilesAsByOrganizationRequest) returns (ListCarInspectionFilesAsByOrganizationResponse);
+}
+
+// ============================================================
+// CarInspectionFilesB - Phase 1-4
+// ============================================================
+
+message CarInspectionFilesB {
+  string uuid = 1;
+  string organization_id = 2;
+  string type = 3;
+  string elect_cert_mg_no = 4;
+  string grantdate_e = 5;
+  string grantdate_y = 6;
+  string grantdate_m = 7;
+  string grantdate_d = 8;
+  string created = 9;
+  string modified = 10;
+  optional string deleted = 11;
+}
+
+message CreateCarInspectionFilesBRequest {
+  string organization_id = 1;
+  string type = 2;
+  string elect_cert_mg_no = 3;
+  string grantdate_e = 4;
+  string grantdate_y = 5;
+  string grantdate_m = 6;
+  string grantdate_d = 7;
+  string created = 8;
+  string modified = 9;
+}
+
+message CreateCarInspectionFilesBResponse {
+  CarInspectionFilesB car_inspection_files_b = 1;
+}
+
+message GetCarInspectionFilesBRequest {
+  string uuid = 1;
+}
+
+message GetCarInspectionFilesBResponse {
+  CarInspectionFilesB car_inspection_files_b = 1;
+}
+
+message UpdateCarInspectionFilesBRequest {
+  string uuid = 1;
+  string type = 2;
+  string modified = 3;
+}
+
+message UpdateCarInspectionFilesBResponse {
+  CarInspectionFilesB car_inspection_files_b = 1;
+}
+
+message DeleteCarInspectionFilesBRequest {
+  string uuid = 1;
+}
+
+message DeleteCarInspectionFilesBResponse {
+  bool success = 1;
+}
+
+message ListCarInspectionFilesBsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInspectionFilesBsResponse {
+  repeated CarInspectionFilesB car_inspection_files_bs = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInspectionFilesBsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInspectionFilesBsByOrganizationResponse {
+  repeated CarInspectionFilesB car_inspection_files_bs = 1;
+  string next_page_token = 2;
+}
+
+service CarInspectionFilesBService {
+  rpc CreateCarInspectionFilesB(CreateCarInspectionFilesBRequest) returns (CreateCarInspectionFilesBResponse);
+  rpc GetCarInspectionFilesB(GetCarInspectionFilesBRequest) returns (GetCarInspectionFilesBResponse);
+  rpc UpdateCarInspectionFilesB(UpdateCarInspectionFilesBRequest) returns (UpdateCarInspectionFilesBResponse);
+  rpc DeleteCarInspectionFilesB(DeleteCarInspectionFilesBRequest) returns (DeleteCarInspectionFilesBResponse);
+  rpc ListCarInspectionFilesBs(ListCarInspectionFilesBsRequest) returns (ListCarInspectionFilesBsResponse);
+  rpc ListCarInspectionFilesBsByOrganization(ListCarInspectionFilesBsByOrganizationRequest) returns (ListCarInspectionFilesBsByOrganizationResponse);
+}
+
+// ============================================================
+// CarInspectionDeregistration - Phase 1-4
+// ============================================================
+
+message CarInspectionDeregistration {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_car_no = 3;
+  string car_no = 4;
+  string valid_period_expir_date_e = 5;
+  string valid_period_expir_date_y = 6;
+  string valid_period_expir_date_m = 7;
+  string valid_period_expir_date_d = 8;
+  string twodimension_code_info_valid_period_expir_date = 9;
+}
+
+message CreateCarInspectionDeregistrationRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_car_no = 3;
+  string car_no = 4;
+  string valid_period_expir_date_e = 5;
+  string valid_period_expir_date_y = 6;
+  string valid_period_expir_date_m = 7;
+  string valid_period_expir_date_d = 8;
+  string twodimension_code_info_valid_period_expir_date = 9;
+}
+
+message CreateCarInspectionDeregistrationResponse {
+  CarInspectionDeregistration car_inspection_deregistration = 1;
+}
+
+message GetCarInspectionDeregistrationRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+}
+
+message GetCarInspectionDeregistrationResponse {
+  CarInspectionDeregistration car_inspection_deregistration = 1;
+}
+
+message UpdateCarInspectionDeregistrationRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+  string twodimension_code_info_car_no = 4;
+  string car_no = 5;
+  string valid_period_expir_date_e = 6;
+  string valid_period_expir_date_y = 7;
+  string valid_period_expir_date_m = 8;
+  string valid_period_expir_date_d = 9;
+}
+
+message UpdateCarInspectionDeregistrationResponse {
+  CarInspectionDeregistration car_inspection_deregistration = 1;
+}
+
+message DeleteCarInspectionDeregistrationRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+}
+
+message DeleteCarInspectionDeregistrationResponse {
+  bool success = 1;
+}
+
+message ListCarInspectionDeregistrationsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInspectionDeregistrationsResponse {
+  repeated CarInspectionDeregistration car_inspection_deregistrations = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInspectionDeregistrationsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInspectionDeregistrationsByOrganizationResponse {
+  repeated CarInspectionDeregistration car_inspection_deregistrations = 1;
+  string next_page_token = 2;
+}
+
+service CarInspectionDeregistrationService {
+  rpc CreateCarInspectionDeregistration(CreateCarInspectionDeregistrationRequest) returns (CreateCarInspectionDeregistrationResponse);
+  rpc GetCarInspectionDeregistration(GetCarInspectionDeregistrationRequest) returns (GetCarInspectionDeregistrationResponse);
+  rpc UpdateCarInspectionDeregistration(UpdateCarInspectionDeregistrationRequest) returns (UpdateCarInspectionDeregistrationResponse);
+  rpc DeleteCarInspectionDeregistration(DeleteCarInspectionDeregistrationRequest) returns (DeleteCarInspectionDeregistrationResponse);
+  rpc ListCarInspectionDeregistrations(ListCarInspectionDeregistrationsRequest) returns (ListCarInspectionDeregistrationsResponse);
+  rpc ListCarInspectionDeregistrationsByOrganization(ListCarInspectionDeregistrationsByOrganizationRequest) returns (ListCarInspectionDeregistrationsByOrganizationResponse);
+}
+
+// ============================================================
+// CarInspectionDeregistrationFiles - Phase 1-4
+// ============================================================
+
+message CarInspectionDeregistrationFiles {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+  string file_uuid = 4;
+}
+
+message CreateCarInspectionDeregistrationFilesRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+  string file_uuid = 4;
+}
+
+message CreateCarInspectionDeregistrationFilesResponse {
+  CarInspectionDeregistrationFiles car_inspection_deregistration_files = 1;
+}
+
+message GetCarInspectionDeregistrationFilesRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+  string file_uuid = 4;
+}
+
+message GetCarInspectionDeregistrationFilesResponse {
+  CarInspectionDeregistrationFiles car_inspection_deregistration_files = 1;
+}
+
+message UpdateCarInspectionDeregistrationFilesRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+  string file_uuid = 4;
+}
+
+message UpdateCarInspectionDeregistrationFilesResponse {
+  CarInspectionDeregistrationFiles car_inspection_deregistration_files = 1;
+}
+
+message DeleteCarInspectionDeregistrationFilesRequest {
+  string organization_id = 1;
+  string car_id = 2;
+  string twodimension_code_info_valid_period_expir_date = 3;
+  string file_uuid = 4;
+}
+
+message DeleteCarInspectionDeregistrationFilesResponse {
+  bool success = 1;
+}
+
+message ListCarInspectionDeregistrationFilessRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInspectionDeregistrationFilessResponse {
+  repeated CarInspectionDeregistrationFiles car_inspection_deregistration_filess = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInspectionDeregistrationFilessByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInspectionDeregistrationFilessByOrganizationResponse {
+  repeated CarInspectionDeregistrationFiles car_inspection_deregistration_filess = 1;
+  string next_page_token = 2;
+}
+
+service CarInspectionDeregistrationFilesService {
+  rpc CreateCarInspectionDeregistrationFiles(CreateCarInspectionDeregistrationFilesRequest) returns (CreateCarInspectionDeregistrationFilesResponse);
+  rpc GetCarInspectionDeregistrationFiles(GetCarInspectionDeregistrationFilesRequest) returns (GetCarInspectionDeregistrationFilesResponse);
+  rpc UpdateCarInspectionDeregistrationFiles(UpdateCarInspectionDeregistrationFilesRequest) returns (UpdateCarInspectionDeregistrationFilesResponse);
+  rpc DeleteCarInspectionDeregistrationFiles(DeleteCarInspectionDeregistrationFilesRequest) returns (DeleteCarInspectionDeregistrationFilesResponse);
+  rpc ListCarInspectionDeregistrationFiless(ListCarInspectionDeregistrationFilessRequest) returns (ListCarInspectionDeregistrationFilessResponse);
+  rpc ListCarInspectionDeregistrationFilessByOrganization(ListCarInspectionDeregistrationFilessByOrganizationRequest) returns (ListCarInspectionDeregistrationFilessByOrganizationResponse);
+}
+
+// ============================================================
+// CarInsSheetIchibanCars - Phase 1-4
+// ============================================================
+
+message CarInsSheetIchibanCars {
+  string organization_id = 1;
+  optional string id_cars = 2;
+  string elect_cert_mg_no = 3;
+  string elect_cert_publishdate_e = 4;
+  string elect_cert_publishdate_y = 5;
+  string elect_cert_publishdate_m = 6;
+  string elect_cert_publishdate_d = 7;
+}
+
+message CreateCarInsSheetIchibanCarsRequest {
+  string organization_id = 1;
+  optional string id_cars = 2;
+  string elect_cert_mg_no = 3;
+  string elect_cert_publishdate_e = 4;
+  string elect_cert_publishdate_y = 5;
+  string elect_cert_publishdate_m = 6;
+  string elect_cert_publishdate_d = 7;
+}
+
+message CreateCarInsSheetIchibanCarsResponse {
+  CarInsSheetIchibanCars car_ins_sheet_ichiban_cars = 1;
+}
+
+message GetCarInsSheetIchibanCarsRequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string elect_cert_publishdate_e = 3;
+  string elect_cert_publishdate_y = 4;
+  string elect_cert_publishdate_m = 5;
+  string elect_cert_publishdate_d = 6;
+}
+
+message GetCarInsSheetIchibanCarsResponse {
+  CarInsSheetIchibanCars car_ins_sheet_ichiban_cars = 1;
+}
+
+message UpdateCarInsSheetIchibanCarsRequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string elect_cert_publishdate_e = 3;
+  string elect_cert_publishdate_y = 4;
+  string elect_cert_publishdate_m = 5;
+  string elect_cert_publishdate_d = 6;
+  optional string id_cars = 7;
+}
+
+message UpdateCarInsSheetIchibanCarsResponse {
+  CarInsSheetIchibanCars car_ins_sheet_ichiban_cars = 1;
+}
+
+message DeleteCarInsSheetIchibanCarsRequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string elect_cert_publishdate_e = 3;
+  string elect_cert_publishdate_y = 4;
+  string elect_cert_publishdate_m = 5;
+  string elect_cert_publishdate_d = 6;
+}
+
+message DeleteCarInsSheetIchibanCarsResponse {
+  bool success = 1;
+}
+
+message ListCarInsSheetIchibanCarssRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInsSheetIchibanCarssResponse {
+  repeated CarInsSheetIchibanCars car_ins_sheet_ichiban_carss = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInsSheetIchibanCarssByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInsSheetIchibanCarssByOrganizationResponse {
+  repeated CarInsSheetIchibanCars car_ins_sheet_ichiban_carss = 1;
+  string next_page_token = 2;
+}
+
+service CarInsSheetIchibanCarsService {
+  rpc CreateCarInsSheetIchibanCars(CreateCarInsSheetIchibanCarsRequest) returns (CreateCarInsSheetIchibanCarsResponse);
+  rpc GetCarInsSheetIchibanCars(GetCarInsSheetIchibanCarsRequest) returns (GetCarInsSheetIchibanCarsResponse);
+  rpc UpdateCarInsSheetIchibanCars(UpdateCarInsSheetIchibanCarsRequest) returns (UpdateCarInsSheetIchibanCarsResponse);
+  rpc DeleteCarInsSheetIchibanCars(DeleteCarInsSheetIchibanCarsRequest) returns (DeleteCarInsSheetIchibanCarsResponse);
+  rpc ListCarInsSheetIchibanCarss(ListCarInsSheetIchibanCarssRequest) returns (ListCarInsSheetIchibanCarssResponse);
+  rpc ListCarInsSheetIchibanCarssByOrganization(ListCarInsSheetIchibanCarssByOrganizationRequest) returns (ListCarInsSheetIchibanCarssByOrganizationResponse);
+}
+
+// ============================================================
+// CarInsSheetIchibanCarsA - Phase 1-4
+// ============================================================
+
+message CarInsSheetIchibanCarsA {
+  string organization_id = 1;
+  optional string id_cars = 2;
+  string elect_cert_mg_no = 3;
+  string grantdate_e = 4;
+  string grantdate_y = 5;
+  string grantdate_m = 6;
+  string grantdate_d = 7;
+}
+
+message CreateCarInsSheetIchibanCarsARequest {
+  string organization_id = 1;
+  optional string id_cars = 2;
+  string elect_cert_mg_no = 3;
+  string grantdate_e = 4;
+  string grantdate_y = 5;
+  string grantdate_m = 6;
+  string grantdate_d = 7;
+}
+
+message CreateCarInsSheetIchibanCarsAResponse {
+  CarInsSheetIchibanCarsA car_ins_sheet_ichiban_cars_a = 1;
+}
+
+message GetCarInsSheetIchibanCarsARequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string grantdate_e = 3;
+  string grantdate_y = 4;
+  string grantdate_m = 5;
+  string grantdate_d = 6;
+}
+
+message GetCarInsSheetIchibanCarsAResponse {
+  CarInsSheetIchibanCarsA car_ins_sheet_ichiban_cars_a = 1;
+}
+
+message UpdateCarInsSheetIchibanCarsARequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string grantdate_e = 3;
+  string grantdate_y = 4;
+  string grantdate_m = 5;
+  string grantdate_d = 6;
+  optional string id_cars = 7;
+}
+
+message UpdateCarInsSheetIchibanCarsAResponse {
+  CarInsSheetIchibanCarsA car_ins_sheet_ichiban_cars_a = 1;
+}
+
+message DeleteCarInsSheetIchibanCarsARequest {
+  string organization_id = 1;
+  string elect_cert_mg_no = 2;
+  string grantdate_e = 3;
+  string grantdate_y = 4;
+  string grantdate_m = 5;
+  string grantdate_d = 6;
+}
+
+message DeleteCarInsSheetIchibanCarsAResponse {
+  bool success = 1;
+}
+
+message ListCarInsSheetIchibanCarsAsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCarInsSheetIchibanCarsAsResponse {
+  repeated CarInsSheetIchibanCarsA car_ins_sheet_ichiban_cars_as = 1;
+  string next_page_token = 2;
+}
+
+message ListCarInsSheetIchibanCarsAsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCarInsSheetIchibanCarsAsByOrganizationResponse {
+  repeated CarInsSheetIchibanCarsA car_ins_sheet_ichiban_cars_as = 1;
+  string next_page_token = 2;
+}
+
+service CarInsSheetIchibanCarsAService {
+  rpc CreateCarInsSheetIchibanCarsA(CreateCarInsSheetIchibanCarsARequest) returns (CreateCarInsSheetIchibanCarsAResponse);
+  rpc GetCarInsSheetIchibanCarsA(GetCarInsSheetIchibanCarsARequest) returns (GetCarInsSheetIchibanCarsAResponse);
+  rpc UpdateCarInsSheetIchibanCarsA(UpdateCarInsSheetIchibanCarsARequest) returns (UpdateCarInsSheetIchibanCarsAResponse);
+  rpc DeleteCarInsSheetIchibanCarsA(DeleteCarInsSheetIchibanCarsARequest) returns (DeleteCarInsSheetIchibanCarsAResponse);
+  rpc ListCarInsSheetIchibanCarsAs(ListCarInsSheetIchibanCarsAsRequest) returns (ListCarInsSheetIchibanCarsAsResponse);
+  rpc ListCarInsSheetIchibanCarsAsByOrganization(ListCarInsSheetIchibanCarsAsByOrganizationRequest) returns (ListCarInsSheetIchibanCarsAsByOrganizationResponse);
+}

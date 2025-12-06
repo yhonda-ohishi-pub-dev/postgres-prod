@@ -31,7 +31,7 @@ proto/service.protoに26個のサービス定義を追加。以下の順で実�
 | cam_file_exe | CamFileExe | 4 |
 | cam_file_exe_stage | CamFileExeStage | 3 |
 
-#### Phase 1-3: 車両関連テーブル
+#### Phase 1-3: 車両関連テーブル ✅ 完了
 | テーブル | メッセージ | フィールド数 |
 |---------|-----------|------------|
 | ichiban_cars | IchibanCar | 12 |
@@ -39,7 +39,7 @@ proto/service.protoに26個のサービス定義を追加。以下の順で実�
 | uriage | Uriage | 7 |
 | uriage_jisha | UriageJisha | 5 |
 
-#### Phase 1-4: 車検関連テーブル
+#### Phase 1-4: 車検関連テーブル ✅ 完了
 | テーブル | メッセージ | フィールド数 |
 |---------|-----------|------------|
 | car_inspection | CarInspection | 100+ |
@@ -152,6 +152,40 @@ gcloud builds submit --config=cloudbuild.yaml ...
 - CamFileService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
 - CamFileExeService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
 - CamFileExeStageService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+
+**ビルド確認:** go build 成功
+
+### Phase 1-3: 車両関連テーブルのProto定義追加 (2025-12-07)
+
+**更新ファイル:**
+- proto/service.proto: 4サービス（IchibanCar, DtakoCarsIchibanCars, Uriage, UriageJisha）のメッセージ・RPC定義追加
+- pkg/pb/service.pb.go: protoc生成
+- pkg/pb/service_grpc.pb.go: protoc生成
+
+**追加内容:**
+- IchibanCarService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- DtakoCarsIchibanCarsService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- UriageService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- UriageJishaService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+
+**ビルド確認:** go build 成功
+
+### Phase 1-4: 車検関連テーブルのProto定義追加 (2025-12-07)
+
+**更新ファイル:**
+- proto/service.proto: 8サービス（CarInspection, CarInspectionFiles, CarInspectionFilesA, CarInspectionFilesB, CarInspectionDeregistration, CarInspectionDeregistrationFiles, CarInsSheetIchibanCars, CarInsSheetIchibanCarsA）のメッセージ・RPC定義追加
+- pkg/pb/service.pb.go: protoc生成 (326KB)
+- pkg/pb/service_grpc.pb.go: protoc生成 (162KB)
+
+**追加内容:**
+- CarInspectionService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 98フィールド
+- CarInspectionFilesService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 11フィールド
+- CarInspectionFilesAService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 11フィールド
+- CarInspectionFilesBService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 11フィールド
+- CarInspectionDeregistrationService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 9フィールド
+- CarInspectionDeregistrationFilesService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 4フィールド
+- CarInsSheetIchibanCarsService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 7フィールド
+- CarInsSheetIchibanCarsAService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 7フィールド
 
 **ビルド確認:** go build 成功
 
