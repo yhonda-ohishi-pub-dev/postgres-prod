@@ -70,3 +70,329 @@ service OrganizationService {
   rpc DeleteOrganization(DeleteOrganizationRequest) returns (DeleteOrganizationResponse);
   rpc ListOrganizations(ListOrganizationsRequest) returns (ListOrganizationsResponse);
 }
+
+// ============================================================
+// AppUser - Phase 1-1
+// ============================================================
+
+message AppUser {
+  string id = 1;
+  string iam_email = 2;
+  string display_name = 3;
+  bool is_superadmin = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+  optional google.protobuf.Timestamp deleted_at = 7;
+}
+
+message CreateAppUserRequest {
+  string iam_email = 1;
+  string display_name = 2;
+  bool is_superadmin = 3;
+}
+
+message CreateAppUserResponse {
+  AppUser app_user = 1;
+}
+
+message GetAppUserRequest {
+  string id = 1;
+}
+
+message GetAppUserResponse {
+  AppUser app_user = 1;
+}
+
+message GetAppUserByIamEmailRequest {
+  string iam_email = 1;
+}
+
+message GetAppUserByIamEmailResponse {
+  AppUser app_user = 1;
+}
+
+message UpdateAppUserRequest {
+  string id = 1;
+  string display_name = 2;
+  bool is_superadmin = 3;
+}
+
+message UpdateAppUserResponse {
+  AppUser app_user = 1;
+}
+
+message DeleteAppUserRequest {
+  string id = 1;
+}
+
+message DeleteAppUserResponse {
+  bool success = 1;
+}
+
+message ListAppUsersRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListAppUsersResponse {
+  repeated AppUser app_users = 1;
+  string next_page_token = 2;
+}
+
+service AppUserService {
+  rpc CreateAppUser(CreateAppUserRequest) returns (CreateAppUserResponse);
+  rpc GetAppUser(GetAppUserRequest) returns (GetAppUserResponse);
+  rpc GetAppUserByIamEmail(GetAppUserByIamEmailRequest) returns (GetAppUserByIamEmailResponse);
+  rpc UpdateAppUser(UpdateAppUserRequest) returns (UpdateAppUserResponse);
+  rpc DeleteAppUser(DeleteAppUserRequest) returns (DeleteAppUserResponse);
+  rpc ListAppUsers(ListAppUsersRequest) returns (ListAppUsersResponse);
+}
+
+// ============================================================
+// UserOrganization - Phase 1-1
+// ============================================================
+
+message UserOrganization {
+  string id = 1;
+  string user_id = 2;
+  string organization_id = 3;
+  string role = 4;
+  bool is_default = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+}
+
+message CreateUserOrganizationRequest {
+  string user_id = 1;
+  string organization_id = 2;
+  string role = 3;
+  bool is_default = 4;
+}
+
+message CreateUserOrganizationResponse {
+  UserOrganization user_organization = 1;
+}
+
+message GetUserOrganizationRequest {
+  string id = 1;
+}
+
+message GetUserOrganizationResponse {
+  UserOrganization user_organization = 1;
+}
+
+message UpdateUserOrganizationRequest {
+  string id = 1;
+  string role = 2;
+  bool is_default = 3;
+}
+
+message UpdateUserOrganizationResponse {
+  UserOrganization user_organization = 1;
+}
+
+message DeleteUserOrganizationRequest {
+  string id = 1;
+}
+
+message DeleteUserOrganizationResponse {
+  bool success = 1;
+}
+
+message ListUserOrganizationsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListUserOrganizationsResponse {
+  repeated UserOrganization user_organizations = 1;
+  string next_page_token = 2;
+}
+
+message ListUserOrganizationsByUserRequest {
+  string user_id = 1;
+}
+
+message ListUserOrganizationsByUserResponse {
+  repeated UserOrganization user_organizations = 1;
+}
+
+message ListUserOrganizationsByOrgRequest {
+  string organization_id = 1;
+}
+
+message ListUserOrganizationsByOrgResponse {
+  repeated UserOrganization user_organizations = 1;
+}
+
+service UserOrganizationService {
+  rpc CreateUserOrganization(CreateUserOrganizationRequest) returns (CreateUserOrganizationResponse);
+  rpc GetUserOrganization(GetUserOrganizationRequest) returns (GetUserOrganizationResponse);
+  rpc UpdateUserOrganization(UpdateUserOrganizationRequest) returns (UpdateUserOrganizationResponse);
+  rpc DeleteUserOrganization(DeleteUserOrganizationRequest) returns (DeleteUserOrganizationResponse);
+  rpc ListUserOrganizations(ListUserOrganizationsRequest) returns (ListUserOrganizationsResponse);
+  rpc ListUserOrganizationsByUser(ListUserOrganizationsByUserRequest) returns (ListUserOrganizationsByUserResponse);
+  rpc ListUserOrganizationsByOrg(ListUserOrganizationsByOrgRequest) returns (ListUserOrganizationsByOrgResponse);
+}
+
+// ============================================================
+// File - Phase 1-1
+// ============================================================
+
+message File {
+  string uuid = 1;
+  string organization_id = 2;
+  string filename = 3;
+  string created = 4;
+  string deleted = 5;
+  string type = 6;
+  optional string blob = 7;
+}
+
+message CreateFileRequest {
+  string organization_id = 1;
+  string filename = 2;
+  string created = 3;
+  string type = 4;
+  optional string blob = 5;
+}
+
+message CreateFileResponse {
+  File file = 1;
+}
+
+message GetFileRequest {
+  string uuid = 1;
+}
+
+message GetFileResponse {
+  File file = 1;
+}
+
+message UpdateFileRequest {
+  string uuid = 1;
+  string filename = 2;
+  string type = 3;
+  optional string blob = 4;
+}
+
+message UpdateFileResponse {
+  File file = 1;
+}
+
+message DeleteFileRequest {
+  string uuid = 1;
+  string deleted_timestamp = 2;
+}
+
+message DeleteFileResponse {
+  bool success = 1;
+}
+
+message ListFilesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListFilesResponse {
+  repeated File files = 1;
+  string next_page_token = 2;
+}
+
+message ListFilesByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListFilesByOrganizationResponse {
+  repeated File files = 1;
+  string next_page_token = 2;
+}
+
+service FileService {
+  rpc CreateFile(CreateFileRequest) returns (CreateFileResponse);
+  rpc GetFile(GetFileRequest) returns (GetFileResponse);
+  rpc UpdateFile(UpdateFileRequest) returns (UpdateFileResponse);
+  rpc DeleteFile(DeleteFileRequest) returns (DeleteFileResponse);
+  rpc ListFiles(ListFilesRequest) returns (ListFilesResponse);
+  rpc ListFilesByOrganization(ListFilesByOrganizationRequest) returns (ListFilesByOrganizationResponse);
+}
+
+// ============================================================
+// FlickrPhoto - Phase 1-1
+// ============================================================
+
+message FlickrPhoto {
+  string id = 1;
+  string organization_id = 2;
+  string secret = 3;
+  string server = 4;
+}
+
+message CreateFlickrPhotoRequest {
+  string id = 1;
+  string organization_id = 2;
+  string secret = 3;
+  string server = 4;
+}
+
+message CreateFlickrPhotoResponse {
+  FlickrPhoto flickr_photo = 1;
+}
+
+message GetFlickrPhotoRequest {
+  string id = 1;
+}
+
+message GetFlickrPhotoResponse {
+  FlickrPhoto flickr_photo = 1;
+}
+
+message UpdateFlickrPhotoRequest {
+  string id = 1;
+  string secret = 2;
+  string server = 3;
+}
+
+message UpdateFlickrPhotoResponse {
+  FlickrPhoto flickr_photo = 1;
+}
+
+message DeleteFlickrPhotoRequest {
+  string id = 1;
+}
+
+message DeleteFlickrPhotoResponse {
+  bool success = 1;
+}
+
+message ListFlickrPhotosRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListFlickrPhotosResponse {
+  repeated FlickrPhoto flickr_photos = 1;
+  string next_page_token = 2;
+}
+
+message ListFlickrPhotosByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListFlickrPhotosByOrganizationResponse {
+  repeated FlickrPhoto flickr_photos = 1;
+  string next_page_token = 2;
+}
+
+service FlickrPhotoService {
+  rpc CreateFlickrPhoto(CreateFlickrPhotoRequest) returns (CreateFlickrPhotoResponse);
+  rpc GetFlickrPhoto(GetFlickrPhotoRequest) returns (GetFlickrPhotoResponse);
+  rpc UpdateFlickrPhoto(UpdateFlickrPhotoRequest) returns (UpdateFlickrPhotoResponse);
+  rpc DeleteFlickrPhoto(DeleteFlickrPhotoRequest) returns (DeleteFlickrPhotoResponse);
+  rpc ListFlickrPhotos(ListFlickrPhotosRequest) returns (ListFlickrPhotosResponse);
+  rpc ListFlickrPhotosByOrganization(ListFlickrPhotosByOrganizationRequest) returns (ListFlickrPhotosByOrganizationResponse);
+}

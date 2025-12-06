@@ -275,3 +275,1210 @@ var OrganizationService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "service.proto",
 }
+
+const (
+	AppUserService_CreateAppUser_FullMethodName        = "/organization.AppUserService/CreateAppUser"
+	AppUserService_GetAppUser_FullMethodName           = "/organization.AppUserService/GetAppUser"
+	AppUserService_GetAppUserByIamEmail_FullMethodName = "/organization.AppUserService/GetAppUserByIamEmail"
+	AppUserService_UpdateAppUser_FullMethodName        = "/organization.AppUserService/UpdateAppUser"
+	AppUserService_DeleteAppUser_FullMethodName        = "/organization.AppUserService/DeleteAppUser"
+	AppUserService_ListAppUsers_FullMethodName         = "/organization.AppUserService/ListAppUsers"
+)
+
+// AppUserServiceClient is the client API for AppUserService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type AppUserServiceClient interface {
+	CreateAppUser(ctx context.Context, in *CreateAppUserRequest, opts ...grpc.CallOption) (*CreateAppUserResponse, error)
+	GetAppUser(ctx context.Context, in *GetAppUserRequest, opts ...grpc.CallOption) (*GetAppUserResponse, error)
+	GetAppUserByIamEmail(ctx context.Context, in *GetAppUserByIamEmailRequest, opts ...grpc.CallOption) (*GetAppUserByIamEmailResponse, error)
+	UpdateAppUser(ctx context.Context, in *UpdateAppUserRequest, opts ...grpc.CallOption) (*UpdateAppUserResponse, error)
+	DeleteAppUser(ctx context.Context, in *DeleteAppUserRequest, opts ...grpc.CallOption) (*DeleteAppUserResponse, error)
+	ListAppUsers(ctx context.Context, in *ListAppUsersRequest, opts ...grpc.CallOption) (*ListAppUsersResponse, error)
+}
+
+type appUserServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewAppUserServiceClient(cc grpc.ClientConnInterface) AppUserServiceClient {
+	return &appUserServiceClient{cc}
+}
+
+func (c *appUserServiceClient) CreateAppUser(ctx context.Context, in *CreateAppUserRequest, opts ...grpc.CallOption) (*CreateAppUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateAppUserResponse)
+	err := c.cc.Invoke(ctx, AppUserService_CreateAppUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appUserServiceClient) GetAppUser(ctx context.Context, in *GetAppUserRequest, opts ...grpc.CallOption) (*GetAppUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAppUserResponse)
+	err := c.cc.Invoke(ctx, AppUserService_GetAppUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appUserServiceClient) GetAppUserByIamEmail(ctx context.Context, in *GetAppUserByIamEmailRequest, opts ...grpc.CallOption) (*GetAppUserByIamEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAppUserByIamEmailResponse)
+	err := c.cc.Invoke(ctx, AppUserService_GetAppUserByIamEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appUserServiceClient) UpdateAppUser(ctx context.Context, in *UpdateAppUserRequest, opts ...grpc.CallOption) (*UpdateAppUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateAppUserResponse)
+	err := c.cc.Invoke(ctx, AppUserService_UpdateAppUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appUserServiceClient) DeleteAppUser(ctx context.Context, in *DeleteAppUserRequest, opts ...grpc.CallOption) (*DeleteAppUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteAppUserResponse)
+	err := c.cc.Invoke(ctx, AppUserService_DeleteAppUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *appUserServiceClient) ListAppUsers(ctx context.Context, in *ListAppUsersRequest, opts ...grpc.CallOption) (*ListAppUsersResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListAppUsersResponse)
+	err := c.cc.Invoke(ctx, AppUserService_ListAppUsers_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// AppUserServiceServer is the server API for AppUserService service.
+// All implementations must embed UnimplementedAppUserServiceServer
+// for forward compatibility.
+type AppUserServiceServer interface {
+	CreateAppUser(context.Context, *CreateAppUserRequest) (*CreateAppUserResponse, error)
+	GetAppUser(context.Context, *GetAppUserRequest) (*GetAppUserResponse, error)
+	GetAppUserByIamEmail(context.Context, *GetAppUserByIamEmailRequest) (*GetAppUserByIamEmailResponse, error)
+	UpdateAppUser(context.Context, *UpdateAppUserRequest) (*UpdateAppUserResponse, error)
+	DeleteAppUser(context.Context, *DeleteAppUserRequest) (*DeleteAppUserResponse, error)
+	ListAppUsers(context.Context, *ListAppUsersRequest) (*ListAppUsersResponse, error)
+	mustEmbedUnimplementedAppUserServiceServer()
+}
+
+// UnimplementedAppUserServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedAppUserServiceServer struct{}
+
+func (UnimplementedAppUserServiceServer) CreateAppUser(context.Context, *CreateAppUserRequest) (*CreateAppUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAppUser not implemented")
+}
+func (UnimplementedAppUserServiceServer) GetAppUser(context.Context, *GetAppUserRequest) (*GetAppUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAppUser not implemented")
+}
+func (UnimplementedAppUserServiceServer) GetAppUserByIamEmail(context.Context, *GetAppUserByIamEmailRequest) (*GetAppUserByIamEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAppUserByIamEmail not implemented")
+}
+func (UnimplementedAppUserServiceServer) UpdateAppUser(context.Context, *UpdateAppUserRequest) (*UpdateAppUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppUser not implemented")
+}
+func (UnimplementedAppUserServiceServer) DeleteAppUser(context.Context, *DeleteAppUserRequest) (*DeleteAppUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteAppUser not implemented")
+}
+func (UnimplementedAppUserServiceServer) ListAppUsers(context.Context, *ListAppUsersRequest) (*ListAppUsersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListAppUsers not implemented")
+}
+func (UnimplementedAppUserServiceServer) mustEmbedUnimplementedAppUserServiceServer() {}
+func (UnimplementedAppUserServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeAppUserServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AppUserServiceServer will
+// result in compilation errors.
+type UnsafeAppUserServiceServer interface {
+	mustEmbedUnimplementedAppUserServiceServer()
+}
+
+func RegisterAppUserServiceServer(s grpc.ServiceRegistrar, srv AppUserServiceServer) {
+	// If the following call pancis, it indicates UnimplementedAppUserServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&AppUserService_ServiceDesc, srv)
+}
+
+func _AppUserService_CreateAppUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAppUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppUserServiceServer).CreateAppUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AppUserService_CreateAppUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppUserServiceServer).CreateAppUser(ctx, req.(*CreateAppUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppUserService_GetAppUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAppUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppUserServiceServer).GetAppUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AppUserService_GetAppUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppUserServiceServer).GetAppUser(ctx, req.(*GetAppUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppUserService_GetAppUserByIamEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAppUserByIamEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppUserServiceServer).GetAppUserByIamEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AppUserService_GetAppUserByIamEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppUserServiceServer).GetAppUserByIamEmail(ctx, req.(*GetAppUserByIamEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppUserService_UpdateAppUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateAppUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppUserServiceServer).UpdateAppUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AppUserService_UpdateAppUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppUserServiceServer).UpdateAppUser(ctx, req.(*UpdateAppUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppUserService_DeleteAppUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteAppUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppUserServiceServer).DeleteAppUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AppUserService_DeleteAppUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppUserServiceServer).DeleteAppUser(ctx, req.(*DeleteAppUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AppUserService_ListAppUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListAppUsersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AppUserServiceServer).ListAppUsers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AppUserService_ListAppUsers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AppUserServiceServer).ListAppUsers(ctx, req.(*ListAppUsersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// AppUserService_ServiceDesc is the grpc.ServiceDesc for AppUserService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AppUserService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.AppUserService",
+	HandlerType: (*AppUserServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateAppUser",
+			Handler:    _AppUserService_CreateAppUser_Handler,
+		},
+		{
+			MethodName: "GetAppUser",
+			Handler:    _AppUserService_GetAppUser_Handler,
+		},
+		{
+			MethodName: "GetAppUserByIamEmail",
+			Handler:    _AppUserService_GetAppUserByIamEmail_Handler,
+		},
+		{
+			MethodName: "UpdateAppUser",
+			Handler:    _AppUserService_UpdateAppUser_Handler,
+		},
+		{
+			MethodName: "DeleteAppUser",
+			Handler:    _AppUserService_DeleteAppUser_Handler,
+		},
+		{
+			MethodName: "ListAppUsers",
+			Handler:    _AppUserService_ListAppUsers_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	UserOrganizationService_CreateUserOrganization_FullMethodName      = "/organization.UserOrganizationService/CreateUserOrganization"
+	UserOrganizationService_GetUserOrganization_FullMethodName         = "/organization.UserOrganizationService/GetUserOrganization"
+	UserOrganizationService_UpdateUserOrganization_FullMethodName      = "/organization.UserOrganizationService/UpdateUserOrganization"
+	UserOrganizationService_DeleteUserOrganization_FullMethodName      = "/organization.UserOrganizationService/DeleteUserOrganization"
+	UserOrganizationService_ListUserOrganizations_FullMethodName       = "/organization.UserOrganizationService/ListUserOrganizations"
+	UserOrganizationService_ListUserOrganizationsByUser_FullMethodName = "/organization.UserOrganizationService/ListUserOrganizationsByUser"
+	UserOrganizationService_ListUserOrganizationsByOrg_FullMethodName  = "/organization.UserOrganizationService/ListUserOrganizationsByOrg"
+)
+
+// UserOrganizationServiceClient is the client API for UserOrganizationService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type UserOrganizationServiceClient interface {
+	CreateUserOrganization(ctx context.Context, in *CreateUserOrganizationRequest, opts ...grpc.CallOption) (*CreateUserOrganizationResponse, error)
+	GetUserOrganization(ctx context.Context, in *GetUserOrganizationRequest, opts ...grpc.CallOption) (*GetUserOrganizationResponse, error)
+	UpdateUserOrganization(ctx context.Context, in *UpdateUserOrganizationRequest, opts ...grpc.CallOption) (*UpdateUserOrganizationResponse, error)
+	DeleteUserOrganization(ctx context.Context, in *DeleteUserOrganizationRequest, opts ...grpc.CallOption) (*DeleteUserOrganizationResponse, error)
+	ListUserOrganizations(ctx context.Context, in *ListUserOrganizationsRequest, opts ...grpc.CallOption) (*ListUserOrganizationsResponse, error)
+	ListUserOrganizationsByUser(ctx context.Context, in *ListUserOrganizationsByUserRequest, opts ...grpc.CallOption) (*ListUserOrganizationsByUserResponse, error)
+	ListUserOrganizationsByOrg(ctx context.Context, in *ListUserOrganizationsByOrgRequest, opts ...grpc.CallOption) (*ListUserOrganizationsByOrgResponse, error)
+}
+
+type userOrganizationServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewUserOrganizationServiceClient(cc grpc.ClientConnInterface) UserOrganizationServiceClient {
+	return &userOrganizationServiceClient{cc}
+}
+
+func (c *userOrganizationServiceClient) CreateUserOrganization(ctx context.Context, in *CreateUserOrganizationRequest, opts ...grpc.CallOption) (*CreateUserOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateUserOrganizationResponse)
+	err := c.cc.Invoke(ctx, UserOrganizationService_CreateUserOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userOrganizationServiceClient) GetUserOrganization(ctx context.Context, in *GetUserOrganizationRequest, opts ...grpc.CallOption) (*GetUserOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserOrganizationResponse)
+	err := c.cc.Invoke(ctx, UserOrganizationService_GetUserOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userOrganizationServiceClient) UpdateUserOrganization(ctx context.Context, in *UpdateUserOrganizationRequest, opts ...grpc.CallOption) (*UpdateUserOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserOrganizationResponse)
+	err := c.cc.Invoke(ctx, UserOrganizationService_UpdateUserOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userOrganizationServiceClient) DeleteUserOrganization(ctx context.Context, in *DeleteUserOrganizationRequest, opts ...grpc.CallOption) (*DeleteUserOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUserOrganizationResponse)
+	err := c.cc.Invoke(ctx, UserOrganizationService_DeleteUserOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userOrganizationServiceClient) ListUserOrganizations(ctx context.Context, in *ListUserOrganizationsRequest, opts ...grpc.CallOption) (*ListUserOrganizationsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUserOrganizationsResponse)
+	err := c.cc.Invoke(ctx, UserOrganizationService_ListUserOrganizations_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userOrganizationServiceClient) ListUserOrganizationsByUser(ctx context.Context, in *ListUserOrganizationsByUserRequest, opts ...grpc.CallOption) (*ListUserOrganizationsByUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUserOrganizationsByUserResponse)
+	err := c.cc.Invoke(ctx, UserOrganizationService_ListUserOrganizationsByUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userOrganizationServiceClient) ListUserOrganizationsByOrg(ctx context.Context, in *ListUserOrganizationsByOrgRequest, opts ...grpc.CallOption) (*ListUserOrganizationsByOrgResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListUserOrganizationsByOrgResponse)
+	err := c.cc.Invoke(ctx, UserOrganizationService_ListUserOrganizationsByOrg_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// UserOrganizationServiceServer is the server API for UserOrganizationService service.
+// All implementations must embed UnimplementedUserOrganizationServiceServer
+// for forward compatibility.
+type UserOrganizationServiceServer interface {
+	CreateUserOrganization(context.Context, *CreateUserOrganizationRequest) (*CreateUserOrganizationResponse, error)
+	GetUserOrganization(context.Context, *GetUserOrganizationRequest) (*GetUserOrganizationResponse, error)
+	UpdateUserOrganization(context.Context, *UpdateUserOrganizationRequest) (*UpdateUserOrganizationResponse, error)
+	DeleteUserOrganization(context.Context, *DeleteUserOrganizationRequest) (*DeleteUserOrganizationResponse, error)
+	ListUserOrganizations(context.Context, *ListUserOrganizationsRequest) (*ListUserOrganizationsResponse, error)
+	ListUserOrganizationsByUser(context.Context, *ListUserOrganizationsByUserRequest) (*ListUserOrganizationsByUserResponse, error)
+	ListUserOrganizationsByOrg(context.Context, *ListUserOrganizationsByOrgRequest) (*ListUserOrganizationsByOrgResponse, error)
+	mustEmbedUnimplementedUserOrganizationServiceServer()
+}
+
+// UnimplementedUserOrganizationServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedUserOrganizationServiceServer struct{}
+
+func (UnimplementedUserOrganizationServiceServer) CreateUserOrganization(context.Context, *CreateUserOrganizationRequest) (*CreateUserOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateUserOrganization not implemented")
+}
+func (UnimplementedUserOrganizationServiceServer) GetUserOrganization(context.Context, *GetUserOrganizationRequest) (*GetUserOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserOrganization not implemented")
+}
+func (UnimplementedUserOrganizationServiceServer) UpdateUserOrganization(context.Context, *UpdateUserOrganizationRequest) (*UpdateUserOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUserOrganization not implemented")
+}
+func (UnimplementedUserOrganizationServiceServer) DeleteUserOrganization(context.Context, *DeleteUserOrganizationRequest) (*DeleteUserOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUserOrganization not implemented")
+}
+func (UnimplementedUserOrganizationServiceServer) ListUserOrganizations(context.Context, *ListUserOrganizationsRequest) (*ListUserOrganizationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUserOrganizations not implemented")
+}
+func (UnimplementedUserOrganizationServiceServer) ListUserOrganizationsByUser(context.Context, *ListUserOrganizationsByUserRequest) (*ListUserOrganizationsByUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUserOrganizationsByUser not implemented")
+}
+func (UnimplementedUserOrganizationServiceServer) ListUserOrganizationsByOrg(context.Context, *ListUserOrganizationsByOrgRequest) (*ListUserOrganizationsByOrgResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUserOrganizationsByOrg not implemented")
+}
+func (UnimplementedUserOrganizationServiceServer) mustEmbedUnimplementedUserOrganizationServiceServer() {
+}
+func (UnimplementedUserOrganizationServiceServer) testEmbeddedByValue() {}
+
+// UnsafeUserOrganizationServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to UserOrganizationServiceServer will
+// result in compilation errors.
+type UnsafeUserOrganizationServiceServer interface {
+	mustEmbedUnimplementedUserOrganizationServiceServer()
+}
+
+func RegisterUserOrganizationServiceServer(s grpc.ServiceRegistrar, srv UserOrganizationServiceServer) {
+	// If the following call pancis, it indicates UnimplementedUserOrganizationServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&UserOrganizationService_ServiceDesc, srv)
+}
+
+func _UserOrganizationService_CreateUserOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateUserOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserOrganizationServiceServer).CreateUserOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserOrganizationService_CreateUserOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserOrganizationServiceServer).CreateUserOrganization(ctx, req.(*CreateUserOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserOrganizationService_GetUserOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserOrganizationServiceServer).GetUserOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserOrganizationService_GetUserOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserOrganizationServiceServer).GetUserOrganization(ctx, req.(*GetUserOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserOrganizationService_UpdateUserOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserOrganizationServiceServer).UpdateUserOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserOrganizationService_UpdateUserOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserOrganizationServiceServer).UpdateUserOrganization(ctx, req.(*UpdateUserOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserOrganizationService_DeleteUserOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserOrganizationServiceServer).DeleteUserOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserOrganizationService_DeleteUserOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserOrganizationServiceServer).DeleteUserOrganization(ctx, req.(*DeleteUserOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserOrganizationService_ListUserOrganizations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUserOrganizationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserOrganizationServiceServer).ListUserOrganizations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserOrganizationService_ListUserOrganizations_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserOrganizationServiceServer).ListUserOrganizations(ctx, req.(*ListUserOrganizationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserOrganizationService_ListUserOrganizationsByUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUserOrganizationsByUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserOrganizationServiceServer).ListUserOrganizationsByUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserOrganizationService_ListUserOrganizationsByUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserOrganizationServiceServer).ListUserOrganizationsByUser(ctx, req.(*ListUserOrganizationsByUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _UserOrganizationService_ListUserOrganizationsByOrg_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListUserOrganizationsByOrgRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserOrganizationServiceServer).ListUserOrganizationsByOrg(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserOrganizationService_ListUserOrganizationsByOrg_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserOrganizationServiceServer).ListUserOrganizationsByOrg(ctx, req.(*ListUserOrganizationsByOrgRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// UserOrganizationService_ServiceDesc is the grpc.ServiceDesc for UserOrganizationService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var UserOrganizationService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.UserOrganizationService",
+	HandlerType: (*UserOrganizationServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateUserOrganization",
+			Handler:    _UserOrganizationService_CreateUserOrganization_Handler,
+		},
+		{
+			MethodName: "GetUserOrganization",
+			Handler:    _UserOrganizationService_GetUserOrganization_Handler,
+		},
+		{
+			MethodName: "UpdateUserOrganization",
+			Handler:    _UserOrganizationService_UpdateUserOrganization_Handler,
+		},
+		{
+			MethodName: "DeleteUserOrganization",
+			Handler:    _UserOrganizationService_DeleteUserOrganization_Handler,
+		},
+		{
+			MethodName: "ListUserOrganizations",
+			Handler:    _UserOrganizationService_ListUserOrganizations_Handler,
+		},
+		{
+			MethodName: "ListUserOrganizationsByUser",
+			Handler:    _UserOrganizationService_ListUserOrganizationsByUser_Handler,
+		},
+		{
+			MethodName: "ListUserOrganizationsByOrg",
+			Handler:    _UserOrganizationService_ListUserOrganizationsByOrg_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	FileService_CreateFile_FullMethodName              = "/organization.FileService/CreateFile"
+	FileService_GetFile_FullMethodName                 = "/organization.FileService/GetFile"
+	FileService_UpdateFile_FullMethodName              = "/organization.FileService/UpdateFile"
+	FileService_DeleteFile_FullMethodName              = "/organization.FileService/DeleteFile"
+	FileService_ListFiles_FullMethodName               = "/organization.FileService/ListFiles"
+	FileService_ListFilesByOrganization_FullMethodName = "/organization.FileService/ListFilesByOrganization"
+)
+
+// FileServiceClient is the client API for FileService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type FileServiceClient interface {
+	CreateFile(ctx context.Context, in *CreateFileRequest, opts ...grpc.CallOption) (*CreateFileResponse, error)
+	GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
+	UpdateFile(ctx context.Context, in *UpdateFileRequest, opts ...grpc.CallOption) (*UpdateFileResponse, error)
+	DeleteFile(ctx context.Context, in *DeleteFileRequest, opts ...grpc.CallOption) (*DeleteFileResponse, error)
+	ListFiles(ctx context.Context, in *ListFilesRequest, opts ...grpc.CallOption) (*ListFilesResponse, error)
+	ListFilesByOrganization(ctx context.Context, in *ListFilesByOrganizationRequest, opts ...grpc.CallOption) (*ListFilesByOrganizationResponse, error)
+}
+
+type fileServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewFileServiceClient(cc grpc.ClientConnInterface) FileServiceClient {
+	return &fileServiceClient{cc}
+}
+
+func (c *fileServiceClient) CreateFile(ctx context.Context, in *CreateFileRequest, opts ...grpc.CallOption) (*CreateFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateFileResponse)
+	err := c.cc.Invoke(ctx, FileService_CreateFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetFileResponse)
+	err := c.cc.Invoke(ctx, FileService_GetFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) UpdateFile(ctx context.Context, in *UpdateFileRequest, opts ...grpc.CallOption) (*UpdateFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateFileResponse)
+	err := c.cc.Invoke(ctx, FileService_UpdateFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) DeleteFile(ctx context.Context, in *DeleteFileRequest, opts ...grpc.CallOption) (*DeleteFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteFileResponse)
+	err := c.cc.Invoke(ctx, FileService_DeleteFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) ListFiles(ctx context.Context, in *ListFilesRequest, opts ...grpc.CallOption) (*ListFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListFilesResponse)
+	err := c.cc.Invoke(ctx, FileService_ListFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fileServiceClient) ListFilesByOrganization(ctx context.Context, in *ListFilesByOrganizationRequest, opts ...grpc.CallOption) (*ListFilesByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListFilesByOrganizationResponse)
+	err := c.cc.Invoke(ctx, FileService_ListFilesByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// FileServiceServer is the server API for FileService service.
+// All implementations must embed UnimplementedFileServiceServer
+// for forward compatibility.
+type FileServiceServer interface {
+	CreateFile(context.Context, *CreateFileRequest) (*CreateFileResponse, error)
+	GetFile(context.Context, *GetFileRequest) (*GetFileResponse, error)
+	UpdateFile(context.Context, *UpdateFileRequest) (*UpdateFileResponse, error)
+	DeleteFile(context.Context, *DeleteFileRequest) (*DeleteFileResponse, error)
+	ListFiles(context.Context, *ListFilesRequest) (*ListFilesResponse, error)
+	ListFilesByOrganization(context.Context, *ListFilesByOrganizationRequest) (*ListFilesByOrganizationResponse, error)
+	mustEmbedUnimplementedFileServiceServer()
+}
+
+// UnimplementedFileServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedFileServiceServer struct{}
+
+func (UnimplementedFileServiceServer) CreateFile(context.Context, *CreateFileRequest) (*CreateFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFile not implemented")
+}
+func (UnimplementedFileServiceServer) GetFile(context.Context, *GetFileRequest) (*GetFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFile not implemented")
+}
+func (UnimplementedFileServiceServer) UpdateFile(context.Context, *UpdateFileRequest) (*UpdateFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFile not implemented")
+}
+func (UnimplementedFileServiceServer) DeleteFile(context.Context, *DeleteFileRequest) (*DeleteFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFile not implemented")
+}
+func (UnimplementedFileServiceServer) ListFiles(context.Context, *ListFilesRequest) (*ListFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFiles not implemented")
+}
+func (UnimplementedFileServiceServer) ListFilesByOrganization(context.Context, *ListFilesByOrganizationRequest) (*ListFilesByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFilesByOrganization not implemented")
+}
+func (UnimplementedFileServiceServer) mustEmbedUnimplementedFileServiceServer() {}
+func (UnimplementedFileServiceServer) testEmbeddedByValue()                     {}
+
+// UnsafeFileServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to FileServiceServer will
+// result in compilation errors.
+type UnsafeFileServiceServer interface {
+	mustEmbedUnimplementedFileServiceServer()
+}
+
+func RegisterFileServiceServer(s grpc.ServiceRegistrar, srv FileServiceServer) {
+	// If the following call pancis, it indicates UnimplementedFileServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&FileService_ServiceDesc, srv)
+}
+
+func _FileService_CreateFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).CreateFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_CreateFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).CreateFile(ctx, req.(*CreateFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_GetFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).GetFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_GetFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).GetFile(ctx, req.(*GetFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_UpdateFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).UpdateFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_UpdateFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).UpdateFile(ctx, req.(*UpdateFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_DeleteFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).DeleteFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_DeleteFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).DeleteFile(ctx, req.(*DeleteFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_ListFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).ListFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_ListFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).ListFiles(ctx, req.(*ListFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FileService_ListFilesByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFilesByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FileServiceServer).ListFilesByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FileService_ListFilesByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FileServiceServer).ListFilesByOrganization(ctx, req.(*ListFilesByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// FileService_ServiceDesc is the grpc.ServiceDesc for FileService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var FileService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.FileService",
+	HandlerType: (*FileServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateFile",
+			Handler:    _FileService_CreateFile_Handler,
+		},
+		{
+			MethodName: "GetFile",
+			Handler:    _FileService_GetFile_Handler,
+		},
+		{
+			MethodName: "UpdateFile",
+			Handler:    _FileService_UpdateFile_Handler,
+		},
+		{
+			MethodName: "DeleteFile",
+			Handler:    _FileService_DeleteFile_Handler,
+		},
+		{
+			MethodName: "ListFiles",
+			Handler:    _FileService_ListFiles_Handler,
+		},
+		{
+			MethodName: "ListFilesByOrganization",
+			Handler:    _FileService_ListFilesByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
+
+const (
+	FlickrPhotoService_CreateFlickrPhoto_FullMethodName              = "/organization.FlickrPhotoService/CreateFlickrPhoto"
+	FlickrPhotoService_GetFlickrPhoto_FullMethodName                 = "/organization.FlickrPhotoService/GetFlickrPhoto"
+	FlickrPhotoService_UpdateFlickrPhoto_FullMethodName              = "/organization.FlickrPhotoService/UpdateFlickrPhoto"
+	FlickrPhotoService_DeleteFlickrPhoto_FullMethodName              = "/organization.FlickrPhotoService/DeleteFlickrPhoto"
+	FlickrPhotoService_ListFlickrPhotos_FullMethodName               = "/organization.FlickrPhotoService/ListFlickrPhotos"
+	FlickrPhotoService_ListFlickrPhotosByOrganization_FullMethodName = "/organization.FlickrPhotoService/ListFlickrPhotosByOrganization"
+)
+
+// FlickrPhotoServiceClient is the client API for FlickrPhotoService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type FlickrPhotoServiceClient interface {
+	CreateFlickrPhoto(ctx context.Context, in *CreateFlickrPhotoRequest, opts ...grpc.CallOption) (*CreateFlickrPhotoResponse, error)
+	GetFlickrPhoto(ctx context.Context, in *GetFlickrPhotoRequest, opts ...grpc.CallOption) (*GetFlickrPhotoResponse, error)
+	UpdateFlickrPhoto(ctx context.Context, in *UpdateFlickrPhotoRequest, opts ...grpc.CallOption) (*UpdateFlickrPhotoResponse, error)
+	DeleteFlickrPhoto(ctx context.Context, in *DeleteFlickrPhotoRequest, opts ...grpc.CallOption) (*DeleteFlickrPhotoResponse, error)
+	ListFlickrPhotos(ctx context.Context, in *ListFlickrPhotosRequest, opts ...grpc.CallOption) (*ListFlickrPhotosResponse, error)
+	ListFlickrPhotosByOrganization(ctx context.Context, in *ListFlickrPhotosByOrganizationRequest, opts ...grpc.CallOption) (*ListFlickrPhotosByOrganizationResponse, error)
+}
+
+type flickrPhotoServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewFlickrPhotoServiceClient(cc grpc.ClientConnInterface) FlickrPhotoServiceClient {
+	return &flickrPhotoServiceClient{cc}
+}
+
+func (c *flickrPhotoServiceClient) CreateFlickrPhoto(ctx context.Context, in *CreateFlickrPhotoRequest, opts ...grpc.CallOption) (*CreateFlickrPhotoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateFlickrPhotoResponse)
+	err := c.cc.Invoke(ctx, FlickrPhotoService_CreateFlickrPhoto_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *flickrPhotoServiceClient) GetFlickrPhoto(ctx context.Context, in *GetFlickrPhotoRequest, opts ...grpc.CallOption) (*GetFlickrPhotoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetFlickrPhotoResponse)
+	err := c.cc.Invoke(ctx, FlickrPhotoService_GetFlickrPhoto_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *flickrPhotoServiceClient) UpdateFlickrPhoto(ctx context.Context, in *UpdateFlickrPhotoRequest, opts ...grpc.CallOption) (*UpdateFlickrPhotoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateFlickrPhotoResponse)
+	err := c.cc.Invoke(ctx, FlickrPhotoService_UpdateFlickrPhoto_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *flickrPhotoServiceClient) DeleteFlickrPhoto(ctx context.Context, in *DeleteFlickrPhotoRequest, opts ...grpc.CallOption) (*DeleteFlickrPhotoResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteFlickrPhotoResponse)
+	err := c.cc.Invoke(ctx, FlickrPhotoService_DeleteFlickrPhoto_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *flickrPhotoServiceClient) ListFlickrPhotos(ctx context.Context, in *ListFlickrPhotosRequest, opts ...grpc.CallOption) (*ListFlickrPhotosResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListFlickrPhotosResponse)
+	err := c.cc.Invoke(ctx, FlickrPhotoService_ListFlickrPhotos_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *flickrPhotoServiceClient) ListFlickrPhotosByOrganization(ctx context.Context, in *ListFlickrPhotosByOrganizationRequest, opts ...grpc.CallOption) (*ListFlickrPhotosByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListFlickrPhotosByOrganizationResponse)
+	err := c.cc.Invoke(ctx, FlickrPhotoService_ListFlickrPhotosByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// FlickrPhotoServiceServer is the server API for FlickrPhotoService service.
+// All implementations must embed UnimplementedFlickrPhotoServiceServer
+// for forward compatibility.
+type FlickrPhotoServiceServer interface {
+	CreateFlickrPhoto(context.Context, *CreateFlickrPhotoRequest) (*CreateFlickrPhotoResponse, error)
+	GetFlickrPhoto(context.Context, *GetFlickrPhotoRequest) (*GetFlickrPhotoResponse, error)
+	UpdateFlickrPhoto(context.Context, *UpdateFlickrPhotoRequest) (*UpdateFlickrPhotoResponse, error)
+	DeleteFlickrPhoto(context.Context, *DeleteFlickrPhotoRequest) (*DeleteFlickrPhotoResponse, error)
+	ListFlickrPhotos(context.Context, *ListFlickrPhotosRequest) (*ListFlickrPhotosResponse, error)
+	ListFlickrPhotosByOrganization(context.Context, *ListFlickrPhotosByOrganizationRequest) (*ListFlickrPhotosByOrganizationResponse, error)
+	mustEmbedUnimplementedFlickrPhotoServiceServer()
+}
+
+// UnimplementedFlickrPhotoServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedFlickrPhotoServiceServer struct{}
+
+func (UnimplementedFlickrPhotoServiceServer) CreateFlickrPhoto(context.Context, *CreateFlickrPhotoRequest) (*CreateFlickrPhotoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFlickrPhoto not implemented")
+}
+func (UnimplementedFlickrPhotoServiceServer) GetFlickrPhoto(context.Context, *GetFlickrPhotoRequest) (*GetFlickrPhotoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFlickrPhoto not implemented")
+}
+func (UnimplementedFlickrPhotoServiceServer) UpdateFlickrPhoto(context.Context, *UpdateFlickrPhotoRequest) (*UpdateFlickrPhotoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateFlickrPhoto not implemented")
+}
+func (UnimplementedFlickrPhotoServiceServer) DeleteFlickrPhoto(context.Context, *DeleteFlickrPhotoRequest) (*DeleteFlickrPhotoResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFlickrPhoto not implemented")
+}
+func (UnimplementedFlickrPhotoServiceServer) ListFlickrPhotos(context.Context, *ListFlickrPhotosRequest) (*ListFlickrPhotosResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFlickrPhotos not implemented")
+}
+func (UnimplementedFlickrPhotoServiceServer) ListFlickrPhotosByOrganization(context.Context, *ListFlickrPhotosByOrganizationRequest) (*ListFlickrPhotosByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFlickrPhotosByOrganization not implemented")
+}
+func (UnimplementedFlickrPhotoServiceServer) mustEmbedUnimplementedFlickrPhotoServiceServer() {}
+func (UnimplementedFlickrPhotoServiceServer) testEmbeddedByValue()                            {}
+
+// UnsafeFlickrPhotoServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to FlickrPhotoServiceServer will
+// result in compilation errors.
+type UnsafeFlickrPhotoServiceServer interface {
+	mustEmbedUnimplementedFlickrPhotoServiceServer()
+}
+
+func RegisterFlickrPhotoServiceServer(s grpc.ServiceRegistrar, srv FlickrPhotoServiceServer) {
+	// If the following call pancis, it indicates UnimplementedFlickrPhotoServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&FlickrPhotoService_ServiceDesc, srv)
+}
+
+func _FlickrPhotoService_CreateFlickrPhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateFlickrPhotoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FlickrPhotoServiceServer).CreateFlickrPhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FlickrPhotoService_CreateFlickrPhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FlickrPhotoServiceServer).CreateFlickrPhoto(ctx, req.(*CreateFlickrPhotoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FlickrPhotoService_GetFlickrPhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetFlickrPhotoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FlickrPhotoServiceServer).GetFlickrPhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FlickrPhotoService_GetFlickrPhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FlickrPhotoServiceServer).GetFlickrPhoto(ctx, req.(*GetFlickrPhotoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FlickrPhotoService_UpdateFlickrPhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateFlickrPhotoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FlickrPhotoServiceServer).UpdateFlickrPhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FlickrPhotoService_UpdateFlickrPhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FlickrPhotoServiceServer).UpdateFlickrPhoto(ctx, req.(*UpdateFlickrPhotoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FlickrPhotoService_DeleteFlickrPhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteFlickrPhotoRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FlickrPhotoServiceServer).DeleteFlickrPhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FlickrPhotoService_DeleteFlickrPhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FlickrPhotoServiceServer).DeleteFlickrPhoto(ctx, req.(*DeleteFlickrPhotoRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FlickrPhotoService_ListFlickrPhotos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFlickrPhotosRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FlickrPhotoServiceServer).ListFlickrPhotos(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FlickrPhotoService_ListFlickrPhotos_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FlickrPhotoServiceServer).ListFlickrPhotos(ctx, req.(*ListFlickrPhotosRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FlickrPhotoService_ListFlickrPhotosByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListFlickrPhotosByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FlickrPhotoServiceServer).ListFlickrPhotosByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FlickrPhotoService_ListFlickrPhotosByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FlickrPhotoServiceServer).ListFlickrPhotosByOrganization(ctx, req.(*ListFlickrPhotosByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// FlickrPhotoService_ServiceDesc is the grpc.ServiceDesc for FlickrPhotoService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var FlickrPhotoService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.FlickrPhotoService",
+	HandlerType: (*FlickrPhotoServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateFlickrPhoto",
+			Handler:    _FlickrPhotoService_CreateFlickrPhoto_Handler,
+		},
+		{
+			MethodName: "GetFlickrPhoto",
+			Handler:    _FlickrPhotoService_GetFlickrPhoto_Handler,
+		},
+		{
+			MethodName: "UpdateFlickrPhoto",
+			Handler:    _FlickrPhotoService_UpdateFlickrPhoto_Handler,
+		},
+		{
+			MethodName: "DeleteFlickrPhoto",
+			Handler:    _FlickrPhotoService_DeleteFlickrPhoto_Handler,
+		},
+		{
+			MethodName: "ListFlickrPhotos",
+			Handler:    _FlickrPhotoService_ListFlickrPhotos_Handler,
+		},
+		{
+			MethodName: "ListFlickrPhotosByOrganization",
+			Handler:    _FlickrPhotoService_ListFlickrPhotosByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}
