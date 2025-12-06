@@ -396,3 +396,254 @@ service FlickrPhotoService {
   rpc ListFlickrPhotos(ListFlickrPhotosRequest) returns (ListFlickrPhotosResponse);
   rpc ListFlickrPhotosByOrganization(ListFlickrPhotosByOrganizationRequest) returns (ListFlickrPhotosByOrganizationResponse);
 }
+
+// ============================================================
+// CamFile - Phase 1-2
+// ============================================================
+
+message CamFile {
+  string name = 1;
+  string organization_id = 2;
+  string date = 3;
+  string hour = 4;
+  string type = 5;
+  string cam = 6;
+  optional string flickr_id = 7;
+}
+
+message CreateCamFileRequest {
+  string name = 1;
+  string organization_id = 2;
+  string date = 3;
+  string hour = 4;
+  string type = 5;
+  string cam = 6;
+  optional string flickr_id = 7;
+}
+
+message CreateCamFileResponse {
+  CamFile cam_file = 1;
+}
+
+message GetCamFileRequest {
+  string name = 1;
+  string organization_id = 2;
+}
+
+message GetCamFileResponse {
+  CamFile cam_file = 1;
+}
+
+message UpdateCamFileRequest {
+  string name = 1;
+  string organization_id = 2;
+  string date = 3;
+  string hour = 4;
+  string type = 5;
+  string cam = 6;
+  optional string flickr_id = 7;
+}
+
+message UpdateCamFileResponse {
+  CamFile cam_file = 1;
+}
+
+message DeleteCamFileRequest {
+  string name = 1;
+  string organization_id = 2;
+}
+
+message DeleteCamFileResponse {
+  bool success = 1;
+}
+
+message ListCamFilesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCamFilesResponse {
+  repeated CamFile cam_files = 1;
+  string next_page_token = 2;
+}
+
+message ListCamFilesByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCamFilesByOrganizationResponse {
+  repeated CamFile cam_files = 1;
+  string next_page_token = 2;
+}
+
+service CamFileService {
+  rpc CreateCamFile(CreateCamFileRequest) returns (CreateCamFileResponse);
+  rpc GetCamFile(GetCamFileRequest) returns (GetCamFileResponse);
+  rpc UpdateCamFile(UpdateCamFileRequest) returns (UpdateCamFileResponse);
+  rpc DeleteCamFile(DeleteCamFileRequest) returns (DeleteCamFileResponse);
+  rpc ListCamFiles(ListCamFilesRequest) returns (ListCamFilesResponse);
+  rpc ListCamFilesByOrganization(ListCamFilesByOrganizationRequest) returns (ListCamFilesByOrganizationResponse);
+}
+
+// ============================================================
+// CamFileExe - Phase 1-2
+// ============================================================
+
+message CamFileExe {
+  string name = 1;
+  string cam = 2;
+  string organization_id = 3;
+  int32 stage = 4;
+}
+
+message CreateCamFileExeRequest {
+  string name = 1;
+  string cam = 2;
+  string organization_id = 3;
+  int32 stage = 4;
+}
+
+message CreateCamFileExeResponse {
+  CamFileExe cam_file_exe = 1;
+}
+
+message GetCamFileExeRequest {
+  string name = 1;
+  string cam = 2;
+  string organization_id = 3;
+}
+
+message GetCamFileExeResponse {
+  CamFileExe cam_file_exe = 1;
+}
+
+message UpdateCamFileExeRequest {
+  string name = 1;
+  string cam = 2;
+  string organization_id = 3;
+  int32 stage = 4;
+}
+
+message UpdateCamFileExeResponse {
+  CamFileExe cam_file_exe = 1;
+}
+
+message DeleteCamFileExeRequest {
+  string name = 1;
+  string cam = 2;
+  string organization_id = 3;
+}
+
+message DeleteCamFileExeResponse {
+  bool success = 1;
+}
+
+message ListCamFileExesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCamFileExesResponse {
+  repeated CamFileExe cam_file_exes = 1;
+  string next_page_token = 2;
+}
+
+message ListCamFileExesByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCamFileExesByOrganizationResponse {
+  repeated CamFileExe cam_file_exes = 1;
+  string next_page_token = 2;
+}
+
+service CamFileExeService {
+  rpc CreateCamFileExe(CreateCamFileExeRequest) returns (CreateCamFileExeResponse);
+  rpc GetCamFileExe(GetCamFileExeRequest) returns (GetCamFileExeResponse);
+  rpc UpdateCamFileExe(UpdateCamFileExeRequest) returns (UpdateCamFileExeResponse);
+  rpc DeleteCamFileExe(DeleteCamFileExeRequest) returns (DeleteCamFileExeResponse);
+  rpc ListCamFileExes(ListCamFileExesRequest) returns (ListCamFileExesResponse);
+  rpc ListCamFileExesByOrganization(ListCamFileExesByOrganizationRequest) returns (ListCamFileExesByOrganizationResponse);
+}
+
+// ============================================================
+// CamFileExeStage - Phase 1-2
+// ============================================================
+
+message CamFileExeStage {
+  int32 stage = 1;
+  string organization_id = 2;
+  string name = 3;
+}
+
+message CreateCamFileExeStageRequest {
+  int32 stage = 1;
+  string organization_id = 2;
+  string name = 3;
+}
+
+message CreateCamFileExeStageResponse {
+  CamFileExeStage cam_file_exe_stage = 1;
+}
+
+message GetCamFileExeStageRequest {
+  int32 stage = 1;
+  string organization_id = 2;
+}
+
+message GetCamFileExeStageResponse {
+  CamFileExeStage cam_file_exe_stage = 1;
+}
+
+message UpdateCamFileExeStageRequest {
+  int32 stage = 1;
+  string organization_id = 2;
+  string name = 3;
+}
+
+message UpdateCamFileExeStageResponse {
+  CamFileExeStage cam_file_exe_stage = 1;
+}
+
+message DeleteCamFileExeStageRequest {
+  int32 stage = 1;
+  string organization_id = 2;
+}
+
+message DeleteCamFileExeStageResponse {
+  bool success = 1;
+}
+
+message ListCamFileExeStagesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListCamFileExeStagesResponse {
+  repeated CamFileExeStage cam_file_exe_stages = 1;
+  string next_page_token = 2;
+}
+
+message ListCamFileExeStagesByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListCamFileExeStagesByOrganizationResponse {
+  repeated CamFileExeStage cam_file_exe_stages = 1;
+  string next_page_token = 2;
+}
+
+service CamFileExeStageService {
+  rpc CreateCamFileExeStage(CreateCamFileExeStageRequest) returns (CreateCamFileExeStageResponse);
+  rpc GetCamFileExeStage(GetCamFileExeStageRequest) returns (GetCamFileExeStageResponse);
+  rpc UpdateCamFileExeStage(UpdateCamFileExeStageRequest) returns (UpdateCamFileExeStageResponse);
+  rpc DeleteCamFileExeStage(DeleteCamFileExeStageRequest) returns (DeleteCamFileExeStageResponse);
+  rpc ListCamFileExeStages(ListCamFileExeStagesRequest) returns (ListCamFileExeStagesResponse);
+  rpc ListCamFileExeStagesByOrganization(ListCamFileExeStagesByOrganizationRequest) returns (ListCamFileExeStagesByOrganizationResponse);
+}

@@ -24,7 +24,7 @@ proto/service.protoに26個のサービス定義を追加。以下の順で実�
 | files | File | 7 |
 | flickr_photo | FlickrPhoto | 4 |
 
-#### Phase 1-2: カメラ関連テーブル
+#### Phase 1-2: カメラ関連テーブル ✅ 完了
 | テーブル | メッセージ | フィールド数 |
 |---------|-----------|------------|
 | cam_files | CamFile | 7 |
@@ -138,6 +138,20 @@ gcloud builds submit --config=cloudbuild.yaml ...
 - UserOrganizationService: 7 RPCs (Create, Get, Update, Delete, List, ListByUser, ListByOrg)
 - FileService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
 - FlickrPhotoService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+
+**ビルド確認:** go build 成功
+
+### Phase 1-2: カメラ関連テーブルのProto定義追加 (2025-12-07)
+
+**更新ファイル:**
+- proto/service.proto: 3サービス（CamFile, CamFileExe, CamFileExeStage）のメッセージ・RPC定義追加
+- pkg/pb/service.pb.go: protoc生成
+- pkg/pb/service_grpc.pb.go: protoc生成
+
+**追加内容:**
+- CamFileService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- CamFileExeService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- CamFileExeStageService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
 
 **ビルド確認:** go build 成功
 
