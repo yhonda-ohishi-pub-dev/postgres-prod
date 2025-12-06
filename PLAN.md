@@ -51,7 +51,7 @@ proto/service.protoに26個のサービス定義を追加。以下の順で実�
 | car_ins_sheet_ichiban_cars | CarInsSheetIchibanCars | 7 |
 | car_ins_sheet_ichiban_cars_a | CarInsSheetIchibanCarsA | 7 |
 
-#### Phase 1-5: KUDG系テーブル
+#### Phase 1-5: KUDG系テーブル ✅ 完了
 | テーブル | メッセージ | フィールド数 |
 |---------|-----------|------------|
 | kudgfry | Kudgfry | 28 |
@@ -186,6 +186,23 @@ gcloud builds submit --config=cloudbuild.yaml ...
 - CarInspectionDeregistrationFilesService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 4フィールド
 - CarInsSheetIchibanCarsService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 7フィールド
 - CarInsSheetIchibanCarsAService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 7フィールド
+
+**ビルド確認:** go build 成功
+
+### Phase 1-5: KUDG系テーブルのProto定義追加 (2025-12-07)
+
+**更新ファイル:**
+- proto/service.proto: 6サービス（Kudgfry, Kudguri, Kudgcst, Kudgful, Kudgsir, Kudgivt）のメッセージ・RPC定義追加 (3243行に拡張)
+- pkg/pb/service.pb.go: protoc生成 (1.2MB)
+- pkg/pb/service_grpc.pb.go: protoc生成 (365KB)
+
+**追加内容:**
+- KudgfryService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 28フィールド
+- KudguriService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 40フィールド
+- KudgcstService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 30フィールド
+- KudgfulService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 40フィールド
+- KudgsirService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 40フィールド
+- KudgivtService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 94フィールド (最大)
 
 **ビルド確認:** go build 成功
 

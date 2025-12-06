@@ -2029,3 +2029,1215 @@ service CarInsSheetIchibanCarsAService {
   rpc ListCarInsSheetIchibanCarsAs(ListCarInsSheetIchibanCarsAsRequest) returns (ListCarInsSheetIchibanCarsAsResponse);
   rpc ListCarInsSheetIchibanCarsAsByOrganization(ListCarInsSheetIchibanCarsAsByOrganizationRequest) returns (ListCarInsSheetIchibanCarsAsByOrganizationResponse);
 }
+
+// ============================================================
+// Kudgfry - Phase 1-5
+// ============================================================
+
+message Kudgfry {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string kudguri_uuid = 6;
+  string target_driver_type = 7;
+  optional string unkou_no = 8;
+  optional string unkou_date = 9;
+  optional string read_date = 10;
+  optional string office_cd = 11;
+  optional string office_name = 12;
+  optional string vehicle_cd = 13;
+  optional string vehicle_name = 14;
+  optional string driver_cd1 = 15;
+  optional string driver_name1 = 16;
+  optional string driver_cd2 = 17;
+  optional string driver_name2 = 18;
+  optional string relevant_datetime = 19;
+  optional string refuel_inspect_category = 20;
+  optional string refuel_inspect_category_name = 21;
+  optional string refuel_inspect_type = 22;
+  optional string refuel_inspect_type_name = 23;
+  optional string refuel_inspect_kind = 24;
+  optional string refuel_inspect_kind_name = 25;
+  optional string refill_amount = 26;
+  optional string own_other_type = 27;
+  optional string mileage = 28;
+  optional string meter_value = 29;
+}
+
+message CreateKudgfryRequest {
+  string organization_id = 1;
+  string hash = 2;
+  string created = 3;
+  optional string deleted = 4;
+  optional string kudguri_uuid = 5;
+  string target_driver_type = 6;
+  optional string unkou_no = 7;
+  optional string unkou_date = 8;
+  optional string read_date = 9;
+  optional string office_cd = 10;
+  optional string office_name = 11;
+  optional string vehicle_cd = 12;
+  optional string vehicle_name = 13;
+  optional string driver_cd1 = 14;
+  optional string driver_name1 = 15;
+  optional string driver_cd2 = 16;
+  optional string driver_name2 = 17;
+  optional string relevant_datetime = 18;
+  optional string refuel_inspect_category = 19;
+  optional string refuel_inspect_category_name = 20;
+  optional string refuel_inspect_type = 21;
+  optional string refuel_inspect_type_name = 22;
+  optional string refuel_inspect_kind = 23;
+  optional string refuel_inspect_kind_name = 24;
+  optional string refill_amount = 25;
+  optional string own_other_type = 26;
+  optional string mileage = 27;
+  optional string meter_value = 28;
+}
+
+message CreateKudgfryResponse {
+  Kudgfry kudgfry = 1;
+}
+
+message GetKudgfryRequest {
+  string uuid = 1;
+}
+
+message GetKudgfryResponse {
+  Kudgfry kudgfry = 1;
+}
+
+message UpdateKudgfryRequest {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string kudguri_uuid = 6;
+  string target_driver_type = 7;
+  optional string unkou_no = 8;
+  optional string unkou_date = 9;
+  optional string read_date = 10;
+  optional string office_cd = 11;
+  optional string office_name = 12;
+  optional string vehicle_cd = 13;
+  optional string vehicle_name = 14;
+  optional string driver_cd1 = 15;
+  optional string driver_name1 = 16;
+  optional string driver_cd2 = 17;
+  optional string driver_name2 = 18;
+  optional string relevant_datetime = 19;
+  optional string refuel_inspect_category = 20;
+  optional string refuel_inspect_category_name = 21;
+  optional string refuel_inspect_type = 22;
+  optional string refuel_inspect_type_name = 23;
+  optional string refuel_inspect_kind = 24;
+  optional string refuel_inspect_kind_name = 25;
+  optional string refill_amount = 26;
+  optional string own_other_type = 27;
+  optional string mileage = 28;
+  optional string meter_value = 29;
+}
+
+message UpdateKudgfryResponse {
+  Kudgfry kudgfry = 1;
+}
+
+message DeleteKudgfryRequest {
+  string uuid = 1;
+}
+
+message DeleteKudgfryResponse {
+  bool success = 1;
+}
+
+message ListKudgfrysRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListKudgfrysResponse {
+  repeated Kudgfry kudgfrys = 1;
+  string next_page_token = 2;
+}
+
+message ListKudgfrysByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListKudgfrysByOrganizationResponse {
+  repeated Kudgfry kudgfrys = 1;
+  string next_page_token = 2;
+}
+
+service KudgfryService {
+  rpc CreateKudgfry(CreateKudgfryRequest) returns (CreateKudgfryResponse);
+  rpc GetKudgfry(GetKudgfryRequest) returns (GetKudgfryResponse);
+  rpc UpdateKudgfry(UpdateKudgfryRequest) returns (UpdateKudgfryResponse);
+  rpc DeleteKudgfry(DeleteKudgfryRequest) returns (DeleteKudgfryResponse);
+  rpc ListKudgfrys(ListKudgfrysRequest) returns (ListKudgfrysResponse);
+  rpc ListKudgfrysByOrganization(ListKudgfrysByOrganizationRequest) returns (ListKudgfrysByOrganizationResponse);
+}
+
+// ============================================================
+// Kudguri - Phase 1-5
+// ============================================================
+
+message Kudguri {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string unkou_no = 6;
+  optional string kudguri_uuid = 7;
+  optional string read_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string target_driver_cd = 16;
+  optional string target_driver_name = 17;
+  optional string start_datetime = 18;
+  optional string end_datetime = 19;
+  optional string event_cd = 20;
+  optional string event_name = 21;
+  optional string start_mileage = 22;
+  optional string end_mileage = 23;
+  optional string section_time = 24;
+  optional string section_distance = 25;
+  optional string start_city_cd = 26;
+  optional string start_city_name = 27;
+  optional string end_city_cd = 28;
+  optional string end_city_name = 29;
+  optional string start_place_cd = 30;
+  optional string start_place_name = 31;
+  optional string end_place_cd = 32;
+  optional string end_place_name = 33;
+  optional string start_gps_valid = 34;
+  optional string start_gps_lat = 35;
+  optional string start_gps_lng = 36;
+  optional string end_gps_valid = 37;
+  optional string end_gps_lat = 38;
+  optional string end_gps_lng = 39;
+  optional string over_limit_max = 40;
+}
+
+message CreateKudguriRequest {
+  string organization_id = 1;
+  string hash = 2;
+  string created = 3;
+  optional string deleted = 4;
+  optional string unkou_no = 5;
+  optional string kudguri_uuid = 6;
+  optional string read_date = 7;
+  optional string office_cd = 8;
+  optional string office_name = 9;
+  optional string vehicle_cd = 10;
+  optional string vehicle_name = 11;
+  optional string driver_cd1 = 12;
+  optional string driver_name1 = 13;
+  string target_driver_type = 14;
+  optional string target_driver_cd = 15;
+  optional string target_driver_name = 16;
+  optional string start_datetime = 17;
+  optional string end_datetime = 18;
+  optional string event_cd = 19;
+  optional string event_name = 20;
+  optional string start_mileage = 21;
+  optional string end_mileage = 22;
+  optional string section_time = 23;
+  optional string section_distance = 24;
+  optional string start_city_cd = 25;
+  optional string start_city_name = 26;
+  optional string end_city_cd = 27;
+  optional string end_city_name = 28;
+  optional string start_place_cd = 29;
+  optional string start_place_name = 30;
+  optional string end_place_cd = 31;
+  optional string end_place_name = 32;
+  optional string start_gps_valid = 33;
+  optional string start_gps_lat = 34;
+  optional string start_gps_lng = 35;
+  optional string end_gps_valid = 36;
+  optional string end_gps_lat = 37;
+  optional string end_gps_lng = 38;
+  optional string over_limit_max = 39;
+}
+
+message CreateKudguriResponse {
+  Kudguri kudguri = 1;
+}
+
+message GetKudguriRequest {
+  string uuid = 1;
+}
+
+message GetKudguriResponse {
+  Kudguri kudguri = 1;
+}
+
+message UpdateKudguriRequest {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string unkou_no = 6;
+  optional string kudguri_uuid = 7;
+  optional string read_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string target_driver_cd = 16;
+  optional string target_driver_name = 17;
+  optional string start_datetime = 18;
+  optional string end_datetime = 19;
+  optional string event_cd = 20;
+  optional string event_name = 21;
+  optional string start_mileage = 22;
+  optional string end_mileage = 23;
+  optional string section_time = 24;
+  optional string section_distance = 25;
+  optional string start_city_cd = 26;
+  optional string start_city_name = 27;
+  optional string end_city_cd = 28;
+  optional string end_city_name = 29;
+  optional string start_place_cd = 30;
+  optional string start_place_name = 31;
+  optional string end_place_cd = 32;
+  optional string end_place_name = 33;
+  optional string start_gps_valid = 34;
+  optional string start_gps_lat = 35;
+  optional string start_gps_lng = 36;
+  optional string end_gps_valid = 37;
+  optional string end_gps_lat = 38;
+  optional string end_gps_lng = 39;
+  optional string over_limit_max = 40;
+}
+
+message UpdateKudguriResponse {
+  Kudguri kudguri = 1;
+}
+
+message DeleteKudguriRequest {
+  string uuid = 1;
+}
+
+message DeleteKudguriResponse {
+  bool success = 1;
+}
+
+message ListKudgurisRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListKudgurisResponse {
+  repeated Kudguri kudguris = 1;
+  string next_page_token = 2;
+}
+
+message ListKudgurisByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListKudgurisByOrganizationResponse {
+  repeated Kudguri kudguris = 1;
+  string next_page_token = 2;
+}
+
+service KudguriService {
+  rpc CreateKudguri(CreateKudguriRequest) returns (CreateKudguriResponse);
+  rpc GetKudguri(GetKudguriRequest) returns (GetKudguriResponse);
+  rpc UpdateKudguri(UpdateKudguriRequest) returns (UpdateKudguriResponse);
+  rpc DeleteKudguri(DeleteKudguriRequest) returns (DeleteKudguriResponse);
+  rpc ListKudguris(ListKudgurisRequest) returns (ListKudgurisResponse);
+  rpc ListKudgurisByOrganization(ListKudgurisByOrganizationRequest) returns (ListKudgurisByOrganizationResponse);
+}
+
+// ============================================================
+// Kudgcst - Phase 1-5
+// ============================================================
+
+message Kudgcst {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string kudguri_uuid = 6;
+  optional string unkou_no = 7;
+  optional string unkou_date = 8;
+  optional string read_date = 9;
+  optional string office_cd = 10;
+  optional string office_name = 11;
+  optional string vehicle_cd = 12;
+  optional string vehicle_name = 13;
+  optional string driver_cd1 = 14;
+  optional string driver_name1 = 15;
+  string target_driver_type = 16;
+  optional string start_datetime = 17;
+  optional string end_datetime = 18;
+  optional string ferry_company_cd = 19;
+  optional string ferry_company_name = 20;
+  optional string boarding_place_cd = 21;
+  optional string boarding_place_name = 22;
+  optional string trip_number = 23;
+  optional string dropoff_place_cd = 24;
+  optional string dropoff_place_name = 25;
+  optional string settlement_type = 26;
+  optional string settlement_type_name = 27;
+  optional string standard_fare = 28;
+  optional string contract_fare = 29;
+}
+
+message CreateKudgcstRequest {
+  string organization_id = 1;
+  string hash = 2;
+  string created = 3;
+  optional string deleted = 4;
+  optional string kudguri_uuid = 5;
+  optional string unkou_no = 6;
+  optional string unkou_date = 7;
+  optional string read_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string start_datetime = 16;
+  optional string end_datetime = 17;
+  optional string ferry_company_cd = 18;
+  optional string ferry_company_name = 19;
+  optional string boarding_place_cd = 20;
+  optional string boarding_place_name = 21;
+  optional string trip_number = 22;
+  optional string dropoff_place_cd = 23;
+  optional string dropoff_place_name = 24;
+  optional string settlement_type = 25;
+  optional string settlement_type_name = 26;
+  optional string standard_fare = 27;
+  optional string contract_fare = 28;
+}
+
+message CreateKudgcstResponse {
+  Kudgcst kudgcst = 1;
+}
+
+message GetKudgcstRequest {
+  string uuid = 1;
+}
+
+message GetKudgcstResponse {
+  Kudgcst kudgcst = 1;
+}
+
+message UpdateKudgcstRequest {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string kudguri_uuid = 6;
+  optional string unkou_no = 7;
+  optional string unkou_date = 8;
+  optional string read_date = 9;
+  optional string office_cd = 10;
+  optional string office_name = 11;
+  optional string vehicle_cd = 12;
+  optional string vehicle_name = 13;
+  optional string driver_cd1 = 14;
+  optional string driver_name1 = 15;
+  string target_driver_type = 16;
+  optional string start_datetime = 17;
+  optional string end_datetime = 18;
+  optional string ferry_company_cd = 19;
+  optional string ferry_company_name = 20;
+  optional string boarding_place_cd = 21;
+  optional string boarding_place_name = 22;
+  optional string trip_number = 23;
+  optional string dropoff_place_cd = 24;
+  optional string dropoff_place_name = 25;
+  optional string settlement_type = 26;
+  optional string settlement_type_name = 27;
+  optional string standard_fare = 28;
+  optional string contract_fare = 29;
+}
+
+message UpdateKudgcstResponse {
+  Kudgcst kudgcst = 1;
+}
+
+message DeleteKudgcstRequest {
+  string uuid = 1;
+}
+
+message DeleteKudgcstResponse {
+  bool success = 1;
+}
+
+message ListKudgcstsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListKudgcstsResponse {
+  repeated Kudgcst kudgcsts = 1;
+  string next_page_token = 2;
+}
+
+message ListKudgcstsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListKudgcstsByOrganizationResponse {
+  repeated Kudgcst kudgcsts = 1;
+  string next_page_token = 2;
+}
+
+service KudgcstService {
+  rpc CreateKudgcst(CreateKudgcstRequest) returns (CreateKudgcstResponse);
+  rpc GetKudgcst(GetKudgcstRequest) returns (GetKudgcstResponse);
+  rpc UpdateKudgcst(UpdateKudgcstRequest) returns (UpdateKudgcstResponse);
+  rpc DeleteKudgcst(DeleteKudgcstRequest) returns (DeleteKudgcstResponse);
+  rpc ListKudgcsts(ListKudgcstsRequest) returns (ListKudgcstsResponse);
+  rpc ListKudgcstsByOrganization(ListKudgcstsByOrganizationRequest) returns (ListKudgcstsByOrganizationResponse);
+}
+
+// ============================================================
+// Kudgful - Phase 1-5
+// ============================================================
+
+message Kudgful {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string unkou_no = 6;
+  optional string kudguri_uuid = 7;
+  optional string read_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string target_driver_cd = 16;
+  optional string target_driver_name = 17;
+  optional string start_datetime = 18;
+  optional string end_datetime = 19;
+  optional string event_cd = 20;
+  optional string event_name = 21;
+  optional string start_mileage = 22;
+  optional string end_mileage = 23;
+  optional string section_time = 24;
+  optional string section_distance = 25;
+  optional string start_city_cd = 26;
+  optional string start_city_name = 27;
+  optional string end_city_cd = 28;
+  optional string end_city_name = 29;
+  optional string start_place_cd = 30;
+  optional string start_place_name = 31;
+  optional string end_place_cd = 32;
+  optional string end_place_name = 33;
+  optional string start_gps_valid = 34;
+  optional string start_gps_lat = 35;
+  optional string start_gps_lng = 36;
+  optional string end_gps_valid = 37;
+  optional string end_gps_lat = 38;
+  optional string end_gps_lng = 39;
+  optional string over_limit_max = 40;
+}
+
+message CreateKudgfulRequest {
+  string organization_id = 1;
+  string hash = 2;
+  string created = 3;
+  optional string deleted = 4;
+  optional string unkou_no = 5;
+  optional string kudguri_uuid = 6;
+  optional string read_date = 7;
+  optional string office_cd = 8;
+  optional string office_name = 9;
+  optional string vehicle_cd = 10;
+  optional string vehicle_name = 11;
+  optional string driver_cd1 = 12;
+  optional string driver_name1 = 13;
+  string target_driver_type = 14;
+  optional string target_driver_cd = 15;
+  optional string target_driver_name = 16;
+  optional string start_datetime = 17;
+  optional string end_datetime = 18;
+  optional string event_cd = 19;
+  optional string event_name = 20;
+  optional string start_mileage = 21;
+  optional string end_mileage = 22;
+  optional string section_time = 23;
+  optional string section_distance = 24;
+  optional string start_city_cd = 25;
+  optional string start_city_name = 26;
+  optional string end_city_cd = 27;
+  optional string end_city_name = 28;
+  optional string start_place_cd = 29;
+  optional string start_place_name = 30;
+  optional string end_place_cd = 31;
+  optional string end_place_name = 32;
+  optional string start_gps_valid = 33;
+  optional string start_gps_lat = 34;
+  optional string start_gps_lng = 35;
+  optional string end_gps_valid = 36;
+  optional string end_gps_lat = 37;
+  optional string end_gps_lng = 38;
+  optional string over_limit_max = 39;
+}
+
+message CreateKudgfulResponse {
+  Kudgful kudgful = 1;
+}
+
+message GetKudgfulRequest {
+  string uuid = 1;
+}
+
+message GetKudgfulResponse {
+  Kudgful kudgful = 1;
+}
+
+message UpdateKudgfulRequest {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string unkou_no = 6;
+  optional string kudguri_uuid = 7;
+  optional string read_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string target_driver_cd = 16;
+  optional string target_driver_name = 17;
+  optional string start_datetime = 18;
+  optional string end_datetime = 19;
+  optional string event_cd = 20;
+  optional string event_name = 21;
+  optional string start_mileage = 22;
+  optional string end_mileage = 23;
+  optional string section_time = 24;
+  optional string section_distance = 25;
+  optional string start_city_cd = 26;
+  optional string start_city_name = 27;
+  optional string end_city_cd = 28;
+  optional string end_city_name = 29;
+  optional string start_place_cd = 30;
+  optional string start_place_name = 31;
+  optional string end_place_cd = 32;
+  optional string end_place_name = 33;
+  optional string start_gps_valid = 34;
+  optional string start_gps_lat = 35;
+  optional string start_gps_lng = 36;
+  optional string end_gps_valid = 37;
+  optional string end_gps_lat = 38;
+  optional string end_gps_lng = 39;
+  optional string over_limit_max = 40;
+}
+
+message UpdateKudgfulResponse {
+  Kudgful kudgful = 1;
+}
+
+message DeleteKudgfulRequest {
+  string uuid = 1;
+}
+
+message DeleteKudgfulResponse {
+  bool success = 1;
+}
+
+message ListKudgfulsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListKudgfulsResponse {
+  repeated Kudgful kudgfuls = 1;
+  string next_page_token = 2;
+}
+
+message ListKudgfulsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListKudgfulsByOrganizationResponse {
+  repeated Kudgful kudgfuls = 1;
+  string next_page_token = 2;
+}
+
+service KudgfulService {
+  rpc CreateKudgful(CreateKudgfulRequest) returns (CreateKudgfulResponse);
+  rpc GetKudgful(GetKudgfulRequest) returns (GetKudgfulResponse);
+  rpc UpdateKudgful(UpdateKudgfulRequest) returns (UpdateKudgfulResponse);
+  rpc DeleteKudgful(DeleteKudgfulRequest) returns (DeleteKudgfulResponse);
+  rpc ListKudgfuls(ListKudgfulsRequest) returns (ListKudgfulsResponse);
+  rpc ListKudgfulsByOrganization(ListKudgfulsByOrganizationRequest) returns (ListKudgfulsByOrganizationResponse);
+}
+
+// ============================================================
+// Kudgsir - Phase 1-5
+// ============================================================
+
+message Kudgsir {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string unkou_no = 6;
+  optional string kudguri_uuid = 7;
+  optional string read_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string target_driver_cd = 16;
+  optional string target_driver_name = 17;
+  optional string start_datetime = 18;
+  optional string end_datetime = 19;
+  optional string event_cd = 20;
+  optional string event_name = 21;
+  optional string start_mileage = 22;
+  optional string end_mileage = 23;
+  optional string section_time = 24;
+  optional string section_distance = 25;
+  optional string start_city_cd = 26;
+  optional string start_city_name = 27;
+  optional string end_city_cd = 28;
+  optional string end_city_name = 29;
+  optional string start_place_cd = 30;
+  optional string start_place_name = 31;
+  optional string end_place_cd = 32;
+  optional string end_place_name = 33;
+  optional string start_gps_valid = 34;
+  optional string start_gps_lat = 35;
+  optional string start_gps_lng = 36;
+  optional string end_gps_valid = 37;
+  optional string end_gps_lat = 38;
+  optional string end_gps_lng = 39;
+  optional string over_limit_max = 40;
+}
+
+message CreateKudgsirRequest {
+  string organization_id = 1;
+  string hash = 2;
+  string created = 3;
+  optional string deleted = 4;
+  optional string unkou_no = 5;
+  optional string kudguri_uuid = 6;
+  optional string read_date = 7;
+  optional string office_cd = 8;
+  optional string office_name = 9;
+  optional string vehicle_cd = 10;
+  optional string vehicle_name = 11;
+  optional string driver_cd1 = 12;
+  optional string driver_name1 = 13;
+  string target_driver_type = 14;
+  optional string target_driver_cd = 15;
+  optional string target_driver_name = 16;
+  optional string start_datetime = 17;
+  optional string end_datetime = 18;
+  optional string event_cd = 19;
+  optional string event_name = 20;
+  optional string start_mileage = 21;
+  optional string end_mileage = 22;
+  optional string section_time = 23;
+  optional string section_distance = 24;
+  optional string start_city_cd = 25;
+  optional string start_city_name = 26;
+  optional string end_city_cd = 27;
+  optional string end_city_name = 28;
+  optional string start_place_cd = 29;
+  optional string start_place_name = 30;
+  optional string end_place_cd = 31;
+  optional string end_place_name = 32;
+  optional string start_gps_valid = 33;
+  optional string start_gps_lat = 34;
+  optional string start_gps_lng = 35;
+  optional string end_gps_valid = 36;
+  optional string end_gps_lat = 37;
+  optional string end_gps_lng = 38;
+  optional string over_limit_max = 39;
+}
+
+message CreateKudgsirResponse {
+  Kudgsir kudgsir = 1;
+}
+
+message GetKudgsirRequest {
+  string uuid = 1;
+}
+
+message GetKudgsirResponse {
+  Kudgsir kudgsir = 1;
+}
+
+message UpdateKudgsirRequest {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string unkou_no = 6;
+  optional string kudguri_uuid = 7;
+  optional string read_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string target_driver_cd = 16;
+  optional string target_driver_name = 17;
+  optional string start_datetime = 18;
+  optional string end_datetime = 19;
+  optional string event_cd = 20;
+  optional string event_name = 21;
+  optional string start_mileage = 22;
+  optional string end_mileage = 23;
+  optional string section_time = 24;
+  optional string section_distance = 25;
+  optional string start_city_cd = 26;
+  optional string start_city_name = 27;
+  optional string end_city_cd = 28;
+  optional string end_city_name = 29;
+  optional string start_place_cd = 30;
+  optional string start_place_name = 31;
+  optional string end_place_cd = 32;
+  optional string end_place_name = 33;
+  optional string start_gps_valid = 34;
+  optional string start_gps_lat = 35;
+  optional string start_gps_lng = 36;
+  optional string end_gps_valid = 37;
+  optional string end_gps_lat = 38;
+  optional string end_gps_lng = 39;
+  optional string over_limit_max = 40;
+}
+
+message UpdateKudgsirResponse {
+  Kudgsir kudgsir = 1;
+}
+
+message DeleteKudgsirRequest {
+  string uuid = 1;
+}
+
+message DeleteKudgsirResponse {
+  bool success = 1;
+}
+
+message ListKudgsirsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListKudgsirsResponse {
+  repeated Kudgsir kudgsirs = 1;
+  string next_page_token = 2;
+}
+
+message ListKudgsirsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListKudgsirsByOrganizationResponse {
+  repeated Kudgsir kudgsirs = 1;
+  string next_page_token = 2;
+}
+
+service KudgsirService {
+  rpc CreateKudgsir(CreateKudgsirRequest) returns (CreateKudgsirResponse);
+  rpc GetKudgsir(GetKudgsirRequest) returns (GetKudgsirResponse);
+  rpc UpdateKudgsir(UpdateKudgsirRequest) returns (UpdateKudgsirResponse);
+  rpc DeleteKudgsir(DeleteKudgsirRequest) returns (DeleteKudgsirResponse);
+  rpc ListKudgsirs(ListKudgsirsRequest) returns (ListKudgsirsResponse);
+  rpc ListKudgsirsByOrganization(ListKudgsirsByOrganizationRequest) returns (ListKudgsirsByOrganizationResponse);
+}
+
+// ============================================================
+// Kudgivt - Phase 1-5
+// ============================================================
+
+message Kudgivt {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string kudguri_uuid = 6;
+  optional string unkou_no = 7;
+  optional string read_date = 8;
+  optional string unkou_date = 9;
+  optional string office_cd = 10;
+  optional string office_name = 11;
+  optional string vehicle_cd = 12;
+  optional string vehicle_name = 13;
+  optional string driver_cd1 = 14;
+  optional string driver_name1 = 15;
+  string target_driver_type = 16;
+  optional string target_driver_cd = 17;
+  optional string target_driver_name = 18;
+  optional string clock_in_datetime = 19;
+  optional string clock_out_datetime = 20;
+  optional string departure_datetime = 21;
+  optional string return_datetime = 22;
+  optional string departure_meter = 23;
+  optional string return_meter = 24;
+  optional string total_mileage = 25;
+  optional string destination_city_name = 26;
+  optional string destination_place_name = 27;
+  optional string actual_mileage = 28;
+  optional string local_drive_time = 29;
+  optional string express_drive_time = 30;
+  optional string bypass_drive_time = 31;
+  optional string actual_drive_time = 32;
+  optional string empty_drive_time = 33;
+  optional string work1_time = 34;
+  optional string work2_time = 35;
+  optional string work3_time = 36;
+  optional string work4_time = 37;
+  optional string work5_time = 38;
+  optional string work6_time = 39;
+  optional string work7_time = 40;
+  optional string work8_time = 41;
+  optional string work9_time = 42;
+  optional string work10_time = 43;
+  optional string state1_distance = 44;
+  optional string state2_distance = 45;
+  optional string state3_distance = 46;
+  optional string state4_distance = 47;
+  optional string state5_distance = 48;
+  optional string state1_time = 49;
+  optional string state2_time = 50;
+  optional string state3_time = 51;
+  optional string state4_time = 52;
+  optional string state5_time = 53;
+  optional string own_main_fuel = 54;
+  optional string own_main_additive = 55;
+  optional string own_consumable = 56;
+  optional string other_main_fuel = 57;
+  optional string other_main_additive = 58;
+  optional string other_consumable = 59;
+  optional string local_speed_over_max = 60;
+  optional string local_speed_over_time = 61;
+  optional string local_speed_over_count = 62;
+  optional string express_speed_over_max = 63;
+  optional string express_speed_over_time = 64;
+  optional string express_speed_over_count = 65;
+  optional string dedicated_speed_over_max = 66;
+  optional string dedicated_speed_over_time = 67;
+  optional string dedicated_speed_over_count = 68;
+  optional string idling_time = 69;
+  optional string idling_time_count = 70;
+  optional string rotation_over_max = 71;
+  optional string rotation_over_count = 72;
+  optional string rotation_over_time = 73;
+  optional string rapid_accel_count1 = 74;
+  optional string rapid_accel_count2 = 75;
+  optional string rapid_accel_count3 = 76;
+  optional string rapid_accel_count4 = 77;
+  optional string rapid_accel_count5 = 78;
+  optional string rapid_accel_max = 79;
+  optional string rapid_accel_max_speed = 80;
+  optional string rapid_decel_count1 = 81;
+  optional string rapid_decel_count2 = 82;
+  optional string rapid_decel_count3 = 83;
+  optional string rapid_decel_count4 = 84;
+  optional string rapid_decel_count5 = 85;
+  optional string rapid_decel_max = 86;
+  optional string rapid_decel_max_speed = 87;
+  optional string rapid_curve_count1 = 88;
+  optional string rapid_curve_count2 = 89;
+  optional string rapid_curve_count3 = 90;
+  optional string rapid_curve_count4 = 91;
+  optional string rapid_curve_count5 = 92;
+  optional string rapid_curve_max = 93;
+  optional string rapid_curve_max_speed = 94;
+}
+
+message CreateKudgivtRequest {
+  string organization_id = 1;
+  string hash = 2;
+  string created = 3;
+  optional string deleted = 4;
+  optional string kudguri_uuid = 5;
+  optional string unkou_no = 6;
+  optional string read_date = 7;
+  optional string unkou_date = 8;
+  optional string office_cd = 9;
+  optional string office_name = 10;
+  optional string vehicle_cd = 11;
+  optional string vehicle_name = 12;
+  optional string driver_cd1 = 13;
+  optional string driver_name1 = 14;
+  string target_driver_type = 15;
+  optional string target_driver_cd = 16;
+  optional string target_driver_name = 17;
+  optional string clock_in_datetime = 18;
+  optional string clock_out_datetime = 19;
+  optional string departure_datetime = 20;
+  optional string return_datetime = 21;
+  optional string departure_meter = 22;
+  optional string return_meter = 23;
+  optional string total_mileage = 24;
+  optional string destination_city_name = 25;
+  optional string destination_place_name = 26;
+  optional string actual_mileage = 27;
+  optional string local_drive_time = 28;
+  optional string express_drive_time = 29;
+  optional string bypass_drive_time = 30;
+  optional string actual_drive_time = 31;
+  optional string empty_drive_time = 32;
+  optional string work1_time = 33;
+  optional string work2_time = 34;
+  optional string work3_time = 35;
+  optional string work4_time = 36;
+  optional string work5_time = 37;
+  optional string work6_time = 38;
+  optional string work7_time = 39;
+  optional string work8_time = 40;
+  optional string work9_time = 41;
+  optional string work10_time = 42;
+  optional string state1_distance = 43;
+  optional string state2_distance = 44;
+  optional string state3_distance = 45;
+  optional string state4_distance = 46;
+  optional string state5_distance = 47;
+  optional string state1_time = 48;
+  optional string state2_time = 49;
+  optional string state3_time = 50;
+  optional string state4_time = 51;
+  optional string state5_time = 52;
+  optional string own_main_fuel = 53;
+  optional string own_main_additive = 54;
+  optional string own_consumable = 55;
+  optional string other_main_fuel = 56;
+  optional string other_main_additive = 57;
+  optional string other_consumable = 58;
+  optional string local_speed_over_max = 59;
+  optional string local_speed_over_time = 60;
+  optional string local_speed_over_count = 61;
+  optional string express_speed_over_max = 62;
+  optional string express_speed_over_time = 63;
+  optional string express_speed_over_count = 64;
+  optional string dedicated_speed_over_max = 65;
+  optional string dedicated_speed_over_time = 66;
+  optional string dedicated_speed_over_count = 67;
+  optional string idling_time = 68;
+  optional string idling_time_count = 69;
+  optional string rotation_over_max = 70;
+  optional string rotation_over_count = 71;
+  optional string rotation_over_time = 72;
+  optional string rapid_accel_count1 = 73;
+  optional string rapid_accel_count2 = 74;
+  optional string rapid_accel_count3 = 75;
+  optional string rapid_accel_count4 = 76;
+  optional string rapid_accel_count5 = 77;
+  optional string rapid_accel_max = 78;
+  optional string rapid_accel_max_speed = 79;
+  optional string rapid_decel_count1 = 80;
+  optional string rapid_decel_count2 = 81;
+  optional string rapid_decel_count3 = 82;
+  optional string rapid_decel_count4 = 83;
+  optional string rapid_decel_count5 = 84;
+  optional string rapid_decel_max = 85;
+  optional string rapid_decel_max_speed = 86;
+  optional string rapid_curve_count1 = 87;
+  optional string rapid_curve_count2 = 88;
+  optional string rapid_curve_count3 = 89;
+  optional string rapid_curve_count4 = 90;
+  optional string rapid_curve_count5 = 91;
+  optional string rapid_curve_max = 92;
+  optional string rapid_curve_max_speed = 93;
+}
+
+message CreateKudgivtResponse {
+  Kudgivt kudgivt = 1;
+}
+
+message GetKudgivtRequest {
+  string uuid = 1;
+}
+
+message GetKudgivtResponse {
+  Kudgivt kudgivt = 1;
+}
+
+message UpdateKudgivtRequest {
+  string uuid = 1;
+  string organization_id = 2;
+  string hash = 3;
+  string created = 4;
+  optional string deleted = 5;
+  optional string kudguri_uuid = 6;
+  optional string unkou_no = 7;
+  optional string read_date = 8;
+  optional string unkou_date = 9;
+  optional string office_cd = 10;
+  optional string office_name = 11;
+  optional string vehicle_cd = 12;
+  optional string vehicle_name = 13;
+  optional string driver_cd1 = 14;
+  optional string driver_name1 = 15;
+  string target_driver_type = 16;
+  optional string target_driver_cd = 17;
+  optional string target_driver_name = 18;
+  optional string clock_in_datetime = 19;
+  optional string clock_out_datetime = 20;
+  optional string departure_datetime = 21;
+  optional string return_datetime = 22;
+  optional string departure_meter = 23;
+  optional string return_meter = 24;
+  optional string total_mileage = 25;
+  optional string destination_city_name = 26;
+  optional string destination_place_name = 27;
+  optional string actual_mileage = 28;
+  optional string local_drive_time = 29;
+  optional string express_drive_time = 30;
+  optional string bypass_drive_time = 31;
+  optional string actual_drive_time = 32;
+  optional string empty_drive_time = 33;
+  optional string work1_time = 34;
+  optional string work2_time = 35;
+  optional string work3_time = 36;
+  optional string work4_time = 37;
+  optional string work5_time = 38;
+  optional string work6_time = 39;
+  optional string work7_time = 40;
+  optional string work8_time = 41;
+  optional string work9_time = 42;
+  optional string work10_time = 43;
+  optional string state1_distance = 44;
+  optional string state2_distance = 45;
+  optional string state3_distance = 46;
+  optional string state4_distance = 47;
+  optional string state5_distance = 48;
+  optional string state1_time = 49;
+  optional string state2_time = 50;
+  optional string state3_time = 51;
+  optional string state4_time = 52;
+  optional string state5_time = 53;
+  optional string own_main_fuel = 54;
+  optional string own_main_additive = 55;
+  optional string own_consumable = 56;
+  optional string other_main_fuel = 57;
+  optional string other_main_additive = 58;
+  optional string other_consumable = 59;
+  optional string local_speed_over_max = 60;
+  optional string local_speed_over_time = 61;
+  optional string local_speed_over_count = 62;
+  optional string express_speed_over_max = 63;
+  optional string express_speed_over_time = 64;
+  optional string express_speed_over_count = 65;
+  optional string dedicated_speed_over_max = 66;
+  optional string dedicated_speed_over_time = 67;
+  optional string dedicated_speed_over_count = 68;
+  optional string idling_time = 69;
+  optional string idling_time_count = 70;
+  optional string rotation_over_max = 71;
+  optional string rotation_over_count = 72;
+  optional string rotation_over_time = 73;
+  optional string rapid_accel_count1 = 74;
+  optional string rapid_accel_count2 = 75;
+  optional string rapid_accel_count3 = 76;
+  optional string rapid_accel_count4 = 77;
+  optional string rapid_accel_count5 = 78;
+  optional string rapid_accel_max = 79;
+  optional string rapid_accel_max_speed = 80;
+  optional string rapid_decel_count1 = 81;
+  optional string rapid_decel_count2 = 82;
+  optional string rapid_decel_count3 = 83;
+  optional string rapid_decel_count4 = 84;
+  optional string rapid_decel_count5 = 85;
+  optional string rapid_decel_max = 86;
+  optional string rapid_decel_max_speed = 87;
+  optional string rapid_curve_count1 = 88;
+  optional string rapid_curve_count2 = 89;
+  optional string rapid_curve_count3 = 90;
+  optional string rapid_curve_count4 = 91;
+  optional string rapid_curve_count5 = 92;
+  optional string rapid_curve_max = 93;
+  optional string rapid_curve_max_speed = 94;
+}
+
+message UpdateKudgivtResponse {
+  Kudgivt kudgivt = 1;
+}
+
+message DeleteKudgivtRequest {
+  string uuid = 1;
+}
+
+message DeleteKudgivtResponse {
+  bool success = 1;
+}
+
+message ListKudgivtsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListKudgivtsResponse {
+  repeated Kudgivt kudgivts = 1;
+  string next_page_token = 2;
+}
+
+message ListKudgivtsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListKudgivtsByOrganizationResponse {
+  repeated Kudgivt kudgivts = 1;
+  string next_page_token = 2;
+}
+
+service KudgivtService {
+  rpc CreateKudgivt(CreateKudgivtRequest) returns (CreateKudgivtResponse);
+  rpc GetKudgivt(GetKudgivtRequest) returns (GetKudgivtResponse);
+  rpc UpdateKudgivt(UpdateKudgivtRequest) returns (UpdateKudgivtResponse);
+  rpc DeleteKudgivt(DeleteKudgivtRequest) returns (DeleteKudgivtResponse);
+  rpc ListKudgivts(ListKudgivtsRequest) returns (ListKudgivtsResponse);
+  rpc ListKudgivtsByOrganization(ListKudgivtsByOrganizationRequest) returns (ListKudgivtsByOrganizationResponse);
+}

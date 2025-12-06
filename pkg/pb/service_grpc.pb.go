@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v6.32.1
-// source: service.proto
+// source: proto/service.proto
 
 package pb
 
@@ -273,7 +273,7 @@ var OrganizationService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -565,7 +565,7 @@ var AppUserService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -896,7 +896,7 @@ var UserOrganizationService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -1188,7 +1188,7 @@ var FileService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -1480,7 +1480,7 @@ var FlickrPhotoService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -1772,7 +1772,7 @@ var CamFileService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -2064,7 +2064,7 @@ var CamFileExeService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -2357,7 +2357,7 @@ var CamFileExeStageService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -2649,7 +2649,7 @@ var IchibanCarService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -2942,7 +2942,7 @@ var DtakoCarsIchibanCarsService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -3234,7 +3234,7 @@ var UriageService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
 }
 
 const (
@@ -3526,5 +3526,4100 @@ var UriageJishaService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "service.proto",
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInspectionService_CreateCarInspection_FullMethodName              = "/organization.CarInspectionService/CreateCarInspection"
+	CarInspectionService_GetCarInspection_FullMethodName                 = "/organization.CarInspectionService/GetCarInspection"
+	CarInspectionService_UpdateCarInspection_FullMethodName              = "/organization.CarInspectionService/UpdateCarInspection"
+	CarInspectionService_DeleteCarInspection_FullMethodName              = "/organization.CarInspectionService/DeleteCarInspection"
+	CarInspectionService_ListCarInspections_FullMethodName               = "/organization.CarInspectionService/ListCarInspections"
+	CarInspectionService_ListCarInspectionsByOrganization_FullMethodName = "/organization.CarInspectionService/ListCarInspectionsByOrganization"
+)
+
+// CarInspectionServiceClient is the client API for CarInspectionService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInspectionServiceClient interface {
+	CreateCarInspection(ctx context.Context, in *CreateCarInspectionRequest, opts ...grpc.CallOption) (*CreateCarInspectionResponse, error)
+	GetCarInspection(ctx context.Context, in *GetCarInspectionRequest, opts ...grpc.CallOption) (*GetCarInspectionResponse, error)
+	UpdateCarInspection(ctx context.Context, in *UpdateCarInspectionRequest, opts ...grpc.CallOption) (*UpdateCarInspectionResponse, error)
+	DeleteCarInspection(ctx context.Context, in *DeleteCarInspectionRequest, opts ...grpc.CallOption) (*DeleteCarInspectionResponse, error)
+	ListCarInspections(ctx context.Context, in *ListCarInspectionsRequest, opts ...grpc.CallOption) (*ListCarInspectionsResponse, error)
+	ListCarInspectionsByOrganization(ctx context.Context, in *ListCarInspectionsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionsByOrganizationResponse, error)
+}
+
+type carInspectionServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInspectionServiceClient(cc grpc.ClientConnInterface) CarInspectionServiceClient {
+	return &carInspectionServiceClient{cc}
+}
+
+func (c *carInspectionServiceClient) CreateCarInspection(ctx context.Context, in *CreateCarInspectionRequest, opts ...grpc.CallOption) (*CreateCarInspectionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInspectionResponse)
+	err := c.cc.Invoke(ctx, CarInspectionService_CreateCarInspection_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionServiceClient) GetCarInspection(ctx context.Context, in *GetCarInspectionRequest, opts ...grpc.CallOption) (*GetCarInspectionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInspectionResponse)
+	err := c.cc.Invoke(ctx, CarInspectionService_GetCarInspection_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionServiceClient) UpdateCarInspection(ctx context.Context, in *UpdateCarInspectionRequest, opts ...grpc.CallOption) (*UpdateCarInspectionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInspectionResponse)
+	err := c.cc.Invoke(ctx, CarInspectionService_UpdateCarInspection_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionServiceClient) DeleteCarInspection(ctx context.Context, in *DeleteCarInspectionRequest, opts ...grpc.CallOption) (*DeleteCarInspectionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInspectionResponse)
+	err := c.cc.Invoke(ctx, CarInspectionService_DeleteCarInspection_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionServiceClient) ListCarInspections(ctx context.Context, in *ListCarInspectionsRequest, opts ...grpc.CallOption) (*ListCarInspectionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionsResponse)
+	err := c.cc.Invoke(ctx, CarInspectionService_ListCarInspections_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionServiceClient) ListCarInspectionsByOrganization(ctx context.Context, in *ListCarInspectionsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionService_ListCarInspectionsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInspectionServiceServer is the server API for CarInspectionService service.
+// All implementations must embed UnimplementedCarInspectionServiceServer
+// for forward compatibility.
+type CarInspectionServiceServer interface {
+	CreateCarInspection(context.Context, *CreateCarInspectionRequest) (*CreateCarInspectionResponse, error)
+	GetCarInspection(context.Context, *GetCarInspectionRequest) (*GetCarInspectionResponse, error)
+	UpdateCarInspection(context.Context, *UpdateCarInspectionRequest) (*UpdateCarInspectionResponse, error)
+	DeleteCarInspection(context.Context, *DeleteCarInspectionRequest) (*DeleteCarInspectionResponse, error)
+	ListCarInspections(context.Context, *ListCarInspectionsRequest) (*ListCarInspectionsResponse, error)
+	ListCarInspectionsByOrganization(context.Context, *ListCarInspectionsByOrganizationRequest) (*ListCarInspectionsByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInspectionServiceServer()
+}
+
+// UnimplementedCarInspectionServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInspectionServiceServer struct{}
+
+func (UnimplementedCarInspectionServiceServer) CreateCarInspection(context.Context, *CreateCarInspectionRequest) (*CreateCarInspectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInspection not implemented")
+}
+func (UnimplementedCarInspectionServiceServer) GetCarInspection(context.Context, *GetCarInspectionRequest) (*GetCarInspectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInspection not implemented")
+}
+func (UnimplementedCarInspectionServiceServer) UpdateCarInspection(context.Context, *UpdateCarInspectionRequest) (*UpdateCarInspectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInspection not implemented")
+}
+func (UnimplementedCarInspectionServiceServer) DeleteCarInspection(context.Context, *DeleteCarInspectionRequest) (*DeleteCarInspectionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInspection not implemented")
+}
+func (UnimplementedCarInspectionServiceServer) ListCarInspections(context.Context, *ListCarInspectionsRequest) (*ListCarInspectionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspections not implemented")
+}
+func (UnimplementedCarInspectionServiceServer) ListCarInspectionsByOrganization(context.Context, *ListCarInspectionsByOrganizationRequest) (*ListCarInspectionsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionsByOrganization not implemented")
+}
+func (UnimplementedCarInspectionServiceServer) mustEmbedUnimplementedCarInspectionServiceServer() {}
+func (UnimplementedCarInspectionServiceServer) testEmbeddedByValue()                              {}
+
+// UnsafeCarInspectionServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInspectionServiceServer will
+// result in compilation errors.
+type UnsafeCarInspectionServiceServer interface {
+	mustEmbedUnimplementedCarInspectionServiceServer()
+}
+
+func RegisterCarInspectionServiceServer(s grpc.ServiceRegistrar, srv CarInspectionServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInspectionServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInspectionService_ServiceDesc, srv)
+}
+
+func _CarInspectionService_CreateCarInspection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInspectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionServiceServer).CreateCarInspection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionService_CreateCarInspection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionServiceServer).CreateCarInspection(ctx, req.(*CreateCarInspectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionService_GetCarInspection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInspectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionServiceServer).GetCarInspection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionService_GetCarInspection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionServiceServer).GetCarInspection(ctx, req.(*GetCarInspectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionService_UpdateCarInspection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInspectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionServiceServer).UpdateCarInspection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionService_UpdateCarInspection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionServiceServer).UpdateCarInspection(ctx, req.(*UpdateCarInspectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionService_DeleteCarInspection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInspectionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionServiceServer).DeleteCarInspection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionService_DeleteCarInspection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionServiceServer).DeleteCarInspection(ctx, req.(*DeleteCarInspectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionService_ListCarInspections_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionServiceServer).ListCarInspections(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionService_ListCarInspections_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionServiceServer).ListCarInspections(ctx, req.(*ListCarInspectionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionService_ListCarInspectionsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionServiceServer).ListCarInspectionsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionService_ListCarInspectionsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionServiceServer).ListCarInspectionsByOrganization(ctx, req.(*ListCarInspectionsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInspectionService_ServiceDesc is the grpc.ServiceDesc for CarInspectionService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInspectionService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInspectionService",
+	HandlerType: (*CarInspectionServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInspection",
+			Handler:    _CarInspectionService_CreateCarInspection_Handler,
+		},
+		{
+			MethodName: "GetCarInspection",
+			Handler:    _CarInspectionService_GetCarInspection_Handler,
+		},
+		{
+			MethodName: "UpdateCarInspection",
+			Handler:    _CarInspectionService_UpdateCarInspection_Handler,
+		},
+		{
+			MethodName: "DeleteCarInspection",
+			Handler:    _CarInspectionService_DeleteCarInspection_Handler,
+		},
+		{
+			MethodName: "ListCarInspections",
+			Handler:    _CarInspectionService_ListCarInspections_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionsByOrganization",
+			Handler:    _CarInspectionService_ListCarInspectionsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInspectionFilesService_CreateCarInspectionFile_FullMethodName              = "/organization.CarInspectionFilesService/CreateCarInspectionFile"
+	CarInspectionFilesService_GetCarInspectionFile_FullMethodName                 = "/organization.CarInspectionFilesService/GetCarInspectionFile"
+	CarInspectionFilesService_UpdateCarInspectionFile_FullMethodName              = "/organization.CarInspectionFilesService/UpdateCarInspectionFile"
+	CarInspectionFilesService_DeleteCarInspectionFile_FullMethodName              = "/organization.CarInspectionFilesService/DeleteCarInspectionFile"
+	CarInspectionFilesService_ListCarInspectionFiles_FullMethodName               = "/organization.CarInspectionFilesService/ListCarInspectionFiles"
+	CarInspectionFilesService_ListCarInspectionFilesByOrganization_FullMethodName = "/organization.CarInspectionFilesService/ListCarInspectionFilesByOrganization"
+)
+
+// CarInspectionFilesServiceClient is the client API for CarInspectionFilesService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInspectionFilesServiceClient interface {
+	CreateCarInspectionFile(ctx context.Context, in *CreateCarInspectionFileRequest, opts ...grpc.CallOption) (*CreateCarInspectionFileResponse, error)
+	GetCarInspectionFile(ctx context.Context, in *GetCarInspectionFileRequest, opts ...grpc.CallOption) (*GetCarInspectionFileResponse, error)
+	UpdateCarInspectionFile(ctx context.Context, in *UpdateCarInspectionFileRequest, opts ...grpc.CallOption) (*UpdateCarInspectionFileResponse, error)
+	DeleteCarInspectionFile(ctx context.Context, in *DeleteCarInspectionFileRequest, opts ...grpc.CallOption) (*DeleteCarInspectionFileResponse, error)
+	ListCarInspectionFiles(ctx context.Context, in *ListCarInspectionFilesRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesResponse, error)
+	ListCarInspectionFilesByOrganization(ctx context.Context, in *ListCarInspectionFilesByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesByOrganizationResponse, error)
+}
+
+type carInspectionFilesServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInspectionFilesServiceClient(cc grpc.ClientConnInterface) CarInspectionFilesServiceClient {
+	return &carInspectionFilesServiceClient{cc}
+}
+
+func (c *carInspectionFilesServiceClient) CreateCarInspectionFile(ctx context.Context, in *CreateCarInspectionFileRequest, opts ...grpc.CallOption) (*CreateCarInspectionFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInspectionFileResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesService_CreateCarInspectionFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesServiceClient) GetCarInspectionFile(ctx context.Context, in *GetCarInspectionFileRequest, opts ...grpc.CallOption) (*GetCarInspectionFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInspectionFileResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesService_GetCarInspectionFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesServiceClient) UpdateCarInspectionFile(ctx context.Context, in *UpdateCarInspectionFileRequest, opts ...grpc.CallOption) (*UpdateCarInspectionFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInspectionFileResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesService_UpdateCarInspectionFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesServiceClient) DeleteCarInspectionFile(ctx context.Context, in *DeleteCarInspectionFileRequest, opts ...grpc.CallOption) (*DeleteCarInspectionFileResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInspectionFileResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesService_DeleteCarInspectionFile_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesServiceClient) ListCarInspectionFiles(ctx context.Context, in *ListCarInspectionFilesRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionFilesResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesService_ListCarInspectionFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesServiceClient) ListCarInspectionFilesByOrganization(ctx context.Context, in *ListCarInspectionFilesByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionFilesByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesService_ListCarInspectionFilesByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInspectionFilesServiceServer is the server API for CarInspectionFilesService service.
+// All implementations must embed UnimplementedCarInspectionFilesServiceServer
+// for forward compatibility.
+type CarInspectionFilesServiceServer interface {
+	CreateCarInspectionFile(context.Context, *CreateCarInspectionFileRequest) (*CreateCarInspectionFileResponse, error)
+	GetCarInspectionFile(context.Context, *GetCarInspectionFileRequest) (*GetCarInspectionFileResponse, error)
+	UpdateCarInspectionFile(context.Context, *UpdateCarInspectionFileRequest) (*UpdateCarInspectionFileResponse, error)
+	DeleteCarInspectionFile(context.Context, *DeleteCarInspectionFileRequest) (*DeleteCarInspectionFileResponse, error)
+	ListCarInspectionFiles(context.Context, *ListCarInspectionFilesRequest) (*ListCarInspectionFilesResponse, error)
+	ListCarInspectionFilesByOrganization(context.Context, *ListCarInspectionFilesByOrganizationRequest) (*ListCarInspectionFilesByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInspectionFilesServiceServer()
+}
+
+// UnimplementedCarInspectionFilesServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInspectionFilesServiceServer struct{}
+
+func (UnimplementedCarInspectionFilesServiceServer) CreateCarInspectionFile(context.Context, *CreateCarInspectionFileRequest) (*CreateCarInspectionFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInspectionFile not implemented")
+}
+func (UnimplementedCarInspectionFilesServiceServer) GetCarInspectionFile(context.Context, *GetCarInspectionFileRequest) (*GetCarInspectionFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInspectionFile not implemented")
+}
+func (UnimplementedCarInspectionFilesServiceServer) UpdateCarInspectionFile(context.Context, *UpdateCarInspectionFileRequest) (*UpdateCarInspectionFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInspectionFile not implemented")
+}
+func (UnimplementedCarInspectionFilesServiceServer) DeleteCarInspectionFile(context.Context, *DeleteCarInspectionFileRequest) (*DeleteCarInspectionFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInspectionFile not implemented")
+}
+func (UnimplementedCarInspectionFilesServiceServer) ListCarInspectionFiles(context.Context, *ListCarInspectionFilesRequest) (*ListCarInspectionFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionFiles not implemented")
+}
+func (UnimplementedCarInspectionFilesServiceServer) ListCarInspectionFilesByOrganization(context.Context, *ListCarInspectionFilesByOrganizationRequest) (*ListCarInspectionFilesByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionFilesByOrganization not implemented")
+}
+func (UnimplementedCarInspectionFilesServiceServer) mustEmbedUnimplementedCarInspectionFilesServiceServer() {
+}
+func (UnimplementedCarInspectionFilesServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCarInspectionFilesServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInspectionFilesServiceServer will
+// result in compilation errors.
+type UnsafeCarInspectionFilesServiceServer interface {
+	mustEmbedUnimplementedCarInspectionFilesServiceServer()
+}
+
+func RegisterCarInspectionFilesServiceServer(s grpc.ServiceRegistrar, srv CarInspectionFilesServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInspectionFilesServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInspectionFilesService_ServiceDesc, srv)
+}
+
+func _CarInspectionFilesService_CreateCarInspectionFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInspectionFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesServiceServer).CreateCarInspectionFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesService_CreateCarInspectionFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesServiceServer).CreateCarInspectionFile(ctx, req.(*CreateCarInspectionFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesService_GetCarInspectionFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInspectionFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesServiceServer).GetCarInspectionFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesService_GetCarInspectionFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesServiceServer).GetCarInspectionFile(ctx, req.(*GetCarInspectionFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesService_UpdateCarInspectionFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInspectionFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesServiceServer).UpdateCarInspectionFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesService_UpdateCarInspectionFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesServiceServer).UpdateCarInspectionFile(ctx, req.(*UpdateCarInspectionFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesService_DeleteCarInspectionFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInspectionFileRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesServiceServer).DeleteCarInspectionFile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesService_DeleteCarInspectionFile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesServiceServer).DeleteCarInspectionFile(ctx, req.(*DeleteCarInspectionFileRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesService_ListCarInspectionFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesServiceServer).ListCarInspectionFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesService_ListCarInspectionFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesServiceServer).ListCarInspectionFiles(ctx, req.(*ListCarInspectionFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesService_ListCarInspectionFilesByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionFilesByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesServiceServer).ListCarInspectionFilesByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesService_ListCarInspectionFilesByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesServiceServer).ListCarInspectionFilesByOrganization(ctx, req.(*ListCarInspectionFilesByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInspectionFilesService_ServiceDesc is the grpc.ServiceDesc for CarInspectionFilesService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInspectionFilesService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInspectionFilesService",
+	HandlerType: (*CarInspectionFilesServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInspectionFile",
+			Handler:    _CarInspectionFilesService_CreateCarInspectionFile_Handler,
+		},
+		{
+			MethodName: "GetCarInspectionFile",
+			Handler:    _CarInspectionFilesService_GetCarInspectionFile_Handler,
+		},
+		{
+			MethodName: "UpdateCarInspectionFile",
+			Handler:    _CarInspectionFilesService_UpdateCarInspectionFile_Handler,
+		},
+		{
+			MethodName: "DeleteCarInspectionFile",
+			Handler:    _CarInspectionFilesService_DeleteCarInspectionFile_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionFiles",
+			Handler:    _CarInspectionFilesService_ListCarInspectionFiles_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionFilesByOrganization",
+			Handler:    _CarInspectionFilesService_ListCarInspectionFilesByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInspectionFilesAService_CreateCarInspectionFilesA_FullMethodName              = "/organization.CarInspectionFilesAService/CreateCarInspectionFilesA"
+	CarInspectionFilesAService_GetCarInspectionFilesA_FullMethodName                 = "/organization.CarInspectionFilesAService/GetCarInspectionFilesA"
+	CarInspectionFilesAService_UpdateCarInspectionFilesA_FullMethodName              = "/organization.CarInspectionFilesAService/UpdateCarInspectionFilesA"
+	CarInspectionFilesAService_DeleteCarInspectionFilesA_FullMethodName              = "/organization.CarInspectionFilesAService/DeleteCarInspectionFilesA"
+	CarInspectionFilesAService_ListCarInspectionFilesAs_FullMethodName               = "/organization.CarInspectionFilesAService/ListCarInspectionFilesAs"
+	CarInspectionFilesAService_ListCarInspectionFilesAsByOrganization_FullMethodName = "/organization.CarInspectionFilesAService/ListCarInspectionFilesAsByOrganization"
+)
+
+// CarInspectionFilesAServiceClient is the client API for CarInspectionFilesAService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInspectionFilesAServiceClient interface {
+	CreateCarInspectionFilesA(ctx context.Context, in *CreateCarInspectionFilesARequest, opts ...grpc.CallOption) (*CreateCarInspectionFilesAResponse, error)
+	GetCarInspectionFilesA(ctx context.Context, in *GetCarInspectionFilesARequest, opts ...grpc.CallOption) (*GetCarInspectionFilesAResponse, error)
+	UpdateCarInspectionFilesA(ctx context.Context, in *UpdateCarInspectionFilesARequest, opts ...grpc.CallOption) (*UpdateCarInspectionFilesAResponse, error)
+	DeleteCarInspectionFilesA(ctx context.Context, in *DeleteCarInspectionFilesARequest, opts ...grpc.CallOption) (*DeleteCarInspectionFilesAResponse, error)
+	ListCarInspectionFilesAs(ctx context.Context, in *ListCarInspectionFilesAsRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesAsResponse, error)
+	ListCarInspectionFilesAsByOrganization(ctx context.Context, in *ListCarInspectionFilesAsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesAsByOrganizationResponse, error)
+}
+
+type carInspectionFilesAServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInspectionFilesAServiceClient(cc grpc.ClientConnInterface) CarInspectionFilesAServiceClient {
+	return &carInspectionFilesAServiceClient{cc}
+}
+
+func (c *carInspectionFilesAServiceClient) CreateCarInspectionFilesA(ctx context.Context, in *CreateCarInspectionFilesARequest, opts ...grpc.CallOption) (*CreateCarInspectionFilesAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInspectionFilesAResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesAService_CreateCarInspectionFilesA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesAServiceClient) GetCarInspectionFilesA(ctx context.Context, in *GetCarInspectionFilesARequest, opts ...grpc.CallOption) (*GetCarInspectionFilesAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInspectionFilesAResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesAService_GetCarInspectionFilesA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesAServiceClient) UpdateCarInspectionFilesA(ctx context.Context, in *UpdateCarInspectionFilesARequest, opts ...grpc.CallOption) (*UpdateCarInspectionFilesAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInspectionFilesAResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesAService_UpdateCarInspectionFilesA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesAServiceClient) DeleteCarInspectionFilesA(ctx context.Context, in *DeleteCarInspectionFilesARequest, opts ...grpc.CallOption) (*DeleteCarInspectionFilesAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInspectionFilesAResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesAService_DeleteCarInspectionFilesA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesAServiceClient) ListCarInspectionFilesAs(ctx context.Context, in *ListCarInspectionFilesAsRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesAsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionFilesAsResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesAService_ListCarInspectionFilesAs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesAServiceClient) ListCarInspectionFilesAsByOrganization(ctx context.Context, in *ListCarInspectionFilesAsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesAsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionFilesAsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesAService_ListCarInspectionFilesAsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInspectionFilesAServiceServer is the server API for CarInspectionFilesAService service.
+// All implementations must embed UnimplementedCarInspectionFilesAServiceServer
+// for forward compatibility.
+type CarInspectionFilesAServiceServer interface {
+	CreateCarInspectionFilesA(context.Context, *CreateCarInspectionFilesARequest) (*CreateCarInspectionFilesAResponse, error)
+	GetCarInspectionFilesA(context.Context, *GetCarInspectionFilesARequest) (*GetCarInspectionFilesAResponse, error)
+	UpdateCarInspectionFilesA(context.Context, *UpdateCarInspectionFilesARequest) (*UpdateCarInspectionFilesAResponse, error)
+	DeleteCarInspectionFilesA(context.Context, *DeleteCarInspectionFilesARequest) (*DeleteCarInspectionFilesAResponse, error)
+	ListCarInspectionFilesAs(context.Context, *ListCarInspectionFilesAsRequest) (*ListCarInspectionFilesAsResponse, error)
+	ListCarInspectionFilesAsByOrganization(context.Context, *ListCarInspectionFilesAsByOrganizationRequest) (*ListCarInspectionFilesAsByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInspectionFilesAServiceServer()
+}
+
+// UnimplementedCarInspectionFilesAServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInspectionFilesAServiceServer struct{}
+
+func (UnimplementedCarInspectionFilesAServiceServer) CreateCarInspectionFilesA(context.Context, *CreateCarInspectionFilesARequest) (*CreateCarInspectionFilesAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInspectionFilesA not implemented")
+}
+func (UnimplementedCarInspectionFilesAServiceServer) GetCarInspectionFilesA(context.Context, *GetCarInspectionFilesARequest) (*GetCarInspectionFilesAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInspectionFilesA not implemented")
+}
+func (UnimplementedCarInspectionFilesAServiceServer) UpdateCarInspectionFilesA(context.Context, *UpdateCarInspectionFilesARequest) (*UpdateCarInspectionFilesAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInspectionFilesA not implemented")
+}
+func (UnimplementedCarInspectionFilesAServiceServer) DeleteCarInspectionFilesA(context.Context, *DeleteCarInspectionFilesARequest) (*DeleteCarInspectionFilesAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInspectionFilesA not implemented")
+}
+func (UnimplementedCarInspectionFilesAServiceServer) ListCarInspectionFilesAs(context.Context, *ListCarInspectionFilesAsRequest) (*ListCarInspectionFilesAsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionFilesAs not implemented")
+}
+func (UnimplementedCarInspectionFilesAServiceServer) ListCarInspectionFilesAsByOrganization(context.Context, *ListCarInspectionFilesAsByOrganizationRequest) (*ListCarInspectionFilesAsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionFilesAsByOrganization not implemented")
+}
+func (UnimplementedCarInspectionFilesAServiceServer) mustEmbedUnimplementedCarInspectionFilesAServiceServer() {
+}
+func (UnimplementedCarInspectionFilesAServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCarInspectionFilesAServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInspectionFilesAServiceServer will
+// result in compilation errors.
+type UnsafeCarInspectionFilesAServiceServer interface {
+	mustEmbedUnimplementedCarInspectionFilesAServiceServer()
+}
+
+func RegisterCarInspectionFilesAServiceServer(s grpc.ServiceRegistrar, srv CarInspectionFilesAServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInspectionFilesAServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInspectionFilesAService_ServiceDesc, srv)
+}
+
+func _CarInspectionFilesAService_CreateCarInspectionFilesA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInspectionFilesARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesAServiceServer).CreateCarInspectionFilesA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesAService_CreateCarInspectionFilesA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesAServiceServer).CreateCarInspectionFilesA(ctx, req.(*CreateCarInspectionFilesARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesAService_GetCarInspectionFilesA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInspectionFilesARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesAServiceServer).GetCarInspectionFilesA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesAService_GetCarInspectionFilesA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesAServiceServer).GetCarInspectionFilesA(ctx, req.(*GetCarInspectionFilesARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesAService_UpdateCarInspectionFilesA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInspectionFilesARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesAServiceServer).UpdateCarInspectionFilesA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesAService_UpdateCarInspectionFilesA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesAServiceServer).UpdateCarInspectionFilesA(ctx, req.(*UpdateCarInspectionFilesARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesAService_DeleteCarInspectionFilesA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInspectionFilesARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesAServiceServer).DeleteCarInspectionFilesA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesAService_DeleteCarInspectionFilesA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesAServiceServer).DeleteCarInspectionFilesA(ctx, req.(*DeleteCarInspectionFilesARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesAService_ListCarInspectionFilesAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionFilesAsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesAServiceServer).ListCarInspectionFilesAs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesAService_ListCarInspectionFilesAs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesAServiceServer).ListCarInspectionFilesAs(ctx, req.(*ListCarInspectionFilesAsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesAService_ListCarInspectionFilesAsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionFilesAsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesAServiceServer).ListCarInspectionFilesAsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesAService_ListCarInspectionFilesAsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesAServiceServer).ListCarInspectionFilesAsByOrganization(ctx, req.(*ListCarInspectionFilesAsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInspectionFilesAService_ServiceDesc is the grpc.ServiceDesc for CarInspectionFilesAService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInspectionFilesAService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInspectionFilesAService",
+	HandlerType: (*CarInspectionFilesAServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInspectionFilesA",
+			Handler:    _CarInspectionFilesAService_CreateCarInspectionFilesA_Handler,
+		},
+		{
+			MethodName: "GetCarInspectionFilesA",
+			Handler:    _CarInspectionFilesAService_GetCarInspectionFilesA_Handler,
+		},
+		{
+			MethodName: "UpdateCarInspectionFilesA",
+			Handler:    _CarInspectionFilesAService_UpdateCarInspectionFilesA_Handler,
+		},
+		{
+			MethodName: "DeleteCarInspectionFilesA",
+			Handler:    _CarInspectionFilesAService_DeleteCarInspectionFilesA_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionFilesAs",
+			Handler:    _CarInspectionFilesAService_ListCarInspectionFilesAs_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionFilesAsByOrganization",
+			Handler:    _CarInspectionFilesAService_ListCarInspectionFilesAsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInspectionFilesBService_CreateCarInspectionFilesB_FullMethodName              = "/organization.CarInspectionFilesBService/CreateCarInspectionFilesB"
+	CarInspectionFilesBService_GetCarInspectionFilesB_FullMethodName                 = "/organization.CarInspectionFilesBService/GetCarInspectionFilesB"
+	CarInspectionFilesBService_UpdateCarInspectionFilesB_FullMethodName              = "/organization.CarInspectionFilesBService/UpdateCarInspectionFilesB"
+	CarInspectionFilesBService_DeleteCarInspectionFilesB_FullMethodName              = "/organization.CarInspectionFilesBService/DeleteCarInspectionFilesB"
+	CarInspectionFilesBService_ListCarInspectionFilesBs_FullMethodName               = "/organization.CarInspectionFilesBService/ListCarInspectionFilesBs"
+	CarInspectionFilesBService_ListCarInspectionFilesBsByOrganization_FullMethodName = "/organization.CarInspectionFilesBService/ListCarInspectionFilesBsByOrganization"
+)
+
+// CarInspectionFilesBServiceClient is the client API for CarInspectionFilesBService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInspectionFilesBServiceClient interface {
+	CreateCarInspectionFilesB(ctx context.Context, in *CreateCarInspectionFilesBRequest, opts ...grpc.CallOption) (*CreateCarInspectionFilesBResponse, error)
+	GetCarInspectionFilesB(ctx context.Context, in *GetCarInspectionFilesBRequest, opts ...grpc.CallOption) (*GetCarInspectionFilesBResponse, error)
+	UpdateCarInspectionFilesB(ctx context.Context, in *UpdateCarInspectionFilesBRequest, opts ...grpc.CallOption) (*UpdateCarInspectionFilesBResponse, error)
+	DeleteCarInspectionFilesB(ctx context.Context, in *DeleteCarInspectionFilesBRequest, opts ...grpc.CallOption) (*DeleteCarInspectionFilesBResponse, error)
+	ListCarInspectionFilesBs(ctx context.Context, in *ListCarInspectionFilesBsRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesBsResponse, error)
+	ListCarInspectionFilesBsByOrganization(ctx context.Context, in *ListCarInspectionFilesBsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesBsByOrganizationResponse, error)
+}
+
+type carInspectionFilesBServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInspectionFilesBServiceClient(cc grpc.ClientConnInterface) CarInspectionFilesBServiceClient {
+	return &carInspectionFilesBServiceClient{cc}
+}
+
+func (c *carInspectionFilesBServiceClient) CreateCarInspectionFilesB(ctx context.Context, in *CreateCarInspectionFilesBRequest, opts ...grpc.CallOption) (*CreateCarInspectionFilesBResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInspectionFilesBResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesBService_CreateCarInspectionFilesB_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesBServiceClient) GetCarInspectionFilesB(ctx context.Context, in *GetCarInspectionFilesBRequest, opts ...grpc.CallOption) (*GetCarInspectionFilesBResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInspectionFilesBResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesBService_GetCarInspectionFilesB_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesBServiceClient) UpdateCarInspectionFilesB(ctx context.Context, in *UpdateCarInspectionFilesBRequest, opts ...grpc.CallOption) (*UpdateCarInspectionFilesBResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInspectionFilesBResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesBService_UpdateCarInspectionFilesB_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesBServiceClient) DeleteCarInspectionFilesB(ctx context.Context, in *DeleteCarInspectionFilesBRequest, opts ...grpc.CallOption) (*DeleteCarInspectionFilesBResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInspectionFilesBResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesBService_DeleteCarInspectionFilesB_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesBServiceClient) ListCarInspectionFilesBs(ctx context.Context, in *ListCarInspectionFilesBsRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesBsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionFilesBsResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesBService_ListCarInspectionFilesBs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionFilesBServiceClient) ListCarInspectionFilesBsByOrganization(ctx context.Context, in *ListCarInspectionFilesBsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionFilesBsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionFilesBsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionFilesBService_ListCarInspectionFilesBsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInspectionFilesBServiceServer is the server API for CarInspectionFilesBService service.
+// All implementations must embed UnimplementedCarInspectionFilesBServiceServer
+// for forward compatibility.
+type CarInspectionFilesBServiceServer interface {
+	CreateCarInspectionFilesB(context.Context, *CreateCarInspectionFilesBRequest) (*CreateCarInspectionFilesBResponse, error)
+	GetCarInspectionFilesB(context.Context, *GetCarInspectionFilesBRequest) (*GetCarInspectionFilesBResponse, error)
+	UpdateCarInspectionFilesB(context.Context, *UpdateCarInspectionFilesBRequest) (*UpdateCarInspectionFilesBResponse, error)
+	DeleteCarInspectionFilesB(context.Context, *DeleteCarInspectionFilesBRequest) (*DeleteCarInspectionFilesBResponse, error)
+	ListCarInspectionFilesBs(context.Context, *ListCarInspectionFilesBsRequest) (*ListCarInspectionFilesBsResponse, error)
+	ListCarInspectionFilesBsByOrganization(context.Context, *ListCarInspectionFilesBsByOrganizationRequest) (*ListCarInspectionFilesBsByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInspectionFilesBServiceServer()
+}
+
+// UnimplementedCarInspectionFilesBServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInspectionFilesBServiceServer struct{}
+
+func (UnimplementedCarInspectionFilesBServiceServer) CreateCarInspectionFilesB(context.Context, *CreateCarInspectionFilesBRequest) (*CreateCarInspectionFilesBResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInspectionFilesB not implemented")
+}
+func (UnimplementedCarInspectionFilesBServiceServer) GetCarInspectionFilesB(context.Context, *GetCarInspectionFilesBRequest) (*GetCarInspectionFilesBResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInspectionFilesB not implemented")
+}
+func (UnimplementedCarInspectionFilesBServiceServer) UpdateCarInspectionFilesB(context.Context, *UpdateCarInspectionFilesBRequest) (*UpdateCarInspectionFilesBResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInspectionFilesB not implemented")
+}
+func (UnimplementedCarInspectionFilesBServiceServer) DeleteCarInspectionFilesB(context.Context, *DeleteCarInspectionFilesBRequest) (*DeleteCarInspectionFilesBResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInspectionFilesB not implemented")
+}
+func (UnimplementedCarInspectionFilesBServiceServer) ListCarInspectionFilesBs(context.Context, *ListCarInspectionFilesBsRequest) (*ListCarInspectionFilesBsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionFilesBs not implemented")
+}
+func (UnimplementedCarInspectionFilesBServiceServer) ListCarInspectionFilesBsByOrganization(context.Context, *ListCarInspectionFilesBsByOrganizationRequest) (*ListCarInspectionFilesBsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionFilesBsByOrganization not implemented")
+}
+func (UnimplementedCarInspectionFilesBServiceServer) mustEmbedUnimplementedCarInspectionFilesBServiceServer() {
+}
+func (UnimplementedCarInspectionFilesBServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCarInspectionFilesBServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInspectionFilesBServiceServer will
+// result in compilation errors.
+type UnsafeCarInspectionFilesBServiceServer interface {
+	mustEmbedUnimplementedCarInspectionFilesBServiceServer()
+}
+
+func RegisterCarInspectionFilesBServiceServer(s grpc.ServiceRegistrar, srv CarInspectionFilesBServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInspectionFilesBServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInspectionFilesBService_ServiceDesc, srv)
+}
+
+func _CarInspectionFilesBService_CreateCarInspectionFilesB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInspectionFilesBRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesBServiceServer).CreateCarInspectionFilesB(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesBService_CreateCarInspectionFilesB_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesBServiceServer).CreateCarInspectionFilesB(ctx, req.(*CreateCarInspectionFilesBRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesBService_GetCarInspectionFilesB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInspectionFilesBRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesBServiceServer).GetCarInspectionFilesB(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesBService_GetCarInspectionFilesB_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesBServiceServer).GetCarInspectionFilesB(ctx, req.(*GetCarInspectionFilesBRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesBService_UpdateCarInspectionFilesB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInspectionFilesBRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesBServiceServer).UpdateCarInspectionFilesB(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesBService_UpdateCarInspectionFilesB_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesBServiceServer).UpdateCarInspectionFilesB(ctx, req.(*UpdateCarInspectionFilesBRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesBService_DeleteCarInspectionFilesB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInspectionFilesBRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesBServiceServer).DeleteCarInspectionFilesB(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesBService_DeleteCarInspectionFilesB_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesBServiceServer).DeleteCarInspectionFilesB(ctx, req.(*DeleteCarInspectionFilesBRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesBService_ListCarInspectionFilesBs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionFilesBsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesBServiceServer).ListCarInspectionFilesBs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesBService_ListCarInspectionFilesBs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesBServiceServer).ListCarInspectionFilesBs(ctx, req.(*ListCarInspectionFilesBsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionFilesBService_ListCarInspectionFilesBsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionFilesBsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionFilesBServiceServer).ListCarInspectionFilesBsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionFilesBService_ListCarInspectionFilesBsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionFilesBServiceServer).ListCarInspectionFilesBsByOrganization(ctx, req.(*ListCarInspectionFilesBsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInspectionFilesBService_ServiceDesc is the grpc.ServiceDesc for CarInspectionFilesBService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInspectionFilesBService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInspectionFilesBService",
+	HandlerType: (*CarInspectionFilesBServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInspectionFilesB",
+			Handler:    _CarInspectionFilesBService_CreateCarInspectionFilesB_Handler,
+		},
+		{
+			MethodName: "GetCarInspectionFilesB",
+			Handler:    _CarInspectionFilesBService_GetCarInspectionFilesB_Handler,
+		},
+		{
+			MethodName: "UpdateCarInspectionFilesB",
+			Handler:    _CarInspectionFilesBService_UpdateCarInspectionFilesB_Handler,
+		},
+		{
+			MethodName: "DeleteCarInspectionFilesB",
+			Handler:    _CarInspectionFilesBService_DeleteCarInspectionFilesB_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionFilesBs",
+			Handler:    _CarInspectionFilesBService_ListCarInspectionFilesBs_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionFilesBsByOrganization",
+			Handler:    _CarInspectionFilesBService_ListCarInspectionFilesBsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInspectionDeregistrationService_CreateCarInspectionDeregistration_FullMethodName              = "/organization.CarInspectionDeregistrationService/CreateCarInspectionDeregistration"
+	CarInspectionDeregistrationService_GetCarInspectionDeregistration_FullMethodName                 = "/organization.CarInspectionDeregistrationService/GetCarInspectionDeregistration"
+	CarInspectionDeregistrationService_UpdateCarInspectionDeregistration_FullMethodName              = "/organization.CarInspectionDeregistrationService/UpdateCarInspectionDeregistration"
+	CarInspectionDeregistrationService_DeleteCarInspectionDeregistration_FullMethodName              = "/organization.CarInspectionDeregistrationService/DeleteCarInspectionDeregistration"
+	CarInspectionDeregistrationService_ListCarInspectionDeregistrations_FullMethodName               = "/organization.CarInspectionDeregistrationService/ListCarInspectionDeregistrations"
+	CarInspectionDeregistrationService_ListCarInspectionDeregistrationsByOrganization_FullMethodName = "/organization.CarInspectionDeregistrationService/ListCarInspectionDeregistrationsByOrganization"
+)
+
+// CarInspectionDeregistrationServiceClient is the client API for CarInspectionDeregistrationService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInspectionDeregistrationServiceClient interface {
+	CreateCarInspectionDeregistration(ctx context.Context, in *CreateCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*CreateCarInspectionDeregistrationResponse, error)
+	GetCarInspectionDeregistration(ctx context.Context, in *GetCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*GetCarInspectionDeregistrationResponse, error)
+	UpdateCarInspectionDeregistration(ctx context.Context, in *UpdateCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*UpdateCarInspectionDeregistrationResponse, error)
+	DeleteCarInspectionDeregistration(ctx context.Context, in *DeleteCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*DeleteCarInspectionDeregistrationResponse, error)
+	ListCarInspectionDeregistrations(ctx context.Context, in *ListCarInspectionDeregistrationsRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationsResponse, error)
+	ListCarInspectionDeregistrationsByOrganization(ctx context.Context, in *ListCarInspectionDeregistrationsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationsByOrganizationResponse, error)
+}
+
+type carInspectionDeregistrationServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInspectionDeregistrationServiceClient(cc grpc.ClientConnInterface) CarInspectionDeregistrationServiceClient {
+	return &carInspectionDeregistrationServiceClient{cc}
+}
+
+func (c *carInspectionDeregistrationServiceClient) CreateCarInspectionDeregistration(ctx context.Context, in *CreateCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*CreateCarInspectionDeregistrationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInspectionDeregistrationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationService_CreateCarInspectionDeregistration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationServiceClient) GetCarInspectionDeregistration(ctx context.Context, in *GetCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*GetCarInspectionDeregistrationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInspectionDeregistrationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationService_GetCarInspectionDeregistration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationServiceClient) UpdateCarInspectionDeregistration(ctx context.Context, in *UpdateCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*UpdateCarInspectionDeregistrationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInspectionDeregistrationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationService_UpdateCarInspectionDeregistration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationServiceClient) DeleteCarInspectionDeregistration(ctx context.Context, in *DeleteCarInspectionDeregistrationRequest, opts ...grpc.CallOption) (*DeleteCarInspectionDeregistrationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInspectionDeregistrationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationService_DeleteCarInspectionDeregistration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationServiceClient) ListCarInspectionDeregistrations(ctx context.Context, in *ListCarInspectionDeregistrationsRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionDeregistrationsResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationService_ListCarInspectionDeregistrations_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationServiceClient) ListCarInspectionDeregistrationsByOrganization(ctx context.Context, in *ListCarInspectionDeregistrationsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionDeregistrationsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationService_ListCarInspectionDeregistrationsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInspectionDeregistrationServiceServer is the server API for CarInspectionDeregistrationService service.
+// All implementations must embed UnimplementedCarInspectionDeregistrationServiceServer
+// for forward compatibility.
+type CarInspectionDeregistrationServiceServer interface {
+	CreateCarInspectionDeregistration(context.Context, *CreateCarInspectionDeregistrationRequest) (*CreateCarInspectionDeregistrationResponse, error)
+	GetCarInspectionDeregistration(context.Context, *GetCarInspectionDeregistrationRequest) (*GetCarInspectionDeregistrationResponse, error)
+	UpdateCarInspectionDeregistration(context.Context, *UpdateCarInspectionDeregistrationRequest) (*UpdateCarInspectionDeregistrationResponse, error)
+	DeleteCarInspectionDeregistration(context.Context, *DeleteCarInspectionDeregistrationRequest) (*DeleteCarInspectionDeregistrationResponse, error)
+	ListCarInspectionDeregistrations(context.Context, *ListCarInspectionDeregistrationsRequest) (*ListCarInspectionDeregistrationsResponse, error)
+	ListCarInspectionDeregistrationsByOrganization(context.Context, *ListCarInspectionDeregistrationsByOrganizationRequest) (*ListCarInspectionDeregistrationsByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInspectionDeregistrationServiceServer()
+}
+
+// UnimplementedCarInspectionDeregistrationServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInspectionDeregistrationServiceServer struct{}
+
+func (UnimplementedCarInspectionDeregistrationServiceServer) CreateCarInspectionDeregistration(context.Context, *CreateCarInspectionDeregistrationRequest) (*CreateCarInspectionDeregistrationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInspectionDeregistration not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationServiceServer) GetCarInspectionDeregistration(context.Context, *GetCarInspectionDeregistrationRequest) (*GetCarInspectionDeregistrationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInspectionDeregistration not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationServiceServer) UpdateCarInspectionDeregistration(context.Context, *UpdateCarInspectionDeregistrationRequest) (*UpdateCarInspectionDeregistrationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInspectionDeregistration not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationServiceServer) DeleteCarInspectionDeregistration(context.Context, *DeleteCarInspectionDeregistrationRequest) (*DeleteCarInspectionDeregistrationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInspectionDeregistration not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationServiceServer) ListCarInspectionDeregistrations(context.Context, *ListCarInspectionDeregistrationsRequest) (*ListCarInspectionDeregistrationsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionDeregistrations not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationServiceServer) ListCarInspectionDeregistrationsByOrganization(context.Context, *ListCarInspectionDeregistrationsByOrganizationRequest) (*ListCarInspectionDeregistrationsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionDeregistrationsByOrganization not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationServiceServer) mustEmbedUnimplementedCarInspectionDeregistrationServiceServer() {
+}
+func (UnimplementedCarInspectionDeregistrationServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCarInspectionDeregistrationServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInspectionDeregistrationServiceServer will
+// result in compilation errors.
+type UnsafeCarInspectionDeregistrationServiceServer interface {
+	mustEmbedUnimplementedCarInspectionDeregistrationServiceServer()
+}
+
+func RegisterCarInspectionDeregistrationServiceServer(s grpc.ServiceRegistrar, srv CarInspectionDeregistrationServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInspectionDeregistrationServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInspectionDeregistrationService_ServiceDesc, srv)
+}
+
+func _CarInspectionDeregistrationService_CreateCarInspectionDeregistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInspectionDeregistrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationServiceServer).CreateCarInspectionDeregistration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationService_CreateCarInspectionDeregistration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationServiceServer).CreateCarInspectionDeregistration(ctx, req.(*CreateCarInspectionDeregistrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationService_GetCarInspectionDeregistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInspectionDeregistrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationServiceServer).GetCarInspectionDeregistration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationService_GetCarInspectionDeregistration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationServiceServer).GetCarInspectionDeregistration(ctx, req.(*GetCarInspectionDeregistrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationService_UpdateCarInspectionDeregistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInspectionDeregistrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationServiceServer).UpdateCarInspectionDeregistration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationService_UpdateCarInspectionDeregistration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationServiceServer).UpdateCarInspectionDeregistration(ctx, req.(*UpdateCarInspectionDeregistrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationService_DeleteCarInspectionDeregistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInspectionDeregistrationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationServiceServer).DeleteCarInspectionDeregistration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationService_DeleteCarInspectionDeregistration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationServiceServer).DeleteCarInspectionDeregistration(ctx, req.(*DeleteCarInspectionDeregistrationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationService_ListCarInspectionDeregistrations_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionDeregistrationsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationServiceServer).ListCarInspectionDeregistrations(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationService_ListCarInspectionDeregistrations_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationServiceServer).ListCarInspectionDeregistrations(ctx, req.(*ListCarInspectionDeregistrationsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationService_ListCarInspectionDeregistrationsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionDeregistrationsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationServiceServer).ListCarInspectionDeregistrationsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationService_ListCarInspectionDeregistrationsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationServiceServer).ListCarInspectionDeregistrationsByOrganization(ctx, req.(*ListCarInspectionDeregistrationsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInspectionDeregistrationService_ServiceDesc is the grpc.ServiceDesc for CarInspectionDeregistrationService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInspectionDeregistrationService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInspectionDeregistrationService",
+	HandlerType: (*CarInspectionDeregistrationServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInspectionDeregistration",
+			Handler:    _CarInspectionDeregistrationService_CreateCarInspectionDeregistration_Handler,
+		},
+		{
+			MethodName: "GetCarInspectionDeregistration",
+			Handler:    _CarInspectionDeregistrationService_GetCarInspectionDeregistration_Handler,
+		},
+		{
+			MethodName: "UpdateCarInspectionDeregistration",
+			Handler:    _CarInspectionDeregistrationService_UpdateCarInspectionDeregistration_Handler,
+		},
+		{
+			MethodName: "DeleteCarInspectionDeregistration",
+			Handler:    _CarInspectionDeregistrationService_DeleteCarInspectionDeregistration_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionDeregistrations",
+			Handler:    _CarInspectionDeregistrationService_ListCarInspectionDeregistrations_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionDeregistrationsByOrganization",
+			Handler:    _CarInspectionDeregistrationService_ListCarInspectionDeregistrationsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInspectionDeregistrationFilesService_CreateCarInspectionDeregistrationFiles_FullMethodName              = "/organization.CarInspectionDeregistrationFilesService/CreateCarInspectionDeregistrationFiles"
+	CarInspectionDeregistrationFilesService_GetCarInspectionDeregistrationFiles_FullMethodName                 = "/organization.CarInspectionDeregistrationFilesService/GetCarInspectionDeregistrationFiles"
+	CarInspectionDeregistrationFilesService_UpdateCarInspectionDeregistrationFiles_FullMethodName              = "/organization.CarInspectionDeregistrationFilesService/UpdateCarInspectionDeregistrationFiles"
+	CarInspectionDeregistrationFilesService_DeleteCarInspectionDeregistrationFiles_FullMethodName              = "/organization.CarInspectionDeregistrationFilesService/DeleteCarInspectionDeregistrationFiles"
+	CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFiless_FullMethodName               = "/organization.CarInspectionDeregistrationFilesService/ListCarInspectionDeregistrationFiless"
+	CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFilessByOrganization_FullMethodName = "/organization.CarInspectionDeregistrationFilesService/ListCarInspectionDeregistrationFilessByOrganization"
+)
+
+// CarInspectionDeregistrationFilesServiceClient is the client API for CarInspectionDeregistrationFilesService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInspectionDeregistrationFilesServiceClient interface {
+	CreateCarInspectionDeregistrationFiles(ctx context.Context, in *CreateCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*CreateCarInspectionDeregistrationFilesResponse, error)
+	GetCarInspectionDeregistrationFiles(ctx context.Context, in *GetCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*GetCarInspectionDeregistrationFilesResponse, error)
+	UpdateCarInspectionDeregistrationFiles(ctx context.Context, in *UpdateCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*UpdateCarInspectionDeregistrationFilesResponse, error)
+	DeleteCarInspectionDeregistrationFiles(ctx context.Context, in *DeleteCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*DeleteCarInspectionDeregistrationFilesResponse, error)
+	ListCarInspectionDeregistrationFiless(ctx context.Context, in *ListCarInspectionDeregistrationFilessRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationFilessResponse, error)
+	ListCarInspectionDeregistrationFilessByOrganization(ctx context.Context, in *ListCarInspectionDeregistrationFilessByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationFilessByOrganizationResponse, error)
+}
+
+type carInspectionDeregistrationFilesServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInspectionDeregistrationFilesServiceClient(cc grpc.ClientConnInterface) CarInspectionDeregistrationFilesServiceClient {
+	return &carInspectionDeregistrationFilesServiceClient{cc}
+}
+
+func (c *carInspectionDeregistrationFilesServiceClient) CreateCarInspectionDeregistrationFiles(ctx context.Context, in *CreateCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*CreateCarInspectionDeregistrationFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInspectionDeregistrationFilesResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationFilesService_CreateCarInspectionDeregistrationFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationFilesServiceClient) GetCarInspectionDeregistrationFiles(ctx context.Context, in *GetCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*GetCarInspectionDeregistrationFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInspectionDeregistrationFilesResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationFilesService_GetCarInspectionDeregistrationFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationFilesServiceClient) UpdateCarInspectionDeregistrationFiles(ctx context.Context, in *UpdateCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*UpdateCarInspectionDeregistrationFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInspectionDeregistrationFilesResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationFilesService_UpdateCarInspectionDeregistrationFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationFilesServiceClient) DeleteCarInspectionDeregistrationFiles(ctx context.Context, in *DeleteCarInspectionDeregistrationFilesRequest, opts ...grpc.CallOption) (*DeleteCarInspectionDeregistrationFilesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInspectionDeregistrationFilesResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationFilesService_DeleteCarInspectionDeregistrationFiles_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationFilesServiceClient) ListCarInspectionDeregistrationFiless(ctx context.Context, in *ListCarInspectionDeregistrationFilessRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationFilessResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionDeregistrationFilessResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFiless_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInspectionDeregistrationFilesServiceClient) ListCarInspectionDeregistrationFilessByOrganization(ctx context.Context, in *ListCarInspectionDeregistrationFilessByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInspectionDeregistrationFilessByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInspectionDeregistrationFilessByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFilessByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInspectionDeregistrationFilesServiceServer is the server API for CarInspectionDeregistrationFilesService service.
+// All implementations must embed UnimplementedCarInspectionDeregistrationFilesServiceServer
+// for forward compatibility.
+type CarInspectionDeregistrationFilesServiceServer interface {
+	CreateCarInspectionDeregistrationFiles(context.Context, *CreateCarInspectionDeregistrationFilesRequest) (*CreateCarInspectionDeregistrationFilesResponse, error)
+	GetCarInspectionDeregistrationFiles(context.Context, *GetCarInspectionDeregistrationFilesRequest) (*GetCarInspectionDeregistrationFilesResponse, error)
+	UpdateCarInspectionDeregistrationFiles(context.Context, *UpdateCarInspectionDeregistrationFilesRequest) (*UpdateCarInspectionDeregistrationFilesResponse, error)
+	DeleteCarInspectionDeregistrationFiles(context.Context, *DeleteCarInspectionDeregistrationFilesRequest) (*DeleteCarInspectionDeregistrationFilesResponse, error)
+	ListCarInspectionDeregistrationFiless(context.Context, *ListCarInspectionDeregistrationFilessRequest) (*ListCarInspectionDeregistrationFilessResponse, error)
+	ListCarInspectionDeregistrationFilessByOrganization(context.Context, *ListCarInspectionDeregistrationFilessByOrganizationRequest) (*ListCarInspectionDeregistrationFilessByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInspectionDeregistrationFilesServiceServer()
+}
+
+// UnimplementedCarInspectionDeregistrationFilesServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInspectionDeregistrationFilesServiceServer struct{}
+
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) CreateCarInspectionDeregistrationFiles(context.Context, *CreateCarInspectionDeregistrationFilesRequest) (*CreateCarInspectionDeregistrationFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInspectionDeregistrationFiles not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) GetCarInspectionDeregistrationFiles(context.Context, *GetCarInspectionDeregistrationFilesRequest) (*GetCarInspectionDeregistrationFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInspectionDeregistrationFiles not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) UpdateCarInspectionDeregistrationFiles(context.Context, *UpdateCarInspectionDeregistrationFilesRequest) (*UpdateCarInspectionDeregistrationFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInspectionDeregistrationFiles not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) DeleteCarInspectionDeregistrationFiles(context.Context, *DeleteCarInspectionDeregistrationFilesRequest) (*DeleteCarInspectionDeregistrationFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInspectionDeregistrationFiles not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) ListCarInspectionDeregistrationFiless(context.Context, *ListCarInspectionDeregistrationFilessRequest) (*ListCarInspectionDeregistrationFilessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionDeregistrationFiless not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) ListCarInspectionDeregistrationFilessByOrganization(context.Context, *ListCarInspectionDeregistrationFilessByOrganizationRequest) (*ListCarInspectionDeregistrationFilessByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInspectionDeregistrationFilessByOrganization not implemented")
+}
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) mustEmbedUnimplementedCarInspectionDeregistrationFilesServiceServer() {
+}
+func (UnimplementedCarInspectionDeregistrationFilesServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCarInspectionDeregistrationFilesServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInspectionDeregistrationFilesServiceServer will
+// result in compilation errors.
+type UnsafeCarInspectionDeregistrationFilesServiceServer interface {
+	mustEmbedUnimplementedCarInspectionDeregistrationFilesServiceServer()
+}
+
+func RegisterCarInspectionDeregistrationFilesServiceServer(s grpc.ServiceRegistrar, srv CarInspectionDeregistrationFilesServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInspectionDeregistrationFilesServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInspectionDeregistrationFilesService_ServiceDesc, srv)
+}
+
+func _CarInspectionDeregistrationFilesService_CreateCarInspectionDeregistrationFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInspectionDeregistrationFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).CreateCarInspectionDeregistrationFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationFilesService_CreateCarInspectionDeregistrationFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).CreateCarInspectionDeregistrationFiles(ctx, req.(*CreateCarInspectionDeregistrationFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationFilesService_GetCarInspectionDeregistrationFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInspectionDeregistrationFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).GetCarInspectionDeregistrationFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationFilesService_GetCarInspectionDeregistrationFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).GetCarInspectionDeregistrationFiles(ctx, req.(*GetCarInspectionDeregistrationFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationFilesService_UpdateCarInspectionDeregistrationFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInspectionDeregistrationFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).UpdateCarInspectionDeregistrationFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationFilesService_UpdateCarInspectionDeregistrationFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).UpdateCarInspectionDeregistrationFiles(ctx, req.(*UpdateCarInspectionDeregistrationFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationFilesService_DeleteCarInspectionDeregistrationFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInspectionDeregistrationFilesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).DeleteCarInspectionDeregistrationFiles(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationFilesService_DeleteCarInspectionDeregistrationFiles_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).DeleteCarInspectionDeregistrationFiles(ctx, req.(*DeleteCarInspectionDeregistrationFilesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFiless_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionDeregistrationFilessRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).ListCarInspectionDeregistrationFiless(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFiless_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).ListCarInspectionDeregistrationFiless(ctx, req.(*ListCarInspectionDeregistrationFilessRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFilessByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInspectionDeregistrationFilessByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).ListCarInspectionDeregistrationFilessByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFilessByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInspectionDeregistrationFilesServiceServer).ListCarInspectionDeregistrationFilessByOrganization(ctx, req.(*ListCarInspectionDeregistrationFilessByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInspectionDeregistrationFilesService_ServiceDesc is the grpc.ServiceDesc for CarInspectionDeregistrationFilesService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInspectionDeregistrationFilesService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInspectionDeregistrationFilesService",
+	HandlerType: (*CarInspectionDeregistrationFilesServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInspectionDeregistrationFiles",
+			Handler:    _CarInspectionDeregistrationFilesService_CreateCarInspectionDeregistrationFiles_Handler,
+		},
+		{
+			MethodName: "GetCarInspectionDeregistrationFiles",
+			Handler:    _CarInspectionDeregistrationFilesService_GetCarInspectionDeregistrationFiles_Handler,
+		},
+		{
+			MethodName: "UpdateCarInspectionDeregistrationFiles",
+			Handler:    _CarInspectionDeregistrationFilesService_UpdateCarInspectionDeregistrationFiles_Handler,
+		},
+		{
+			MethodName: "DeleteCarInspectionDeregistrationFiles",
+			Handler:    _CarInspectionDeregistrationFilesService_DeleteCarInspectionDeregistrationFiles_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionDeregistrationFiless",
+			Handler:    _CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFiless_Handler,
+		},
+		{
+			MethodName: "ListCarInspectionDeregistrationFilessByOrganization",
+			Handler:    _CarInspectionDeregistrationFilesService_ListCarInspectionDeregistrationFilessByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInsSheetIchibanCarsService_CreateCarInsSheetIchibanCars_FullMethodName              = "/organization.CarInsSheetIchibanCarsService/CreateCarInsSheetIchibanCars"
+	CarInsSheetIchibanCarsService_GetCarInsSheetIchibanCars_FullMethodName                 = "/organization.CarInsSheetIchibanCarsService/GetCarInsSheetIchibanCars"
+	CarInsSheetIchibanCarsService_UpdateCarInsSheetIchibanCars_FullMethodName              = "/organization.CarInsSheetIchibanCarsService/UpdateCarInsSheetIchibanCars"
+	CarInsSheetIchibanCarsService_DeleteCarInsSheetIchibanCars_FullMethodName              = "/organization.CarInsSheetIchibanCarsService/DeleteCarInsSheetIchibanCars"
+	CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarss_FullMethodName               = "/organization.CarInsSheetIchibanCarsService/ListCarInsSheetIchibanCarss"
+	CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarssByOrganization_FullMethodName = "/organization.CarInsSheetIchibanCarsService/ListCarInsSheetIchibanCarssByOrganization"
+)
+
+// CarInsSheetIchibanCarsServiceClient is the client API for CarInsSheetIchibanCarsService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInsSheetIchibanCarsServiceClient interface {
+	CreateCarInsSheetIchibanCars(ctx context.Context, in *CreateCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*CreateCarInsSheetIchibanCarsResponse, error)
+	GetCarInsSheetIchibanCars(ctx context.Context, in *GetCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*GetCarInsSheetIchibanCarsResponse, error)
+	UpdateCarInsSheetIchibanCars(ctx context.Context, in *UpdateCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*UpdateCarInsSheetIchibanCarsResponse, error)
+	DeleteCarInsSheetIchibanCars(ctx context.Context, in *DeleteCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*DeleteCarInsSheetIchibanCarsResponse, error)
+	ListCarInsSheetIchibanCarss(ctx context.Context, in *ListCarInsSheetIchibanCarssRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarssResponse, error)
+	ListCarInsSheetIchibanCarssByOrganization(ctx context.Context, in *ListCarInsSheetIchibanCarssByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarssByOrganizationResponse, error)
+}
+
+type carInsSheetIchibanCarsServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInsSheetIchibanCarsServiceClient(cc grpc.ClientConnInterface) CarInsSheetIchibanCarsServiceClient {
+	return &carInsSheetIchibanCarsServiceClient{cc}
+}
+
+func (c *carInsSheetIchibanCarsServiceClient) CreateCarInsSheetIchibanCars(ctx context.Context, in *CreateCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*CreateCarInsSheetIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInsSheetIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsService_CreateCarInsSheetIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsServiceClient) GetCarInsSheetIchibanCars(ctx context.Context, in *GetCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*GetCarInsSheetIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInsSheetIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsService_GetCarInsSheetIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsServiceClient) UpdateCarInsSheetIchibanCars(ctx context.Context, in *UpdateCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*UpdateCarInsSheetIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInsSheetIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsService_UpdateCarInsSheetIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsServiceClient) DeleteCarInsSheetIchibanCars(ctx context.Context, in *DeleteCarInsSheetIchibanCarsRequest, opts ...grpc.CallOption) (*DeleteCarInsSheetIchibanCarsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInsSheetIchibanCarsResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsService_DeleteCarInsSheetIchibanCars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsServiceClient) ListCarInsSheetIchibanCarss(ctx context.Context, in *ListCarInsSheetIchibanCarssRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarssResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInsSheetIchibanCarssResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarss_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsServiceClient) ListCarInsSheetIchibanCarssByOrganization(ctx context.Context, in *ListCarInsSheetIchibanCarssByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarssByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInsSheetIchibanCarssByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarssByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInsSheetIchibanCarsServiceServer is the server API for CarInsSheetIchibanCarsService service.
+// All implementations must embed UnimplementedCarInsSheetIchibanCarsServiceServer
+// for forward compatibility.
+type CarInsSheetIchibanCarsServiceServer interface {
+	CreateCarInsSheetIchibanCars(context.Context, *CreateCarInsSheetIchibanCarsRequest) (*CreateCarInsSheetIchibanCarsResponse, error)
+	GetCarInsSheetIchibanCars(context.Context, *GetCarInsSheetIchibanCarsRequest) (*GetCarInsSheetIchibanCarsResponse, error)
+	UpdateCarInsSheetIchibanCars(context.Context, *UpdateCarInsSheetIchibanCarsRequest) (*UpdateCarInsSheetIchibanCarsResponse, error)
+	DeleteCarInsSheetIchibanCars(context.Context, *DeleteCarInsSheetIchibanCarsRequest) (*DeleteCarInsSheetIchibanCarsResponse, error)
+	ListCarInsSheetIchibanCarss(context.Context, *ListCarInsSheetIchibanCarssRequest) (*ListCarInsSheetIchibanCarssResponse, error)
+	ListCarInsSheetIchibanCarssByOrganization(context.Context, *ListCarInsSheetIchibanCarssByOrganizationRequest) (*ListCarInsSheetIchibanCarssByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInsSheetIchibanCarsServiceServer()
+}
+
+// UnimplementedCarInsSheetIchibanCarsServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInsSheetIchibanCarsServiceServer struct{}
+
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) CreateCarInsSheetIchibanCars(context.Context, *CreateCarInsSheetIchibanCarsRequest) (*CreateCarInsSheetIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInsSheetIchibanCars not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) GetCarInsSheetIchibanCars(context.Context, *GetCarInsSheetIchibanCarsRequest) (*GetCarInsSheetIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInsSheetIchibanCars not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) UpdateCarInsSheetIchibanCars(context.Context, *UpdateCarInsSheetIchibanCarsRequest) (*UpdateCarInsSheetIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInsSheetIchibanCars not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) DeleteCarInsSheetIchibanCars(context.Context, *DeleteCarInsSheetIchibanCarsRequest) (*DeleteCarInsSheetIchibanCarsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInsSheetIchibanCars not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) ListCarInsSheetIchibanCarss(context.Context, *ListCarInsSheetIchibanCarssRequest) (*ListCarInsSheetIchibanCarssResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInsSheetIchibanCarss not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) ListCarInsSheetIchibanCarssByOrganization(context.Context, *ListCarInsSheetIchibanCarssByOrganizationRequest) (*ListCarInsSheetIchibanCarssByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInsSheetIchibanCarssByOrganization not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) mustEmbedUnimplementedCarInsSheetIchibanCarsServiceServer() {
+}
+func (UnimplementedCarInsSheetIchibanCarsServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCarInsSheetIchibanCarsServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInsSheetIchibanCarsServiceServer will
+// result in compilation errors.
+type UnsafeCarInsSheetIchibanCarsServiceServer interface {
+	mustEmbedUnimplementedCarInsSheetIchibanCarsServiceServer()
+}
+
+func RegisterCarInsSheetIchibanCarsServiceServer(s grpc.ServiceRegistrar, srv CarInsSheetIchibanCarsServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInsSheetIchibanCarsServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInsSheetIchibanCarsService_ServiceDesc, srv)
+}
+
+func _CarInsSheetIchibanCarsService_CreateCarInsSheetIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInsSheetIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsServiceServer).CreateCarInsSheetIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsService_CreateCarInsSheetIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsServiceServer).CreateCarInsSheetIchibanCars(ctx, req.(*CreateCarInsSheetIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsService_GetCarInsSheetIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInsSheetIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsServiceServer).GetCarInsSheetIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsService_GetCarInsSheetIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsServiceServer).GetCarInsSheetIchibanCars(ctx, req.(*GetCarInsSheetIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsService_UpdateCarInsSheetIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInsSheetIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsServiceServer).UpdateCarInsSheetIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsService_UpdateCarInsSheetIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsServiceServer).UpdateCarInsSheetIchibanCars(ctx, req.(*UpdateCarInsSheetIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsService_DeleteCarInsSheetIchibanCars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInsSheetIchibanCarsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsServiceServer).DeleteCarInsSheetIchibanCars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsService_DeleteCarInsSheetIchibanCars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsServiceServer).DeleteCarInsSheetIchibanCars(ctx, req.(*DeleteCarInsSheetIchibanCarsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarss_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInsSheetIchibanCarssRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsServiceServer).ListCarInsSheetIchibanCarss(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarss_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsServiceServer).ListCarInsSheetIchibanCarss(ctx, req.(*ListCarInsSheetIchibanCarssRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarssByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInsSheetIchibanCarssByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsServiceServer).ListCarInsSheetIchibanCarssByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarssByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsServiceServer).ListCarInsSheetIchibanCarssByOrganization(ctx, req.(*ListCarInsSheetIchibanCarssByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInsSheetIchibanCarsService_ServiceDesc is the grpc.ServiceDesc for CarInsSheetIchibanCarsService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInsSheetIchibanCarsService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInsSheetIchibanCarsService",
+	HandlerType: (*CarInsSheetIchibanCarsServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInsSheetIchibanCars",
+			Handler:    _CarInsSheetIchibanCarsService_CreateCarInsSheetIchibanCars_Handler,
+		},
+		{
+			MethodName: "GetCarInsSheetIchibanCars",
+			Handler:    _CarInsSheetIchibanCarsService_GetCarInsSheetIchibanCars_Handler,
+		},
+		{
+			MethodName: "UpdateCarInsSheetIchibanCars",
+			Handler:    _CarInsSheetIchibanCarsService_UpdateCarInsSheetIchibanCars_Handler,
+		},
+		{
+			MethodName: "DeleteCarInsSheetIchibanCars",
+			Handler:    _CarInsSheetIchibanCarsService_DeleteCarInsSheetIchibanCars_Handler,
+		},
+		{
+			MethodName: "ListCarInsSheetIchibanCarss",
+			Handler:    _CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarss_Handler,
+		},
+		{
+			MethodName: "ListCarInsSheetIchibanCarssByOrganization",
+			Handler:    _CarInsSheetIchibanCarsService_ListCarInsSheetIchibanCarssByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	CarInsSheetIchibanCarsAService_CreateCarInsSheetIchibanCarsA_FullMethodName              = "/organization.CarInsSheetIchibanCarsAService/CreateCarInsSheetIchibanCarsA"
+	CarInsSheetIchibanCarsAService_GetCarInsSheetIchibanCarsA_FullMethodName                 = "/organization.CarInsSheetIchibanCarsAService/GetCarInsSheetIchibanCarsA"
+	CarInsSheetIchibanCarsAService_UpdateCarInsSheetIchibanCarsA_FullMethodName              = "/organization.CarInsSheetIchibanCarsAService/UpdateCarInsSheetIchibanCarsA"
+	CarInsSheetIchibanCarsAService_DeleteCarInsSheetIchibanCarsA_FullMethodName              = "/organization.CarInsSheetIchibanCarsAService/DeleteCarInsSheetIchibanCarsA"
+	CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAs_FullMethodName               = "/organization.CarInsSheetIchibanCarsAService/ListCarInsSheetIchibanCarsAs"
+	CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAsByOrganization_FullMethodName = "/organization.CarInsSheetIchibanCarsAService/ListCarInsSheetIchibanCarsAsByOrganization"
+)
+
+// CarInsSheetIchibanCarsAServiceClient is the client API for CarInsSheetIchibanCarsAService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type CarInsSheetIchibanCarsAServiceClient interface {
+	CreateCarInsSheetIchibanCarsA(ctx context.Context, in *CreateCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*CreateCarInsSheetIchibanCarsAResponse, error)
+	GetCarInsSheetIchibanCarsA(ctx context.Context, in *GetCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*GetCarInsSheetIchibanCarsAResponse, error)
+	UpdateCarInsSheetIchibanCarsA(ctx context.Context, in *UpdateCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*UpdateCarInsSheetIchibanCarsAResponse, error)
+	DeleteCarInsSheetIchibanCarsA(ctx context.Context, in *DeleteCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*DeleteCarInsSheetIchibanCarsAResponse, error)
+	ListCarInsSheetIchibanCarsAs(ctx context.Context, in *ListCarInsSheetIchibanCarsAsRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarsAsResponse, error)
+	ListCarInsSheetIchibanCarsAsByOrganization(ctx context.Context, in *ListCarInsSheetIchibanCarsAsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarsAsByOrganizationResponse, error)
+}
+
+type carInsSheetIchibanCarsAServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewCarInsSheetIchibanCarsAServiceClient(cc grpc.ClientConnInterface) CarInsSheetIchibanCarsAServiceClient {
+	return &carInsSheetIchibanCarsAServiceClient{cc}
+}
+
+func (c *carInsSheetIchibanCarsAServiceClient) CreateCarInsSheetIchibanCarsA(ctx context.Context, in *CreateCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*CreateCarInsSheetIchibanCarsAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateCarInsSheetIchibanCarsAResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsAService_CreateCarInsSheetIchibanCarsA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsAServiceClient) GetCarInsSheetIchibanCarsA(ctx context.Context, in *GetCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*GetCarInsSheetIchibanCarsAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCarInsSheetIchibanCarsAResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsAService_GetCarInsSheetIchibanCarsA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsAServiceClient) UpdateCarInsSheetIchibanCarsA(ctx context.Context, in *UpdateCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*UpdateCarInsSheetIchibanCarsAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateCarInsSheetIchibanCarsAResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsAService_UpdateCarInsSheetIchibanCarsA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsAServiceClient) DeleteCarInsSheetIchibanCarsA(ctx context.Context, in *DeleteCarInsSheetIchibanCarsARequest, opts ...grpc.CallOption) (*DeleteCarInsSheetIchibanCarsAResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteCarInsSheetIchibanCarsAResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsAService_DeleteCarInsSheetIchibanCarsA_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsAServiceClient) ListCarInsSheetIchibanCarsAs(ctx context.Context, in *ListCarInsSheetIchibanCarsAsRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarsAsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInsSheetIchibanCarsAsResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *carInsSheetIchibanCarsAServiceClient) ListCarInsSheetIchibanCarsAsByOrganization(ctx context.Context, in *ListCarInsSheetIchibanCarsAsByOrganizationRequest, opts ...grpc.CallOption) (*ListCarInsSheetIchibanCarsAsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListCarInsSheetIchibanCarsAsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// CarInsSheetIchibanCarsAServiceServer is the server API for CarInsSheetIchibanCarsAService service.
+// All implementations must embed UnimplementedCarInsSheetIchibanCarsAServiceServer
+// for forward compatibility.
+type CarInsSheetIchibanCarsAServiceServer interface {
+	CreateCarInsSheetIchibanCarsA(context.Context, *CreateCarInsSheetIchibanCarsARequest) (*CreateCarInsSheetIchibanCarsAResponse, error)
+	GetCarInsSheetIchibanCarsA(context.Context, *GetCarInsSheetIchibanCarsARequest) (*GetCarInsSheetIchibanCarsAResponse, error)
+	UpdateCarInsSheetIchibanCarsA(context.Context, *UpdateCarInsSheetIchibanCarsARequest) (*UpdateCarInsSheetIchibanCarsAResponse, error)
+	DeleteCarInsSheetIchibanCarsA(context.Context, *DeleteCarInsSheetIchibanCarsARequest) (*DeleteCarInsSheetIchibanCarsAResponse, error)
+	ListCarInsSheetIchibanCarsAs(context.Context, *ListCarInsSheetIchibanCarsAsRequest) (*ListCarInsSheetIchibanCarsAsResponse, error)
+	ListCarInsSheetIchibanCarsAsByOrganization(context.Context, *ListCarInsSheetIchibanCarsAsByOrganizationRequest) (*ListCarInsSheetIchibanCarsAsByOrganizationResponse, error)
+	mustEmbedUnimplementedCarInsSheetIchibanCarsAServiceServer()
+}
+
+// UnimplementedCarInsSheetIchibanCarsAServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedCarInsSheetIchibanCarsAServiceServer struct{}
+
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) CreateCarInsSheetIchibanCarsA(context.Context, *CreateCarInsSheetIchibanCarsARequest) (*CreateCarInsSheetIchibanCarsAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateCarInsSheetIchibanCarsA not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) GetCarInsSheetIchibanCarsA(context.Context, *GetCarInsSheetIchibanCarsARequest) (*GetCarInsSheetIchibanCarsAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCarInsSheetIchibanCarsA not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) UpdateCarInsSheetIchibanCarsA(context.Context, *UpdateCarInsSheetIchibanCarsARequest) (*UpdateCarInsSheetIchibanCarsAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateCarInsSheetIchibanCarsA not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) DeleteCarInsSheetIchibanCarsA(context.Context, *DeleteCarInsSheetIchibanCarsARequest) (*DeleteCarInsSheetIchibanCarsAResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCarInsSheetIchibanCarsA not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) ListCarInsSheetIchibanCarsAs(context.Context, *ListCarInsSheetIchibanCarsAsRequest) (*ListCarInsSheetIchibanCarsAsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInsSheetIchibanCarsAs not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) ListCarInsSheetIchibanCarsAsByOrganization(context.Context, *ListCarInsSheetIchibanCarsAsByOrganizationRequest) (*ListCarInsSheetIchibanCarsAsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCarInsSheetIchibanCarsAsByOrganization not implemented")
+}
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) mustEmbedUnimplementedCarInsSheetIchibanCarsAServiceServer() {
+}
+func (UnimplementedCarInsSheetIchibanCarsAServiceServer) testEmbeddedByValue() {}
+
+// UnsafeCarInsSheetIchibanCarsAServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to CarInsSheetIchibanCarsAServiceServer will
+// result in compilation errors.
+type UnsafeCarInsSheetIchibanCarsAServiceServer interface {
+	mustEmbedUnimplementedCarInsSheetIchibanCarsAServiceServer()
+}
+
+func RegisterCarInsSheetIchibanCarsAServiceServer(s grpc.ServiceRegistrar, srv CarInsSheetIchibanCarsAServiceServer) {
+	// If the following call pancis, it indicates UnimplementedCarInsSheetIchibanCarsAServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&CarInsSheetIchibanCarsAService_ServiceDesc, srv)
+}
+
+func _CarInsSheetIchibanCarsAService_CreateCarInsSheetIchibanCarsA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateCarInsSheetIchibanCarsARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).CreateCarInsSheetIchibanCarsA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsAService_CreateCarInsSheetIchibanCarsA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).CreateCarInsSheetIchibanCarsA(ctx, req.(*CreateCarInsSheetIchibanCarsARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsAService_GetCarInsSheetIchibanCarsA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCarInsSheetIchibanCarsARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).GetCarInsSheetIchibanCarsA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsAService_GetCarInsSheetIchibanCarsA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).GetCarInsSheetIchibanCarsA(ctx, req.(*GetCarInsSheetIchibanCarsARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsAService_UpdateCarInsSheetIchibanCarsA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateCarInsSheetIchibanCarsARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).UpdateCarInsSheetIchibanCarsA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsAService_UpdateCarInsSheetIchibanCarsA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).UpdateCarInsSheetIchibanCarsA(ctx, req.(*UpdateCarInsSheetIchibanCarsARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsAService_DeleteCarInsSheetIchibanCarsA_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCarInsSheetIchibanCarsARequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).DeleteCarInsSheetIchibanCarsA(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsAService_DeleteCarInsSheetIchibanCarsA_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).DeleteCarInsSheetIchibanCarsA(ctx, req.(*DeleteCarInsSheetIchibanCarsARequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInsSheetIchibanCarsAsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).ListCarInsSheetIchibanCarsAs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).ListCarInsSheetIchibanCarsAs(ctx, req.(*ListCarInsSheetIchibanCarsAsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListCarInsSheetIchibanCarsAsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).ListCarInsSheetIchibanCarsAsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CarInsSheetIchibanCarsAServiceServer).ListCarInsSheetIchibanCarsAsByOrganization(ctx, req.(*ListCarInsSheetIchibanCarsAsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// CarInsSheetIchibanCarsAService_ServiceDesc is the grpc.ServiceDesc for CarInsSheetIchibanCarsAService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var CarInsSheetIchibanCarsAService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.CarInsSheetIchibanCarsAService",
+	HandlerType: (*CarInsSheetIchibanCarsAServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateCarInsSheetIchibanCarsA",
+			Handler:    _CarInsSheetIchibanCarsAService_CreateCarInsSheetIchibanCarsA_Handler,
+		},
+		{
+			MethodName: "GetCarInsSheetIchibanCarsA",
+			Handler:    _CarInsSheetIchibanCarsAService_GetCarInsSheetIchibanCarsA_Handler,
+		},
+		{
+			MethodName: "UpdateCarInsSheetIchibanCarsA",
+			Handler:    _CarInsSheetIchibanCarsAService_UpdateCarInsSheetIchibanCarsA_Handler,
+		},
+		{
+			MethodName: "DeleteCarInsSheetIchibanCarsA",
+			Handler:    _CarInsSheetIchibanCarsAService_DeleteCarInsSheetIchibanCarsA_Handler,
+		},
+		{
+			MethodName: "ListCarInsSheetIchibanCarsAs",
+			Handler:    _CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAs_Handler,
+		},
+		{
+			MethodName: "ListCarInsSheetIchibanCarsAsByOrganization",
+			Handler:    _CarInsSheetIchibanCarsAService_ListCarInsSheetIchibanCarsAsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	KudgfryService_CreateKudgfry_FullMethodName              = "/organization.KudgfryService/CreateKudgfry"
+	KudgfryService_GetKudgfry_FullMethodName                 = "/organization.KudgfryService/GetKudgfry"
+	KudgfryService_UpdateKudgfry_FullMethodName              = "/organization.KudgfryService/UpdateKudgfry"
+	KudgfryService_DeleteKudgfry_FullMethodName              = "/organization.KudgfryService/DeleteKudgfry"
+	KudgfryService_ListKudgfrys_FullMethodName               = "/organization.KudgfryService/ListKudgfrys"
+	KudgfryService_ListKudgfrysByOrganization_FullMethodName = "/organization.KudgfryService/ListKudgfrysByOrganization"
+)
+
+// KudgfryServiceClient is the client API for KudgfryService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KudgfryServiceClient interface {
+	CreateKudgfry(ctx context.Context, in *CreateKudgfryRequest, opts ...grpc.CallOption) (*CreateKudgfryResponse, error)
+	GetKudgfry(ctx context.Context, in *GetKudgfryRequest, opts ...grpc.CallOption) (*GetKudgfryResponse, error)
+	UpdateKudgfry(ctx context.Context, in *UpdateKudgfryRequest, opts ...grpc.CallOption) (*UpdateKudgfryResponse, error)
+	DeleteKudgfry(ctx context.Context, in *DeleteKudgfryRequest, opts ...grpc.CallOption) (*DeleteKudgfryResponse, error)
+	ListKudgfrys(ctx context.Context, in *ListKudgfrysRequest, opts ...grpc.CallOption) (*ListKudgfrysResponse, error)
+	ListKudgfrysByOrganization(ctx context.Context, in *ListKudgfrysByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgfrysByOrganizationResponse, error)
+}
+
+type kudgfryServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKudgfryServiceClient(cc grpc.ClientConnInterface) KudgfryServiceClient {
+	return &kudgfryServiceClient{cc}
+}
+
+func (c *kudgfryServiceClient) CreateKudgfry(ctx context.Context, in *CreateKudgfryRequest, opts ...grpc.CallOption) (*CreateKudgfryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateKudgfryResponse)
+	err := c.cc.Invoke(ctx, KudgfryService_CreateKudgfry_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfryServiceClient) GetKudgfry(ctx context.Context, in *GetKudgfryRequest, opts ...grpc.CallOption) (*GetKudgfryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKudgfryResponse)
+	err := c.cc.Invoke(ctx, KudgfryService_GetKudgfry_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfryServiceClient) UpdateKudgfry(ctx context.Context, in *UpdateKudgfryRequest, opts ...grpc.CallOption) (*UpdateKudgfryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateKudgfryResponse)
+	err := c.cc.Invoke(ctx, KudgfryService_UpdateKudgfry_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfryServiceClient) DeleteKudgfry(ctx context.Context, in *DeleteKudgfryRequest, opts ...grpc.CallOption) (*DeleteKudgfryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteKudgfryResponse)
+	err := c.cc.Invoke(ctx, KudgfryService_DeleteKudgfry_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfryServiceClient) ListKudgfrys(ctx context.Context, in *ListKudgfrysRequest, opts ...grpc.CallOption) (*ListKudgfrysResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgfrysResponse)
+	err := c.cc.Invoke(ctx, KudgfryService_ListKudgfrys_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfryServiceClient) ListKudgfrysByOrganization(ctx context.Context, in *ListKudgfrysByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgfrysByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgfrysByOrganizationResponse)
+	err := c.cc.Invoke(ctx, KudgfryService_ListKudgfrysByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KudgfryServiceServer is the server API for KudgfryService service.
+// All implementations must embed UnimplementedKudgfryServiceServer
+// for forward compatibility.
+type KudgfryServiceServer interface {
+	CreateKudgfry(context.Context, *CreateKudgfryRequest) (*CreateKudgfryResponse, error)
+	GetKudgfry(context.Context, *GetKudgfryRequest) (*GetKudgfryResponse, error)
+	UpdateKudgfry(context.Context, *UpdateKudgfryRequest) (*UpdateKudgfryResponse, error)
+	DeleteKudgfry(context.Context, *DeleteKudgfryRequest) (*DeleteKudgfryResponse, error)
+	ListKudgfrys(context.Context, *ListKudgfrysRequest) (*ListKudgfrysResponse, error)
+	ListKudgfrysByOrganization(context.Context, *ListKudgfrysByOrganizationRequest) (*ListKudgfrysByOrganizationResponse, error)
+	mustEmbedUnimplementedKudgfryServiceServer()
+}
+
+// UnimplementedKudgfryServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedKudgfryServiceServer struct{}
+
+func (UnimplementedKudgfryServiceServer) CreateKudgfry(context.Context, *CreateKudgfryRequest) (*CreateKudgfryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateKudgfry not implemented")
+}
+func (UnimplementedKudgfryServiceServer) GetKudgfry(context.Context, *GetKudgfryRequest) (*GetKudgfryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKudgfry not implemented")
+}
+func (UnimplementedKudgfryServiceServer) UpdateKudgfry(context.Context, *UpdateKudgfryRequest) (*UpdateKudgfryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateKudgfry not implemented")
+}
+func (UnimplementedKudgfryServiceServer) DeleteKudgfry(context.Context, *DeleteKudgfryRequest) (*DeleteKudgfryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKudgfry not implemented")
+}
+func (UnimplementedKudgfryServiceServer) ListKudgfrys(context.Context, *ListKudgfrysRequest) (*ListKudgfrysResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgfrys not implemented")
+}
+func (UnimplementedKudgfryServiceServer) ListKudgfrysByOrganization(context.Context, *ListKudgfrysByOrganizationRequest) (*ListKudgfrysByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgfrysByOrganization not implemented")
+}
+func (UnimplementedKudgfryServiceServer) mustEmbedUnimplementedKudgfryServiceServer() {}
+func (UnimplementedKudgfryServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeKudgfryServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KudgfryServiceServer will
+// result in compilation errors.
+type UnsafeKudgfryServiceServer interface {
+	mustEmbedUnimplementedKudgfryServiceServer()
+}
+
+func RegisterKudgfryServiceServer(s grpc.ServiceRegistrar, srv KudgfryServiceServer) {
+	// If the following call pancis, it indicates UnimplementedKudgfryServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&KudgfryService_ServiceDesc, srv)
+}
+
+func _KudgfryService_CreateKudgfry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateKudgfryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfryServiceServer).CreateKudgfry(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfryService_CreateKudgfry_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfryServiceServer).CreateKudgfry(ctx, req.(*CreateKudgfryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfryService_GetKudgfry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetKudgfryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfryServiceServer).GetKudgfry(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfryService_GetKudgfry_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfryServiceServer).GetKudgfry(ctx, req.(*GetKudgfryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfryService_UpdateKudgfry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateKudgfryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfryServiceServer).UpdateKudgfry(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfryService_UpdateKudgfry_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfryServiceServer).UpdateKudgfry(ctx, req.(*UpdateKudgfryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfryService_DeleteKudgfry_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteKudgfryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfryServiceServer).DeleteKudgfry(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfryService_DeleteKudgfry_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfryServiceServer).DeleteKudgfry(ctx, req.(*DeleteKudgfryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfryService_ListKudgfrys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgfrysRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfryServiceServer).ListKudgfrys(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfryService_ListKudgfrys_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfryServiceServer).ListKudgfrys(ctx, req.(*ListKudgfrysRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfryService_ListKudgfrysByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgfrysByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfryServiceServer).ListKudgfrysByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfryService_ListKudgfrysByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfryServiceServer).ListKudgfrysByOrganization(ctx, req.(*ListKudgfrysByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KudgfryService_ServiceDesc is the grpc.ServiceDesc for KudgfryService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KudgfryService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.KudgfryService",
+	HandlerType: (*KudgfryServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateKudgfry",
+			Handler:    _KudgfryService_CreateKudgfry_Handler,
+		},
+		{
+			MethodName: "GetKudgfry",
+			Handler:    _KudgfryService_GetKudgfry_Handler,
+		},
+		{
+			MethodName: "UpdateKudgfry",
+			Handler:    _KudgfryService_UpdateKudgfry_Handler,
+		},
+		{
+			MethodName: "DeleteKudgfry",
+			Handler:    _KudgfryService_DeleteKudgfry_Handler,
+		},
+		{
+			MethodName: "ListKudgfrys",
+			Handler:    _KudgfryService_ListKudgfrys_Handler,
+		},
+		{
+			MethodName: "ListKudgfrysByOrganization",
+			Handler:    _KudgfryService_ListKudgfrysByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	KudguriService_CreateKudguri_FullMethodName              = "/organization.KudguriService/CreateKudguri"
+	KudguriService_GetKudguri_FullMethodName                 = "/organization.KudguriService/GetKudguri"
+	KudguriService_UpdateKudguri_FullMethodName              = "/organization.KudguriService/UpdateKudguri"
+	KudguriService_DeleteKudguri_FullMethodName              = "/organization.KudguriService/DeleteKudguri"
+	KudguriService_ListKudguris_FullMethodName               = "/organization.KudguriService/ListKudguris"
+	KudguriService_ListKudgurisByOrganization_FullMethodName = "/organization.KudguriService/ListKudgurisByOrganization"
+)
+
+// KudguriServiceClient is the client API for KudguriService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KudguriServiceClient interface {
+	CreateKudguri(ctx context.Context, in *CreateKudguriRequest, opts ...grpc.CallOption) (*CreateKudguriResponse, error)
+	GetKudguri(ctx context.Context, in *GetKudguriRequest, opts ...grpc.CallOption) (*GetKudguriResponse, error)
+	UpdateKudguri(ctx context.Context, in *UpdateKudguriRequest, opts ...grpc.CallOption) (*UpdateKudguriResponse, error)
+	DeleteKudguri(ctx context.Context, in *DeleteKudguriRequest, opts ...grpc.CallOption) (*DeleteKudguriResponse, error)
+	ListKudguris(ctx context.Context, in *ListKudgurisRequest, opts ...grpc.CallOption) (*ListKudgurisResponse, error)
+	ListKudgurisByOrganization(ctx context.Context, in *ListKudgurisByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgurisByOrganizationResponse, error)
+}
+
+type kudguriServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKudguriServiceClient(cc grpc.ClientConnInterface) KudguriServiceClient {
+	return &kudguriServiceClient{cc}
+}
+
+func (c *kudguriServiceClient) CreateKudguri(ctx context.Context, in *CreateKudguriRequest, opts ...grpc.CallOption) (*CreateKudguriResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateKudguriResponse)
+	err := c.cc.Invoke(ctx, KudguriService_CreateKudguri_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudguriServiceClient) GetKudguri(ctx context.Context, in *GetKudguriRequest, opts ...grpc.CallOption) (*GetKudguriResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKudguriResponse)
+	err := c.cc.Invoke(ctx, KudguriService_GetKudguri_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudguriServiceClient) UpdateKudguri(ctx context.Context, in *UpdateKudguriRequest, opts ...grpc.CallOption) (*UpdateKudguriResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateKudguriResponse)
+	err := c.cc.Invoke(ctx, KudguriService_UpdateKudguri_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudguriServiceClient) DeleteKudguri(ctx context.Context, in *DeleteKudguriRequest, opts ...grpc.CallOption) (*DeleteKudguriResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteKudguriResponse)
+	err := c.cc.Invoke(ctx, KudguriService_DeleteKudguri_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudguriServiceClient) ListKudguris(ctx context.Context, in *ListKudgurisRequest, opts ...grpc.CallOption) (*ListKudgurisResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgurisResponse)
+	err := c.cc.Invoke(ctx, KudguriService_ListKudguris_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudguriServiceClient) ListKudgurisByOrganization(ctx context.Context, in *ListKudgurisByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgurisByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgurisByOrganizationResponse)
+	err := c.cc.Invoke(ctx, KudguriService_ListKudgurisByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KudguriServiceServer is the server API for KudguriService service.
+// All implementations must embed UnimplementedKudguriServiceServer
+// for forward compatibility.
+type KudguriServiceServer interface {
+	CreateKudguri(context.Context, *CreateKudguriRequest) (*CreateKudguriResponse, error)
+	GetKudguri(context.Context, *GetKudguriRequest) (*GetKudguriResponse, error)
+	UpdateKudguri(context.Context, *UpdateKudguriRequest) (*UpdateKudguriResponse, error)
+	DeleteKudguri(context.Context, *DeleteKudguriRequest) (*DeleteKudguriResponse, error)
+	ListKudguris(context.Context, *ListKudgurisRequest) (*ListKudgurisResponse, error)
+	ListKudgurisByOrganization(context.Context, *ListKudgurisByOrganizationRequest) (*ListKudgurisByOrganizationResponse, error)
+	mustEmbedUnimplementedKudguriServiceServer()
+}
+
+// UnimplementedKudguriServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedKudguriServiceServer struct{}
+
+func (UnimplementedKudguriServiceServer) CreateKudguri(context.Context, *CreateKudguriRequest) (*CreateKudguriResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateKudguri not implemented")
+}
+func (UnimplementedKudguriServiceServer) GetKudguri(context.Context, *GetKudguriRequest) (*GetKudguriResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKudguri not implemented")
+}
+func (UnimplementedKudguriServiceServer) UpdateKudguri(context.Context, *UpdateKudguriRequest) (*UpdateKudguriResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateKudguri not implemented")
+}
+func (UnimplementedKudguriServiceServer) DeleteKudguri(context.Context, *DeleteKudguriRequest) (*DeleteKudguriResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKudguri not implemented")
+}
+func (UnimplementedKudguriServiceServer) ListKudguris(context.Context, *ListKudgurisRequest) (*ListKudgurisResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudguris not implemented")
+}
+func (UnimplementedKudguriServiceServer) ListKudgurisByOrganization(context.Context, *ListKudgurisByOrganizationRequest) (*ListKudgurisByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgurisByOrganization not implemented")
+}
+func (UnimplementedKudguriServiceServer) mustEmbedUnimplementedKudguriServiceServer() {}
+func (UnimplementedKudguriServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeKudguriServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KudguriServiceServer will
+// result in compilation errors.
+type UnsafeKudguriServiceServer interface {
+	mustEmbedUnimplementedKudguriServiceServer()
+}
+
+func RegisterKudguriServiceServer(s grpc.ServiceRegistrar, srv KudguriServiceServer) {
+	// If the following call pancis, it indicates UnimplementedKudguriServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&KudguriService_ServiceDesc, srv)
+}
+
+func _KudguriService_CreateKudguri_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateKudguriRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudguriServiceServer).CreateKudguri(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudguriService_CreateKudguri_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudguriServiceServer).CreateKudguri(ctx, req.(*CreateKudguriRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudguriService_GetKudguri_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetKudguriRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudguriServiceServer).GetKudguri(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudguriService_GetKudguri_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudguriServiceServer).GetKudguri(ctx, req.(*GetKudguriRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudguriService_UpdateKudguri_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateKudguriRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudguriServiceServer).UpdateKudguri(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudguriService_UpdateKudguri_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudguriServiceServer).UpdateKudguri(ctx, req.(*UpdateKudguriRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudguriService_DeleteKudguri_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteKudguriRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudguriServiceServer).DeleteKudguri(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudguriService_DeleteKudguri_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudguriServiceServer).DeleteKudguri(ctx, req.(*DeleteKudguriRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudguriService_ListKudguris_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgurisRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudguriServiceServer).ListKudguris(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudguriService_ListKudguris_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudguriServiceServer).ListKudguris(ctx, req.(*ListKudgurisRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudguriService_ListKudgurisByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgurisByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudguriServiceServer).ListKudgurisByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudguriService_ListKudgurisByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudguriServiceServer).ListKudgurisByOrganization(ctx, req.(*ListKudgurisByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KudguriService_ServiceDesc is the grpc.ServiceDesc for KudguriService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KudguriService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.KudguriService",
+	HandlerType: (*KudguriServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateKudguri",
+			Handler:    _KudguriService_CreateKudguri_Handler,
+		},
+		{
+			MethodName: "GetKudguri",
+			Handler:    _KudguriService_GetKudguri_Handler,
+		},
+		{
+			MethodName: "UpdateKudguri",
+			Handler:    _KudguriService_UpdateKudguri_Handler,
+		},
+		{
+			MethodName: "DeleteKudguri",
+			Handler:    _KudguriService_DeleteKudguri_Handler,
+		},
+		{
+			MethodName: "ListKudguris",
+			Handler:    _KudguriService_ListKudguris_Handler,
+		},
+		{
+			MethodName: "ListKudgurisByOrganization",
+			Handler:    _KudguriService_ListKudgurisByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	KudgcstService_CreateKudgcst_FullMethodName              = "/organization.KudgcstService/CreateKudgcst"
+	KudgcstService_GetKudgcst_FullMethodName                 = "/organization.KudgcstService/GetKudgcst"
+	KudgcstService_UpdateKudgcst_FullMethodName              = "/organization.KudgcstService/UpdateKudgcst"
+	KudgcstService_DeleteKudgcst_FullMethodName              = "/organization.KudgcstService/DeleteKudgcst"
+	KudgcstService_ListKudgcsts_FullMethodName               = "/organization.KudgcstService/ListKudgcsts"
+	KudgcstService_ListKudgcstsByOrganization_FullMethodName = "/organization.KudgcstService/ListKudgcstsByOrganization"
+)
+
+// KudgcstServiceClient is the client API for KudgcstService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KudgcstServiceClient interface {
+	CreateKudgcst(ctx context.Context, in *CreateKudgcstRequest, opts ...grpc.CallOption) (*CreateKudgcstResponse, error)
+	GetKudgcst(ctx context.Context, in *GetKudgcstRequest, opts ...grpc.CallOption) (*GetKudgcstResponse, error)
+	UpdateKudgcst(ctx context.Context, in *UpdateKudgcstRequest, opts ...grpc.CallOption) (*UpdateKudgcstResponse, error)
+	DeleteKudgcst(ctx context.Context, in *DeleteKudgcstRequest, opts ...grpc.CallOption) (*DeleteKudgcstResponse, error)
+	ListKudgcsts(ctx context.Context, in *ListKudgcstsRequest, opts ...grpc.CallOption) (*ListKudgcstsResponse, error)
+	ListKudgcstsByOrganization(ctx context.Context, in *ListKudgcstsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgcstsByOrganizationResponse, error)
+}
+
+type kudgcstServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKudgcstServiceClient(cc grpc.ClientConnInterface) KudgcstServiceClient {
+	return &kudgcstServiceClient{cc}
+}
+
+func (c *kudgcstServiceClient) CreateKudgcst(ctx context.Context, in *CreateKudgcstRequest, opts ...grpc.CallOption) (*CreateKudgcstResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateKudgcstResponse)
+	err := c.cc.Invoke(ctx, KudgcstService_CreateKudgcst_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgcstServiceClient) GetKudgcst(ctx context.Context, in *GetKudgcstRequest, opts ...grpc.CallOption) (*GetKudgcstResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKudgcstResponse)
+	err := c.cc.Invoke(ctx, KudgcstService_GetKudgcst_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgcstServiceClient) UpdateKudgcst(ctx context.Context, in *UpdateKudgcstRequest, opts ...grpc.CallOption) (*UpdateKudgcstResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateKudgcstResponse)
+	err := c.cc.Invoke(ctx, KudgcstService_UpdateKudgcst_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgcstServiceClient) DeleteKudgcst(ctx context.Context, in *DeleteKudgcstRequest, opts ...grpc.CallOption) (*DeleteKudgcstResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteKudgcstResponse)
+	err := c.cc.Invoke(ctx, KudgcstService_DeleteKudgcst_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgcstServiceClient) ListKudgcsts(ctx context.Context, in *ListKudgcstsRequest, opts ...grpc.CallOption) (*ListKudgcstsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgcstsResponse)
+	err := c.cc.Invoke(ctx, KudgcstService_ListKudgcsts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgcstServiceClient) ListKudgcstsByOrganization(ctx context.Context, in *ListKudgcstsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgcstsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgcstsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, KudgcstService_ListKudgcstsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KudgcstServiceServer is the server API for KudgcstService service.
+// All implementations must embed UnimplementedKudgcstServiceServer
+// for forward compatibility.
+type KudgcstServiceServer interface {
+	CreateKudgcst(context.Context, *CreateKudgcstRequest) (*CreateKudgcstResponse, error)
+	GetKudgcst(context.Context, *GetKudgcstRequest) (*GetKudgcstResponse, error)
+	UpdateKudgcst(context.Context, *UpdateKudgcstRequest) (*UpdateKudgcstResponse, error)
+	DeleteKudgcst(context.Context, *DeleteKudgcstRequest) (*DeleteKudgcstResponse, error)
+	ListKudgcsts(context.Context, *ListKudgcstsRequest) (*ListKudgcstsResponse, error)
+	ListKudgcstsByOrganization(context.Context, *ListKudgcstsByOrganizationRequest) (*ListKudgcstsByOrganizationResponse, error)
+	mustEmbedUnimplementedKudgcstServiceServer()
+}
+
+// UnimplementedKudgcstServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedKudgcstServiceServer struct{}
+
+func (UnimplementedKudgcstServiceServer) CreateKudgcst(context.Context, *CreateKudgcstRequest) (*CreateKudgcstResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateKudgcst not implemented")
+}
+func (UnimplementedKudgcstServiceServer) GetKudgcst(context.Context, *GetKudgcstRequest) (*GetKudgcstResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKudgcst not implemented")
+}
+func (UnimplementedKudgcstServiceServer) UpdateKudgcst(context.Context, *UpdateKudgcstRequest) (*UpdateKudgcstResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateKudgcst not implemented")
+}
+func (UnimplementedKudgcstServiceServer) DeleteKudgcst(context.Context, *DeleteKudgcstRequest) (*DeleteKudgcstResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKudgcst not implemented")
+}
+func (UnimplementedKudgcstServiceServer) ListKudgcsts(context.Context, *ListKudgcstsRequest) (*ListKudgcstsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgcsts not implemented")
+}
+func (UnimplementedKudgcstServiceServer) ListKudgcstsByOrganization(context.Context, *ListKudgcstsByOrganizationRequest) (*ListKudgcstsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgcstsByOrganization not implemented")
+}
+func (UnimplementedKudgcstServiceServer) mustEmbedUnimplementedKudgcstServiceServer() {}
+func (UnimplementedKudgcstServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeKudgcstServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KudgcstServiceServer will
+// result in compilation errors.
+type UnsafeKudgcstServiceServer interface {
+	mustEmbedUnimplementedKudgcstServiceServer()
+}
+
+func RegisterKudgcstServiceServer(s grpc.ServiceRegistrar, srv KudgcstServiceServer) {
+	// If the following call pancis, it indicates UnimplementedKudgcstServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&KudgcstService_ServiceDesc, srv)
+}
+
+func _KudgcstService_CreateKudgcst_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateKudgcstRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgcstServiceServer).CreateKudgcst(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgcstService_CreateKudgcst_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgcstServiceServer).CreateKudgcst(ctx, req.(*CreateKudgcstRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgcstService_GetKudgcst_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetKudgcstRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgcstServiceServer).GetKudgcst(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgcstService_GetKudgcst_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgcstServiceServer).GetKudgcst(ctx, req.(*GetKudgcstRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgcstService_UpdateKudgcst_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateKudgcstRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgcstServiceServer).UpdateKudgcst(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgcstService_UpdateKudgcst_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgcstServiceServer).UpdateKudgcst(ctx, req.(*UpdateKudgcstRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgcstService_DeleteKudgcst_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteKudgcstRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgcstServiceServer).DeleteKudgcst(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgcstService_DeleteKudgcst_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgcstServiceServer).DeleteKudgcst(ctx, req.(*DeleteKudgcstRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgcstService_ListKudgcsts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgcstsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgcstServiceServer).ListKudgcsts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgcstService_ListKudgcsts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgcstServiceServer).ListKudgcsts(ctx, req.(*ListKudgcstsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgcstService_ListKudgcstsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgcstsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgcstServiceServer).ListKudgcstsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgcstService_ListKudgcstsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgcstServiceServer).ListKudgcstsByOrganization(ctx, req.(*ListKudgcstsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KudgcstService_ServiceDesc is the grpc.ServiceDesc for KudgcstService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KudgcstService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.KudgcstService",
+	HandlerType: (*KudgcstServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateKudgcst",
+			Handler:    _KudgcstService_CreateKudgcst_Handler,
+		},
+		{
+			MethodName: "GetKudgcst",
+			Handler:    _KudgcstService_GetKudgcst_Handler,
+		},
+		{
+			MethodName: "UpdateKudgcst",
+			Handler:    _KudgcstService_UpdateKudgcst_Handler,
+		},
+		{
+			MethodName: "DeleteKudgcst",
+			Handler:    _KudgcstService_DeleteKudgcst_Handler,
+		},
+		{
+			MethodName: "ListKudgcsts",
+			Handler:    _KudgcstService_ListKudgcsts_Handler,
+		},
+		{
+			MethodName: "ListKudgcstsByOrganization",
+			Handler:    _KudgcstService_ListKudgcstsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	KudgfulService_CreateKudgful_FullMethodName              = "/organization.KudgfulService/CreateKudgful"
+	KudgfulService_GetKudgful_FullMethodName                 = "/organization.KudgfulService/GetKudgful"
+	KudgfulService_UpdateKudgful_FullMethodName              = "/organization.KudgfulService/UpdateKudgful"
+	KudgfulService_DeleteKudgful_FullMethodName              = "/organization.KudgfulService/DeleteKudgful"
+	KudgfulService_ListKudgfuls_FullMethodName               = "/organization.KudgfulService/ListKudgfuls"
+	KudgfulService_ListKudgfulsByOrganization_FullMethodName = "/organization.KudgfulService/ListKudgfulsByOrganization"
+)
+
+// KudgfulServiceClient is the client API for KudgfulService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KudgfulServiceClient interface {
+	CreateKudgful(ctx context.Context, in *CreateKudgfulRequest, opts ...grpc.CallOption) (*CreateKudgfulResponse, error)
+	GetKudgful(ctx context.Context, in *GetKudgfulRequest, opts ...grpc.CallOption) (*GetKudgfulResponse, error)
+	UpdateKudgful(ctx context.Context, in *UpdateKudgfulRequest, opts ...grpc.CallOption) (*UpdateKudgfulResponse, error)
+	DeleteKudgful(ctx context.Context, in *DeleteKudgfulRequest, opts ...grpc.CallOption) (*DeleteKudgfulResponse, error)
+	ListKudgfuls(ctx context.Context, in *ListKudgfulsRequest, opts ...grpc.CallOption) (*ListKudgfulsResponse, error)
+	ListKudgfulsByOrganization(ctx context.Context, in *ListKudgfulsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgfulsByOrganizationResponse, error)
+}
+
+type kudgfulServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKudgfulServiceClient(cc grpc.ClientConnInterface) KudgfulServiceClient {
+	return &kudgfulServiceClient{cc}
+}
+
+func (c *kudgfulServiceClient) CreateKudgful(ctx context.Context, in *CreateKudgfulRequest, opts ...grpc.CallOption) (*CreateKudgfulResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateKudgfulResponse)
+	err := c.cc.Invoke(ctx, KudgfulService_CreateKudgful_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfulServiceClient) GetKudgful(ctx context.Context, in *GetKudgfulRequest, opts ...grpc.CallOption) (*GetKudgfulResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKudgfulResponse)
+	err := c.cc.Invoke(ctx, KudgfulService_GetKudgful_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfulServiceClient) UpdateKudgful(ctx context.Context, in *UpdateKudgfulRequest, opts ...grpc.CallOption) (*UpdateKudgfulResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateKudgfulResponse)
+	err := c.cc.Invoke(ctx, KudgfulService_UpdateKudgful_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfulServiceClient) DeleteKudgful(ctx context.Context, in *DeleteKudgfulRequest, opts ...grpc.CallOption) (*DeleteKudgfulResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteKudgfulResponse)
+	err := c.cc.Invoke(ctx, KudgfulService_DeleteKudgful_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfulServiceClient) ListKudgfuls(ctx context.Context, in *ListKudgfulsRequest, opts ...grpc.CallOption) (*ListKudgfulsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgfulsResponse)
+	err := c.cc.Invoke(ctx, KudgfulService_ListKudgfuls_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgfulServiceClient) ListKudgfulsByOrganization(ctx context.Context, in *ListKudgfulsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgfulsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgfulsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, KudgfulService_ListKudgfulsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KudgfulServiceServer is the server API for KudgfulService service.
+// All implementations must embed UnimplementedKudgfulServiceServer
+// for forward compatibility.
+type KudgfulServiceServer interface {
+	CreateKudgful(context.Context, *CreateKudgfulRequest) (*CreateKudgfulResponse, error)
+	GetKudgful(context.Context, *GetKudgfulRequest) (*GetKudgfulResponse, error)
+	UpdateKudgful(context.Context, *UpdateKudgfulRequest) (*UpdateKudgfulResponse, error)
+	DeleteKudgful(context.Context, *DeleteKudgfulRequest) (*DeleteKudgfulResponse, error)
+	ListKudgfuls(context.Context, *ListKudgfulsRequest) (*ListKudgfulsResponse, error)
+	ListKudgfulsByOrganization(context.Context, *ListKudgfulsByOrganizationRequest) (*ListKudgfulsByOrganizationResponse, error)
+	mustEmbedUnimplementedKudgfulServiceServer()
+}
+
+// UnimplementedKudgfulServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedKudgfulServiceServer struct{}
+
+func (UnimplementedKudgfulServiceServer) CreateKudgful(context.Context, *CreateKudgfulRequest) (*CreateKudgfulResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateKudgful not implemented")
+}
+func (UnimplementedKudgfulServiceServer) GetKudgful(context.Context, *GetKudgfulRequest) (*GetKudgfulResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKudgful not implemented")
+}
+func (UnimplementedKudgfulServiceServer) UpdateKudgful(context.Context, *UpdateKudgfulRequest) (*UpdateKudgfulResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateKudgful not implemented")
+}
+func (UnimplementedKudgfulServiceServer) DeleteKudgful(context.Context, *DeleteKudgfulRequest) (*DeleteKudgfulResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKudgful not implemented")
+}
+func (UnimplementedKudgfulServiceServer) ListKudgfuls(context.Context, *ListKudgfulsRequest) (*ListKudgfulsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgfuls not implemented")
+}
+func (UnimplementedKudgfulServiceServer) ListKudgfulsByOrganization(context.Context, *ListKudgfulsByOrganizationRequest) (*ListKudgfulsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgfulsByOrganization not implemented")
+}
+func (UnimplementedKudgfulServiceServer) mustEmbedUnimplementedKudgfulServiceServer() {}
+func (UnimplementedKudgfulServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeKudgfulServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KudgfulServiceServer will
+// result in compilation errors.
+type UnsafeKudgfulServiceServer interface {
+	mustEmbedUnimplementedKudgfulServiceServer()
+}
+
+func RegisterKudgfulServiceServer(s grpc.ServiceRegistrar, srv KudgfulServiceServer) {
+	// If the following call pancis, it indicates UnimplementedKudgfulServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&KudgfulService_ServiceDesc, srv)
+}
+
+func _KudgfulService_CreateKudgful_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateKudgfulRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfulServiceServer).CreateKudgful(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfulService_CreateKudgful_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfulServiceServer).CreateKudgful(ctx, req.(*CreateKudgfulRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfulService_GetKudgful_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetKudgfulRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfulServiceServer).GetKudgful(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfulService_GetKudgful_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfulServiceServer).GetKudgful(ctx, req.(*GetKudgfulRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfulService_UpdateKudgful_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateKudgfulRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfulServiceServer).UpdateKudgful(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfulService_UpdateKudgful_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfulServiceServer).UpdateKudgful(ctx, req.(*UpdateKudgfulRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfulService_DeleteKudgful_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteKudgfulRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfulServiceServer).DeleteKudgful(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfulService_DeleteKudgful_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfulServiceServer).DeleteKudgful(ctx, req.(*DeleteKudgfulRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfulService_ListKudgfuls_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgfulsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfulServiceServer).ListKudgfuls(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfulService_ListKudgfuls_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfulServiceServer).ListKudgfuls(ctx, req.(*ListKudgfulsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgfulService_ListKudgfulsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgfulsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgfulServiceServer).ListKudgfulsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgfulService_ListKudgfulsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgfulServiceServer).ListKudgfulsByOrganization(ctx, req.(*ListKudgfulsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KudgfulService_ServiceDesc is the grpc.ServiceDesc for KudgfulService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KudgfulService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.KudgfulService",
+	HandlerType: (*KudgfulServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateKudgful",
+			Handler:    _KudgfulService_CreateKudgful_Handler,
+		},
+		{
+			MethodName: "GetKudgful",
+			Handler:    _KudgfulService_GetKudgful_Handler,
+		},
+		{
+			MethodName: "UpdateKudgful",
+			Handler:    _KudgfulService_UpdateKudgful_Handler,
+		},
+		{
+			MethodName: "DeleteKudgful",
+			Handler:    _KudgfulService_DeleteKudgful_Handler,
+		},
+		{
+			MethodName: "ListKudgfuls",
+			Handler:    _KudgfulService_ListKudgfuls_Handler,
+		},
+		{
+			MethodName: "ListKudgfulsByOrganization",
+			Handler:    _KudgfulService_ListKudgfulsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	KudgsirService_CreateKudgsir_FullMethodName              = "/organization.KudgsirService/CreateKudgsir"
+	KudgsirService_GetKudgsir_FullMethodName                 = "/organization.KudgsirService/GetKudgsir"
+	KudgsirService_UpdateKudgsir_FullMethodName              = "/organization.KudgsirService/UpdateKudgsir"
+	KudgsirService_DeleteKudgsir_FullMethodName              = "/organization.KudgsirService/DeleteKudgsir"
+	KudgsirService_ListKudgsirs_FullMethodName               = "/organization.KudgsirService/ListKudgsirs"
+	KudgsirService_ListKudgsirsByOrganization_FullMethodName = "/organization.KudgsirService/ListKudgsirsByOrganization"
+)
+
+// KudgsirServiceClient is the client API for KudgsirService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KudgsirServiceClient interface {
+	CreateKudgsir(ctx context.Context, in *CreateKudgsirRequest, opts ...grpc.CallOption) (*CreateKudgsirResponse, error)
+	GetKudgsir(ctx context.Context, in *GetKudgsirRequest, opts ...grpc.CallOption) (*GetKudgsirResponse, error)
+	UpdateKudgsir(ctx context.Context, in *UpdateKudgsirRequest, opts ...grpc.CallOption) (*UpdateKudgsirResponse, error)
+	DeleteKudgsir(ctx context.Context, in *DeleteKudgsirRequest, opts ...grpc.CallOption) (*DeleteKudgsirResponse, error)
+	ListKudgsirs(ctx context.Context, in *ListKudgsirsRequest, opts ...grpc.CallOption) (*ListKudgsirsResponse, error)
+	ListKudgsirsByOrganization(ctx context.Context, in *ListKudgsirsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgsirsByOrganizationResponse, error)
+}
+
+type kudgsirServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKudgsirServiceClient(cc grpc.ClientConnInterface) KudgsirServiceClient {
+	return &kudgsirServiceClient{cc}
+}
+
+func (c *kudgsirServiceClient) CreateKudgsir(ctx context.Context, in *CreateKudgsirRequest, opts ...grpc.CallOption) (*CreateKudgsirResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateKudgsirResponse)
+	err := c.cc.Invoke(ctx, KudgsirService_CreateKudgsir_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgsirServiceClient) GetKudgsir(ctx context.Context, in *GetKudgsirRequest, opts ...grpc.CallOption) (*GetKudgsirResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKudgsirResponse)
+	err := c.cc.Invoke(ctx, KudgsirService_GetKudgsir_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgsirServiceClient) UpdateKudgsir(ctx context.Context, in *UpdateKudgsirRequest, opts ...grpc.CallOption) (*UpdateKudgsirResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateKudgsirResponse)
+	err := c.cc.Invoke(ctx, KudgsirService_UpdateKudgsir_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgsirServiceClient) DeleteKudgsir(ctx context.Context, in *DeleteKudgsirRequest, opts ...grpc.CallOption) (*DeleteKudgsirResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteKudgsirResponse)
+	err := c.cc.Invoke(ctx, KudgsirService_DeleteKudgsir_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgsirServiceClient) ListKudgsirs(ctx context.Context, in *ListKudgsirsRequest, opts ...grpc.CallOption) (*ListKudgsirsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgsirsResponse)
+	err := c.cc.Invoke(ctx, KudgsirService_ListKudgsirs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgsirServiceClient) ListKudgsirsByOrganization(ctx context.Context, in *ListKudgsirsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgsirsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgsirsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, KudgsirService_ListKudgsirsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KudgsirServiceServer is the server API for KudgsirService service.
+// All implementations must embed UnimplementedKudgsirServiceServer
+// for forward compatibility.
+type KudgsirServiceServer interface {
+	CreateKudgsir(context.Context, *CreateKudgsirRequest) (*CreateKudgsirResponse, error)
+	GetKudgsir(context.Context, *GetKudgsirRequest) (*GetKudgsirResponse, error)
+	UpdateKudgsir(context.Context, *UpdateKudgsirRequest) (*UpdateKudgsirResponse, error)
+	DeleteKudgsir(context.Context, *DeleteKudgsirRequest) (*DeleteKudgsirResponse, error)
+	ListKudgsirs(context.Context, *ListKudgsirsRequest) (*ListKudgsirsResponse, error)
+	ListKudgsirsByOrganization(context.Context, *ListKudgsirsByOrganizationRequest) (*ListKudgsirsByOrganizationResponse, error)
+	mustEmbedUnimplementedKudgsirServiceServer()
+}
+
+// UnimplementedKudgsirServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedKudgsirServiceServer struct{}
+
+func (UnimplementedKudgsirServiceServer) CreateKudgsir(context.Context, *CreateKudgsirRequest) (*CreateKudgsirResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateKudgsir not implemented")
+}
+func (UnimplementedKudgsirServiceServer) GetKudgsir(context.Context, *GetKudgsirRequest) (*GetKudgsirResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKudgsir not implemented")
+}
+func (UnimplementedKudgsirServiceServer) UpdateKudgsir(context.Context, *UpdateKudgsirRequest) (*UpdateKudgsirResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateKudgsir not implemented")
+}
+func (UnimplementedKudgsirServiceServer) DeleteKudgsir(context.Context, *DeleteKudgsirRequest) (*DeleteKudgsirResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKudgsir not implemented")
+}
+func (UnimplementedKudgsirServiceServer) ListKudgsirs(context.Context, *ListKudgsirsRequest) (*ListKudgsirsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgsirs not implemented")
+}
+func (UnimplementedKudgsirServiceServer) ListKudgsirsByOrganization(context.Context, *ListKudgsirsByOrganizationRequest) (*ListKudgsirsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgsirsByOrganization not implemented")
+}
+func (UnimplementedKudgsirServiceServer) mustEmbedUnimplementedKudgsirServiceServer() {}
+func (UnimplementedKudgsirServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeKudgsirServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KudgsirServiceServer will
+// result in compilation errors.
+type UnsafeKudgsirServiceServer interface {
+	mustEmbedUnimplementedKudgsirServiceServer()
+}
+
+func RegisterKudgsirServiceServer(s grpc.ServiceRegistrar, srv KudgsirServiceServer) {
+	// If the following call pancis, it indicates UnimplementedKudgsirServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&KudgsirService_ServiceDesc, srv)
+}
+
+func _KudgsirService_CreateKudgsir_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateKudgsirRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgsirServiceServer).CreateKudgsir(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgsirService_CreateKudgsir_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgsirServiceServer).CreateKudgsir(ctx, req.(*CreateKudgsirRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgsirService_GetKudgsir_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetKudgsirRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgsirServiceServer).GetKudgsir(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgsirService_GetKudgsir_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgsirServiceServer).GetKudgsir(ctx, req.(*GetKudgsirRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgsirService_UpdateKudgsir_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateKudgsirRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgsirServiceServer).UpdateKudgsir(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgsirService_UpdateKudgsir_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgsirServiceServer).UpdateKudgsir(ctx, req.(*UpdateKudgsirRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgsirService_DeleteKudgsir_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteKudgsirRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgsirServiceServer).DeleteKudgsir(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgsirService_DeleteKudgsir_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgsirServiceServer).DeleteKudgsir(ctx, req.(*DeleteKudgsirRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgsirService_ListKudgsirs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgsirsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgsirServiceServer).ListKudgsirs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgsirService_ListKudgsirs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgsirServiceServer).ListKudgsirs(ctx, req.(*ListKudgsirsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgsirService_ListKudgsirsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgsirsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgsirServiceServer).ListKudgsirsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgsirService_ListKudgsirsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgsirServiceServer).ListKudgsirsByOrganization(ctx, req.(*ListKudgsirsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KudgsirService_ServiceDesc is the grpc.ServiceDesc for KudgsirService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KudgsirService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.KudgsirService",
+	HandlerType: (*KudgsirServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateKudgsir",
+			Handler:    _KudgsirService_CreateKudgsir_Handler,
+		},
+		{
+			MethodName: "GetKudgsir",
+			Handler:    _KudgsirService_GetKudgsir_Handler,
+		},
+		{
+			MethodName: "UpdateKudgsir",
+			Handler:    _KudgsirService_UpdateKudgsir_Handler,
+		},
+		{
+			MethodName: "DeleteKudgsir",
+			Handler:    _KudgsirService_DeleteKudgsir_Handler,
+		},
+		{
+			MethodName: "ListKudgsirs",
+			Handler:    _KudgsirService_ListKudgsirs_Handler,
+		},
+		{
+			MethodName: "ListKudgsirsByOrganization",
+			Handler:    _KudgsirService_ListKudgsirsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	KudgivtService_CreateKudgivt_FullMethodName              = "/organization.KudgivtService/CreateKudgivt"
+	KudgivtService_GetKudgivt_FullMethodName                 = "/organization.KudgivtService/GetKudgivt"
+	KudgivtService_UpdateKudgivt_FullMethodName              = "/organization.KudgivtService/UpdateKudgivt"
+	KudgivtService_DeleteKudgivt_FullMethodName              = "/organization.KudgivtService/DeleteKudgivt"
+	KudgivtService_ListKudgivts_FullMethodName               = "/organization.KudgivtService/ListKudgivts"
+	KudgivtService_ListKudgivtsByOrganization_FullMethodName = "/organization.KudgivtService/ListKudgivtsByOrganization"
+)
+
+// KudgivtServiceClient is the client API for KudgivtService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type KudgivtServiceClient interface {
+	CreateKudgivt(ctx context.Context, in *CreateKudgivtRequest, opts ...grpc.CallOption) (*CreateKudgivtResponse, error)
+	GetKudgivt(ctx context.Context, in *GetKudgivtRequest, opts ...grpc.CallOption) (*GetKudgivtResponse, error)
+	UpdateKudgivt(ctx context.Context, in *UpdateKudgivtRequest, opts ...grpc.CallOption) (*UpdateKudgivtResponse, error)
+	DeleteKudgivt(ctx context.Context, in *DeleteKudgivtRequest, opts ...grpc.CallOption) (*DeleteKudgivtResponse, error)
+	ListKudgivts(ctx context.Context, in *ListKudgivtsRequest, opts ...grpc.CallOption) (*ListKudgivtsResponse, error)
+	ListKudgivtsByOrganization(ctx context.Context, in *ListKudgivtsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgivtsByOrganizationResponse, error)
+}
+
+type kudgivtServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewKudgivtServiceClient(cc grpc.ClientConnInterface) KudgivtServiceClient {
+	return &kudgivtServiceClient{cc}
+}
+
+func (c *kudgivtServiceClient) CreateKudgivt(ctx context.Context, in *CreateKudgivtRequest, opts ...grpc.CallOption) (*CreateKudgivtResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateKudgivtResponse)
+	err := c.cc.Invoke(ctx, KudgivtService_CreateKudgivt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgivtServiceClient) GetKudgivt(ctx context.Context, in *GetKudgivtRequest, opts ...grpc.CallOption) (*GetKudgivtResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetKudgivtResponse)
+	err := c.cc.Invoke(ctx, KudgivtService_GetKudgivt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgivtServiceClient) UpdateKudgivt(ctx context.Context, in *UpdateKudgivtRequest, opts ...grpc.CallOption) (*UpdateKudgivtResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateKudgivtResponse)
+	err := c.cc.Invoke(ctx, KudgivtService_UpdateKudgivt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgivtServiceClient) DeleteKudgivt(ctx context.Context, in *DeleteKudgivtRequest, opts ...grpc.CallOption) (*DeleteKudgivtResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteKudgivtResponse)
+	err := c.cc.Invoke(ctx, KudgivtService_DeleteKudgivt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgivtServiceClient) ListKudgivts(ctx context.Context, in *ListKudgivtsRequest, opts ...grpc.CallOption) (*ListKudgivtsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgivtsResponse)
+	err := c.cc.Invoke(ctx, KudgivtService_ListKudgivts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kudgivtServiceClient) ListKudgivtsByOrganization(ctx context.Context, in *ListKudgivtsByOrganizationRequest, opts ...grpc.CallOption) (*ListKudgivtsByOrganizationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListKudgivtsByOrganizationResponse)
+	err := c.cc.Invoke(ctx, KudgivtService_ListKudgivtsByOrganization_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// KudgivtServiceServer is the server API for KudgivtService service.
+// All implementations must embed UnimplementedKudgivtServiceServer
+// for forward compatibility.
+type KudgivtServiceServer interface {
+	CreateKudgivt(context.Context, *CreateKudgivtRequest) (*CreateKudgivtResponse, error)
+	GetKudgivt(context.Context, *GetKudgivtRequest) (*GetKudgivtResponse, error)
+	UpdateKudgivt(context.Context, *UpdateKudgivtRequest) (*UpdateKudgivtResponse, error)
+	DeleteKudgivt(context.Context, *DeleteKudgivtRequest) (*DeleteKudgivtResponse, error)
+	ListKudgivts(context.Context, *ListKudgivtsRequest) (*ListKudgivtsResponse, error)
+	ListKudgivtsByOrganization(context.Context, *ListKudgivtsByOrganizationRequest) (*ListKudgivtsByOrganizationResponse, error)
+	mustEmbedUnimplementedKudgivtServiceServer()
+}
+
+// UnimplementedKudgivtServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedKudgivtServiceServer struct{}
+
+func (UnimplementedKudgivtServiceServer) CreateKudgivt(context.Context, *CreateKudgivtRequest) (*CreateKudgivtResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateKudgivt not implemented")
+}
+func (UnimplementedKudgivtServiceServer) GetKudgivt(context.Context, *GetKudgivtRequest) (*GetKudgivtResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetKudgivt not implemented")
+}
+func (UnimplementedKudgivtServiceServer) UpdateKudgivt(context.Context, *UpdateKudgivtRequest) (*UpdateKudgivtResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateKudgivt not implemented")
+}
+func (UnimplementedKudgivtServiceServer) DeleteKudgivt(context.Context, *DeleteKudgivtRequest) (*DeleteKudgivtResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKudgivt not implemented")
+}
+func (UnimplementedKudgivtServiceServer) ListKudgivts(context.Context, *ListKudgivtsRequest) (*ListKudgivtsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgivts not implemented")
+}
+func (UnimplementedKudgivtServiceServer) ListKudgivtsByOrganization(context.Context, *ListKudgivtsByOrganizationRequest) (*ListKudgivtsByOrganizationResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListKudgivtsByOrganization not implemented")
+}
+func (UnimplementedKudgivtServiceServer) mustEmbedUnimplementedKudgivtServiceServer() {}
+func (UnimplementedKudgivtServiceServer) testEmbeddedByValue()                        {}
+
+// UnsafeKudgivtServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to KudgivtServiceServer will
+// result in compilation errors.
+type UnsafeKudgivtServiceServer interface {
+	mustEmbedUnimplementedKudgivtServiceServer()
+}
+
+func RegisterKudgivtServiceServer(s grpc.ServiceRegistrar, srv KudgivtServiceServer) {
+	// If the following call pancis, it indicates UnimplementedKudgivtServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&KudgivtService_ServiceDesc, srv)
+}
+
+func _KudgivtService_CreateKudgivt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateKudgivtRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgivtServiceServer).CreateKudgivt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgivtService_CreateKudgivt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgivtServiceServer).CreateKudgivt(ctx, req.(*CreateKudgivtRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgivtService_GetKudgivt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetKudgivtRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgivtServiceServer).GetKudgivt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgivtService_GetKudgivt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgivtServiceServer).GetKudgivt(ctx, req.(*GetKudgivtRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgivtService_UpdateKudgivt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateKudgivtRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgivtServiceServer).UpdateKudgivt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgivtService_UpdateKudgivt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgivtServiceServer).UpdateKudgivt(ctx, req.(*UpdateKudgivtRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgivtService_DeleteKudgivt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteKudgivtRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgivtServiceServer).DeleteKudgivt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgivtService_DeleteKudgivt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgivtServiceServer).DeleteKudgivt(ctx, req.(*DeleteKudgivtRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgivtService_ListKudgivts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgivtsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgivtServiceServer).ListKudgivts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgivtService_ListKudgivts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgivtServiceServer).ListKudgivts(ctx, req.(*ListKudgivtsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KudgivtService_ListKudgivtsByOrganization_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListKudgivtsByOrganizationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KudgivtServiceServer).ListKudgivtsByOrganization(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KudgivtService_ListKudgivtsByOrganization_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KudgivtServiceServer).ListKudgivtsByOrganization(ctx, req.(*ListKudgivtsByOrganizationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// KudgivtService_ServiceDesc is the grpc.ServiceDesc for KudgivtService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var KudgivtService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.KudgivtService",
+	HandlerType: (*KudgivtServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateKudgivt",
+			Handler:    _KudgivtService_CreateKudgivt_Handler,
+		},
+		{
+			MethodName: "GetKudgivt",
+			Handler:    _KudgivtService_GetKudgivt_Handler,
+		},
+		{
+			MethodName: "UpdateKudgivt",
+			Handler:    _KudgivtService_UpdateKudgivt_Handler,
+		},
+		{
+			MethodName: "DeleteKudgivt",
+			Handler:    _KudgivtService_DeleteKudgivt_Handler,
+		},
+		{
+			MethodName: "ListKudgivts",
+			Handler:    _KudgivtService_ListKudgivts_Handler,
+		},
+		{
+			MethodName: "ListKudgivtsByOrganization",
+			Handler:    _KudgivtService_ListKudgivtsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
 }
