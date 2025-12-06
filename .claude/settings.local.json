@@ -1,6 +1,12 @@
 {
   "permissions": {
     "allow": [
+      "Read(c:\\googlecloud\\postgres-prod\\**)",
+      "Read(c:\\googlecloud\\cloudsql\\**)",
+      "Write(c:\\googlecloud\\postgres-prod\\**)",
+      "Edit(c:\\googlecloud\\postgres-prod\\**)",
+      "Write(c:/googlecloud/postgres-prod/**)",
+      "Edit(c:/googlecloud/postgres-prod/**)",
       "Bash(cmd.exe /c 'copy c:\\googlecloud\\cloudsql\\migrations\\postgres\\*.sql c:\\googlecloud\\cloudsql\\pkg\\schema\\postgres\\')",
       "Bash(cmd.exe /c 'xcopy /Y c:\\googlecloud\\cloudsql\\migrations\\postgres\\*.sql c:\\googlecloud\\cloudsql\\pkg\\schema\\postgres\\')",
       "Bash(cmd.exe /c 'xcopy /Y c:\\googlecloud\\cloudsql\\migrations\\mysql\\*.sql c:\\googlecloud\\cloudsql\\pkg\\schema\\mysql\\')",
@@ -20,7 +26,9 @@
       "Bash(buf dep:*)",
       "Bash(buf generate:*)",
       "Bash(protoc:*)",
-      "Bash(go mod tidy:*)"
+      "Bash(go mod tidy:*)",
+      "Bash(docker exec:*)",
+      "Bash(grep:*)"
     ],
     "deny": [],
     "ask": []

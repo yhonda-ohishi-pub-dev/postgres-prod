@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -29,7 +30,8 @@ func TestIntegration_CRUD(t *testing.T) {
 
 	// 1. Create
 	t.Run("Create", func(t *testing.T) {
-		org, err := repo.Create(ctx, "Test Organization", "test-org-crud")
+		uniqueSlug := fmt.Sprintf("test-org-%s", uuid.New().String()[:8])
+		org, err := repo.Create(ctx, "Test Organization", uniqueSlug)
 		if err != nil {
 			t.Fatalf("Create failed: %v", err)
 		}
@@ -55,7 +57,8 @@ func TestIntegration_CRUD(t *testing.T) {
 
 		// 3. Update
 		t.Run("Update", func(t *testing.T) {
-			updated, err := repo.Update(ctx, org.ID, "Updated Organization", "updated-org-crud")
+			updatedSlug := fmt.Sprintf("updated-org-%s", uuid.New().String()[:8])
+			updated, err := repo.Update(ctx, org.ID, "Updated Organization", updatedSlug)
 			if err != nil {
 				t.Fatalf("Update failed: %v", err)
 			}
