@@ -5,6 +5,11 @@ import (
 	"strconv"
 )
 
+// Default configuration (override via environment variables)
+const (
+	DefaultRegion = "asia-northeast1"
+)
+
 type Config struct {
 	// Cloud SQL connection
 	ProjectID          string
@@ -23,7 +28,7 @@ type Config struct {
 func Load() *Config {
 	cfg := &Config{
 		ProjectID:        getEnv("GCP_PROJECT_ID", ""),
-		Region:           getEnv("GCP_REGION", "asia-northeast1"),
+		Region:           getEnv("GCP_REGION", DefaultRegion),
 		InstanceName:     getEnv("CLOUDSQL_INSTANCE_NAME", ""),
 		DatabaseName:     getEnv("DB_NAME", "postgres"),
 		DatabaseUser:     getEnv("DB_USER", ""),

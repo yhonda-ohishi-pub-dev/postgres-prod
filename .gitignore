@@ -29,3 +29,6 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Deploy config (contains project-specific values)
+deploy.config
