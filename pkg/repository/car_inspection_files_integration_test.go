@@ -22,22 +22,17 @@ func TestIntegration_CarInspectionFiles_CRUD(t *testing.T) {
 	orgID := fmt.Sprintf("test-org-%s", uuid.New().String()[:8])
 	typeVal := "inspection"
 	electCertMgNo := fmt.Sprintf("cert-%s", uuid.New().String()[:8])
+	electCertPublishdateE := "R"
+	electCertPublishdateY := "05"
+	electCertPublishdateM := "12"
+	electCertPublishdateD := "07"
 	now := time.Now().Format(time.RFC3339)
-	testData := &CarInspectionFiles{
-		OrganizationID:        orgID,
-		Type:                  typeVal,
-		ElectCertMgNo:         electCertMgNo,
-		ElectCertPublishdateE: "R",
-		ElectCertPublishdateY: "05",
-		ElectCertPublishdateM: "12",
-		ElectCertPublishdateD: "07",
-		Created:               now,
-		Modified:              now,
-	}
+
+	var createdUUID string
 
 	// 1. Create
 	t.Run("Create", func(t *testing.T) {
-		record, err := repo.Create(ctx, testData)
+		record, err := repo.Create(ctx, orgID, typeVal, electCertMgNo, electCertPublishdateE, electCertPublishdateY, electCertPublishdateM, electCertPublishdateD, now, now)
 		if err != nil {
 			t.Fatalf("Create failed: %v", err)
 		}
@@ -47,31 +42,31 @@ func TestIntegration_CarInspectionFiles_CRUD(t *testing.T) {
 		if record.OrganizationID != orgID {
 			t.Errorf("Create: OrganizationID = %s, want %s", record.OrganizationID, orgID)
 		}
-		testData.UUID = record.UUID
+		createdUUID = record.UUID
 		fmt.Printf("✓ Create: UUID=%s, OrgID=%s\n", record.UUID, record.OrganizationID)
 
 		// 2. GetByUUID
 		t.Run("GetByUUID", func(t *testing.T) {
-			fetched, err := repo.GetByUUID(ctx, testData.UUID)
+			fetched, err := repo.GetByUUID(ctx, createdUUID)
 			if err != nil {
 				t.Fatalf("GetByUUID failed: %v", err)
 			}
-			if fetched.UUID != testData.UUID {
-				t.Errorf("GetByUUID: UUID = %s, want %s", fetched.UUID, testData.UUID)
+			if fetched.UUID != createdUUID {
+				t.Errorf("GetByUUID: UUID = %s, want %s", fetched.UUID, createdUUID)
 			}
 			fmt.Printf("✓ GetByUUID: UUID=%s, Type=%s\n", fetched.UUID, fetched.Type)
 		})
 
 		// 3. Update
 		t.Run("Update", func(t *testing.T) {
-			testData.Type = "updated-inspection"
-			testData.Modified = time.Now().Format(time.RFC3339)
-			updated, err := repo.Update(ctx, testData)
+			updatedType := "updated-inspection"
+			modifiedTime := time.Now().Format(time.RFC3339)
+			updated, err := repo.Update(ctx, createdUUID, updatedType, electCertMgNo, electCertPublishdateE, electCertPublishdateY, electCertPublishdateM, electCertPublishdateD, modifiedTime)
 			if err != nil {
 				t.Fatalf("Update failed: %v", err)
 			}
-			if updated.Type != testData.Type {
-				t.Errorf("Update: Type = %s, want %s", updated.Type, testData.Type)
+			if updated.Type != updatedType {
+				t.Errorf("Update: Type = %s, want %s", updated.Type, updatedType)
 			}
 			fmt.Printf("✓ Update: Type=%s\n", updated.Type)
 		})
@@ -91,15 +86,15 @@ func TestIntegration_CarInspectionFiles_CRUD(t *testing.T) {
 		// 5. Delete
 		t.Run("Delete", func(t *testing.T) {
 			deletedTime := time.Now().Format(time.RFC3339)
-			err := repo.Delete(ctx, testData.UUID, deletedTime)
+			err := repo.Delete(ctx, createdUUID, deletedTime)
 			if err != nil {
 				t.Fatalf("Delete failed: %v", err)
 			}
 
 			// Verify deletion
-			_, err = repo.GetByUUID(ctx, testData.UUID)
-			if err != ErrCarInspectionFilesNotFound {
-				t.Errorf("Delete: GetByUUID should return ErrCarInspectionFilesNotFound, got %v", err)
+			_, err = repo.GetByUUID(ctx, createdUUID)
+			if err != ErrCarInspectionFileNotFound {
+				t.Errorf("Delete: GetByUUID should return ErrCarInspectionFileNotFound, got %v", err)
 			}
 			fmt.Printf("✓ Delete: record soft-deleted\n")
 		})

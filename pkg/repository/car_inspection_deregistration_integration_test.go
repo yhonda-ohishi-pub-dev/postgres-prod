@@ -6,7 +6,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-	"time"
 
 	"github.com/google/uuid"
 )
@@ -20,51 +19,55 @@ func TestIntegration_CarInspectionDeregistration_CRUD(t *testing.T) {
 
 	// Create unique test data
 	orgID := fmt.Sprintf("test-org-%s", uuid.New().String()[:8])
-	now := time.Now().Format(time.RFC3339)
-	testData := &CarInspectionDeregistration{
-		OrganizationID: orgID,
-		Created:        now,
-		Modified:       now,
-	}
+	carID := fmt.Sprintf("car-%s", uuid.New().String()[:8])
+	twodimensionCodeInfoCarNo := "1234567890"
+	carNo := "ABC-1234"
+	validPeriodExpirDateE := "2025"
+	validPeriodExpirDateY := "2025"
+	validPeriodExpirDateM := "12"
+	validPeriodExpirDateD := "31"
+	twodimensionCodeInfoValidPeriodExpirDate := "2025-12-31"
 
 	// 1. Create
 	t.Run("Create", func(t *testing.T) {
-		record, err := repo.Create(ctx, testData)
+		record, err := repo.Create(ctx, orgID, carID, twodimensionCodeInfoCarNo, carNo, validPeriodExpirDateE, validPeriodExpirDateY, validPeriodExpirDateM, validPeriodExpirDateD, twodimensionCodeInfoValidPeriodExpirDate)
 		if err != nil {
 			t.Fatalf("Create failed: %v", err)
-		}
-		if record.UUID == "" {
-			t.Error("Create: UUID should not be empty")
 		}
 		if record.OrganizationID != orgID {
 			t.Errorf("Create: OrganizationID = %s, want %s", record.OrganizationID, orgID)
 		}
-		testData.UUID = record.UUID
-		fmt.Printf("✓ Create: UUID=%s, OrgID=%s\n", record.UUID, record.OrganizationID)
+		if record.CarID != carID {
+			t.Errorf("Create: CarID = %s, want %s", record.CarID, carID)
+		}
+		fmt.Printf("✓ Create: OrgID=%s, CarID=%s\n", record.OrganizationID, record.CarID)
 
-		// 2. GetByUUID
-		t.Run("GetByUUID", func(t *testing.T) {
-			fetched, err := repo.GetByUUID(ctx, testData.UUID)
+		// 2. GetByPrimaryKey
+		t.Run("GetByPrimaryKey", func(t *testing.T) {
+			fetched, err := repo.GetByPrimaryKey(ctx, orgID, carID, twodimensionCodeInfoValidPeriodExpirDate)
 			if err != nil {
-				t.Fatalf("GetByUUID failed: %v", err)
+				t.Fatalf("GetByPrimaryKey failed: %v", err)
 			}
-			if fetched.UUID != testData.UUID {
-				t.Errorf("GetByUUID: UUID = %s, want %s", fetched.UUID, testData.UUID)
+			if fetched.OrganizationID != orgID {
+				t.Errorf("GetByPrimaryKey: OrganizationID = %s, want %s", fetched.OrganizationID, orgID)
 			}
-			fmt.Printf("✓ GetByUUID: UUID=%s, OrgID=%s\n", fetched.UUID, fetched.OrganizationID)
+			if fetched.CarID != carID {
+				t.Errorf("GetByPrimaryKey: CarID = %s, want %s", fetched.CarID, carID)
+			}
+			fmt.Printf("✓ GetByPrimaryKey: OrgID=%s, CarID=%s\n", fetched.OrganizationID, fetched.CarID)
 		})
 
 		// 3. Update
 		t.Run("Update", func(t *testing.T) {
-			testData.Modified = time.Now().Format(time.RFC3339)
-			updated, err := repo.Update(ctx, testData)
+			updatedCarNo := "XYZ-5678"
+			updated, err := repo.Update(ctx, orgID, carID, twodimensionCodeInfoCarNo, updatedCarNo, validPeriodExpirDateE, validPeriodExpirDateY, validPeriodExpirDateM, validPeriodExpirDateD, twodimensionCodeInfoValidPeriodExpirDate)
 			if err != nil {
 				t.Fatalf("Update failed: %v", err)
 			}
-			if updated.UUID != testData.UUID {
-				t.Errorf("Update: UUID = %s, want %s", updated.UUID, testData.UUID)
+			if updated.CarNo != updatedCarNo {
+				t.Errorf("Update: CarNo = %s, want %s", updated.CarNo, updatedCarNo)
 			}
-			fmt.Printf("✓ Update: UUID=%s\n", updated.UUID)
+			fmt.Printf("✓ Update: CarNo=%s\n", updated.CarNo)
 		})
 
 		// 4. List
@@ -81,18 +84,17 @@ func TestIntegration_CarInspectionDeregistration_CRUD(t *testing.T) {
 
 		// 5. Delete
 		t.Run("Delete", func(t *testing.T) {
-			deletedTime := time.Now().Format(time.RFC3339)
-			err := repo.Delete(ctx, testData.UUID, deletedTime)
+			err := repo.Delete(ctx, orgID, carID, twodimensionCodeInfoValidPeriodExpirDate)
 			if err != nil {
 				t.Fatalf("Delete failed: %v", err)
 			}
 
 			// Verify deletion
-			_, err = repo.GetByUUID(ctx, testData.UUID)
+			_, err = repo.GetByPrimaryKey(ctx, orgID, carID, twodimensionCodeInfoValidPeriodExpirDate)
 			if err != ErrCarInspectionDeregistrationNotFound {
-				t.Errorf("Delete: GetByUUID should return ErrCarInspectionDeregistrationNotFound, got %v", err)
+				t.Errorf("Delete: GetByPrimaryKey should return ErrCarInspectionDeregistrationNotFound, got %v", err)
 			}
-			fmt.Printf("✓ Delete: record soft-deleted\n")
+			fmt.Printf("✓ Delete: record deleted\n")
 		})
 	})
 }

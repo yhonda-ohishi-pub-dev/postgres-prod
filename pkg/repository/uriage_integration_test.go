@@ -19,40 +19,46 @@ func TestIntegration_Uriage_CRUD(t *testing.T) {
 	ctx := context.Background()
 
 	// Create unique test data
+	name := fmt.Sprintf("test-name-%s", uuid.New().String()[:8])
 	bumon := fmt.Sprintf("test-bumon-%s", uuid.New().String()[:8])
 	orgID := fmt.Sprintf("test-org-%s", uuid.New().String()[:8])
 	date := time.Now().Format("2006-01-02")
 	kingaku := int32(50000)
 	typeVal := int32(1)
+	cam := int32(100)
 
 	// 1. Create
 	t.Run("Create", func(t *testing.T) {
-		record, err := repo.Create(ctx, bumon, orgID, &kingaku, &typeVal, date)
+		record, err := repo.Create(ctx, name, bumon, orgID, &kingaku, &typeVal, &cam, date)
 		if err != nil {
 			t.Fatalf("Create failed: %v", err)
 		}
 		if record.Bumon != bumon {
 			t.Errorf("Create: Bumon = %s, want %s", record.Bumon, bumon)
 		}
-		fmt.Printf("✓ Create: Bumon=%s, OrgID=%s, Date=%s\n", record.Bumon, record.OrganizationID, record.Date)
+		if record.Name != name {
+			t.Errorf("Create: Name = %s, want %s", record.Name, name)
+		}
+		fmt.Printf("✓ Create: Name=%s, Bumon=%s, OrgID=%s, Date=%s\n", record.Name, record.Bumon, record.OrganizationID, record.Date)
 
 		// 2. GetByPrimaryKey
 		t.Run("GetByPrimaryKey", func(t *testing.T) {
-			fetched, err := repo.GetByPrimaryKey(ctx, bumon, date, orgID)
+			fetched, err := repo.GetByPrimaryKey(ctx, name, bumon, date, orgID)
 			if err != nil {
 				t.Fatalf("GetByPrimaryKey failed: %v", err)
 			}
 			if fetched.Bumon != bumon {
 				t.Errorf("GetByPrimaryKey: Bumon = %s, want %s", fetched.Bumon, bumon)
 			}
-			fmt.Printf("✓ GetByPrimaryKey: Bumon=%s, OrgID=%s\n", fetched.Bumon, fetched.OrganizationID)
+			fmt.Printf("✓ GetByPrimaryKey: Name=%s, Bumon=%s, OrgID=%s\n", fetched.Name, fetched.Bumon, fetched.OrganizationID)
 		})
 
 		// 3. Update
 		t.Run("Update", func(t *testing.T) {
 			newKingaku := int32(100000)
 			newType := int32(2)
-			updated, err := repo.Update(ctx, bumon, date, orgID, &newKingaku, &newType)
+			newCam := int32(200)
+			updated, err := repo.Update(ctx, name, bumon, date, orgID, &newKingaku, &newType, &newCam)
 			if err != nil {
 				t.Fatalf("Update failed: %v", err)
 			}
@@ -76,13 +82,13 @@ func TestIntegration_Uriage_CRUD(t *testing.T) {
 
 		// 5. Delete
 		t.Run("Delete", func(t *testing.T) {
-			err := repo.Delete(ctx, bumon, date, orgID)
+			err := repo.Delete(ctx, name, bumon, date, orgID)
 			if err != nil {
 				t.Fatalf("Delete failed: %v", err)
 			}
 
 			// Verify deletion
-			_, err = repo.GetByPrimaryKey(ctx, bumon, date, orgID)
+			_, err = repo.GetByPrimaryKey(ctx, name, bumon, date, orgID)
 			if err != ErrUriageNotFound {
 				t.Errorf("Delete: GetByPrimaryKey should return ErrUriageNotFound, got %v", err)
 			}
