@@ -3241,3 +3241,243 @@ service KudgivtService {
   rpc ListKudgivts(ListKudgivtsRequest) returns (ListKudgivtsResponse);
   rpc ListKudgivtsByOrganization(ListKudgivtsByOrganizationRequest) returns (ListKudgivtsByOrganizationResponse);
 }
+
+// ============================
+// Dtakologs
+// ============================
+
+message Dtakologs {
+  string organization_id = 1;
+  string type = 2;
+  optional string address_disp_c = 3;
+  optional string address_disp_p = 4;
+  optional string all_state = 5;
+  optional string all_state_ex = 6;
+  optional string all_state_font_color = 7;
+  int32 all_state_font_color_index = 8;
+  string all_state_ryout_color = 9;
+  int32 branch_cd = 10;
+  string branch_name = 11;
+  optional string comu_date_time = 12;
+  int32 current_work_cd = 13;
+  optional string current_work_name = 14;
+  string data_date_time = 15;
+  int32 data_filter_type = 16;
+  int32 disp_flag = 17;
+  int32 driver_cd = 18;
+  optional string driver_name = 19;
+  optional string event_val = 20;
+  int32 gps_direction = 21;
+  int32 gps_enable = 22;
+  optional string gps_lati_and_long = 23;
+  int32 gps_latitude = 24;
+  int32 gps_longitude = 25;
+  int32 gps_satellite_num = 26;
+  optional string odo_meter = 27;
+  int32 operation_state = 28;
+  int32 recive_event_type = 29;
+  int32 recive_packet_type = 30;
+  optional string recive_type_color_name = 31;
+  optional string recive_type_name = 32;
+  int32 recive_work_cd = 33;
+  int32 revo = 34;
+  string setting_temp = 35;
+  string setting_temp1 = 36;
+  string setting_temp3 = 37;
+  string setting_temp4 = 38;
+  float speed = 39;
+  optional string start_work_date_time = 40;
+  optional string state = 41;
+  optional string state1 = 42;
+  optional string state2 = 43;
+  optional string state3 = 44;
+  string state_flag = 45;
+  int32 sub_driver_cd = 46;
+  optional string temp1 = 47;
+  optional string temp2 = 48;
+  optional string temp3 = 49;
+  optional string temp4 = 50;
+  int32 temp_state = 51;
+  int32 vehicle_cd = 52;
+  optional string vehicle_icon_color = 53;
+  optional string vehicle_icon_label_for_datetime = 54;
+  optional string vehicle_icon_label_for_driver = 55;
+  optional string vehicle_icon_label_for_vehicle = 56;
+  string vehicle_name = 57;
+}
+
+message CreateDtakologsRequest {
+  string organization_id = 1;
+  string type = 2;
+  optional string address_disp_c = 3;
+  optional string address_disp_p = 4;
+  optional string all_state = 5;
+  optional string all_state_ex = 6;
+  optional string all_state_font_color = 7;
+  int32 all_state_font_color_index = 8;
+  string all_state_ryout_color = 9;
+  int32 branch_cd = 10;
+  string branch_name = 11;
+  optional string comu_date_time = 12;
+  int32 current_work_cd = 13;
+  optional string current_work_name = 14;
+  string data_date_time = 15;
+  int32 data_filter_type = 16;
+  int32 disp_flag = 17;
+  int32 driver_cd = 18;
+  optional string driver_name = 19;
+  optional string event_val = 20;
+  int32 gps_direction = 21;
+  int32 gps_enable = 22;
+  optional string gps_lati_and_long = 23;
+  int32 gps_latitude = 24;
+  int32 gps_longitude = 25;
+  int32 gps_satellite_num = 26;
+  optional string odo_meter = 27;
+  int32 operation_state = 28;
+  int32 recive_event_type = 29;
+  int32 recive_packet_type = 30;
+  optional string recive_type_color_name = 31;
+  optional string recive_type_name = 32;
+  int32 recive_work_cd = 33;
+  int32 revo = 34;
+  string setting_temp = 35;
+  string setting_temp1 = 36;
+  string setting_temp3 = 37;
+  string setting_temp4 = 38;
+  float speed = 39;
+  optional string start_work_date_time = 40;
+  optional string state = 41;
+  optional string state1 = 42;
+  optional string state2 = 43;
+  optional string state3 = 44;
+  string state_flag = 45;
+  int32 sub_driver_cd = 46;
+  optional string temp1 = 47;
+  optional string temp2 = 48;
+  optional string temp3 = 49;
+  optional string temp4 = 50;
+  int32 temp_state = 51;
+  int32 vehicle_cd = 52;
+  optional string vehicle_icon_color = 53;
+  optional string vehicle_icon_label_for_datetime = 54;
+  optional string vehicle_icon_label_for_driver = 55;
+  optional string vehicle_icon_label_for_vehicle = 56;
+  string vehicle_name = 57;
+}
+
+message CreateDtakologsResponse {
+  Dtakologs dtakologs = 1;
+}
+
+message GetDtakologsRequest {
+  string organization_id = 1;
+  string type = 2;
+}
+
+message GetDtakologsResponse {
+  Dtakologs dtakologs = 1;
+}
+
+message UpdateDtakologsRequest {
+  string organization_id = 1;
+  string type = 2;
+  optional string address_disp_c = 3;
+  optional string address_disp_p = 4;
+  optional string all_state = 5;
+  optional string all_state_ex = 6;
+  optional string all_state_font_color = 7;
+  int32 all_state_font_color_index = 8;
+  string all_state_ryout_color = 9;
+  int32 branch_cd = 10;
+  string branch_name = 11;
+  optional string comu_date_time = 12;
+  int32 current_work_cd = 13;
+  optional string current_work_name = 14;
+  string data_date_time = 15;
+  int32 data_filter_type = 16;
+  int32 disp_flag = 17;
+  int32 driver_cd = 18;
+  optional string driver_name = 19;
+  optional string event_val = 20;
+  int32 gps_direction = 21;
+  int32 gps_enable = 22;
+  optional string gps_lati_and_long = 23;
+  int32 gps_latitude = 24;
+  int32 gps_longitude = 25;
+  int32 gps_satellite_num = 26;
+  optional string odo_meter = 27;
+  int32 operation_state = 28;
+  int32 recive_event_type = 29;
+  int32 recive_packet_type = 30;
+  optional string recive_type_color_name = 31;
+  optional string recive_type_name = 32;
+  int32 recive_work_cd = 33;
+  int32 revo = 34;
+  string setting_temp = 35;
+  string setting_temp1 = 36;
+  string setting_temp3 = 37;
+  string setting_temp4 = 38;
+  float speed = 39;
+  optional string start_work_date_time = 40;
+  optional string state = 41;
+  optional string state1 = 42;
+  optional string state2 = 43;
+  optional string state3 = 44;
+  string state_flag = 45;
+  int32 sub_driver_cd = 46;
+  optional string temp1 = 47;
+  optional string temp2 = 48;
+  optional string temp3 = 49;
+  optional string temp4 = 50;
+  int32 temp_state = 51;
+  int32 vehicle_cd = 52;
+  optional string vehicle_icon_color = 53;
+  optional string vehicle_icon_label_for_datetime = 54;
+  optional string vehicle_icon_label_for_driver = 55;
+  optional string vehicle_icon_label_for_vehicle = 56;
+  string vehicle_name = 57;
+}
+
+message UpdateDtakologsResponse {
+  Dtakologs dtakologs = 1;
+}
+
+message DeleteDtakologsRequest {
+  string organization_id = 1;
+  string type = 2;
+}
+
+message DeleteDtakologsResponse {
+  bool success = 1;
+}
+
+message ListDtakologsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListDtakologsResponse {
+  repeated Dtakologs dtakologs = 1;
+  string next_page_token = 2;
+}
+
+message ListDtakologsByOrganizationRequest {
+  string organization_id = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListDtakologsByOrganizationResponse {
+  repeated Dtakologs dtakologs = 1;
+  string next_page_token = 2;
+}
+
+service DtakologsService {
+  rpc CreateDtakologs(CreateDtakologsRequest) returns (CreateDtakologsResponse);
+  rpc GetDtakologs(GetDtakologsRequest) returns (GetDtakologsResponse);
+  rpc UpdateDtakologs(UpdateDtakologsRequest) returns (UpdateDtakologsResponse);
+  rpc DeleteDtakologs(DeleteDtakologsRequest) returns (DeleteDtakologsResponse);
+  rpc ListDtakologs(ListDtakologsRequest) returns (ListDtakologsResponse);
+  rpc ListDtakologsByOrganization(ListDtakologsByOrganizationRequest) returns (ListDtakologsByOrganizationResponse);
+}

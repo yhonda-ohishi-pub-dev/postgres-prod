@@ -61,12 +61,12 @@ proto/service.protoに26個のサービス定義を追加。以下の順で実�
 | kudgsir | Kudgsir | 40+ |
 | kudgivt | Kudgivt | 120+ |
 
-#### Phase 1-6: Dtakologs
+#### Phase 1-6: Dtakologs ✅ 完了
 | テーブル | メッセージ | フィールド数 |
 |---------|-----------|------------|
 | dtakologs | Dtakologs | 58 |
 
-#### Phase 1-7: buf generate
+#### Phase 1-7: buf generate ✅ 完了
 ```bash
 buf generate
 ```
@@ -203,6 +203,18 @@ gcloud builds submit --config=cloudbuild.yaml ...
 - KudgfulService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 40フィールド
 - KudgsirService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 40フィールド
 - KudgivtService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 94フィールド (最大)
+
+**ビルド確認:** go build 成功
+
+### Phase 1-6: DtakologsテーブルのProto定義追加 (2025-12-07)
+
+**更新ファイル:**
+- proto/service.proto: DtakologsService のメッセージ・RPC定義追加 (3483行に拡張)
+- pkg/pb/service.pb.go: protoc生成 (1.2MB)
+- pkg/pb/service_grpc.pb.go: protoc生成 (365KB)
+
+**追加内容:**
+- DtakologsService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization) - 57フィールド
 
 **ビルド確認:** go build 成功
 
