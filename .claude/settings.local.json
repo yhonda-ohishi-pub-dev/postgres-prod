@@ -16,7 +16,11 @@
       "Bash(export GCP_PROJECT_ID=cloudsql-sv:*)",
       "Bash(export GCP_REGION=asia-northeast1)",
       "Bash(export CLOUDSQL_INSTANCE_NAME=postgres-prod)",
-      "Bash(./server.exe)"
+      "Bash(./server.exe)",
+      "Bash(buf dep:*)",
+      "Bash(buf generate:*)",
+      "Bash(protoc:*)",
+      "Bash(go mod tidy:*)"
     ],
     "deny": [],
     "ask": []
