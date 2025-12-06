@@ -6,6 +6,7 @@ Cloud Run上で動作するGoサービス。Cloud SQL PostgreSQLにIAM認証で�
 
 - **Cloud SQL IAM認証**: パスワード不要のセキュアな接続
 - **gRPC API**: Organization CRUDサービス
+- **Repository層**: 29テーブル分のCRUD実装（統合テスト完備）
 - **Cloud Run対応**: 本番環境ですぐにデプロイ可能
 - **ローカル開発対応**: Cloud SQL Auth Proxyでの開発をサポート
 
@@ -67,7 +68,7 @@ pkg/
   grpc/                  - gRPCサーバー実装
   handlers/              - HTTPハンドラー
   pb/                    - 生成されたProtobufコード
-  repository/            - データベース操作
+  repository/            - データベース操作（29テーブル分のCRUD + 統合テスト）
 proto/service.proto      - gRPCサービス定義
 ```
 

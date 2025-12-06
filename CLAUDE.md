@@ -4,15 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides both HTTP health endpoints and gRPC CRUD services for Organizations.
+Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides HTTP health endpoints, gRPC CRUD services, and Repository layer for 29 database tables.
 
 ## Recent Changes
 
 | Commit | Description |
 |--------|-------------|
-| b4e3ab7 | Cloud Runデプロイ対応: gRPCサーバー追加とセキュリティ改善 |
-| e42653d | Organizations gRPC CRUDサービスの実装 |
-| 5402165 | Cloud SQL PostgreSQL接続サービスの初期実装 |
+| 384217e | 統合テスト完成: 残り16テーブル分の統合テストを追加 |
+| f7710b3 | PLAN.md更新: Repository層29/29完了 |
+| 75521ad | Repository層完成: 残り17テーブルのCRUD実装 |
+| bf3cb64 | Repository層追加: 10テーブル分のCRUD実装と統合テスト |
+| 9b42062 | Organization CRUD統合テストを追加 |
 
 ## Build and Run
 
@@ -48,8 +50,14 @@ pkg/db/cloudsql.go           - Cloud SQL connection with IAM auth (cloudsqlconn)
 pkg/handlers/                - HTTP handlers (health check)
 pkg/grpc/                    - gRPC server implementations
   organization_server.go     - OrganizationService gRPC server
-pkg/repository/              - Database CRUD operations
+pkg/repository/              - Database CRUD operations (29 tables)
   organization.go            - Organization repository (with interface for mocking)
+  app_users.go               - AppUsers repository
+  cam_files.go               - CamFiles repository
+  car_inspection.go          - CarInspection repository (largest, 48KB)
+  ichiban_cars.go            - IchibanCars repository
+  kudg*.go                   - KUDG series repositories (6 files)
+  ... and more (29 total with integration tests)
 pkg/pb/                      - Generated protobuf Go code
 proto/                       - Protocol buffer definitions
   service.proto              - OrganizationService definition

@@ -28,7 +28,9 @@
       "Bash(protoc:*)",
       "Bash(go mod tidy:*)",
       "Bash(docker exec:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(git add:*)",
+      "Bash(go vet:*)"
     ],
     "deny": [],
     "ask": []
