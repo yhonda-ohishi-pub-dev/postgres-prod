@@ -4,19 +4,18 @@ import (
 	"context"
 	"log"
 	"net"
-	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
 
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/internal/config"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/db"
 	grpcserver "github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/grpc"
-	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/handlers"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/pb"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/repository"
 )
@@ -36,7 +35,6 @@ func main() {
 	}
 
 	// Create database connection pool
-	// Uses IAM auth on Cloud Run, proxy with --auto-iam-authn locally
 	pool, cleanup, err := db.NewPool(ctx, cfg.InstanceConnection, cfg.DatabaseUser, cfg.DatabaseName, cfg.DatabasePassword, cfg.DatabasePort)
 	if err != nil {
 		log.Fatalf("Failed to connect to Cloud SQL: %v", err)
@@ -49,41 +47,26 @@ func main() {
 	orgRepo := repository.NewOrganizationRepository(pool)
 	orgServer := grpcserver.NewOrganizationServer(orgRepo)
 
-	// Create gRPC server
+	// Create gRPC server with health check
 	grpcServer := grpc.NewServer()
 	pb.RegisterOrganizationServiceServer(grpcServer, orgServer)
+
+	// Register health check service for Cloud Run
+	healthServer := health.NewServer()
+	grpc_health_v1.RegisterHealthServer(grpcServer, healthServer)
+	healthServer.SetServingStatus("", grpc_health_v1.HealthCheckResponse_SERVING)
+
 	reflection.Register(grpcServer)
 
-	// Start gRPC server in background
-	grpcPort := os.Getenv("GRPC_PORT")
-	if grpcPort == "" {
-		grpcPort = "50051"
+	// Use PORT env (Cloud Run sets this to 8080)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
 	}
-	grpcListener, err := net.Listen("tcp", ":"+grpcPort)
+
+	listener, err := net.Listen("tcp", ":"+port)
 	if err != nil {
-		log.Fatalf("Failed to listen for gRPC: %v", err)
-	}
-	go func() {
-		log.Printf("Starting gRPC server on port %s", grpcPort)
-		if err := grpcServer.Serve(grpcListener); err != nil {
-			log.Printf("gRPC server error: %v", err)
-		}
-	}()
-
-	// Setup HTTP routes
-	mux := http.NewServeMux()
-	mux.Handle("/health", handlers.NewHealthHandler(pool))
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("postgres-prod service running"))
-	})
-
-	// Create HTTP server
-	server := &http.Server{
-		Addr:         ":" + cfg.Port,
-		Handler:      mux,
-		ReadTimeout:  30 * time.Second,
-		WriteTimeout: 30 * time.Second,
-		IdleTimeout:  120 * time.Second,
+		log.Fatalf("Failed to listen: %v", err)
 	}
 
 	// Graceful shutdown
@@ -92,23 +75,13 @@ func main() {
 		signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
 		<-sigCh
 
-		log.Println("Shutting down servers...")
-
-		// Gracefully stop gRPC server
+		log.Println("Shutting down gRPC server...")
 		grpcServer.GracefulStop()
-		log.Println("gRPC server stopped")
-
-		ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
-		defer cancel()
-
-		if err := server.Shutdown(ctx); err != nil {
-			log.Printf("HTTP server shutdown error: %v", err)
-		}
 	}()
 
-	log.Printf("Starting server on port %s", cfg.Port)
-	if err := server.ListenAndServe(); err != http.ErrServerClosed {
-		log.Fatalf("Server error: %v", err)
+	log.Printf("Starting gRPC server on port %s", port)
+	if err := grpcServer.Serve(listener); err != nil {
+		log.Fatalf("gRPC server error: %v", err)
 	}
 
 	log.Println("Server stopped")

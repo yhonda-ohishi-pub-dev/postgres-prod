@@ -28,14 +28,17 @@ steps:
       - '--allow-unauthenticated'
       - '--add-cloudsql-instances=${PROJECT_ID}:${_REGION}:${_CLOUDSQL_INSTANCE}'
       - '--set-env-vars=GCP_PROJECT_ID=${PROJECT_ID},GCP_REGION=${_REGION},CLOUDSQL_INSTANCE_NAME=${_CLOUDSQL_INSTANCE},DB_NAME=${_DB_NAME},DB_USER=${_DB_USER}'
+      - '--service-account=${_SERVICE_ACCOUNT}'
+      - '--use-http2'
 
 substitutions:
   _REGION: asia-northeast1
   _REPO_NAME: postgres-prod
   _SERVICE_NAME: postgres-prod
   _CLOUDSQL_INSTANCE: ''  # Set via trigger
-  _DB_NAME: postgres
+  _DB_NAME: myapp
   _DB_USER: ''  # Set via trigger (IAM user email)
+  _SERVICE_ACCOUNT: ''  # Set via trigger
   _TAG: latest  # Default tag, can be overridden
 
 images:
