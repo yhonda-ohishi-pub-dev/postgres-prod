@@ -22,6 +22,15 @@ Cloud Run上で動作するGoサービス。Cloud SQL PostgreSQLにIAM認証で�
 ### Build
 
 ```bash
+# Makefile を使用（推奨）
+make deps      # 依存関係をダウンロード
+make build     # ビルド
+make run       # ビルドして実行
+make test      # テスト実行
+make proto     # Protobufコード生成
+make check     # vet, test, build を実行
+
+# 手動コマンド
 go mod tidy
 go build -o server ./cmd/server
 ```
@@ -45,7 +54,7 @@ export DB_USER=your-iam-user
 
 ## API
 
-### gRPC (port 50051)
+### gRPC (port 8080, Cloud Run compatible)
 
 **OrganizationService**
 - `CreateOrganization` - 組織を作成
@@ -54,9 +63,8 @@ export DB_USER=your-iam-user
 - `DeleteOrganization` - 組織を削除（論理削除）
 - `ListOrganizations` - 組織一覧を取得
 
-### HTTP (port 8080)
-
-- `GET /health` - ヘルスチェック
+**Health Check**
+- gRPC Health Check Protocol（Cloud Run のスタートアップ/ライブネスプローブ用）
 
 ## Project Structure
 
@@ -102,8 +110,7 @@ buf generate
 | CLOUDSQL_INSTANCE_NAME | Cloud SQLインスタンス名 |
 | DB_NAME | データベース名 |
 | DB_USER | IAMユーザー名 |
-| PORT | HTTPポート (default: 8080) |
-| GRPC_PORT | gRPCポート (default: 50051) |
+| PORT | gRPCサーバーポート (default: 8080, Cloud Runが設定) |
 
 ## License
 

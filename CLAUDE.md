@@ -10,19 +10,25 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
-| b92d74e | CLAUDE.md更新: Recent Changesを最新5コミットに更新 |
-| 6ae2d43 | ドキュメント・設定更新: Repository層完成を反映 |
-| 0612dfc | 統合テスト修正: go vet エラーを解消 |
-| 384217e | 統合テスト完成: 残り16テーブル分の統合テストを追加 |
-| f7710b3 | PLAN.md更新: Repository層29/29完了 |
+| 62011a7 | Proto生成コード追加: pkg/pb/proto/ |
+| 19c840f | ビルドツール追加: Makefileと実行スクリプト |
+| 9c09aec | Cloud Run対応: gRPC単独サーバー構成に変更 |
+| 6d903dd | Phase 1-6: DtakologsテーブルのProto定義追加 |
+| b5627d3 | Phase 1-5: KUDG系テーブルのProto定義追加 |
 
 ## Build and Run
 
 ```bash
-# Download dependencies
-go mod tidy
+# Using Makefile (recommended)
+make deps      # Download dependencies
+make build     # Build locally
+make run       # Build and run
+make test      # Run tests
+make proto     # Generate protobuf code
+make check     # Run vet, test, build
 
-# Build locally
+# Manual commands
+go mod tidy
 go build -o server ./cmd/server
 
 # Run locally (requires Cloud SQL Auth Proxy for local development)
@@ -44,10 +50,9 @@ gcloud builds submit --config=cloudbuild.yaml \
 ## Architecture
 
 ```
-cmd/server/main.go           - Entry point, HTTP + gRPC server setup
+cmd/server/main.go           - Entry point, gRPC-only server (Cloud Run compatible)
 internal/config/             - Environment configuration
 pkg/db/cloudsql.go           - Cloud SQL connection with IAM auth (cloudsqlconn)
-pkg/handlers/                - HTTP handlers (health check)
 pkg/grpc/                    - gRPC server implementations
   organization_server.go     - OrganizationService gRPC server
 pkg/repository/              - Database CRUD operations (29 tables)
@@ -61,14 +66,16 @@ pkg/repository/              - Database CRUD operations (29 tables)
 pkg/pb/                      - Generated protobuf Go code
 proto/                       - Protocol buffer definitions
   service.proto              - OrganizationService definition
+Makefile                     - Build automation commands
 ```
 
 ## gRPC Services
 
-The service exposes gRPC on port 50051:
+The service exposes gRPC on PORT (default 8080, Cloud Run compatible):
 
 - **OrganizationService**: CRUD operations for Organizations
   - `CreateOrganization`, `GetOrganization`, `UpdateOrganization`, `DeleteOrganization`, `ListOrganizations`
+- **Health Check**: gRPC Health Check Protocol for Cloud Run startup/liveness probes
 
 ## Cloud SQL IAM Authentication
 
@@ -103,5 +110,4 @@ import "postgres-prod/pkg/pb"
 | CLOUDSQL_INSTANCE_NAME | Cloud SQL instance name | my-instance |
 | DB_NAME | Database name | postgres |
 | DB_USER | IAM user (without @domain) | my-sa |
-| PORT | HTTP port | 8080 |
-| GRPC_PORT | gRPC port | 50051 |
+| PORT | gRPC server port (Cloud Run sets this) | 8080 |
