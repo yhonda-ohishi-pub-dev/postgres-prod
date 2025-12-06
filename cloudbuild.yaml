@@ -1,0 +1,43 @@
+steps:
+  # Build and push container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${SHORT_SHA}'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:latest'
+      - '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '--all-tags'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - '${_SERVICE_NAME}'
+      - '--image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${SHORT_SHA}'
+      - '--region=${_REGION}'
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+      - '--add-cloudsql-instances=${PROJECT_ID}:${_REGION}:${_CLOUDSQL_INSTANCE}'
+      - '--set-env-vars=GCP_PROJECT_ID=${PROJECT_ID},GCP_REGION=${_REGION},CLOUDSQL_INSTANCE_NAME=${_CLOUDSQL_INSTANCE},DB_NAME=${_DB_NAME},DB_USER=${_DB_USER}'
+      - '--service-account=${_SERVICE_ACCOUNT}'
+
+substitutions:
+  _REGION: asia-northeast1
+  _REPO_NAME: postgres-prod
+  _SERVICE_NAME: postgres-prod
+  _CLOUDSQL_INSTANCE: ''  # Set via trigger
+  _DB_NAME: postgres
+  _DB_USER: ''  # Set via trigger (IAM user email without @domain)
+  _SERVICE_ACCOUNT: ''  # Set via trigger
+
+images:
+  - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
