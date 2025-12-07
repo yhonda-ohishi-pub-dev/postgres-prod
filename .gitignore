@@ -33,6 +33,8 @@ Thumbs.db
 # OAuth client secrets
 client_secret*.json
 
+.claude/commands/*
+
 # Deploy config (contains project-specific values)
 deploy.config
 
