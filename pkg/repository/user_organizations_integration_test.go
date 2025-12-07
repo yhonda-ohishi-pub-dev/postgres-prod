@@ -21,7 +21,7 @@ func TestIntegration_UserOrganizations_CRUD(t *testing.T) {
 
 	// Setup: Create test user and organization
 	uniqueEmail := fmt.Sprintf("test-uo-user-%s@example.com", uuid.New().String()[:8])
-	testUser, err := userRepo.Create(ctx, uniqueEmail, "Test UO User", false)
+	testUser, err := userRepo.Create(ctx, &uniqueEmail, "Test UO User", nil, false)
 	if err != nil {
 		t.Fatalf("Setup: failed to create test user: %v", err)
 	}
