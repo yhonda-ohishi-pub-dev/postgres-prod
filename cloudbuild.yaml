@@ -64,6 +64,9 @@ substitutions:
   _TAG: latest  # Default tag, can be overridden
   _FRONTEND_URL: 'https://mtama-front.mtamaramu.com/auth/callback'
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 images:
   - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
   - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}-envoy'
