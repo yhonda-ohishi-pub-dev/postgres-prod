@@ -23,9 +23,10 @@ func GetOrganizationID(ctx context.Context) (string, bool) {
 	return orgID, ok
 }
 
-// SetRLSContext sets the app.organization_id session variable for RLS
+// SetRLSContext sets the app.current_organization_id session variable for RLS
 func SetRLSContext(ctx context.Context, conn *pgxpool.Conn, orgID string) error {
-	_, err := conn.Exec(ctx, "SET app.organization_id = $1", orgID)
+	// SET doesn't support parameterized queries, so we use set_config() function instead
+	_, err := conn.Exec(ctx, "SELECT set_config('app.current_organization_id', $1, false)", orgID)
 	if err != nil {
 		return fmt.Errorf("failed to set RLS context: %w", err)
 	}

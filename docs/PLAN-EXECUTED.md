@@ -145,3 +145,200 @@ pkg/repository/
 
 PostgreSQLのcase-sensitiveカラムにはダブルクォート使用:
 - `"ElectCertMgNo"`, `"CarId"`, `"DataDateTime"` 等
+
+---
+
+## 完了: gRPCサービス拡充 Phase 1-2 (2025-12-07)
+
+### 概要
+
+29テーブル全てにgRPCサービスを提供するためのProto定義追加とgRPCサーバー実装。
+
+### Phase 1: Proto定義追加
+
+#### Phase 1-1: 簡単なテーブルのProto定義追加
+
+**更新ファイル:**
+- proto/service.proto: 4サービス（AppUser, UserOrganization, File, FlickrPhoto）のメッセージ・RPC定義追加
+- pkg/pb/service.pb.go: protoc生成
+- pkg/pb/service_grpc.pb.go: protoc生成
+
+**追加内容:**
+- AppUserService: 6 RPCs (Create, Get, GetByIamEmail, Update, Delete, List)
+- UserOrganizationService: 7 RPCs (Create, Get, Update, Delete, List, ListByUser, ListByOrg)
+- FileService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- FlickrPhotoService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+
+#### Phase 1-2: カメラ関連テーブルのProto定義追加
+
+**更新ファイル:**
+- proto/service.proto: 3サービス（CamFile, CamFileExe, CamFileExeStage）のメッセージ・RPC定義追加
+- pkg/pb/service.pb.go: protoc生成
+- pkg/pb/service_grpc.pb.go: protoc生成
+
+**追加内容:**
+- CamFileService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- CamFileExeService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- CamFileExeStageService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+
+#### Phase 1-3: 車両関連テーブルのProto定義追加
+
+**更新ファイル:**
+- proto/service.proto: 4サービス（IchibanCar, DtakoCarsIchibanCars, Uriage, UriageJisha）のメッセージ・RPC定義追加
+- pkg/pb/service.pb.go: protoc生成
+- pkg/pb/service_grpc.pb.go: protoc生成
+
+**追加内容:**
+- IchibanCarService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- DtakoCarsIchibanCarsService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- UriageService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+- UriageJishaService: 6 RPCs (Create, Get, Update, Delete, List, ListByOrganization)
+
+#### Phase 1-4: 車検関連テーブルのProto定義追加
+
+**更新ファイル:**
+- proto/service.proto: 8サービス（CarInspection, CarInspectionFiles, CarInspectionFilesA, CarInspectionFilesB, CarInspectionDeregistration, CarInspectionDeregistrationFiles, CarInsSheetIchibanCars, CarInsSheetIchibanCarsA）のメッセージ・RPC定義追加
+- pkg/pb/service.pb.go: protoc生成 (326KB)
+- pkg/pb/service_grpc.pb.go: protoc生成 (162KB)
+
+**追加内容:**
+- CarInspectionService: 6 RPCs - 98フィールド
+- CarInspectionFilesService: 6 RPCs - 11フィールド
+- CarInspectionFilesAService: 6 RPCs - 11フィールド
+- CarInspectionFilesBService: 6 RPCs - 11フィールド
+- CarInspectionDeregistrationService: 6 RPCs - 9フィールド
+- CarInspectionDeregistrationFilesService: 6 RPCs - 4フィールド
+- CarInsSheetIchibanCarsService: 6 RPCs - 7フィールド
+- CarInsSheetIchibanCarsAService: 6 RPCs - 7フィールド
+
+#### Phase 1-5: KUDG系テーブルのProto定義追加
+
+**更新ファイル:**
+- proto/service.proto: 6サービス（Kudgfry, Kudguri, Kudgcst, Kudgful, Kudgsir, Kudgivt）のメッセージ・RPC定義追加 (3243行に拡張)
+- pkg/pb/service.pb.go: protoc生成 (1.2MB)
+- pkg/pb/service_grpc.pb.go: protoc生成 (365KB)
+
+**追加内容:**
+- KudgfryService: 6 RPCs - 28フィールド
+- KudguriService: 6 RPCs - 40フィールド
+- KudgcstService: 6 RPCs - 30フィールド
+- KudgfulService: 6 RPCs - 40フィールド
+- KudgsirService: 6 RPCs - 40フィールド
+- KudgivtService: 6 RPCs - 94フィールド (最大)
+
+#### Phase 1-6: DtakologsテーブルのProto定義追加
+
+**更新ファイル:**
+- proto/service.proto: DtakologsService のメッセージ・RPC定義追加 (3483行に拡張)
+- pkg/pb/service.pb.go: protoc生成 (1.2MB)
+- pkg/pb/service_grpc.pb.go: protoc生成 (365KB)
+
+**追加内容:**
+- DtakologsService: 6 RPCs - 57フィールド
+
+### Phase 2: gRPCサーバー実装 (27ファイル)
+
+**作成ファイル (27個):**
+- pkg/grpc/app_user_server.go (174行)
+- pkg/grpc/user_organization_server.go (191行)
+- pkg/grpc/file_server.go (216行)
+- pkg/grpc/flickr_photo_server.go (197行)
+- pkg/grpc/cam_file_server.go (203行)
+- pkg/grpc/cam_file_exe_server.go (175行)
+- pkg/grpc/cam_file_exe_stage_server.go (140行)
+- pkg/grpc/ichiban_car_server.go (289行)
+- pkg/grpc/dtako_cars_ichiban_cars_server.go (177行)
+- pkg/grpc/uriage_server.go (248行)
+- pkg/grpc/uriage_jisha_server.go (226行)
+- pkg/grpc/car_inspection_server.go (510行)
+- pkg/grpc/car_inspection_files_server.go (227行)
+- pkg/grpc/car_inspection_files_a_server.go (233行)
+- pkg/grpc/car_inspection_files_b_server.go (216行)
+- pkg/grpc/car_inspection_deregistration_server.go (239行)
+- pkg/grpc/car_inspection_deregistration_files_server.go (240行)
+- pkg/grpc/car_ins_sheet_ichiban_cars_server.go (287行)
+- pkg/grpc/car_ins_sheet_ichiban_cars_a_server.go (287行)
+- pkg/grpc/kudgfry_server.go (307行)
+- pkg/grpc/kudguri_server.go (328行)
+- pkg/grpc/kudgcst_server.go (293行)
+- pkg/grpc/kudgful_server.go (322行)
+- pkg/grpc/kudgsir_server.go (317行)
+- pkg/grpc/kudgivt_server.go (557行)
+- pkg/grpc/dtakologs_server.go (421行)
+- pkg/grpc/organization_server.go (既存)
+
+**更新ファイル:**
+- cmd/server/main.go: 全27サービス登録
+- pkg/pb/service.pb.go: protoc再生成
+- pkg/pb/service_grpc.pb.go: protoc再生成
+
+### コミット履歴
+
+| コミット | 説明 |
+|---------|------|
+| 80824be | Phase 2完了: 全27gRPCサービス実装 |
+| 752206e | RLS対応: gRPCリクエストごとにorganization_idを設定 |
+| 66dbeca | ドキュメント更新: 27サービス詳細とデプロイ情報追加 |
+
+---
+
+## 完了: RLS統合テスト (2025-12-07)
+
+### 概要
+
+PostgreSQLのRow Level Security (RLS) ポリシーが正しく動作することを検証する統合テストを作成。
+RLSPoolラッパーを使用して、異なるorganization間でのデータ分離を確認。
+
+### 作成ファイル
+
+```
+pkg/db/rls_integration_test.go  # RLS統合テスト (343行)
+```
+
+### 更新ファイル
+
+```
+pkg/db/rls.go  # セッション変数名を修正 (app.organization_id → app.current_organization_id)
+               # SET文の代わりにset_config()関数を使用
+```
+
+### テスト内容
+
+1. **TestRLS_IsolationBetweenOrganizations**
+   - OrgA_CanOnlySeeOwnData: organization Aのコンテキストで自分のデータのみ見えることを確認
+   - OrgB_CanOnlySeeOwnData: organization Bのコンテキストで自分のデータのみ見えることを確認
+   - ListQuery_ReturnsOnlyOwnData: List操作でも同様のフィルタリングが適用されることを確認
+
+2. **TestRLS_ContextPropagation**
+   - ContextWithOrganizationID: コンテキストにorganization_idが正しく保存されることを確認
+   - ContextWithoutOrganizationID: organization_idなしのコンテキストが正しく処理されることを確認
+   - RLSPool_RequiresOrganizationID: RLSコンテキストなしでエラーになることを確認
+   - RLSPool_AcquiresConnectionWithContext: セッション変数が正しく設定されることを確認
+
+3. **TestRLS_UpdateDeleteIsolation**
+   - Update_OnlyAffectsOwnData: 他organizationのデータをUPDATEできないことを確認
+   - Delete_OnlyAffectsOwnData: 他organizationのデータをDELETEできないことを確認
+
+### 修正内容
+
+- `SetRLSContext`関数: `SET app.organization_id = $1` → `SELECT set_config('app.current_organization_id', $1, false)`
+  - PostgreSQLのSET文はパラメータ化クエリをサポートしないため、`set_config()`関数を使用
+  - DBのRLSポリシーは`app.current_organization_id`を参照しているため、変数名も修正
+
+### テスト実行方法
+
+```bash
+go test -tags=integration -v ./pkg/db/... -run TestRLS
+```
+
+### テスト結果
+
+```
+=== RUN   TestRLS_IsolationBetweenOrganizations
+--- PASS: TestRLS_IsolationBetweenOrganizations (0.05s)
+=== RUN   TestRLS_ContextPropagation
+--- PASS: TestRLS_ContextPropagation (0.01s)
+=== RUN   TestRLS_UpdateDeleteIsolation
+--- PASS: TestRLS_UpdateDeleteIsolation (0.03s)
+PASS
+```
