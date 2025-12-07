@@ -342,3 +342,65 @@ go test -tags=integration -v ./pkg/db/... -run TestRLS
 --- PASS: TestRLS_UpdateDeleteIsolation (0.03s)
 PASS
 ```
+
+---
+
+## 完了: Phase 3 OAuth2認証機能の実装 (2025-12-07)
+
+### 概要
+
+OAuth2認証機能（Google/LINE対応）を実装。JWTトークン発行・検証、認証プロバイダークライアント、gRPC AuthServiceを追加。
+
+### コミット履歴
+
+| コミット | 説明 |
+|---------|------|
+| ea4baf1 | OAuth2認証機能追加: Google/LINE対応 |
+| 1549526 | 統合テスト修正: OAuth2対応のAPI変更に追従 |
+| 5182d57 | ドキュメント更新: OAuth2/RLS機能を反映 |
+
+### 作成ファイル
+
+```
+pkg/auth/
+  jwt.go                    # JWT発行・検証
+  google.go                 # Google OAuth2クライアント
+  line.go                   # LINE OAuth2クライアント
+
+pkg/repository/
+  oauth_accounts.go         # oauth_accountsテーブルCRUD
+
+pkg/grpc/
+  auth_server.go            # AuthService実装
+```
+
+### 更新ファイル
+
+```
+cmd/server/main.go          # AuthService登録
+CLAUDE.md                   # OAuth2/RLS機能を反映
+README.md                   # ドキュメント更新
+```
+
+### 機能詳細
+
+#### 3-1. テーブル設計・Repository
+- `oauth_accounts`テーブル用Repository作成
+  - Create, GetByProvider, GetByAppUserID, Update, Delete
+
+#### 3-2. 認証ロジック
+- `pkg/auth/jwt.go` - JWT発行・検証
+- `pkg/auth/google.go` - Google OAuth2クライアント
+- `pkg/auth/line.go` - LINE OAuth2クライアント
+
+#### 3-3. AuthService (gRPC)
+- `GetAuthURL` - OAuth認可URLを取得
+- `AuthWithGoogle` - Google認証コードをJWTに交換
+- `AuthWithLine` - LINE認証コードをJWTに交換
+- `RefreshToken` - リフレッシュトークンでアクセストークン更新
+- `ValidateToken` - JWTを検証しユーザー情報を返却
+
+#### 3-4. 環境変数
+- JWT_SECRET
+- GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+- LINE_CHANNEL_ID, LINE_CHANNEL_SECRET
