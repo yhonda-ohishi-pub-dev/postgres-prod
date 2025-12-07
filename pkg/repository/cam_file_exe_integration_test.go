@@ -6,8 +6,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-
-	"github.com/google/uuid"
 )
 
 func TestIntegration_CamFileExe_CRUD(t *testing.T) {
@@ -18,9 +16,8 @@ func TestIntegration_CamFileExe_CRUD(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Create a test organization first
-	uniqueSlug := fmt.Sprintf("test-camfileexe-%s", uuid.New().String()[:8])
-	org, err := orgRepo.Create(ctx, "Test CamFileExe Org", uniqueSlug)
+	// Create a test organization first (slug is auto-generated)
+	org, err := orgRepo.Create(ctx, "Test CamFileExe Org")
 	if err != nil {
 		t.Fatalf("Failed to create test organization: %v", err)
 	}
@@ -158,9 +155,8 @@ func TestIntegration_CamFileExe_ListPagination(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Create a test organization
-	paginationSlug := fmt.Sprintf("test-pagination-%s", uuid.New().String()[:8])
-	org, err := orgRepo.Create(ctx, "Test Pagination Org", paginationSlug)
+	// Create a test organization (slug is auto-generated)
+	org, err := orgRepo.Create(ctx, "Test Pagination Org")
 	if err != nil {
 		t.Fatalf("Failed to create test organization: %v", err)
 	}

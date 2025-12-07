@@ -6,8 +6,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-
-	"github.com/google/uuid"
 )
 
 func TestCamFileExeStageIntegration_CRUD(t *testing.T) {
@@ -18,9 +16,8 @@ func TestCamFileExeStageIntegration_CRUD(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Create a test organization first
-	uniqueSlug := fmt.Sprintf("test-cam-stage-%s", uuid.New().String()[:8])
-	testOrg, err := orgRepo.Create(ctx, "Test Org for CamFileExeStage", uniqueSlug)
+	// Create a test organization first (slug is auto-generated)
+	testOrg, err := orgRepo.Create(ctx, "Test Org for CamFileExeStage")
 	if err != nil {
 		t.Fatalf("Failed to create test organization: %v", err)
 	}

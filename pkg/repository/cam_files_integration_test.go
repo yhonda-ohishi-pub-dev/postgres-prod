@@ -6,8 +6,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-
-	"github.com/google/uuid"
 )
 
 func TestIntegration_CamFiles_CRUD(t *testing.T) {
@@ -18,9 +16,8 @@ func TestIntegration_CamFiles_CRUD(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Create a test organization first (required for foreign key constraint)
-	uniqueSlug := fmt.Sprintf("test-camfiles-%s", uuid.New().String()[:8])
-	testOrg, err := orgRepo.Create(ctx, "Test Org for CamFiles", uniqueSlug)
+	// Create a test organization first (slug is auto-generated)
+	testOrg, err := orgRepo.Create(ctx, "Test Org for CamFiles")
 	if err != nil {
 		t.Fatalf("Failed to create test organization: %v", err)
 	}
@@ -166,9 +163,8 @@ func TestIntegration_CamFiles_NullFlickrID(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Create a test organization
-	nullSlug := fmt.Sprintf("test-null-flickr-%s", uuid.New().String()[:8])
-	testOrg, err := orgRepo.Create(ctx, "Test Org for Null FlickrID", nullSlug)
+	// Create a test organization (slug is auto-generated)
+	testOrg, err := orgRepo.Create(ctx, "Test Org for Null FlickrID")
 	if err != nil {
 		t.Fatalf("Failed to create test organization: %v", err)
 	}

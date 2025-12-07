@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
 
@@ -28,10 +27,9 @@ func TestIntegration_CRUD(t *testing.T) {
 	repo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// 1. Create
+	// 1. Create (slug is auto-generated)
 	t.Run("Create", func(t *testing.T) {
-		uniqueSlug := fmt.Sprintf("test-org-%s", uuid.New().String()[:8])
-		org, err := repo.Create(ctx, "Test Organization", uniqueSlug)
+		org, err := repo.Create(ctx, "Test Organization")
 		if err != nil {
 			t.Fatalf("Create failed: %v", err)
 		}
@@ -57,8 +55,7 @@ func TestIntegration_CRUD(t *testing.T) {
 
 		// 3. Update
 		t.Run("Update", func(t *testing.T) {
-			updatedSlug := fmt.Sprintf("updated-org-%s", uuid.New().String()[:8])
-			updated, err := repo.Update(ctx, org.ID, "Updated Organization", updatedSlug)
+			updated, err := repo.Update(ctx, org.ID, "Updated Organization", org.Slug)
 			if err != nil {
 				t.Fatalf("Update failed: %v", err)
 			}

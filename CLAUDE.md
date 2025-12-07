@@ -10,11 +10,11 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
+| 0173182 | ユーザー招待機能追加: InvitationService実装 |
 | 93ba7cf | Organization作成時にユーザー紐づけ自動化: JWT認証+トランザクション対応 |
 | 83f7b9e | gitignore |
 | 89c7442 | .gitignore: service-resolved.yaml追加（生成ファイル除外） |
 | a60bdc8 | Makefile: ローカルデプロイ機能追加（Cloud Build不要） |
-| cf2b3d9 | Cloud Build: ログ設定追加（CLOUD_LOGGING_ONLY） |
 
 ## Build and Run
 

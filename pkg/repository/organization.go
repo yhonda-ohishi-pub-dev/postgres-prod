@@ -46,9 +46,10 @@ func NewOrganizationRepositoryWithDB(d DB) *OrganizationRepository {
 	return &OrganizationRepository{db: d}
 }
 
-// Create inserts a new organization
-func (r *OrganizationRepository) Create(ctx context.Context, name, slug string) (*Organization, error) {
+// Create inserts a new organization with auto-generated UUID slug
+func (r *OrganizationRepository) Create(ctx context.Context, name string) (*Organization, error) {
 	id := uuid.New().String()
+	slug := uuid.New().String() // Auto-generate slug as UUID
 	now := time.Now()
 
 	query := `
@@ -177,7 +178,8 @@ type CreateWithOwnerResult struct {
 
 // CreateWithOwner creates an organization and links it to the user as owner in a single transaction.
 // The user is assigned the "owner" role and this organization is set as their default.
-func (r *OrganizationRepository) CreateWithOwner(ctx context.Context, name, slug, userID string) (*CreateWithOwnerResult, error) {
+// slug is auto-generated as UUID to avoid duplicate key errors.
+func (r *OrganizationRepository) CreateWithOwner(ctx context.Context, name, userID string) (*CreateWithOwnerResult, error) {
 	if r.rlsPool == nil {
 		return nil, errors.New("transaction support requires RLSPool")
 	}
@@ -190,6 +192,7 @@ func (r *OrganizationRepository) CreateWithOwner(ctx context.Context, name, slug
 
 	now := time.Now()
 	orgID := uuid.New().String()
+	slug := uuid.New().String() // Auto-generate slug as UUID
 	userOrgID := uuid.New().String()
 
 	// Create organization

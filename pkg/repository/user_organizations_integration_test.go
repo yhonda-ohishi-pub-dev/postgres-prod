@@ -6,8 +6,7 @@ import (
 	"context"
 	"fmt"
 	"testing"
-
-	"github.com/google/uuid"
+	"time"
 )
 
 func TestIntegration_UserOrganizations_CRUD(t *testing.T) {
@@ -20,15 +19,15 @@ func TestIntegration_UserOrganizations_CRUD(t *testing.T) {
 	ctx := context.Background()
 
 	// Setup: Create test user and organization
-	uniqueEmail := fmt.Sprintf("test-uo-user-%s@example.com", uuid.New().String()[:8])
+	uniqueEmail := fmt.Sprintf("test-uo-user-%d@example.com", time.Now().UnixNano())
 	testUser, err := userRepo.Create(ctx, &uniqueEmail, "Test UO User", nil, false)
 	if err != nil {
 		t.Fatalf("Setup: failed to create test user: %v", err)
 	}
 	defer userRepo.Delete(ctx, testUser.ID)
 
-	uniqueSlug := fmt.Sprintf("test-uo-org-%s", uuid.New().String()[:8])
-	testOrg, err := orgRepo.Create(ctx, "Test UO Organization", uniqueSlug)
+	// slug is auto-generated
+	testOrg, err := orgRepo.Create(ctx, "Test UO Organization")
 	if err != nil {
 		t.Fatalf("Setup: failed to create test organization: %v", err)
 	}

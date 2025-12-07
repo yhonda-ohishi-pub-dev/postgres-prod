@@ -6,8 +6,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-
-	"github.com/google/uuid"
 )
 
 func TestIntegration_IchibanCars_CRUD(t *testing.T) {
@@ -18,9 +16,8 @@ func TestIntegration_IchibanCars_CRUD(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Setup: Create test organization
-	uniqueSlug := fmt.Sprintf("test-ichiban-%s", uuid.New().String()[:8])
-	testOrg, err := orgRepo.Create(ctx, "Test IchibanCars Org", uniqueSlug)
+	// Setup: Create test organization (slug is auto-generated)
+	testOrg, err := orgRepo.Create(ctx, "Test IchibanCars Org")
 	if err != nil {
 		t.Fatalf("Setup: failed to create test organization: %v", err)
 	}
@@ -156,16 +153,14 @@ func TestIntegration_IchibanCars_MultipleOrganizations(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Setup: Create two test organizations
-	slug1 := fmt.Sprintf("test-ichiban-org1-%s", uuid.New().String()[:8])
-	org1, err := orgRepo.Create(ctx, "Org 1", slug1)
+	// Setup: Create two test organizations (slug is auto-generated)
+	org1, err := orgRepo.Create(ctx, "Org 1")
 	if err != nil {
 		t.Fatalf("Setup: failed to create org1: %v", err)
 	}
 	defer orgRepo.Delete(ctx, org1.ID)
 
-	slug2 := fmt.Sprintf("test-ichiban-org2-%s", uuid.New().String()[:8])
-	org2, err := orgRepo.Create(ctx, "Org 2", slug2)
+	org2, err := orgRepo.Create(ctx, "Org 2")
 	if err != nil {
 		t.Fatalf("Setup: failed to create org2: %v", err)
 	}

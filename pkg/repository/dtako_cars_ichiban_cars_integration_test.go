@@ -6,8 +6,6 @@ import (
 	"context"
 	"fmt"
 	"testing"
-
-	"github.com/google/uuid"
 )
 
 func TestIntegration_DtakoCarsIchibanCars_CRUD(t *testing.T) {
@@ -18,9 +16,8 @@ func TestIntegration_DtakoCarsIchibanCars_CRUD(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Create test organization
-	uniqueSlug := fmt.Sprintf("dtako-cars-%s", uuid.New().String()[:8])
-	org, err := orgRepo.Create(ctx, "Test Org for DtakoCars", uniqueSlug)
+	// Create test organization (slug is auto-generated)
+	org, err := orgRepo.Create(ctx, "Test Org for DtakoCars")
 	if err != nil {
 		t.Fatalf("Failed to create test organization: %v", err)
 	}
@@ -118,9 +115,8 @@ func TestIntegration_DtakoCarsIchibanCars_CreateWithNullId(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Create test organization
-	nullSlug := fmt.Sprintf("dtako-null-%s", uuid.New().String()[:8])
-	org, err := orgRepo.Create(ctx, "Test Org for DtakoCars Null", nullSlug)
+	// Create test organization (slug is auto-generated)
+	org, err := orgRepo.Create(ctx, "Test Org for DtakoCars Null")
 	if err != nil {
 		t.Fatalf("Failed to create test organization: %v", err)
 	}

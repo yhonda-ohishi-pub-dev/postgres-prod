@@ -90,18 +90,18 @@ func TestCreate(t *testing.T) {
 
 	tests := []struct {
 		name    string
-		input   struct{ name, slug string }
+		input   string // name only, slug is auto-generated
 		mockRow *MockRow
 		wantErr bool
 	}{
 		{
 			name:  "success",
-			input: struct{ name, slug string }{"Test Org", "test-org"},
+			input: "Test Org",
 			mockRow: &MockRow{
 				scanFunc: func(dest ...any) error {
 					*dest[0].(*string) = "uuid-123"
 					*dest[1].(*string) = "Test Org"
-					*dest[2].(*string) = "test-org"
+					*dest[2].(*string) = "auto-generated-slug"
 					*dest[3].(*time.Time) = now
 					*dest[4].(*time.Time) = now
 					*dest[5].(**time.Time) = nil
@@ -112,7 +112,7 @@ func TestCreate(t *testing.T) {
 		},
 		{
 			name:  "db error",
-			input: struct{ name, slug string }{"Test", "test"},
+			input: "Test",
 			mockRow: &MockRow{
 				scanFunc: func(dest ...any) error {
 					return errors.New("db error")
@@ -131,7 +131,7 @@ func TestCreate(t *testing.T) {
 			}
 
 			repo := NewOrganizationRepositoryWithDB(mockDB)
-			org, err := repo.Create(context.Background(), tt.input.name, tt.input.slug)
+			org, err := repo.Create(context.Background(), tt.input)
 
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Create() error = %v, wantErr %v", err, tt.wantErr)
@@ -142,8 +142,8 @@ func TestCreate(t *testing.T) {
 				t.Error("Create() returned nil organization")
 			}
 
-			if !tt.wantErr && org.Name != tt.input.name {
-				t.Errorf("Create() name = %v, want %v", org.Name, tt.input.name)
+			if !tt.wantErr && org.Name != tt.input {
+				t.Errorf("Create() name = %v, want %v", org.Name, tt.input)
 			}
 		})
 	}

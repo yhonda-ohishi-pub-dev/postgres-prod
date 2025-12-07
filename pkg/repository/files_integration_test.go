@@ -7,8 +7,6 @@ import (
 	"fmt"
 	"testing"
 	"time"
-
-	"github.com/google/uuid"
 )
 
 func TestIntegration_Files_CRUD(t *testing.T) {
@@ -19,9 +17,8 @@ func TestIntegration_Files_CRUD(t *testing.T) {
 	orgRepo := NewOrganizationRepository(pool)
 	ctx := context.Background()
 
-	// Setup: Create test organization
-	uniqueSlug := fmt.Sprintf("test-files-%s", uuid.New().String()[:8])
-	testOrg, err := orgRepo.Create(ctx, "Test Files Org", uniqueSlug)
+	// Setup: Create test organization (slug is auto-generated)
+	testOrg, err := orgRepo.Create(ctx, "Test Files Org")
 	if err != nil {
 		t.Fatalf("Setup: failed to create test organization: %v", err)
 	}

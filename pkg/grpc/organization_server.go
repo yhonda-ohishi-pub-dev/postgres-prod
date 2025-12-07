@@ -25,19 +25,17 @@ func NewOrganizationServer(repo *repository.OrganizationRepository) *Organizatio
 
 // CreateOrganization creates a new organization and links it to the current user as owner.
 // Requires JWT authentication to identify the user.
+// slug is auto-generated as UUID to avoid duplicate key errors.
 func (s *OrganizationServer) CreateOrganization(ctx context.Context, req *pb.CreateOrganizationRequest) (*pb.CreateOrganizationResponse, error) {
 	if req.Name == "" {
 		return nil, status.Error(codes.InvalidArgument, "name is required")
-	}
-	if req.Slug == "" {
-		return nil, status.Error(codes.InvalidArgument, "slug is required")
 	}
 
 	// Get user ID from JWT context
 	userID, ok := GetUserIDFromContext(ctx)
 	if !ok {
 		// Fallback to old behavior if no JWT (for backwards compatibility or testing)
-		org, err := s.repo.Create(ctx, req.Name, req.Slug)
+		org, err := s.repo.Create(ctx, req.Name)
 		if err != nil {
 			return nil, status.Errorf(codes.Internal, "failed to create organization: %v", err)
 		}
@@ -47,7 +45,7 @@ func (s *OrganizationServer) CreateOrganization(ctx context.Context, req *pb.Cre
 	}
 
 	// Create organization with owner link in a transaction
-	result, err := s.repo.CreateWithOwner(ctx, req.Name, req.Slug, userID)
+	result, err := s.repo.CreateWithOwner(ctx, req.Name, userID)
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to create organization: %v", err)
 	}

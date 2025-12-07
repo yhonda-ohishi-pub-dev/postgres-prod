@@ -19,7 +19,7 @@ message Organization {
 // Request/Response messages
 message CreateOrganizationRequest {
   string name = 1;
-  string slug = 2;
+  // slug is auto-generated as UUID (removed from request)
 }
 
 message CreateOrganizationResponse {
