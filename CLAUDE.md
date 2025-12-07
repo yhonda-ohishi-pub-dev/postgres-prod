@@ -4,17 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides HTTP health endpoints, gRPC CRUD services, and Repository layer for 29 database tables.
+Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides gRPC CRUD services and Repository layer for 29 database tables, with OAuth2 authentication (Google/LINE) and Row-Level Security (RLS) for multi-tenant data isolation.
 
 ## Recent Changes
 
 | Commit | Description |
 |--------|-------------|
-| 80824be | Phase 2完了: 全27gRPCサービス実装 |
-| 92608b4 | ドキュメント更新: gRPC単独構成とMakefileを反映 |
-| 62011a7 | Proto生成コード追加: pkg/pb/proto/ |
-| 19c840f | ビルドツール追加: Makefileと実行スクリプト |
-| 9c09aec | Cloud Run対応: gRPC単独サーバー構成に変更 |
+| 1549526 | 統合テスト修正: OAuth2対応のAPI変更に追従 |
+| ea4baf1 | OAuth2認証機能追加: Google/LINE対応 |
+| 0e96c07 | RLS統合テスト追加: データ分離の検証 |
+| 66dbeca | ドキュメント更新: 27サービス詳細とデプロイ情報追加 |
+| 752206e | RLS対応: gRPCリクエストごとにorganization_idを設定 |
 
 ## Build and Run
 
@@ -53,12 +53,19 @@ gcloud builds submit --config=cloudbuild.yaml \
 cmd/server/main.go           - Entry point, gRPC-only server (Cloud Run compatible)
 internal/config/             - Environment configuration
 pkg/db/cloudsql.go           - Cloud SQL connection with IAM auth (cloudsqlconn)
-pkg/grpc/                    - gRPC server implementations (27 services)
+pkg/grpc/                    - gRPC server implementations (28 services)
   organization_server.go     - OrganizationService
   app_user_server.go         - AppUserService
+  auth_server.go             - AuthService (OAuth2: Google/LINE)
   car_inspection_server.go   - CarInspectionService (largest, 510 lines)
+  interceptor.go             - RLS interceptor (x-organization-id extraction)
   kudg*_server.go            - KUDG series (6 services)
-  ... and more (27 total)
+  ... and more (28 total)
+pkg/auth/                    - OAuth2 authentication
+  jwt.go                     - JWT token generation/validation
+  google.go                  - Google OAuth2 client
+  line.go                    - LINE OAuth2 client
+pkg/db/rls.go                - Row-Level Security pool wrapper
 pkg/repository/              - Database CRUD operations (29 tables)
   organization.go            - Organization repository (with interface for mocking)
   app_users.go               - AppUsers repository
@@ -75,10 +82,11 @@ Makefile                     - Build automation commands
 
 ## gRPC Services
 
-The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **27 services**:
+The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **28 services**:
 
 | Category | Services |
 |----------|----------|
+| Auth | AuthService (OAuth2: Google/LINE認証) |
 | Core | OrganizationService, AppUserService, UserOrganizationService, FileService |
 | Media | FlickrPhotoService, CamFileService, CamFileExeService, CamFileExeStageService |
 | Vehicle | IchibanCarService, DtakoCarsIchibanCarsService, UriageService, UriageJishaService |
@@ -91,6 +99,25 @@ The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **27 
 Each service provides standard CRUD operations: `Create`, `Get`, `Update`, `Delete`, `List`
 
 - **Health Check**: gRPC Health Check Protocol for Cloud Run startup/liveness probes
+
+## Row-Level Security (RLS)
+
+Multi-tenant data isolation using PostgreSQL RLS:
+
+- **RLS Pool**: `pkg/db/rls.go` wraps DB connection to set `app.current_organization_id` per request
+- **gRPC Interceptor**: `pkg/grpc/interceptor.go` extracts `x-organization-id` header
+- All repository operations automatically scoped to current organization
+
+## OAuth2 Authentication
+
+Google/LINE OAuth2 authentication with JWT tokens:
+
+- **AuthService methods**:
+  - `GetAuthURL`: Get OAuth authorization URL
+  - `AuthWithGoogle` / `AuthWithLine`: Exchange auth code for JWT
+  - `RefreshToken`: Refresh expired access token
+  - `ValidateToken`: Validate JWT and return user info
+- **oauth_accounts table**: Supports multiple OAuth providers per user
 
 ## Cloud SQL IAM Authentication
 
@@ -126,6 +153,11 @@ import "postgres-prod/pkg/pb"
 | DB_NAME | Database name | postgres |
 | DB_USER | IAM user (without @domain) | my-sa |
 | PORT | gRPC server port (Cloud Run sets this) | 8080 |
+| JWT_SECRET | Secret for JWT signing | your-secret-key |
+| GOOGLE_CLIENT_ID | Google OAuth2 client ID | xxx.apps.googleusercontent.com |
+| GOOGLE_CLIENT_SECRET | Google OAuth2 client secret | GOCSPX-xxx |
+| LINE_CHANNEL_ID | LINE OAuth2 channel ID | 123456789 |
+| LINE_CHANNEL_SECRET | LINE OAuth2 channel secret | xxx |
 
 ## Deployment
 

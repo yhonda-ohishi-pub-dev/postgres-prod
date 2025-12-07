@@ -5,7 +5,9 @@ Cloud Run上で動作するGoサービス。Cloud SQL PostgreSQLにIAM認証で�
 ## Features
 
 - **Cloud SQL IAM認証**: パスワード不要のセキュアな接続
-- **gRPC API**: 27サービス（29テーブル対応）のCRUD API
+- **gRPC API**: 28サービス（29テーブル対応）のCRUD API
+- **OAuth2認証**: Google/LINEログイン対応（JWT発行）
+- **Row-Level Security**: 組織ごとのデータ分離（マルチテナント対応）
 - **Repository層**: 29テーブル分のCRUD実装（統合テスト完備）
 - **Cloud Run対応**: 本番環境ですぐにデプロイ可能
 - **ローカル開発対応**: Cloud SQL Auth Proxyでの開発をサポート
@@ -56,10 +58,11 @@ export DB_USER=your-iam-user
 
 ### gRPC (port 8080, Cloud Run compatible)
 
-27サービスが利用可能。各サービスは標準CRUD操作（Create, Get, Update, Delete, List）を提供:
+28サービスが利用可能。各サービスは標準CRUD操作（Create, Get, Update, Delete, List）を提供:
 
 | カテゴリ | サービス |
 |----------|----------|
+| Auth | AuthService（OAuth2: Google/LINE認証） |
 | Core | OrganizationService, AppUserService, UserOrganizationService, FileService |
 | Media | FlickrPhotoService, CamFileService, CamFileExeService, CamFileExeStageService |
 | Vehicle | IchibanCarService, DtakoCarsIchibanCarsService, UriageService, UriageJishaService |
@@ -75,11 +78,15 @@ export DB_USER=your-iam-user
 ## Project Structure
 
 ```
-cmd/server/main.go       - エントリーポイント（27サービス登録）
+cmd/server/main.go       - エントリーポイント（28サービス登録）
 internal/config/         - 環境設定
 pkg/
-  db/cloudsql.go         - Cloud SQL接続（IAM認証）
-  grpc/                  - gRPCサーバー実装（27サービス）
+  auth/                  - OAuth2認証（JWT, Google, LINE）
+  db/
+    cloudsql.go          - Cloud SQL接続（IAM認証）
+    rls.go               - Row-Level Security（組織ごとデータ分離）
+  grpc/                  - gRPCサーバー実装（28サービス）
+    interceptor.go       - RLSインターセプター
   handlers/              - HTTPハンドラー
   pb/                    - 生成されたProtobufコード
   repository/            - データベース操作（29テーブル分のCRUD + 統合テスト）
@@ -117,6 +124,11 @@ buf generate
 | DB_NAME | データベース名 |
 | DB_USER | IAMユーザー名 |
 | PORT | gRPCサーバーポート (default: 8080, Cloud Runが設定) |
+| JWT_SECRET | JWT署名用シークレット |
+| GOOGLE_CLIENT_ID | Google OAuth2クライアントID |
+| GOOGLE_CLIENT_SECRET | Google OAuth2クライアントシークレット |
+| LINE_CHANNEL_ID | LINE OAuth2チャンネルID |
+| LINE_CHANNEL_SECRET | LINE OAuth2チャンネルシークレット |
 
 ## License
 
