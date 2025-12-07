@@ -5,7 +5,7 @@ Cloud Run上で動作するGoサービス。Cloud SQL PostgreSQLにIAM認証で�
 ## Features
 
 - **Cloud SQL IAM認証**: パスワード不要のセキュアな接続
-- **gRPC API**: Organization CRUDサービス
+- **gRPC API**: 27サービス（29テーブル対応）のCRUD API
 - **Repository層**: 29テーブル分のCRUD実装（統合テスト完備）
 - **Cloud Run対応**: 本番環境ですぐにデプロイ可能
 - **ローカル開発対応**: Cloud SQL Auth Proxyでの開発をサポート
@@ -56,12 +56,18 @@ export DB_USER=your-iam-user
 
 ### gRPC (port 8080, Cloud Run compatible)
 
-**OrganizationService**
-- `CreateOrganization` - 組織を作成
-- `GetOrganization` - 組織を取得
-- `UpdateOrganization` - 組織を更新
-- `DeleteOrganization` - 組織を削除（論理削除）
-- `ListOrganizations` - 組織一覧を取得
+27サービスが利用可能。各サービスは標準CRUD操作（Create, Get, Update, Delete, List）を提供:
+
+| カテゴリ | サービス |
+|----------|----------|
+| Core | OrganizationService, AppUserService, UserOrganizationService, FileService |
+| Media | FlickrPhotoService, CamFileService, CamFileExeService, CamFileExeStageService |
+| Vehicle | IchibanCarService, DtakoCarsIchibanCarsService, UriageService, UriageJishaService |
+| Inspection | CarInspectionService, CarInspectionFilesService, CarInspectionFilesAService, CarInspectionFilesBService |
+| Deregistration | CarInspectionDeregistrationService, CarInspectionDeregistrationFilesService |
+| Sheet | CarInsSheetIchibanCarsService, CarInsSheetIchibanCarsAService |
+| KUDG | KudgfryService, KudguriService, KudgcstService, KudgfulService, KudgsirService, KudgivtService |
+| Logs | DtakologsService |
 
 **Health Check**
 - gRPC Health Check Protocol（Cloud Run のスタートアップ/ライブネスプローブ用）
@@ -69,11 +75,11 @@ export DB_USER=your-iam-user
 ## Project Structure
 
 ```
-cmd/server/main.go       - エントリーポイント
+cmd/server/main.go       - エントリーポイント（27サービス登録）
 internal/config/         - 環境設定
 pkg/
   db/cloudsql.go         - Cloud SQL接続（IAM認証）
-  grpc/                  - gRPCサーバー実装
+  grpc/                  - gRPCサーバー実装（27サービス）
   handlers/              - HTTPハンドラー
   pb/                    - 生成されたProtobufコード
   repository/            - データベース操作（29テーブル分のCRUD + 統合テスト）
