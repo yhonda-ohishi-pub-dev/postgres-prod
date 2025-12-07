@@ -43,34 +43,37 @@ func main() {
 
 	log.Printf("Connected to database: %s", cfg.DatabaseName)
 
-	// Create repositories
-	orgRepo := repository.NewOrganizationRepository(pool)
-	appUserRepo := repository.NewAppUserRepository(pool)
-	userOrgRepo := repository.NewUserOrganizationRepository(pool)
-	fileRepo := repository.NewFileRepository(pool)
-	flickrPhotoRepo := repository.NewFlickrPhotoRepository(pool)
-	camFileRepo := repository.NewCamFileRepository(pool)
-	camFileExeRepo := repository.NewCamFileExeRepository(pool)
-	camFileExeStageRepo := repository.NewCamFileExeStageRepository(pool)
-	ichibanCarRepo := repository.NewIchibanCarRepository(pool)
-	dtakoCarsIchibanCarsRepo := repository.NewDtakoCarsIchibanCarsRepository(pool)
-	uriageRepo := repository.NewUriageRepository(pool)
-	uriageJishaRepo := repository.NewUriageJishaRepository(pool)
-	carInspectionRepo := repository.NewCarInspectionRepository(pool)
-	carInspectionFilesRepo := repository.NewCarInspectionFilesRepository(pool)
-	carInspectionFilesARepo := repository.NewCarInspectionFilesARepository(pool)
-	carInspectionFilesBRepo := repository.NewCarInspectionFilesBRepository(pool)
-	carInspectionDeregistrationRepo := repository.NewCarInspectionDeregistrationRepository(pool)
-	carInspectionDeregistrationFilesRepo := repository.NewCarInspectionDeregistrationFilesRepository(pool)
-	carInsSheetIchibanCarsRepo := repository.NewCarInsSheetIchibanCarsRepository(pool)
-	carInsSheetIchibanCarsARepo := repository.NewCarInsSheetIchibanCarsARepository(pool)
-	kudgfryRepo := repository.NewKudgfryRepository(pool)
-	kudguriRepo := repository.NewKudguriRepository(pool)
-	kudgcstRepo := repository.NewKudgcstRepository(pool)
-	kudgfulRepo := repository.NewKudgfulRepository(pool)
-	kudgsirRepo := repository.NewKudgsirRepository(pool)
-	kudgivtRepo := repository.NewKudgivtRepository(pool)
-	dtakologsRepo := repository.NewDtakologsRepository(pool)
+	// Create RLS-aware pool wrapper
+	rlsPool := db.NewRLSPool(pool)
+
+	// Create repositories with RLS pool (auto-sets app.organization_id per request)
+	orgRepo := repository.NewOrganizationRepositoryWithDB(rlsPool)
+	appUserRepo := repository.NewAppUserRepositoryWithDB(rlsPool)
+	userOrgRepo := repository.NewUserOrganizationRepositoryWithDB(rlsPool)
+	fileRepo := repository.NewFileRepositoryWithDB(rlsPool)
+	flickrPhotoRepo := repository.NewFlickrPhotoRepositoryWithDB(rlsPool)
+	camFileRepo := repository.NewCamFileRepositoryWithDB(rlsPool)
+	camFileExeRepo := repository.NewCamFileExeRepositoryWithDB(rlsPool)
+	camFileExeStageRepo := repository.NewCamFileExeStageRepositoryWithDB(rlsPool)
+	ichibanCarRepo := repository.NewIchibanCarRepositoryWithDB(rlsPool)
+	dtakoCarsIchibanCarsRepo := repository.NewDtakoCarsIchibanCarsRepositoryWithDB(rlsPool)
+	uriageRepo := repository.NewUriageRepositoryWithDB(rlsPool)
+	uriageJishaRepo := repository.NewUriageJishaRepositoryWithDB(rlsPool)
+	carInspectionRepo := repository.NewCarInspectionRepositoryWithDB(rlsPool)
+	carInspectionFilesRepo := repository.NewCarInspectionFilesRepositoryWithDB(rlsPool)
+	carInspectionFilesARepo := repository.NewCarInspectionFilesARepositoryWithDB(rlsPool)
+	carInspectionFilesBRepo := repository.NewCarInspectionFilesBRepositoryWithDB(rlsPool)
+	carInspectionDeregistrationRepo := repository.NewCarInspectionDeregistrationRepositoryWithDB(rlsPool)
+	carInspectionDeregistrationFilesRepo := repository.NewCarInspectionDeregistrationFilesRepositoryWithDB(rlsPool)
+	carInsSheetIchibanCarsRepo := repository.NewCarInsSheetIchibanCarsRepositoryWithDB(rlsPool)
+	carInsSheetIchibanCarsARepo := repository.NewCarInsSheetIchibanCarsARepositoryWithDB(rlsPool)
+	kudgfryRepo := repository.NewKudgfryRepositoryWithDB(rlsPool)
+	kudguriRepo := repository.NewKudguriRepositoryWithDB(rlsPool)
+	kudgcstRepo := repository.NewKudgcstRepositoryWithDB(rlsPool)
+	kudgfulRepo := repository.NewKudgfulRepositoryWithDB(rlsPool)
+	kudgsirRepo := repository.NewKudgsirRepositoryWithDB(rlsPool)
+	kudgivtRepo := repository.NewKudgivtRepositoryWithDB(rlsPool)
+	dtakologsRepo := repository.NewDtakologsRepositoryWithDB(rlsPool)
 
 	// Create gRPC servers
 	orgServer := grpcserver.NewOrganizationServer(orgRepo)
@@ -101,8 +104,11 @@ func main() {
 	kudgivtServer := grpcserver.NewKudgivtServer(kudgivtRepo)
 	dtakologsServer := grpcserver.NewDtakologsServer(dtakologsRepo)
 
-	// Create gRPC server with health check
-	grpcServer := grpc.NewServer()
+	// Create gRPC server with health check and RLS interceptor
+	grpcServer := grpc.NewServer(
+		grpc.UnaryInterceptor(grpcserver.RLSUnaryInterceptor()),
+		grpc.StreamInterceptor(grpcserver.RLSStreamInterceptor()),
+	)
 
 	// Register all services
 	pb.RegisterOrganizationServiceServer(grpcServer, orgServer)
