@@ -35,3 +35,6 @@ client_secret*.json
 
 # Deploy config (contains project-specific values)
 deploy.config
+
+# Generated service yaml
+service-resolved.yaml
