@@ -1,5 +1,5 @@
 steps:
-  # Build and push container image
+  # Build and push gRPC server image
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
@@ -9,27 +9,48 @@ steps:
       - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:latest'
       - '.'
 
+  # Build and push Envoy sidecar image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-f'
+      - 'Dockerfile.envoy'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}-envoy:${_TAG}'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}-envoy:latest'
+      - '.'
+
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'push'
       - '--all-tags'
       - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
 
-  # Deploy to Cloud Run
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: gcloud
+  - name: 'gcr.io/cloud-builders/docker'
     args:
-      - 'run'
-      - 'deploy'
-      - '${_SERVICE_NAME}'
-      - '--image=${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:${_TAG}'
-      - '--region=${_REGION}'
-      - '--platform=managed'
-      - '--allow-unauthenticated'
-      - '--add-cloudsql-instances=${PROJECT_ID}:${_REGION}:${_CLOUDSQL_INSTANCE}'
-      - '--set-env-vars=GCP_PROJECT_ID=${PROJECT_ID},GCP_REGION=${_REGION},CLOUDSQL_INSTANCE_NAME=${_CLOUDSQL_INSTANCE},DB_NAME=${_DB_NAME},DB_USER=${_DB_USER}'
-      - '--service-account=${_SERVICE_ACCOUNT}'
-      - '--use-http2'
+      - 'push'
+      - '--all-tags'
+      - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}-envoy'
+
+  # Deploy to Cloud Run using service.yaml
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        cat service.yaml | \
+          sed "s|\$${PROJECT_ID}|${PROJECT_ID}|g" | \
+          sed "s|\$${REGION}|${_REGION}|g" | \
+          sed "s|\$${REPO_NAME}|${_REPO_NAME}|g" | \
+          sed "s|\$${CLOUDSQL_INSTANCE}|${_CLOUDSQL_INSTANCE}|g" | \
+          sed "s|\$${DB_NAME}|${_DB_NAME}|g" | \
+          sed "s|\$${DB_USER}|${_DB_USER}|g" | \
+          sed "s|\$${SERVICE_ACCOUNT}|${_SERVICE_ACCOUNT}|g" | \
+          sed "s|\$${TAG}|${_TAG}|g" > service-resolved.yaml
+        gcloud run services replace service-resolved.yaml --region=${_REGION}
+        gcloud run services set-iam-policy ${_SERVICE_NAME} --region=${_REGION} policy.yaml 2>/dev/null || \
+          gcloud run services add-iam-policy-binding ${_SERVICE_NAME} --region=${_REGION} --member=allUsers --role=roles/run.invoker
 
 substitutions:
   _REGION: asia-northeast1
@@ -43,3 +64,4 @@ substitutions:
 
 images:
   - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
+  - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}-envoy'

@@ -404,3 +404,52 @@ README.md                   # ドキュメント更新
 - JWT_SECRET
 - GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
 - LINE_CHANNEL_ID, LINE_CHANNEL_SECRET
+
+---
+
+## 完了: Phase 4 Envoyサイドカー追加 (2025-12-07)
+
+### 概要
+
+ブラウザからgRPC APIに直接アクセスするため、EnvoyプロキシをCloud Runサイドカーとして構成。gRPC-WebからgRPCへのプロトコル変換を実現。
+
+### 構成
+
+```
+Browser (gRPC-Web) → Envoy (:8080) → gRPC Server (:9090)
+```
+
+### 作成ファイル
+
+```
+envoy.yaml           # Envoyプロキシ設定 (gRPC-Web変換、CORS)
+Dockerfile.envoy     # Envoyイメージビルド用
+service.yaml         # Cloud Runサービス定義 (サイドカー構成)
+```
+
+### 更新ファイル
+
+```
+cloudbuild.yaml      # サイドカービルド対応に更新
+```
+
+### 技術詳細
+
+#### Envoy設定 (envoy.yaml)
+- gRPC-Web → gRPCプロトコル変換 (envoy.filters.http.grpc_web)
+- CORS設定（開発用: `*`）
+- HTTP/1.1 → HTTP/2変換
+- バックエンドは127.0.0.1:9090 (gRPCサーバー)
+
+#### Cloud Run サイドカー構成 (service.yaml)
+- Envoyコンテナ: port 8080 (ingress)
+- gRPCサーバーコンテナ: port 9090 (内部)
+- container-dependencies: gRPC-serverはEnvoyに依存
+
+#### cloudbuild.yaml
+- gRPCサーバーイメージビルド
+- Envoyサイドカーイメージビルド (Dockerfile.envoy)
+- service.yamlによるデプロイ
+
+### 次のステップ
+- Phase 4-4: Cloud Runへデプロイ・動作確認
