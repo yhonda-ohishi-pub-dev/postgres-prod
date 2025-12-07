@@ -10,11 +10,11 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
+| 9cc9a34 | Phase 4-5完了: HTTPエンドポイント対応 (gRPC+HTTP共存) |
+| 70c7372 | Phase 4-4完了: Cloud Runデプロイ・動作確認 |
+| 9438d35 | Phase 4: Envoyサイドカー追加 (gRPC-Web対応) |
+| 56b6921 | PLAN.md更新: Phase 3完了、Phase 4を次のステップに設定 |
 | 5182d57 | ドキュメント更新: OAuth2/RLS機能を反映 |
-| 1549526 | 統合テスト修正: OAuth2対応のAPI変更に追従 |
-| ea4baf1 | OAuth2認証機能追加: Google/LINE対応 |
-| 0e96c07 | RLS統合テスト追加: データ分離の検証 |
-| 66dbeca | ドキュメント更新: 27サービス詳細とデプロイ情報追加 |
 
 ## Build and Run
 
@@ -50,9 +50,11 @@ gcloud builds submit --config=cloudbuild.yaml \
 ## Architecture
 
 ```
-cmd/server/main.go           - Entry point, gRPC-only server (Cloud Run compatible)
+cmd/server/main.go           - Entry point, gRPC+HTTP server (h2c対応, Cloud Run compatible)
 internal/config/             - Environment configuration
 pkg/db/cloudsql.go           - Cloud SQL connection with IAM auth (cloudsqlconn)
+pkg/http/                    - HTTP handlers
+  auth_handler.go            - OAuth2 redirect endpoints (/auth/google, /auth/line, /health)
 pkg/grpc/                    - gRPC server implementations (28 services)
   organization_server.go     - OrganizationService
   app_user_server.go         - AppUserService
@@ -99,6 +101,16 @@ The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **28 
 Each service provides standard CRUD operations: `Create`, `Get`, `Update`, `Delete`, `List`
 
 - **Health Check**: gRPC Health Check Protocol for Cloud Run startup/liveness probes
+
+## HTTP Endpoints
+
+gRPC+HTTP共存（h2c対応）により、同一ポートでHTTPエンドポイントも提供:
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/auth/google` | GET | Google OAuth2認証リダイレクト |
+| `/auth/line` | GET | LINE OAuth2認証リダイレクト |
+| `/health` | GET | ヘルスチェック（startup probe用） |
 
 ## Row-Level Security (RLS)
 

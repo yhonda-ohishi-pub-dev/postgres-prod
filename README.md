@@ -57,9 +57,9 @@ export DB_USER=your-iam-user
 
 ## API
 
-### gRPC (port 8080, Cloud Run compatible)
+### gRPC + HTTP (port 8080, Cloud Run compatible)
 
-28サービスが利用可能。各サービスは標準CRUD操作（Create, Get, Update, Delete, List）を提供:
+h2c対応により、gRPCとHTTPが同一ポートで共存。28 gRPCサービスが利用可能。各サービスは標準CRUD操作（Create, Get, Update, Delete, List）を提供:
 
 | カテゴリ | サービス |
 |----------|----------|
@@ -76,13 +76,22 @@ export DB_USER=your-iam-user
 **Health Check**
 - gRPC Health Check Protocol（Cloud Run のスタートアップ/ライブネスプローブ用）
 
+### HTTP Endpoints
+
+| エンドポイント | メソッド | 説明 |
+|---------------|---------|------|
+| `/auth/google` | GET | Google OAuth2認証リダイレクト |
+| `/auth/line` | GET | LINE OAuth2認証リダイレクト |
+| `/health` | GET | ヘルスチェック（startup probe用） |
+
 ## Project Structure
 
 ```
-cmd/server/main.go       - エントリーポイント（28サービス登録）
+cmd/server/main.go       - エントリーポイント（gRPC+HTTP, 28サービス登録）
 internal/config/         - 環境設定
 pkg/
   auth/                  - OAuth2認証（JWT, Google, LINE）
+  http/                  - HTTPハンドラー（/auth/google, /auth/line, /health）
   db/
     cloudsql.go          - Cloud SQL接続（IAM認証）
     rls.go               - Row-Level Security（組織ごとデータ分離）

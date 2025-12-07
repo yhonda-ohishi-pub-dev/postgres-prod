@@ -30,5 +30,8 @@ Thumbs.db
 .env
 .env.local
 
+# OAuth client secrets
+client_secret*.json
+
 # Deploy config (contains project-specific values)
 deploy.config
