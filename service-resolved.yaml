@@ -20,7 +20,7 @@ spec:
       containers:
         # Envoy sidecar - ingress container (receives traffic on port 8080)
         - name: envoy
-          image: asia-northeast1-docker.pkg.dev/cloudsql-sv/postgres-prod/postgres-prod-envoy@sha256:191095351e0dd0846a4b97ee31e98b9883dd64c4435524d1a13bc751ed79c8d3
+          image: asia-northeast1-docker.pkg.dev/cloudsql-sv/postgres-prod/postgres-prod-envoy@sha256:0c39d2a3829364f8ba051a185745b696badca6bbc86820ff4392c05166f8b0c9
           ports:
             - name: http1
               containerPort: 8080
@@ -37,7 +37,7 @@ spec:
 
         # gRPC server - main application (internal, port 9090)
         - name: grpc-server
-          image: asia-northeast1-docker.pkg.dev/cloudsql-sv/postgres-prod/postgres-prod@sha256:854f970755d1f6abd918d0fde7b2f370f426fd9401b489b7c6f7b7ebd2302092
+          image: asia-northeast1-docker.pkg.dev/cloudsql-sv/postgres-prod/postgres-prod@sha256:0b1aaf2399800f9fab69b39f9f8db61a1ceaba0d2f37b9776b781243120cca44
           env:
             - name: PORT
               value: "9090"
@@ -51,6 +51,28 @@ spec:
               value: myapp
             - name: DB_USER
               value: 747065218280-compute@developer
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: JWT_SECRET
+                  key: latest
+            - name: GOOGLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: GOOGLE_CLIENT_ID
+                  key: latest
+            - name: GOOGLE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: GOOGLE_CLIENT_SECRET
+                  key: latest
+            - name: GOOGLE_REDIRECT_URI
+              valueFrom:
+                secretKeyRef:
+                  name: GOOGLE_REDIRECT_URI
+                  key: latest
+            - name: FRONTEND_URL
+              value: "https://mtama-front.mtamaramu.com/auth/callback"
           resources:
             limits:
               cpu: "1000m"

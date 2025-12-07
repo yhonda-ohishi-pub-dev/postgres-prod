@@ -51,6 +51,28 @@ spec:
               value: ${DB_NAME}
             - name: DB_USER
               value: ${DB_USER}
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: JWT_SECRET
+                  key: latest
+            - name: GOOGLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: GOOGLE_CLIENT_ID
+                  key: latest
+            - name: GOOGLE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: GOOGLE_CLIENT_SECRET
+                  key: latest
+            - name: GOOGLE_REDIRECT_URI
+              valueFrom:
+                secretKeyRef:
+                  name: GOOGLE_REDIRECT_URI
+                  key: latest
+            - name: FRONTEND_URL
+              value: "${FRONTEND_URL}"
           resources:
             limits:
               cpu: "1000m"

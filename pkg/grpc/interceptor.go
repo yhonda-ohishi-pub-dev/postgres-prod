@@ -16,6 +16,27 @@ const (
 	OrganizationIDHeader = "x-organization-id"
 )
 
+// skipRLSPrefixes are method prefixes that don't require x-organization-id header
+var skipRLSPrefixes = []string{
+	"/grpc.health.v1.Health/",
+	"/grpc.reflection.v1alpha.ServerReflection/",
+	"/grpc.reflection.v1.ServerReflection/",
+	"/auth.AuthService/",
+	"/organization.OrganizationService/",
+	"/organization.AppUserService/",
+	"/organization.UserOrganizationService/",
+}
+
+// shouldSkipRLS checks if the method should skip RLS enforcement
+func shouldSkipRLS(fullMethod string) bool {
+	for _, prefix := range skipRLSPrefixes {
+		if len(fullMethod) >= len(prefix) && fullMethod[:len(prefix)] == prefix {
+			return true
+		}
+	}
+	return false
+}
+
 // RLSUnaryInterceptor extracts organization_id from gRPC metadata
 // and adds it to the context for RLS enforcement.
 func RLSUnaryInterceptor() grpc.UnaryServerInterceptor {
@@ -25,9 +46,8 @@ func RLSUnaryInterceptor() grpc.UnaryServerInterceptor {
 		info *grpc.UnaryServerInfo,
 		handler grpc.UnaryHandler,
 	) (interface{}, error) {
-		// Skip RLS for health checks
-		if info.FullMethod == "/grpc.health.v1.Health/Check" ||
-			info.FullMethod == "/grpc.health.v1.Health/Watch" {
+		// Skip RLS for methods that don't require organization context
+		if shouldSkipRLS(info.FullMethod) {
 			return handler(ctx, req)
 		}
 
@@ -63,12 +83,12 @@ func RLSStreamInterceptor() grpc.StreamServerInterceptor {
 		info *grpc.StreamServerInfo,
 		handler grpc.StreamHandler,
 	) error {
-		ctx := ss.Context()
-
-		// Skip RLS for health checks
-		if info.FullMethod == "/grpc.health.v1.Health/Watch" {
+		// Skip RLS for methods that don't require organization context
+		if shouldSkipRLS(info.FullMethod) {
 			return handler(srv, ss)
 		}
+
+		ctx := ss.Context()
 
 		// Extract organization_id from metadata
 		md, ok := metadata.FromIncomingContext(ctx)

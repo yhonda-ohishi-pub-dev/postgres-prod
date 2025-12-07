@@ -39,15 +39,16 @@ steps:
     args:
       - '-c'
       - |
-        cat service.yaml | \
-          sed "s|\$${PROJECT_ID}|${PROJECT_ID}|g" | \
-          sed "s|\$${REGION}|${_REGION}|g" | \
-          sed "s|\$${REPO_NAME}|${_REPO_NAME}|g" | \
-          sed "s|\$${CLOUDSQL_INSTANCE}|${_CLOUDSQL_INSTANCE}|g" | \
-          sed "s|\$${DB_NAME}|${_DB_NAME}|g" | \
-          sed "s|\$${DB_USER}|${_DB_USER}|g" | \
-          sed "s|\$${SERVICE_ACCOUNT}|${_SERVICE_ACCOUNT}|g" | \
-          sed "s|\$${TAG}|${_TAG}|g" > service-resolved.yaml
+        sed -e "s|\$${PROJECT_ID}|${PROJECT_ID}|g" \
+            -e "s|\$${REGION}|${_REGION}|g" \
+            -e "s|\$${REPO_NAME}|${_REPO_NAME}|g" \
+            -e "s|\$${CLOUDSQL_INSTANCE}|${_CLOUDSQL_INSTANCE}|g" \
+            -e "s|\$${DB_NAME}|${_DB_NAME}|g" \
+            -e "s|\$${DB_USER}|${_DB_USER}|g" \
+            -e "s|\$${SERVICE_ACCOUNT}|${_SERVICE_ACCOUNT}|g" \
+            -e "s|\$${TAG}|${_TAG}|g" \
+            -e "s|\$${FRONTEND_URL}|${_FRONTEND_URL}|g" \
+            service.yaml > service-resolved.yaml
         gcloud run services replace service-resolved.yaml --region=${_REGION}
         gcloud run services set-iam-policy ${_SERVICE_NAME} --region=${_REGION} policy.yaml 2>/dev/null || \
           gcloud run services add-iam-policy-binding ${_SERVICE_NAME} --region=${_REGION} --member=allUsers --role=roles/run.invoker
@@ -61,6 +62,7 @@ substitutions:
   _DB_USER: ''  # Set via trigger (IAM user email)
   _SERVICE_ACCOUNT: ''  # Set via trigger
   _TAG: latest  # Default tag, can be overridden
+  _FRONTEND_URL: 'https://mtama-front.mtamaramu.com/auth/callback'
 
 images:
   - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}'
