@@ -30,7 +30,10 @@
       "Bash(docker exec:*)",
       "Bash(grep:*)",
       "Bash(git add:*)",
-      "Bash(go vet:*)"
+      "Bash(go vet:*)",
+      "Bash(git push)",
+      "Bash(gcloud secrets add-iam-policy-binding:*)",
+      "Bash(gcloud builds submit:*)"
     ],
     "deny": [],
     "ask": []

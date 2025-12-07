@@ -10,7 +10,7 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
-| (pending) | cloudbuild.yaml修正: service.yaml置換エラー解消 |
+| c383187 | Cloud Build修正・RLSインターセプター改善・CORS設定更新 |
 | c44b8b6 | OAuth認証リダイレクト方式追加: フロントエンドへトークン転送 |
 | ecb7f0d | CLAUDE.md更新: 最新コミット履歴を反映 |
 | 3f6fede | ドキュメント更新: HTTPエンドポイント対応を反映 |
