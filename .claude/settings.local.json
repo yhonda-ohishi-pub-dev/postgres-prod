@@ -33,7 +33,8 @@
       "Bash(go vet:*)",
       "Bash(git push)",
       "Bash(gcloud secrets add-iam-policy-binding:*)",
-      "Bash(gcloud builds submit:*)"
+      "Bash(gcloud builds submit:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

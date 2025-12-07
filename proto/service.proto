@@ -3538,3 +3538,104 @@ service AuthService {
   // Validate access token
   rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
 }
+
+// ============================================================
+// InvitationService - ユーザー招待
+// ============================================================
+
+message Invitation {
+  string id = 1;
+  string organization_id = 2;
+  string email = 3;
+  string role = 4;  // 'admin', 'member', 'viewer'
+  string token = 5;
+  string invited_by = 6;  // user_id of inviter
+  string status = 7;  // 'pending', 'accepted', 'expired', 'cancelled'
+  google.protobuf.Timestamp expires_at = 8;
+  optional google.protobuf.Timestamp accepted_at = 9;
+  optional string accepted_by = 10;  // user_id who accepted
+  google.protobuf.Timestamp created_at = 11;
+  google.protobuf.Timestamp updated_at = 12;
+}
+
+message CreateInvitationRequest {
+  string organization_id = 1;
+  string email = 2;
+  string role = 3;  // optional, defaults to 'member'
+}
+
+message CreateInvitationResponse {
+  Invitation invitation = 1;
+  string invite_url = 2;  // Full URL for invitation
+}
+
+message GetInvitationRequest {
+  string id = 1;
+}
+
+message GetInvitationResponse {
+  Invitation invitation = 1;
+}
+
+message GetInvitationByTokenRequest {
+  string token = 1;
+}
+
+message GetInvitationByTokenResponse {
+  Invitation invitation = 1;
+  Organization organization = 2;  // Include org details for display
+}
+
+message AcceptInvitationRequest {
+  string token = 1;
+}
+
+message AcceptInvitationResponse {
+  bool success = 1;
+  UserOrganization user_organization = 2;  // Created user_organization
+}
+
+message CancelInvitationRequest {
+  string id = 1;
+}
+
+message CancelInvitationResponse {
+  bool success = 1;
+}
+
+message ListInvitationsRequest {
+  string organization_id = 1;
+  string status = 2;  // optional filter: 'pending', 'accepted', etc.
+  int32 limit = 3;
+  int32 offset = 4;
+}
+
+message ListInvitationsResponse {
+  repeated Invitation invitations = 1;
+}
+
+message ResendInvitationRequest {
+  string id = 1;
+}
+
+message ResendInvitationResponse {
+  Invitation invitation = 1;
+  string invite_url = 2;
+}
+
+service InvitationService {
+  // Create a new invitation
+  rpc CreateInvitation(CreateInvitationRequest) returns (CreateInvitationResponse);
+  // Get invitation by ID
+  rpc GetInvitation(GetInvitationRequest) returns (GetInvitationResponse);
+  // Get invitation by token (for accepting)
+  rpc GetInvitationByToken(GetInvitationByTokenRequest) returns (GetInvitationByTokenResponse);
+  // Accept an invitation
+  rpc AcceptInvitation(AcceptInvitationRequest) returns (AcceptInvitationResponse);
+  // Cancel an invitation
+  rpc CancelInvitation(CancelInvitationRequest) returns (CancelInvitationResponse);
+  // List invitations for an organization
+  rpc ListInvitations(ListInvitationsRequest) returns (ListInvitationsResponse);
+  // Resend invitation (regenerate token, extend expiry)
+  rpc ResendInvitation(ResendInvitationRequest) returns (ResendInvitationResponse);
+}

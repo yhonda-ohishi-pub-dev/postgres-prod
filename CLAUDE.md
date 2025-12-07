@@ -4,17 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides gRPC CRUD services and Repository layer for 29 database tables, with OAuth2 authentication (Google/LINE) and Row-Level Security (RLS) for multi-tenant data isolation.
+Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides gRPC CRUD services and Repository layer for 30 database tables, with OAuth2 authentication (Google/LINE), user invitation system, and Row-Level Security (RLS) for multi-tenant data isolation.
 
 ## Recent Changes
 
 | Commit | Description |
 |--------|-------------|
+| 93ba7cf | Organization作成時にユーザー紐づけ自動化: JWT認証+トランザクション対応 |
 | 83f7b9e | gitignore |
 | 89c7442 | .gitignore: service-resolved.yaml追加（生成ファイル除外） |
 | a60bdc8 | Makefile: ローカルデプロイ機能追加（Cloud Build不要） |
 | cf2b3d9 | Cloud Build: ログ設定追加（CLOUD_LOGGING_ONLY） |
-| c383187 | Cloud Build修正・RLSインターセプター改善・CORS設定更新 |
 
 ## Build and Run
 
@@ -59,27 +59,29 @@ internal/config/             - Environment configuration
 pkg/db/cloudsql.go           - Cloud SQL connection with IAM auth (cloudsqlconn)
 pkg/http/                    - HTTP handlers
   auth_handler.go            - OAuth2 redirect endpoints (/auth/google, /auth/line, /health)
-pkg/grpc/                    - gRPC server implementations (28 services)
-  organization_server.go     - OrganizationService
+pkg/grpc/                    - gRPC server implementations (29 services)
+  organization_server.go     - OrganizationService (CreateWithOwner: org+user_org同時作成)
   app_user_server.go         - AppUserService
   auth_server.go             - AuthService (OAuth2: Google/LINE)
+  invitation_server.go       - InvitationService (ユーザー招待機能)
   car_inspection_server.go   - CarInspectionService (largest, 510 lines)
-  interceptor.go             - RLS interceptor (x-organization-id extraction)
+  interceptor.go             - RLS interceptor + JWT認証インターセプター
   kudg*_server.go            - KUDG series (6 services)
-  ... and more (28 total)
+  ... and more (29 total)
 pkg/auth/                    - OAuth2 authentication
   jwt.go                     - JWT token generation/validation
   google.go                  - Google OAuth2 client
   line.go                    - LINE OAuth2 client
-pkg/db/rls.go                - Row-Level Security pool wrapper
-pkg/repository/              - Database CRUD operations (29 tables)
-  organization.go            - Organization repository (with interface for mocking)
+pkg/db/rls.go                - Row-Level Security pool wrapper + トランザクション対応 (Begin/Tx)
+pkg/repository/              - Database CRUD operations (30 tables)
+  organization.go            - Organization repository (CreateWithOwner: トランザクションで所有者紐づけ)
   app_users.go               - AppUsers repository
+  invitations.go             - Invitations repository (ユーザー招待)
   cam_files.go               - CamFiles repository
   car_inspection.go          - CarInspection repository (largest, 48KB)
   ichiban_cars.go            - IchibanCars repository
   kudg*.go                   - KUDG series repositories (6 files)
-  ... and more (29 total with integration tests)
+  ... and more (30 total with integration tests)
 pkg/pb/                      - Generated protobuf Go code
 proto/                       - Protocol buffer definitions
   service.proto              - OrganizationService definition
@@ -88,11 +90,11 @@ Makefile                     - Build automation commands
 
 ## gRPC Services
 
-The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **28 services**:
+The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **29 services**:
 
 | Category | Services |
 |----------|----------|
-| Auth | AuthService (OAuth2: Google/LINE認証) |
+| Auth | AuthService (OAuth2: Google/LINE認証), InvitationService (ユーザー招待) |
 | Core | OrganizationService, AppUserService, UserOrganizationService, FileService |
 | Media | FlickrPhotoService, CamFileService, CamFileExeService, CamFileExeStageService |
 | Vehicle | IchibanCarService, DtakoCarsIchibanCarsService, UriageService, UriageJishaService |
@@ -121,7 +123,9 @@ gRPC+HTTP共存（h2c対応）により、同一ポートでHTTPエンドポイ�
 Multi-tenant data isolation using PostgreSQL RLS:
 
 - **RLS Pool**: `pkg/db/rls.go` wraps DB connection to set `app.current_organization_id` per request
+- **Transaction Support**: `Begin()` method returns `Tx` interface for transactional operations
 - **gRPC Interceptor**: `pkg/grpc/interceptor.go` extracts `x-organization-id` header
+- **JWT Authentication**: JWTインターセプターがAuthorizationヘッダーからuser_idを抽出しcontextに保存
 - All repository operations automatically scoped to current organization
 
 ## OAuth2 Authentication
@@ -134,6 +138,26 @@ Google/LINE OAuth2 authentication with JWT tokens:
   - `RefreshToken`: Refresh expired access token
   - `ValidateToken`: Validate JWT and return user info
 - **oauth_accounts table**: Supports multiple OAuth providers per user
+
+## User Invitation
+
+Organization admins can invite users via email:
+
+- **InvitationService methods**:
+  - `CreateInvitation`: Create invitation with email and role
+  - `GetInvitationByToken`: Get invitation details for accepting
+  - `AcceptInvitation`: Accept and create user_organization
+  - `CancelInvitation`: Cancel pending invitation
+  - `ListInvitations`: List invitations for organization
+  - `ResendInvitation`: Regenerate token and extend expiry
+
+- **Invitation Flow**:
+  1. Admin calls `CreateInvitation` with email and role
+  2. Returns invite URL: `{FRONTEND_URL}/invite/{token}`
+  3. Invited user authenticates and calls `AcceptInvitation`
+  4. Creates `user_organization` record with specified role
+
+- **invitations table**: Stores pending/accepted invitations with 7-day expiry
 
 ## Cloud SQL IAM Authentication
 

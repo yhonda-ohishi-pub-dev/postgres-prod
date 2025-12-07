@@ -81,6 +81,7 @@ func main() {
 	kudgivtRepo := repository.NewKudgivtRepositoryWithDB(rlsPool)
 	dtakologsRepo := repository.NewDtakologsRepositoryWithDB(rlsPool)
 	oauthAccountRepo := repository.NewOAuthAccountRepositoryWithDB(rlsPool)
+	invitationRepo := repository.NewInvitationRepositoryWithDB(rlsPool)
 
 	// Create auth services
 	jwtSecret := os.Getenv("JWT_SECRET")
@@ -130,6 +131,7 @@ func main() {
 	kudgivtServer := grpcserver.NewKudgivtServer(kudgivtRepo)
 	dtakologsServer := grpcserver.NewDtakologsServer(dtakologsRepo)
 	authServer := grpcserver.NewAuthServer(appUserRepo, oauthAccountRepo, jwtService, googleClient, lineClient)
+	invitationServer := grpcserver.NewInvitationServer(invitationRepo, orgRepo, userOrgRepo)
 
 	// Create HTTP auth handler
 	authHandler := httphandler.NewAuthHandler(googleClient, lineClient, jwtService, appUserRepo, oauthAccountRepo, cfg.FrontendURL)
@@ -174,6 +176,7 @@ func main() {
 	pb.RegisterKudgivtServiceServer(grpcServer, kudgivtServer)
 	pb.RegisterDtakologsServiceServer(grpcServer, dtakologsServer)
 	pb.RegisterAuthServiceServer(grpcServer, authServer)
+	pb.RegisterInvitationServiceServer(grpcServer, invitationServer)
 
 	// Register health check service for Cloud Run
 	healthServer := health.NewServer()
