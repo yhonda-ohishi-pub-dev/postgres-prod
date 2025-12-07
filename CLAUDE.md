@@ -10,11 +10,11 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
+| ecb7f0d | CLAUDE.md更新: 最新コミット履歴を反映 |
 | 3f6fede | ドキュメント更新: HTTPエンドポイント対応を反映 |
 | 9cc9a34 | Phase 4-5完了: HTTPエンドポイント対応 (gRPC+HTTP共存) |
 | 70c7372 | Phase 4-4完了: Cloud Runデプロイ・動作確認 |
 | 9438d35 | Phase 4: Envoyサイドカー追加 (gRPC-Web対応) |
-| 56b6921 | PLAN.md更新: Phase 3完了、Phase 4を次のステップに設定 |
 
 ## Build and Run
 
@@ -170,6 +170,7 @@ import "postgres-prod/pkg/pb"
 | GOOGLE_CLIENT_SECRET | Google OAuth2 client secret | GOCSPX-xxx |
 | LINE_CHANNEL_ID | LINE OAuth2 channel ID | 123456789 |
 | LINE_CHANNEL_SECRET | LINE OAuth2 channel secret | xxx |
+| FRONTEND_URL | OAuth callback redirect URL | https://mtama-front.mtamaramu.com/auth/callback |
 
 ## Deployment
 

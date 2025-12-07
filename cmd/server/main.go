@@ -132,7 +132,7 @@ func main() {
 	authServer := grpcserver.NewAuthServer(appUserRepo, oauthAccountRepo, jwtService, googleClient, lineClient)
 
 	// Create HTTP auth handler
-	authHandler := httphandler.NewAuthHandler(googleClient, lineClient, jwtService, appUserRepo, oauthAccountRepo)
+	authHandler := httphandler.NewAuthHandler(googleClient, lineClient, jwtService, appUserRepo, oauthAccountRepo, cfg.FrontendURL)
 
 	// Create gRPC server with health check and RLS interceptor
 	grpcServer := grpc.NewServer(

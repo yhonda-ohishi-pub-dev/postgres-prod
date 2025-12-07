@@ -153,6 +153,7 @@ buf generate
 | GOOGLE_CLIENT_SECRET | Google OAuth2クライアントシークレット |
 | LINE_CHANNEL_ID | LINE OAuth2チャンネルID |
 | LINE_CHANNEL_SECRET | LINE OAuth2チャンネルシークレット |
+| FRONTEND_URL | OAuthコールバックリダイレクトURL |
 
 ## License
 

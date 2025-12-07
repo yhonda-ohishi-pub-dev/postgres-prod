@@ -23,6 +23,9 @@ type Config struct {
 
 	// Server
 	Port string
+
+	// Frontend
+	FrontendURL string // OAuth callback redirect URL
 }
 
 func Load() *Config {
@@ -35,6 +38,7 @@ func Load() *Config {
 		DatabasePassword: getEnv("DB_PASSWORD", ""),
 		DatabasePort:     getEnvInt("DB_PORT", 5432),
 		Port:             getEnv("PORT", "8080"),
+		FrontendURL:      getEnv("FRONTEND_URL", ""),
 	}
 
 	// Build instance connection string
