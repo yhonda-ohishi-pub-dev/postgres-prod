@@ -8523,3 +8523,347 @@ var InvitationService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "service.proto",
 }
+
+const (
+	ETCMeisaiService_CreateETCMeisai_FullMethodName     = "/organization.ETCMeisaiService/CreateETCMeisai"
+	ETCMeisaiService_GetETCMeisai_FullMethodName        = "/organization.ETCMeisaiService/GetETCMeisai"
+	ETCMeisaiService_GetETCMeisaiByHash_FullMethodName  = "/organization.ETCMeisaiService/GetETCMeisaiByHash"
+	ETCMeisaiService_UpdateETCMeisai_FullMethodName     = "/organization.ETCMeisaiService/UpdateETCMeisai"
+	ETCMeisaiService_DeleteETCMeisai_FullMethodName     = "/organization.ETCMeisaiService/DeleteETCMeisai"
+	ETCMeisaiService_ListETCMeisai_FullMethodName       = "/organization.ETCMeisaiService/ListETCMeisai"
+	ETCMeisaiService_BulkCreateETCMeisai_FullMethodName = "/organization.ETCMeisaiService/BulkCreateETCMeisai"
+)
+
+// ETCMeisaiServiceClient is the client API for ETCMeisaiService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type ETCMeisaiServiceClient interface {
+	// Create a new ETC meisai record
+	CreateETCMeisai(ctx context.Context, in *CreateETCMeisaiRequest, opts ...grpc.CallOption) (*CreateETCMeisaiResponse, error)
+	// Get ETC meisai by ID
+	GetETCMeisai(ctx context.Context, in *GetETCMeisaiRequest, opts ...grpc.CallOption) (*GetETCMeisaiResponse, error)
+	// Get ETC meisai by hash (for duplicate check)
+	GetETCMeisaiByHash(ctx context.Context, in *GetETCMeisaiByHashRequest, opts ...grpc.CallOption) (*GetETCMeisaiByHashResponse, error)
+	// Update ETC meisai
+	UpdateETCMeisai(ctx context.Context, in *UpdateETCMeisaiRequest, opts ...grpc.CallOption) (*UpdateETCMeisaiResponse, error)
+	// Delete ETC meisai
+	DeleteETCMeisai(ctx context.Context, in *DeleteETCMeisaiRequest, opts ...grpc.CallOption) (*DeleteETCMeisaiResponse, error)
+	// List ETC meisai with filters
+	ListETCMeisai(ctx context.Context, in *ListETCMeisaiRequest, opts ...grpc.CallOption) (*ListETCMeisaiResponse, error)
+	// Bulk create ETC meisai records (for CSV import)
+	BulkCreateETCMeisai(ctx context.Context, in *BulkCreateETCMeisaiRequest, opts ...grpc.CallOption) (*BulkCreateETCMeisaiResponse, error)
+}
+
+type eTCMeisaiServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewETCMeisaiServiceClient(cc grpc.ClientConnInterface) ETCMeisaiServiceClient {
+	return &eTCMeisaiServiceClient{cc}
+}
+
+func (c *eTCMeisaiServiceClient) CreateETCMeisai(ctx context.Context, in *CreateETCMeisaiRequest, opts ...grpc.CallOption) (*CreateETCMeisaiResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateETCMeisaiResponse)
+	err := c.cc.Invoke(ctx, ETCMeisaiService_CreateETCMeisai_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eTCMeisaiServiceClient) GetETCMeisai(ctx context.Context, in *GetETCMeisaiRequest, opts ...grpc.CallOption) (*GetETCMeisaiResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetETCMeisaiResponse)
+	err := c.cc.Invoke(ctx, ETCMeisaiService_GetETCMeisai_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eTCMeisaiServiceClient) GetETCMeisaiByHash(ctx context.Context, in *GetETCMeisaiByHashRequest, opts ...grpc.CallOption) (*GetETCMeisaiByHashResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetETCMeisaiByHashResponse)
+	err := c.cc.Invoke(ctx, ETCMeisaiService_GetETCMeisaiByHash_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eTCMeisaiServiceClient) UpdateETCMeisai(ctx context.Context, in *UpdateETCMeisaiRequest, opts ...grpc.CallOption) (*UpdateETCMeisaiResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateETCMeisaiResponse)
+	err := c.cc.Invoke(ctx, ETCMeisaiService_UpdateETCMeisai_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eTCMeisaiServiceClient) DeleteETCMeisai(ctx context.Context, in *DeleteETCMeisaiRequest, opts ...grpc.CallOption) (*DeleteETCMeisaiResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteETCMeisaiResponse)
+	err := c.cc.Invoke(ctx, ETCMeisaiService_DeleteETCMeisai_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eTCMeisaiServiceClient) ListETCMeisai(ctx context.Context, in *ListETCMeisaiRequest, opts ...grpc.CallOption) (*ListETCMeisaiResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListETCMeisaiResponse)
+	err := c.cc.Invoke(ctx, ETCMeisaiService_ListETCMeisai_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *eTCMeisaiServiceClient) BulkCreateETCMeisai(ctx context.Context, in *BulkCreateETCMeisaiRequest, opts ...grpc.CallOption) (*BulkCreateETCMeisaiResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BulkCreateETCMeisaiResponse)
+	err := c.cc.Invoke(ctx, ETCMeisaiService_BulkCreateETCMeisai_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ETCMeisaiServiceServer is the server API for ETCMeisaiService service.
+// All implementations must embed UnimplementedETCMeisaiServiceServer
+// for forward compatibility.
+type ETCMeisaiServiceServer interface {
+	// Create a new ETC meisai record
+	CreateETCMeisai(context.Context, *CreateETCMeisaiRequest) (*CreateETCMeisaiResponse, error)
+	// Get ETC meisai by ID
+	GetETCMeisai(context.Context, *GetETCMeisaiRequest) (*GetETCMeisaiResponse, error)
+	// Get ETC meisai by hash (for duplicate check)
+	GetETCMeisaiByHash(context.Context, *GetETCMeisaiByHashRequest) (*GetETCMeisaiByHashResponse, error)
+	// Update ETC meisai
+	UpdateETCMeisai(context.Context, *UpdateETCMeisaiRequest) (*UpdateETCMeisaiResponse, error)
+	// Delete ETC meisai
+	DeleteETCMeisai(context.Context, *DeleteETCMeisaiRequest) (*DeleteETCMeisaiResponse, error)
+	// List ETC meisai with filters
+	ListETCMeisai(context.Context, *ListETCMeisaiRequest) (*ListETCMeisaiResponse, error)
+	// Bulk create ETC meisai records (for CSV import)
+	BulkCreateETCMeisai(context.Context, *BulkCreateETCMeisaiRequest) (*BulkCreateETCMeisaiResponse, error)
+	mustEmbedUnimplementedETCMeisaiServiceServer()
+}
+
+// UnimplementedETCMeisaiServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedETCMeisaiServiceServer struct{}
+
+func (UnimplementedETCMeisaiServiceServer) CreateETCMeisai(context.Context, *CreateETCMeisaiRequest) (*CreateETCMeisaiResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method CreateETCMeisai not implemented")
+}
+func (UnimplementedETCMeisaiServiceServer) GetETCMeisai(context.Context, *GetETCMeisaiRequest) (*GetETCMeisaiResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetETCMeisai not implemented")
+}
+func (UnimplementedETCMeisaiServiceServer) GetETCMeisaiByHash(context.Context, *GetETCMeisaiByHashRequest) (*GetETCMeisaiByHashResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetETCMeisaiByHash not implemented")
+}
+func (UnimplementedETCMeisaiServiceServer) UpdateETCMeisai(context.Context, *UpdateETCMeisaiRequest) (*UpdateETCMeisaiResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method UpdateETCMeisai not implemented")
+}
+func (UnimplementedETCMeisaiServiceServer) DeleteETCMeisai(context.Context, *DeleteETCMeisaiRequest) (*DeleteETCMeisaiResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DeleteETCMeisai not implemented")
+}
+func (UnimplementedETCMeisaiServiceServer) ListETCMeisai(context.Context, *ListETCMeisaiRequest) (*ListETCMeisaiResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method ListETCMeisai not implemented")
+}
+func (UnimplementedETCMeisaiServiceServer) BulkCreateETCMeisai(context.Context, *BulkCreateETCMeisaiRequest) (*BulkCreateETCMeisaiResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method BulkCreateETCMeisai not implemented")
+}
+func (UnimplementedETCMeisaiServiceServer) mustEmbedUnimplementedETCMeisaiServiceServer() {}
+func (UnimplementedETCMeisaiServiceServer) testEmbeddedByValue()                          {}
+
+// UnsafeETCMeisaiServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to ETCMeisaiServiceServer will
+// result in compilation errors.
+type UnsafeETCMeisaiServiceServer interface {
+	mustEmbedUnimplementedETCMeisaiServiceServer()
+}
+
+func RegisterETCMeisaiServiceServer(s grpc.ServiceRegistrar, srv ETCMeisaiServiceServer) {
+	// If the following call panics, it indicates UnimplementedETCMeisaiServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&ETCMeisaiService_ServiceDesc, srv)
+}
+
+func _ETCMeisaiService_CreateETCMeisai_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateETCMeisaiRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ETCMeisaiServiceServer).CreateETCMeisai(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ETCMeisaiService_CreateETCMeisai_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ETCMeisaiServiceServer).CreateETCMeisai(ctx, req.(*CreateETCMeisaiRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ETCMeisaiService_GetETCMeisai_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetETCMeisaiRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ETCMeisaiServiceServer).GetETCMeisai(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ETCMeisaiService_GetETCMeisai_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ETCMeisaiServiceServer).GetETCMeisai(ctx, req.(*GetETCMeisaiRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ETCMeisaiService_GetETCMeisaiByHash_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetETCMeisaiByHashRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ETCMeisaiServiceServer).GetETCMeisaiByHash(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ETCMeisaiService_GetETCMeisaiByHash_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ETCMeisaiServiceServer).GetETCMeisaiByHash(ctx, req.(*GetETCMeisaiByHashRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ETCMeisaiService_UpdateETCMeisai_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateETCMeisaiRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ETCMeisaiServiceServer).UpdateETCMeisai(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ETCMeisaiService_UpdateETCMeisai_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ETCMeisaiServiceServer).UpdateETCMeisai(ctx, req.(*UpdateETCMeisaiRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ETCMeisaiService_DeleteETCMeisai_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteETCMeisaiRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ETCMeisaiServiceServer).DeleteETCMeisai(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ETCMeisaiService_DeleteETCMeisai_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ETCMeisaiServiceServer).DeleteETCMeisai(ctx, req.(*DeleteETCMeisaiRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ETCMeisaiService_ListETCMeisai_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListETCMeisaiRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ETCMeisaiServiceServer).ListETCMeisai(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ETCMeisaiService_ListETCMeisai_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ETCMeisaiServiceServer).ListETCMeisai(ctx, req.(*ListETCMeisaiRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ETCMeisaiService_BulkCreateETCMeisai_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BulkCreateETCMeisaiRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ETCMeisaiServiceServer).BulkCreateETCMeisai(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ETCMeisaiService_BulkCreateETCMeisai_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ETCMeisaiServiceServer).BulkCreateETCMeisai(ctx, req.(*BulkCreateETCMeisaiRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// ETCMeisaiService_ServiceDesc is the grpc.ServiceDesc for ETCMeisaiService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var ETCMeisaiService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.ETCMeisaiService",
+	HandlerType: (*ETCMeisaiServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "CreateETCMeisai",
+			Handler:    _ETCMeisaiService_CreateETCMeisai_Handler,
+		},
+		{
+			MethodName: "GetETCMeisai",
+			Handler:    _ETCMeisaiService_GetETCMeisai_Handler,
+		},
+		{
+			MethodName: "GetETCMeisaiByHash",
+			Handler:    _ETCMeisaiService_GetETCMeisaiByHash_Handler,
+		},
+		{
+			MethodName: "UpdateETCMeisai",
+			Handler:    _ETCMeisaiService_UpdateETCMeisai_Handler,
+		},
+		{
+			MethodName: "DeleteETCMeisai",
+			Handler:    _ETCMeisaiService_DeleteETCMeisai_Handler,
+		},
+		{
+			MethodName: "ListETCMeisai",
+			Handler:    _ETCMeisaiService_ListETCMeisai_Handler,
+		},
+		{
+			MethodName: "BulkCreateETCMeisai",
+			Handler:    _ETCMeisaiService_BulkCreateETCMeisai_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "service.proto",
+}

@@ -3639,3 +3639,139 @@ service InvitationService {
   // Resend invitation (regenerate token, extend expiry)
   rpc ResendInvitation(ResendInvitationRequest) returns (ResendInvitationResponse);
 }
+
+// ============================================================
+// ETCMeisaiService - ETC明細
+// ============================================================
+
+message ETCMeisai {
+  int64 id = 1;
+  string organization_id = 2;
+  optional google.protobuf.Timestamp date_fr = 3;     // 利用開始日時
+  google.protobuf.Timestamp date_to = 4;              // 利用終了日時
+  string date_to_date = 5;                            // 利用終了日（YYYY-MM-DD形式）
+  string ic_fr = 6;                                   // 入口IC
+  string ic_to = 7;                                   // 出口IC
+  optional int32 price_bf = 8;                        // 割引前料金
+  optional int32 discount = 9;                        // 割引額
+  int32 price = 10;                                   // 料金
+  int32 shashu = 11;                                  // 車種
+  optional int32 car_id_num = 12;                     // 車両ID番号
+  string etc_num = 13;                                // ETCカード番号
+  optional string detail = 14;                        // 明細
+  optional string dtako_row_id = 15;                  // dtako連携用行ID
+  string hash = 16;                                   // レコードハッシュ（差分インポート用）
+  google.protobuf.Timestamp created_at = 17;
+  google.protobuf.Timestamp updated_at = 18;
+}
+
+message CreateETCMeisaiRequest {
+  optional google.protobuf.Timestamp date_fr = 1;
+  google.protobuf.Timestamp date_to = 2;
+  string date_to_date = 3;
+  string ic_fr = 4;
+  string ic_to = 5;
+  optional int32 price_bf = 6;
+  optional int32 discount = 7;
+  int32 price = 8;
+  int32 shashu = 9;
+  optional int32 car_id_num = 10;
+  string etc_num = 11;
+  optional string detail = 12;
+  optional string dtako_row_id = 13;
+  string hash = 14;
+}
+
+message CreateETCMeisaiResponse {
+  ETCMeisai etc_meisai = 1;
+}
+
+message GetETCMeisaiRequest {
+  int64 id = 1;
+}
+
+message GetETCMeisaiResponse {
+  ETCMeisai etc_meisai = 1;
+}
+
+message GetETCMeisaiByHashRequest {
+  string hash = 1;
+}
+
+message GetETCMeisaiByHashResponse {
+  ETCMeisai etc_meisai = 1;
+  bool exists = 2;
+}
+
+message UpdateETCMeisaiRequest {
+  int64 id = 1;
+  optional google.protobuf.Timestamp date_fr = 2;
+  google.protobuf.Timestamp date_to = 3;
+  string date_to_date = 4;
+  string ic_fr = 5;
+  string ic_to = 6;
+  optional int32 price_bf = 7;
+  optional int32 discount = 8;
+  int32 price = 9;
+  int32 shashu = 10;
+  optional int32 car_id_num = 11;
+  string etc_num = 12;
+  optional string detail = 13;
+  optional string dtako_row_id = 14;
+  string hash = 15;
+}
+
+message UpdateETCMeisaiResponse {
+  ETCMeisai etc_meisai = 1;
+}
+
+message DeleteETCMeisaiRequest {
+  int64 id = 1;
+}
+
+message DeleteETCMeisaiResponse {
+  bool success = 1;
+}
+
+message ListETCMeisaiRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+  optional string date_from = 3;  // YYYY-MM-DD filter
+  optional string date_to = 4;    // YYYY-MM-DD filter
+  optional string etc_num = 5;    // ETCカード番号filter
+}
+
+message ListETCMeisaiResponse {
+  repeated ETCMeisai etc_meisai_list = 1;
+  string next_page_token = 2;
+  int32 total_count = 3;
+}
+
+// Bulk import support
+message BulkCreateETCMeisaiRequest {
+  repeated CreateETCMeisaiRequest records = 1;
+  bool skip_duplicates = 2;  // Skip if hash already exists
+}
+
+message BulkCreateETCMeisaiResponse {
+  int32 created_count = 1;
+  int32 skipped_count = 2;
+  repeated string errors = 3;
+}
+
+service ETCMeisaiService {
+  // Create a new ETC meisai record
+  rpc CreateETCMeisai(CreateETCMeisaiRequest) returns (CreateETCMeisaiResponse);
+  // Get ETC meisai by ID
+  rpc GetETCMeisai(GetETCMeisaiRequest) returns (GetETCMeisaiResponse);
+  // Get ETC meisai by hash (for duplicate check)
+  rpc GetETCMeisaiByHash(GetETCMeisaiByHashRequest) returns (GetETCMeisaiByHashResponse);
+  // Update ETC meisai
+  rpc UpdateETCMeisai(UpdateETCMeisaiRequest) returns (UpdateETCMeisaiResponse);
+  // Delete ETC meisai
+  rpc DeleteETCMeisai(DeleteETCMeisaiRequest) returns (DeleteETCMeisaiResponse);
+  // List ETC meisai with filters
+  rpc ListETCMeisai(ListETCMeisaiRequest) returns (ListETCMeisaiResponse);
+  // Bulk create ETC meisai records (for CSV import)
+  rpc BulkCreateETCMeisai(BulkCreateETCMeisaiRequest) returns (BulkCreateETCMeisaiResponse);
+}

@@ -5,11 +5,11 @@ Cloud Run上で動作するGoサービス。Cloud SQL PostgreSQLにIAM認証で�
 ## Features
 
 - **Cloud SQL IAM認証**: パスワード不要のセキュアな接続
-- **gRPC API**: 29サービス（30テーブル対応）のCRUD API
+- **gRPC API**: 30サービス（31テーブル対応）のCRUD API
 - **gRPC-Web対応**: Envoyサイドカーによるブラウザからの直接アクセス
 - **OAuth2認証**: Google/LINEログイン対応（JWT発行）
 - **Row-Level Security**: 組織ごとのデータ分離（マルチテナント対応）
-- **Repository層**: 30テーブル分のCRUD実装（統合テスト完備）
+- **Repository層**: 31テーブル分のCRUD実装（統合テスト完備）
 - **Cloud Run対応**: 本番環境ですぐにデプロイ可能
 - **ローカル開発対応**: Cloud SQL Auth Proxyでの開発をサポート
 
@@ -63,7 +63,7 @@ export DB_USER=your-iam-user
 
 ### gRPC + HTTP (port 8080, Cloud Run compatible)
 
-h2c対応により、gRPCとHTTPが同一ポートで共存。29 gRPCサービスが利用可能。各サービスは標準CRUD操作（Create, Get, Update, Delete, List）を提供:
+h2c対応により、gRPCとHTTPが同一ポートで共存。30 gRPCサービスが利用可能。各サービスは標準CRUD操作（Create, Get, Update, Delete, List）を提供:
 
 | カテゴリ | サービス |
 |----------|----------|
@@ -76,6 +76,7 @@ h2c対応により、gRPCとHTTPが同一ポートで共存。29 gRPCサービ�
 | Sheet | CarInsSheetIchibanCarsService, CarInsSheetIchibanCarsAService |
 | KUDG | KudgfryService, KudguriService, KudgcstService, KudgfulService, KudgsirService, KudgivtService |
 | Logs | DtakologsService |
+| ETC | ETCMeisaiService（ETC明細、差分インポート） |
 
 **Health Check**
 - gRPC Health Check Protocol（Cloud Run のスタートアップ/ライブネスプローブ用）
@@ -91,7 +92,7 @@ h2c対応により、gRPCとHTTPが同一ポートで共存。29 gRPCサービ�
 ## Project Structure
 
 ```
-cmd/server/main.go       - エントリーポイント（gRPC+HTTP, 29サービス登録）
+cmd/server/main.go       - エントリーポイント（gRPC+HTTP, 30サービス登録）
 internal/config/         - 環境設定
 pkg/
   auth/                  - OAuth2認証（JWT, Google, LINE）
@@ -99,11 +100,11 @@ pkg/
   db/
     cloudsql.go          - Cloud SQL接続（IAM認証）
     rls.go               - Row-Level Security（組織ごとデータ分離）
-  grpc/                  - gRPCサーバー実装（29サービス）
+  grpc/                  - gRPCサーバー実装（30サービス）
     interceptor.go       - RLSインターセプター
   handlers/              - HTTPハンドラー
   pb/                    - 生成されたProtobufコード
-  repository/            - データベース操作（30テーブル分のCRUD + 統合テスト）
+  repository/            - データベース操作（31テーブル分のCRUD + 統合テスト）
 proto/service.proto      - gRPCサービス定義
 envoy.yaml               - Envoyプロキシ設定（gRPC-Web変換）
 ```

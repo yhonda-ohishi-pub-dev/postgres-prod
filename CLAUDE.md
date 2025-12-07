@@ -4,17 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides gRPC CRUD services and Repository layer for 30 database tables, with OAuth2 authentication (Google/LINE), user invitation system, and Row-Level Security (RLS) for multi-tenant data isolation.
+Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authentication. Provides gRPC CRUD services and Repository layer for 31 database tables, with OAuth2 authentication (Google/LINE), user invitation system, and Row-Level Security (RLS) for multi-tenant data isolation.
 
 ## Recent Changes
 
 | Commit | Description |
 |--------|-------------|
+| 5506b69 | Organization slug自動生成: UUID使用で重複エラー回避 |
 | 0173182 | ユーザー招待機能追加: InvitationService実装 |
 | 93ba7cf | Organization作成時にユーザー紐づけ自動化: JWT認証+トランザクション対応 |
 | 83f7b9e | gitignore |
 | 89c7442 | .gitignore: service-resolved.yaml追加（生成ファイル除外） |
-| a60bdc8 | Makefile: ローカルデプロイ機能追加（Cloud Build不要） |
 
 ## Build and Run
 
@@ -73,7 +73,7 @@ pkg/auth/                    - OAuth2 authentication
   google.go                  - Google OAuth2 client
   line.go                    - LINE OAuth2 client
 pkg/db/rls.go                - Row-Level Security pool wrapper + トランザクション対応 (Begin/Tx)
-pkg/repository/              - Database CRUD operations (30 tables)
+pkg/repository/              - Database CRUD operations (31 tables)
   organization.go            - Organization repository (CreateWithOwner: トランザクションで所有者紐づけ)
   app_users.go               - AppUsers repository
   invitations.go             - Invitations repository (ユーザー招待)
@@ -81,7 +81,8 @@ pkg/repository/              - Database CRUD operations (30 tables)
   car_inspection.go          - CarInspection repository (largest, 48KB)
   ichiban_cars.go            - IchibanCars repository
   kudg*.go                   - KUDG series repositories (6 files)
-  ... and more (30 total with integration tests)
+  etc_meisai.go              - ETCMeisai repository (ETC明細、差分インポート)
+  ... and more (31 total with integration tests)
 pkg/pb/                      - Generated protobuf Go code
 proto/                       - Protocol buffer definitions
   service.proto              - OrganizationService definition
@@ -90,7 +91,7 @@ Makefile                     - Build automation commands
 
 ## gRPC Services
 
-The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **29 services**:
+The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **30 services**:
 
 | Category | Services |
 |----------|----------|
@@ -103,6 +104,7 @@ The service exposes gRPC on PORT (default 8080, Cloud Run compatible) with **29 
 | Sheet | CarInsSheetIchibanCarsService, CarInsSheetIchibanCarsAService |
 | KUDG | KudgfryService, KudguriService, KudgcstService, KudgfulService, KudgsirService, KudgivtService |
 | Logs | DtakologsService |
+| ETC | ETCMeisaiService (ETC明細、hash差分インポート) |
 
 Each service provides standard CRUD operations: `Create`, `Get`, `Update`, `Delete`, `List`
 
@@ -158,6 +160,31 @@ Organization admins can invite users via email:
   4. Creates `user_organization` record with specified role
 
 - **invitations table**: Stores pending/accepted invitations with 7-day expiry
+
+## ETC Data Processing
+
+ETC（高速道路料金）明細の処理とインポート:
+
+- **etc_meisai table**: ETC明細データを格納
+  - `hash`カラムによる差分インポート対応（重複検出）
+  - RLS有効化でマルチテナント対応
+  - organization_idで組織ごとにデータ分離
+
+- **ETCMeisaiService**: gRPC CRUD + BulkCreate
+  - `CreateETCMeisai`: 単一レコード作成
+  - `GetETCMeisai`: ID指定取得
+  - `GetETCMeisaiByHash`: hash指定取得（重複チェック用）
+  - `UpdateETCMeisai`: 更新
+  - `DeleteETCMeisai`: 削除
+  - `ListETCMeisai`: 一覧取得（日付・カード番号フィルター対応）
+  - `BulkCreateETCMeisai`: 一括作成（CSVインポート用、skip_duplicates対応）
+
+- **Repository**: `pkg/repository/etc_meisai.go`
+- **gRPC Server**: `pkg/grpc/etc_meisai_server.go`
+
+- **Migrations**:
+  - `000011_etc_meisai.up.sql`: テーブル作成・RLS・インデックス
+  - `000012_etc_meisai_grants.up.sql`: IAMユーザー権限付与
 
 ## Cloud SQL IAM Authentication
 

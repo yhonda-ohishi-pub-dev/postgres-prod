@@ -110,8 +110,7 @@ func (x *Organization) GetDeletedAt() *timestamppb.Timestamp {
 // Request/Response messages
 type CreateOrganizationRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Slug          string                 `protobuf:"bytes,2,opt,name=slug,proto3" json:"slug,omitempty"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"` // slug is auto-generated as UUID (removed from request)
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -149,13 +148,6 @@ func (*CreateOrganizationRequest) Descriptor() ([]byte, []int) {
 func (x *CreateOrganizationRequest) GetName() string {
 	if x != nil {
 		return x.Name
-	}
-	return ""
-}
-
-func (x *CreateOrganizationRequest) GetSlug() string {
-	if x != nil {
-		return x.Slug
 	}
 	return ""
 }
@@ -30473,6 +30465,1099 @@ func (x *ResendInvitationResponse) GetInviteUrl() string {
 	return ""
 }
 
+type ETCMeisai struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Id             int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	OrganizationId string                 `protobuf:"bytes,2,opt,name=organization_id,json=organizationId,proto3" json:"organization_id,omitempty"`
+	DateFr         *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=date_fr,json=dateFr,proto3,oneof" json:"date_fr,omitempty"`                // 利用開始日時
+	DateTo         *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=date_to,json=dateTo,proto3" json:"date_to,omitempty"`                      // 利用終了日時
+	DateToDate     string                 `protobuf:"bytes,5,opt,name=date_to_date,json=dateToDate,proto3" json:"date_to_date,omitempty"`        // 利用終了日（YYYY-MM-DD形式）
+	IcFr           string                 `protobuf:"bytes,6,opt,name=ic_fr,json=icFr,proto3" json:"ic_fr,omitempty"`                            // 入口IC
+	IcTo           string                 `protobuf:"bytes,7,opt,name=ic_to,json=icTo,proto3" json:"ic_to,omitempty"`                            // 出口IC
+	PriceBf        *int32                 `protobuf:"varint,8,opt,name=price_bf,json=priceBf,proto3,oneof" json:"price_bf,omitempty"`            // 割引前料金
+	Discount       *int32                 `protobuf:"varint,9,opt,name=discount,proto3,oneof" json:"discount,omitempty"`                         // 割引額
+	Price          int32                  `protobuf:"varint,10,opt,name=price,proto3" json:"price,omitempty"`                                    // 料金
+	Shashu         int32                  `protobuf:"varint,11,opt,name=shashu,proto3" json:"shashu,omitempty"`                                  // 車種
+	CarIdNum       *int32                 `protobuf:"varint,12,opt,name=car_id_num,json=carIdNum,proto3,oneof" json:"car_id_num,omitempty"`      // 車両ID番号
+	EtcNum         string                 `protobuf:"bytes,13,opt,name=etc_num,json=etcNum,proto3" json:"etc_num,omitempty"`                     // ETCカード番号
+	Detail         *string                `protobuf:"bytes,14,opt,name=detail,proto3,oneof" json:"detail,omitempty"`                             // 明細
+	DtakoRowId     *string                `protobuf:"bytes,15,opt,name=dtako_row_id,json=dtakoRowId,proto3,oneof" json:"dtako_row_id,omitempty"` // dtako連携用行ID
+	Hash           string                 `protobuf:"bytes,16,opt,name=hash,proto3" json:"hash,omitempty"`                                       // レコードハッシュ（差分インポート用）
+	CreatedAt      *timestamppb.Timestamp `protobuf:"bytes,17,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt      *timestamppb.Timestamp `protobuf:"bytes,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ETCMeisai) Reset() {
+	*x = ETCMeisai{}
+	mi := &file_service_proto_msgTypes[374]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ETCMeisai) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ETCMeisai) ProtoMessage() {}
+
+func (x *ETCMeisai) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[374]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ETCMeisai.ProtoReflect.Descriptor instead.
+func (*ETCMeisai) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{374}
+}
+
+func (x *ETCMeisai) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ETCMeisai) GetOrganizationId() string {
+	if x != nil {
+		return x.OrganizationId
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetDateFr() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DateFr
+	}
+	return nil
+}
+
+func (x *ETCMeisai) GetDateTo() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DateTo
+	}
+	return nil
+}
+
+func (x *ETCMeisai) GetDateToDate() string {
+	if x != nil {
+		return x.DateToDate
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetIcFr() string {
+	if x != nil {
+		return x.IcFr
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetIcTo() string {
+	if x != nil {
+		return x.IcTo
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetPriceBf() int32 {
+	if x != nil && x.PriceBf != nil {
+		return *x.PriceBf
+	}
+	return 0
+}
+
+func (x *ETCMeisai) GetDiscount() int32 {
+	if x != nil && x.Discount != nil {
+		return *x.Discount
+	}
+	return 0
+}
+
+func (x *ETCMeisai) GetPrice() int32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *ETCMeisai) GetShashu() int32 {
+	if x != nil {
+		return x.Shashu
+	}
+	return 0
+}
+
+func (x *ETCMeisai) GetCarIdNum() int32 {
+	if x != nil && x.CarIdNum != nil {
+		return *x.CarIdNum
+	}
+	return 0
+}
+
+func (x *ETCMeisai) GetEtcNum() string {
+	if x != nil {
+		return x.EtcNum
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetDetail() string {
+	if x != nil && x.Detail != nil {
+		return *x.Detail
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetDtakoRowId() string {
+	if x != nil && x.DtakoRowId != nil {
+		return *x.DtakoRowId
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+func (x *ETCMeisai) GetCreatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return nil
+}
+
+func (x *ETCMeisai) GetUpdatedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return nil
+}
+
+type CreateETCMeisaiRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DateFr        *timestamppb.Timestamp `protobuf:"bytes,1,opt,name=date_fr,json=dateFr,proto3,oneof" json:"date_fr,omitempty"`
+	DateTo        *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=date_to,json=dateTo,proto3" json:"date_to,omitempty"`
+	DateToDate    string                 `protobuf:"bytes,3,opt,name=date_to_date,json=dateToDate,proto3" json:"date_to_date,omitempty"`
+	IcFr          string                 `protobuf:"bytes,4,opt,name=ic_fr,json=icFr,proto3" json:"ic_fr,omitempty"`
+	IcTo          string                 `protobuf:"bytes,5,opt,name=ic_to,json=icTo,proto3" json:"ic_to,omitempty"`
+	PriceBf       *int32                 `protobuf:"varint,6,opt,name=price_bf,json=priceBf,proto3,oneof" json:"price_bf,omitempty"`
+	Discount      *int32                 `protobuf:"varint,7,opt,name=discount,proto3,oneof" json:"discount,omitempty"`
+	Price         int32                  `protobuf:"varint,8,opt,name=price,proto3" json:"price,omitempty"`
+	Shashu        int32                  `protobuf:"varint,9,opt,name=shashu,proto3" json:"shashu,omitempty"`
+	CarIdNum      *int32                 `protobuf:"varint,10,opt,name=car_id_num,json=carIdNum,proto3,oneof" json:"car_id_num,omitempty"`
+	EtcNum        string                 `protobuf:"bytes,11,opt,name=etc_num,json=etcNum,proto3" json:"etc_num,omitempty"`
+	Detail        *string                `protobuf:"bytes,12,opt,name=detail,proto3,oneof" json:"detail,omitempty"`
+	DtakoRowId    *string                `protobuf:"bytes,13,opt,name=dtako_row_id,json=dtakoRowId,proto3,oneof" json:"dtako_row_id,omitempty"`
+	Hash          string                 `protobuf:"bytes,14,opt,name=hash,proto3" json:"hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateETCMeisaiRequest) Reset() {
+	*x = CreateETCMeisaiRequest{}
+	mi := &file_service_proto_msgTypes[375]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateETCMeisaiRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateETCMeisaiRequest) ProtoMessage() {}
+
+func (x *CreateETCMeisaiRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[375]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateETCMeisaiRequest.ProtoReflect.Descriptor instead.
+func (*CreateETCMeisaiRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{375}
+}
+
+func (x *CreateETCMeisaiRequest) GetDateFr() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DateFr
+	}
+	return nil
+}
+
+func (x *CreateETCMeisaiRequest) GetDateTo() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DateTo
+	}
+	return nil
+}
+
+func (x *CreateETCMeisaiRequest) GetDateToDate() string {
+	if x != nil {
+		return x.DateToDate
+	}
+	return ""
+}
+
+func (x *CreateETCMeisaiRequest) GetIcFr() string {
+	if x != nil {
+		return x.IcFr
+	}
+	return ""
+}
+
+func (x *CreateETCMeisaiRequest) GetIcTo() string {
+	if x != nil {
+		return x.IcTo
+	}
+	return ""
+}
+
+func (x *CreateETCMeisaiRequest) GetPriceBf() int32 {
+	if x != nil && x.PriceBf != nil {
+		return *x.PriceBf
+	}
+	return 0
+}
+
+func (x *CreateETCMeisaiRequest) GetDiscount() int32 {
+	if x != nil && x.Discount != nil {
+		return *x.Discount
+	}
+	return 0
+}
+
+func (x *CreateETCMeisaiRequest) GetPrice() int32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *CreateETCMeisaiRequest) GetShashu() int32 {
+	if x != nil {
+		return x.Shashu
+	}
+	return 0
+}
+
+func (x *CreateETCMeisaiRequest) GetCarIdNum() int32 {
+	if x != nil && x.CarIdNum != nil {
+		return *x.CarIdNum
+	}
+	return 0
+}
+
+func (x *CreateETCMeisaiRequest) GetEtcNum() string {
+	if x != nil {
+		return x.EtcNum
+	}
+	return ""
+}
+
+func (x *CreateETCMeisaiRequest) GetDetail() string {
+	if x != nil && x.Detail != nil {
+		return *x.Detail
+	}
+	return ""
+}
+
+func (x *CreateETCMeisaiRequest) GetDtakoRowId() string {
+	if x != nil && x.DtakoRowId != nil {
+		return *x.DtakoRowId
+	}
+	return ""
+}
+
+func (x *CreateETCMeisaiRequest) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+type CreateETCMeisaiResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EtcMeisai     *ETCMeisai             `protobuf:"bytes,1,opt,name=etc_meisai,json=etcMeisai,proto3" json:"etc_meisai,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateETCMeisaiResponse) Reset() {
+	*x = CreateETCMeisaiResponse{}
+	mi := &file_service_proto_msgTypes[376]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateETCMeisaiResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateETCMeisaiResponse) ProtoMessage() {}
+
+func (x *CreateETCMeisaiResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[376]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateETCMeisaiResponse.ProtoReflect.Descriptor instead.
+func (*CreateETCMeisaiResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{376}
+}
+
+func (x *CreateETCMeisaiResponse) GetEtcMeisai() *ETCMeisai {
+	if x != nil {
+		return x.EtcMeisai
+	}
+	return nil
+}
+
+type GetETCMeisaiRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetETCMeisaiRequest) Reset() {
+	*x = GetETCMeisaiRequest{}
+	mi := &file_service_proto_msgTypes[377]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetETCMeisaiRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetETCMeisaiRequest) ProtoMessage() {}
+
+func (x *GetETCMeisaiRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[377]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetETCMeisaiRequest.ProtoReflect.Descriptor instead.
+func (*GetETCMeisaiRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{377}
+}
+
+func (x *GetETCMeisaiRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type GetETCMeisaiResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EtcMeisai     *ETCMeisai             `protobuf:"bytes,1,opt,name=etc_meisai,json=etcMeisai,proto3" json:"etc_meisai,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetETCMeisaiResponse) Reset() {
+	*x = GetETCMeisaiResponse{}
+	mi := &file_service_proto_msgTypes[378]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetETCMeisaiResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetETCMeisaiResponse) ProtoMessage() {}
+
+func (x *GetETCMeisaiResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[378]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetETCMeisaiResponse.ProtoReflect.Descriptor instead.
+func (*GetETCMeisaiResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{378}
+}
+
+func (x *GetETCMeisaiResponse) GetEtcMeisai() *ETCMeisai {
+	if x != nil {
+		return x.EtcMeisai
+	}
+	return nil
+}
+
+type GetETCMeisaiByHashRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Hash          string                 `protobuf:"bytes,1,opt,name=hash,proto3" json:"hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetETCMeisaiByHashRequest) Reset() {
+	*x = GetETCMeisaiByHashRequest{}
+	mi := &file_service_proto_msgTypes[379]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetETCMeisaiByHashRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetETCMeisaiByHashRequest) ProtoMessage() {}
+
+func (x *GetETCMeisaiByHashRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[379]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetETCMeisaiByHashRequest.ProtoReflect.Descriptor instead.
+func (*GetETCMeisaiByHashRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{379}
+}
+
+func (x *GetETCMeisaiByHashRequest) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+type GetETCMeisaiByHashResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EtcMeisai     *ETCMeisai             `protobuf:"bytes,1,opt,name=etc_meisai,json=etcMeisai,proto3" json:"etc_meisai,omitempty"`
+	Exists        bool                   `protobuf:"varint,2,opt,name=exists,proto3" json:"exists,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetETCMeisaiByHashResponse) Reset() {
+	*x = GetETCMeisaiByHashResponse{}
+	mi := &file_service_proto_msgTypes[380]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetETCMeisaiByHashResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetETCMeisaiByHashResponse) ProtoMessage() {}
+
+func (x *GetETCMeisaiByHashResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[380]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetETCMeisaiByHashResponse.ProtoReflect.Descriptor instead.
+func (*GetETCMeisaiByHashResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{380}
+}
+
+func (x *GetETCMeisaiByHashResponse) GetEtcMeisai() *ETCMeisai {
+	if x != nil {
+		return x.EtcMeisai
+	}
+	return nil
+}
+
+func (x *GetETCMeisaiByHashResponse) GetExists() bool {
+	if x != nil {
+		return x.Exists
+	}
+	return false
+}
+
+type UpdateETCMeisaiRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	DateFr        *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=date_fr,json=dateFr,proto3,oneof" json:"date_fr,omitempty"`
+	DateTo        *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=date_to,json=dateTo,proto3" json:"date_to,omitempty"`
+	DateToDate    string                 `protobuf:"bytes,4,opt,name=date_to_date,json=dateToDate,proto3" json:"date_to_date,omitempty"`
+	IcFr          string                 `protobuf:"bytes,5,opt,name=ic_fr,json=icFr,proto3" json:"ic_fr,omitempty"`
+	IcTo          string                 `protobuf:"bytes,6,opt,name=ic_to,json=icTo,proto3" json:"ic_to,omitempty"`
+	PriceBf       *int32                 `protobuf:"varint,7,opt,name=price_bf,json=priceBf,proto3,oneof" json:"price_bf,omitempty"`
+	Discount      *int32                 `protobuf:"varint,8,opt,name=discount,proto3,oneof" json:"discount,omitempty"`
+	Price         int32                  `protobuf:"varint,9,opt,name=price,proto3" json:"price,omitempty"`
+	Shashu        int32                  `protobuf:"varint,10,opt,name=shashu,proto3" json:"shashu,omitempty"`
+	CarIdNum      *int32                 `protobuf:"varint,11,opt,name=car_id_num,json=carIdNum,proto3,oneof" json:"car_id_num,omitempty"`
+	EtcNum        string                 `protobuf:"bytes,12,opt,name=etc_num,json=etcNum,proto3" json:"etc_num,omitempty"`
+	Detail        *string                `protobuf:"bytes,13,opt,name=detail,proto3,oneof" json:"detail,omitempty"`
+	DtakoRowId    *string                `protobuf:"bytes,14,opt,name=dtako_row_id,json=dtakoRowId,proto3,oneof" json:"dtako_row_id,omitempty"`
+	Hash          string                 `protobuf:"bytes,15,opt,name=hash,proto3" json:"hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateETCMeisaiRequest) Reset() {
+	*x = UpdateETCMeisaiRequest{}
+	mi := &file_service_proto_msgTypes[381]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateETCMeisaiRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateETCMeisaiRequest) ProtoMessage() {}
+
+func (x *UpdateETCMeisaiRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[381]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateETCMeisaiRequest.ProtoReflect.Descriptor instead.
+func (*UpdateETCMeisaiRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{381}
+}
+
+func (x *UpdateETCMeisaiRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *UpdateETCMeisaiRequest) GetDateFr() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DateFr
+	}
+	return nil
+}
+
+func (x *UpdateETCMeisaiRequest) GetDateTo() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DateTo
+	}
+	return nil
+}
+
+func (x *UpdateETCMeisaiRequest) GetDateToDate() string {
+	if x != nil {
+		return x.DateToDate
+	}
+	return ""
+}
+
+func (x *UpdateETCMeisaiRequest) GetIcFr() string {
+	if x != nil {
+		return x.IcFr
+	}
+	return ""
+}
+
+func (x *UpdateETCMeisaiRequest) GetIcTo() string {
+	if x != nil {
+		return x.IcTo
+	}
+	return ""
+}
+
+func (x *UpdateETCMeisaiRequest) GetPriceBf() int32 {
+	if x != nil && x.PriceBf != nil {
+		return *x.PriceBf
+	}
+	return 0
+}
+
+func (x *UpdateETCMeisaiRequest) GetDiscount() int32 {
+	if x != nil && x.Discount != nil {
+		return *x.Discount
+	}
+	return 0
+}
+
+func (x *UpdateETCMeisaiRequest) GetPrice() int32 {
+	if x != nil {
+		return x.Price
+	}
+	return 0
+}
+
+func (x *UpdateETCMeisaiRequest) GetShashu() int32 {
+	if x != nil {
+		return x.Shashu
+	}
+	return 0
+}
+
+func (x *UpdateETCMeisaiRequest) GetCarIdNum() int32 {
+	if x != nil && x.CarIdNum != nil {
+		return *x.CarIdNum
+	}
+	return 0
+}
+
+func (x *UpdateETCMeisaiRequest) GetEtcNum() string {
+	if x != nil {
+		return x.EtcNum
+	}
+	return ""
+}
+
+func (x *UpdateETCMeisaiRequest) GetDetail() string {
+	if x != nil && x.Detail != nil {
+		return *x.Detail
+	}
+	return ""
+}
+
+func (x *UpdateETCMeisaiRequest) GetDtakoRowId() string {
+	if x != nil && x.DtakoRowId != nil {
+		return *x.DtakoRowId
+	}
+	return ""
+}
+
+func (x *UpdateETCMeisaiRequest) GetHash() string {
+	if x != nil {
+		return x.Hash
+	}
+	return ""
+}
+
+type UpdateETCMeisaiResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EtcMeisai     *ETCMeisai             `protobuf:"bytes,1,opt,name=etc_meisai,json=etcMeisai,proto3" json:"etc_meisai,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateETCMeisaiResponse) Reset() {
+	*x = UpdateETCMeisaiResponse{}
+	mi := &file_service_proto_msgTypes[382]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateETCMeisaiResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateETCMeisaiResponse) ProtoMessage() {}
+
+func (x *UpdateETCMeisaiResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[382]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateETCMeisaiResponse.ProtoReflect.Descriptor instead.
+func (*UpdateETCMeisaiResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{382}
+}
+
+func (x *UpdateETCMeisaiResponse) GetEtcMeisai() *ETCMeisai {
+	if x != nil {
+		return x.EtcMeisai
+	}
+	return nil
+}
+
+type DeleteETCMeisaiRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteETCMeisaiRequest) Reset() {
+	*x = DeleteETCMeisaiRequest{}
+	mi := &file_service_proto_msgTypes[383]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteETCMeisaiRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteETCMeisaiRequest) ProtoMessage() {}
+
+func (x *DeleteETCMeisaiRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[383]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteETCMeisaiRequest.ProtoReflect.Descriptor instead.
+func (*DeleteETCMeisaiRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{383}
+}
+
+func (x *DeleteETCMeisaiRequest) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+type DeleteETCMeisaiResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteETCMeisaiResponse) Reset() {
+	*x = DeleteETCMeisaiResponse{}
+	mi := &file_service_proto_msgTypes[384]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteETCMeisaiResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteETCMeisaiResponse) ProtoMessage() {}
+
+func (x *DeleteETCMeisaiResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[384]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteETCMeisaiResponse.ProtoReflect.Descriptor instead.
+func (*DeleteETCMeisaiResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{384}
+}
+
+func (x *DeleteETCMeisaiResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type ListETCMeisaiRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	DateFrom      *string                `protobuf:"bytes,3,opt,name=date_from,json=dateFrom,proto3,oneof" json:"date_from,omitempty"` // YYYY-MM-DD filter
+	DateTo        *string                `protobuf:"bytes,4,opt,name=date_to,json=dateTo,proto3,oneof" json:"date_to,omitempty"`       // YYYY-MM-DD filter
+	EtcNum        *string                `protobuf:"bytes,5,opt,name=etc_num,json=etcNum,proto3,oneof" json:"etc_num,omitempty"`       // ETCカード番号filter
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListETCMeisaiRequest) Reset() {
+	*x = ListETCMeisaiRequest{}
+	mi := &file_service_proto_msgTypes[385]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListETCMeisaiRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListETCMeisaiRequest) ProtoMessage() {}
+
+func (x *ListETCMeisaiRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[385]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListETCMeisaiRequest.ProtoReflect.Descriptor instead.
+func (*ListETCMeisaiRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{385}
+}
+
+func (x *ListETCMeisaiRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListETCMeisaiRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
+func (x *ListETCMeisaiRequest) GetDateFrom() string {
+	if x != nil && x.DateFrom != nil {
+		return *x.DateFrom
+	}
+	return ""
+}
+
+func (x *ListETCMeisaiRequest) GetDateTo() string {
+	if x != nil && x.DateTo != nil {
+		return *x.DateTo
+	}
+	return ""
+}
+
+func (x *ListETCMeisaiRequest) GetEtcNum() string {
+	if x != nil && x.EtcNum != nil {
+		return *x.EtcNum
+	}
+	return ""
+}
+
+type ListETCMeisaiResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	EtcMeisaiList []*ETCMeisai           `protobuf:"bytes,1,rep,name=etc_meisai_list,json=etcMeisaiList,proto3" json:"etc_meisai_list,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	TotalCount    int32                  `protobuf:"varint,3,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListETCMeisaiResponse) Reset() {
+	*x = ListETCMeisaiResponse{}
+	mi := &file_service_proto_msgTypes[386]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListETCMeisaiResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListETCMeisaiResponse) ProtoMessage() {}
+
+func (x *ListETCMeisaiResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[386]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListETCMeisaiResponse.ProtoReflect.Descriptor instead.
+func (*ListETCMeisaiResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{386}
+}
+
+func (x *ListETCMeisaiResponse) GetEtcMeisaiList() []*ETCMeisai {
+	if x != nil {
+		return x.EtcMeisaiList
+	}
+	return nil
+}
+
+func (x *ListETCMeisaiResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
+func (x *ListETCMeisaiResponse) GetTotalCount() int32 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
+// Bulk import support
+type BulkCreateETCMeisaiRequest struct {
+	state          protoimpl.MessageState    `protogen:"open.v1"`
+	Records        []*CreateETCMeisaiRequest `protobuf:"bytes,1,rep,name=records,proto3" json:"records,omitempty"`
+	SkipDuplicates bool                      `protobuf:"varint,2,opt,name=skip_duplicates,json=skipDuplicates,proto3" json:"skip_duplicates,omitempty"` // Skip if hash already exists
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *BulkCreateETCMeisaiRequest) Reset() {
+	*x = BulkCreateETCMeisaiRequest{}
+	mi := &file_service_proto_msgTypes[387]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BulkCreateETCMeisaiRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkCreateETCMeisaiRequest) ProtoMessage() {}
+
+func (x *BulkCreateETCMeisaiRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[387]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkCreateETCMeisaiRequest.ProtoReflect.Descriptor instead.
+func (*BulkCreateETCMeisaiRequest) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{387}
+}
+
+func (x *BulkCreateETCMeisaiRequest) GetRecords() []*CreateETCMeisaiRequest {
+	if x != nil {
+		return x.Records
+	}
+	return nil
+}
+
+func (x *BulkCreateETCMeisaiRequest) GetSkipDuplicates() bool {
+	if x != nil {
+		return x.SkipDuplicates
+	}
+	return false
+}
+
+type BulkCreateETCMeisaiResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CreatedCount  int32                  `protobuf:"varint,1,opt,name=created_count,json=createdCount,proto3" json:"created_count,omitempty"`
+	SkippedCount  int32                  `protobuf:"varint,2,opt,name=skipped_count,json=skippedCount,proto3" json:"skipped_count,omitempty"`
+	Errors        []string               `protobuf:"bytes,3,rep,name=errors,proto3" json:"errors,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BulkCreateETCMeisaiResponse) Reset() {
+	*x = BulkCreateETCMeisaiResponse{}
+	mi := &file_service_proto_msgTypes[388]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BulkCreateETCMeisaiResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BulkCreateETCMeisaiResponse) ProtoMessage() {}
+
+func (x *BulkCreateETCMeisaiResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_service_proto_msgTypes[388]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BulkCreateETCMeisaiResponse.ProtoReflect.Descriptor instead.
+func (*BulkCreateETCMeisaiResponse) Descriptor() ([]byte, []int) {
+	return file_service_proto_rawDescGZIP(), []int{388}
+}
+
+func (x *BulkCreateETCMeisaiResponse) GetCreatedCount() int32 {
+	if x != nil {
+		return x.CreatedCount
+	}
+	return 0
+}
+
+func (x *BulkCreateETCMeisaiResponse) GetSkippedCount() int32 {
+	if x != nil {
+		return x.SkippedCount
+	}
+	return 0
+}
+
+func (x *BulkCreateETCMeisaiResponse) GetErrors() []string {
+	if x != nil {
+		return x.Errors
+	}
+	return nil
+}
+
 var File_service_proto protoreflect.FileDescriptor
 
 const file_service_proto_rawDesc = "" +
@@ -30488,10 +31573,9 @@ const file_service_proto_rawDesc = "" +
 	"updated_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12>\n" +
 	"\n" +
 	"deleted_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampH\x00R\tdeletedAt\x88\x01\x01B\r\n" +
-	"\v_deleted_at\"C\n" +
+	"\v_deleted_at\"/\n" +
 	"\x19CreateOrganizationRequest\x12\x12\n" +
-	"\x04name\x18\x01 \x01(\tR\x04name\x12\x12\n" +
-	"\x04slug\x18\x02 \x01(\tR\x04slug\"\\\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\"\\\n" +
 	"\x1aCreateOrganizationResponse\x12>\n" +
 	"\forganization\x18\x01 \x01(\v2\x1a.organization.OrganizationR\forganization\"(\n" +
 	"\x16GetOrganizationRequest\x12\x0e\n" +
@@ -34317,7 +35401,138 @@ const file_service_proto_rawDesc = "" +
 	"invitation\x18\x01 \x01(\v2\x18.organization.InvitationR\n" +
 	"invitation\x12\x1d\n" +
 	"\n" +
-	"invite_url\x18\x02 \x01(\tR\tinviteUrl2\x96\x04\n" +
+	"invite_url\x18\x02 \x01(\tR\tinviteUrl\"\xc9\x05\n" +
+	"\tETCMeisai\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12'\n" +
+	"\x0forganization_id\x18\x02 \x01(\tR\x0eorganizationId\x128\n" +
+	"\adate_fr\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x00R\x06dateFr\x88\x01\x01\x123\n" +
+	"\adate_to\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\x06dateTo\x12 \n" +
+	"\fdate_to_date\x18\x05 \x01(\tR\n" +
+	"dateToDate\x12\x13\n" +
+	"\x05ic_fr\x18\x06 \x01(\tR\x04icFr\x12\x13\n" +
+	"\x05ic_to\x18\a \x01(\tR\x04icTo\x12\x1e\n" +
+	"\bprice_bf\x18\b \x01(\x05H\x01R\apriceBf\x88\x01\x01\x12\x1f\n" +
+	"\bdiscount\x18\t \x01(\x05H\x02R\bdiscount\x88\x01\x01\x12\x14\n" +
+	"\x05price\x18\n" +
+	" \x01(\x05R\x05price\x12\x16\n" +
+	"\x06shashu\x18\v \x01(\x05R\x06shashu\x12!\n" +
+	"\n" +
+	"car_id_num\x18\f \x01(\x05H\x03R\bcarIdNum\x88\x01\x01\x12\x17\n" +
+	"\aetc_num\x18\r \x01(\tR\x06etcNum\x12\x1b\n" +
+	"\x06detail\x18\x0e \x01(\tH\x04R\x06detail\x88\x01\x01\x12%\n" +
+	"\fdtako_row_id\x18\x0f \x01(\tH\x05R\n" +
+	"dtakoRowId\x88\x01\x01\x12\x12\n" +
+	"\x04hash\x18\x10 \x01(\tR\x04hash\x129\n" +
+	"\n" +
+	"created_at\x18\x11 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"\n" +
+	"updated_at\x18\x12 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAtB\n" +
+	"\n" +
+	"\b_date_frB\v\n" +
+	"\t_price_bfB\v\n" +
+	"\t_discountB\r\n" +
+	"\v_car_id_numB\t\n" +
+	"\a_detailB\x0f\n" +
+	"\r_dtako_row_id\"\xa7\x04\n" +
+	"\x16CreateETCMeisaiRequest\x128\n" +
+	"\adate_fr\x18\x01 \x01(\v2\x1a.google.protobuf.TimestampH\x00R\x06dateFr\x88\x01\x01\x123\n" +
+	"\adate_to\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\x06dateTo\x12 \n" +
+	"\fdate_to_date\x18\x03 \x01(\tR\n" +
+	"dateToDate\x12\x13\n" +
+	"\x05ic_fr\x18\x04 \x01(\tR\x04icFr\x12\x13\n" +
+	"\x05ic_to\x18\x05 \x01(\tR\x04icTo\x12\x1e\n" +
+	"\bprice_bf\x18\x06 \x01(\x05H\x01R\apriceBf\x88\x01\x01\x12\x1f\n" +
+	"\bdiscount\x18\a \x01(\x05H\x02R\bdiscount\x88\x01\x01\x12\x14\n" +
+	"\x05price\x18\b \x01(\x05R\x05price\x12\x16\n" +
+	"\x06shashu\x18\t \x01(\x05R\x06shashu\x12!\n" +
+	"\n" +
+	"car_id_num\x18\n" +
+	" \x01(\x05H\x03R\bcarIdNum\x88\x01\x01\x12\x17\n" +
+	"\aetc_num\x18\v \x01(\tR\x06etcNum\x12\x1b\n" +
+	"\x06detail\x18\f \x01(\tH\x04R\x06detail\x88\x01\x01\x12%\n" +
+	"\fdtako_row_id\x18\r \x01(\tH\x05R\n" +
+	"dtakoRowId\x88\x01\x01\x12\x12\n" +
+	"\x04hash\x18\x0e \x01(\tR\x04hashB\n" +
+	"\n" +
+	"\b_date_frB\v\n" +
+	"\t_price_bfB\v\n" +
+	"\t_discountB\r\n" +
+	"\v_car_id_numB\t\n" +
+	"\a_detailB\x0f\n" +
+	"\r_dtako_row_id\"Q\n" +
+	"\x17CreateETCMeisaiResponse\x126\n" +
+	"\n" +
+	"etc_meisai\x18\x01 \x01(\v2\x17.organization.ETCMeisaiR\tetcMeisai\"%\n" +
+	"\x13GetETCMeisaiRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"N\n" +
+	"\x14GetETCMeisaiResponse\x126\n" +
+	"\n" +
+	"etc_meisai\x18\x01 \x01(\v2\x17.organization.ETCMeisaiR\tetcMeisai\"/\n" +
+	"\x19GetETCMeisaiByHashRequest\x12\x12\n" +
+	"\x04hash\x18\x01 \x01(\tR\x04hash\"l\n" +
+	"\x1aGetETCMeisaiByHashResponse\x126\n" +
+	"\n" +
+	"etc_meisai\x18\x01 \x01(\v2\x17.organization.ETCMeisaiR\tetcMeisai\x12\x16\n" +
+	"\x06exists\x18\x02 \x01(\bR\x06exists\"\xb7\x04\n" +
+	"\x16UpdateETCMeisaiRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x128\n" +
+	"\adate_fr\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampH\x00R\x06dateFr\x88\x01\x01\x123\n" +
+	"\adate_to\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\x06dateTo\x12 \n" +
+	"\fdate_to_date\x18\x04 \x01(\tR\n" +
+	"dateToDate\x12\x13\n" +
+	"\x05ic_fr\x18\x05 \x01(\tR\x04icFr\x12\x13\n" +
+	"\x05ic_to\x18\x06 \x01(\tR\x04icTo\x12\x1e\n" +
+	"\bprice_bf\x18\a \x01(\x05H\x01R\apriceBf\x88\x01\x01\x12\x1f\n" +
+	"\bdiscount\x18\b \x01(\x05H\x02R\bdiscount\x88\x01\x01\x12\x14\n" +
+	"\x05price\x18\t \x01(\x05R\x05price\x12\x16\n" +
+	"\x06shashu\x18\n" +
+	" \x01(\x05R\x06shashu\x12!\n" +
+	"\n" +
+	"car_id_num\x18\v \x01(\x05H\x03R\bcarIdNum\x88\x01\x01\x12\x17\n" +
+	"\aetc_num\x18\f \x01(\tR\x06etcNum\x12\x1b\n" +
+	"\x06detail\x18\r \x01(\tH\x04R\x06detail\x88\x01\x01\x12%\n" +
+	"\fdtako_row_id\x18\x0e \x01(\tH\x05R\n" +
+	"dtakoRowId\x88\x01\x01\x12\x12\n" +
+	"\x04hash\x18\x0f \x01(\tR\x04hashB\n" +
+	"\n" +
+	"\b_date_frB\v\n" +
+	"\t_price_bfB\v\n" +
+	"\t_discountB\r\n" +
+	"\v_car_id_numB\t\n" +
+	"\a_detailB\x0f\n" +
+	"\r_dtako_row_id\"Q\n" +
+	"\x17UpdateETCMeisaiResponse\x126\n" +
+	"\n" +
+	"etc_meisai\x18\x01 \x01(\v2\x17.organization.ETCMeisaiR\tetcMeisai\"(\n" +
+	"\x16DeleteETCMeisaiRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\"3\n" +
+	"\x17DeleteETCMeisaiResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\xd6\x01\n" +
+	"\x14ListETCMeisaiRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\x12 \n" +
+	"\tdate_from\x18\x03 \x01(\tH\x00R\bdateFrom\x88\x01\x01\x12\x1c\n" +
+	"\adate_to\x18\x04 \x01(\tH\x01R\x06dateTo\x88\x01\x01\x12\x1c\n" +
+	"\aetc_num\x18\x05 \x01(\tH\x02R\x06etcNum\x88\x01\x01B\f\n" +
+	"\n" +
+	"_date_fromB\n" +
+	"\n" +
+	"\b_date_toB\n" +
+	"\n" +
+	"\b_etc_num\"\xa1\x01\n" +
+	"\x15ListETCMeisaiResponse\x12?\n" +
+	"\x0fetc_meisai_list\x18\x01 \x03(\v2\x17.organization.ETCMeisaiR\retcMeisaiList\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\x12\x1f\n" +
+	"\vtotal_count\x18\x03 \x01(\x05R\n" +
+	"totalCount\"\x85\x01\n" +
+	"\x1aBulkCreateETCMeisaiRequest\x12>\n" +
+	"\arecords\x18\x01 \x03(\v2$.organization.CreateETCMeisaiRequestR\arecords\x12'\n" +
+	"\x0fskip_duplicates\x18\x02 \x01(\bR\x0eskipDuplicates\"\x7f\n" +
+	"\x1bBulkCreateETCMeisaiResponse\x12#\n" +
+	"\rcreated_count\x18\x01 \x01(\x05R\fcreatedCount\x12#\n" +
+	"\rskipped_count\x18\x02 \x01(\x05R\fskippedCount\x12\x16\n" +
+	"\x06errors\x18\x03 \x03(\tR\x06errors2\x96\x04\n" +
 	"\x13OrganizationService\x12g\n" +
 	"\x12CreateOrganization\x12'.organization.CreateOrganizationRequest\x1a(.organization.CreateOrganizationResponse\x12^\n" +
 	"\x0fGetOrganization\x12$.organization.GetOrganizationRequest\x1a%.organization.GetOrganizationResponse\x12g\n" +
@@ -34532,7 +35747,15 @@ const file_service_proto_rawDesc = "" +
 	"\x10AcceptInvitation\x12%.organization.AcceptInvitationRequest\x1a&.organization.AcceptInvitationResponse\x12a\n" +
 	"\x10CancelInvitation\x12%.organization.CancelInvitationRequest\x1a&.organization.CancelInvitationResponse\x12^\n" +
 	"\x0fListInvitations\x12$.organization.ListInvitationsRequest\x1a%.organization.ListInvitationsResponse\x12a\n" +
-	"\x10ResendInvitation\x12%.organization.ResendInvitationRequest\x1a&.organization.ResendInvitationResponseB\xa7\x01\n" +
+	"\x10ResendInvitation\x12%.organization.ResendInvitationRequest\x1a&.organization.ResendInvitationResponse2\xb8\x05\n" +
+	"\x10ETCMeisaiService\x12^\n" +
+	"\x0fCreateETCMeisai\x12$.organization.CreateETCMeisaiRequest\x1a%.organization.CreateETCMeisaiResponse\x12U\n" +
+	"\fGetETCMeisai\x12!.organization.GetETCMeisaiRequest\x1a\".organization.GetETCMeisaiResponse\x12g\n" +
+	"\x12GetETCMeisaiByHash\x12'.organization.GetETCMeisaiByHashRequest\x1a(.organization.GetETCMeisaiByHashResponse\x12^\n" +
+	"\x0fUpdateETCMeisai\x12$.organization.UpdateETCMeisaiRequest\x1a%.organization.UpdateETCMeisaiResponse\x12^\n" +
+	"\x0fDeleteETCMeisai\x12$.organization.DeleteETCMeisaiRequest\x1a%.organization.DeleteETCMeisaiResponse\x12X\n" +
+	"\rListETCMeisai\x12\".organization.ListETCMeisaiRequest\x1a#.organization.ListETCMeisaiResponse\x12j\n" +
+	"\x13BulkCreateETCMeisai\x12(.organization.BulkCreateETCMeisaiRequest\x1a).organization.BulkCreateETCMeisaiResponseB\xa7\x01\n" +
 	"\x10com.organizationB\fServiceProtoP\x01Z5github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/pb\xa2\x02\x03OXX\xaa\x02\fOrganization\xca\x02\fOrganization\xe2\x02\x18Organization\\GPBMetadata\xea\x02\fOrganizationb\x06proto3"
 
 var (
@@ -34547,7 +35770,7 @@ func file_service_proto_rawDescGZIP() []byte {
 	return file_service_proto_rawDescData
 }
 
-var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 374)
+var file_service_proto_msgTypes = make([]protoimpl.MessageInfo, 389)
 var file_service_proto_goTypes = []any{
 	(*Organization)(nil),                        // 0: organization.Organization
 	(*CreateOrganizationRequest)(nil),           // 1: organization.CreateOrganizationRequest
@@ -34923,26 +36146,41 @@ var file_service_proto_goTypes = []any{
 	(*ListInvitationsResponse)(nil),                                     // 371: organization.ListInvitationsResponse
 	(*ResendInvitationRequest)(nil),                                     // 372: organization.ResendInvitationRequest
 	(*ResendInvitationResponse)(nil),                                    // 373: organization.ResendInvitationResponse
-	(*timestamppb.Timestamp)(nil),                                       // 374: google.protobuf.Timestamp
+	(*ETCMeisai)(nil),                                                   // 374: organization.ETCMeisai
+	(*CreateETCMeisaiRequest)(nil),                                      // 375: organization.CreateETCMeisaiRequest
+	(*CreateETCMeisaiResponse)(nil),                                     // 376: organization.CreateETCMeisaiResponse
+	(*GetETCMeisaiRequest)(nil),                                         // 377: organization.GetETCMeisaiRequest
+	(*GetETCMeisaiResponse)(nil),                                        // 378: organization.GetETCMeisaiResponse
+	(*GetETCMeisaiByHashRequest)(nil),                                   // 379: organization.GetETCMeisaiByHashRequest
+	(*GetETCMeisaiByHashResponse)(nil),                                  // 380: organization.GetETCMeisaiByHashResponse
+	(*UpdateETCMeisaiRequest)(nil),                                      // 381: organization.UpdateETCMeisaiRequest
+	(*UpdateETCMeisaiResponse)(nil),                                     // 382: organization.UpdateETCMeisaiResponse
+	(*DeleteETCMeisaiRequest)(nil),                                      // 383: organization.DeleteETCMeisaiRequest
+	(*DeleteETCMeisaiResponse)(nil),                                     // 384: organization.DeleteETCMeisaiResponse
+	(*ListETCMeisaiRequest)(nil),                                        // 385: organization.ListETCMeisaiRequest
+	(*ListETCMeisaiResponse)(nil),                                       // 386: organization.ListETCMeisaiResponse
+	(*BulkCreateETCMeisaiRequest)(nil),                                  // 387: organization.BulkCreateETCMeisaiRequest
+	(*BulkCreateETCMeisaiResponse)(nil),                                 // 388: organization.BulkCreateETCMeisaiResponse
+	(*timestamppb.Timestamp)(nil),                                       // 389: google.protobuf.Timestamp
 }
 var file_service_proto_depIdxs = []int32{
-	374, // 0: organization.Organization.created_at:type_name -> google.protobuf.Timestamp
-	374, // 1: organization.Organization.updated_at:type_name -> google.protobuf.Timestamp
-	374, // 2: organization.Organization.deleted_at:type_name -> google.protobuf.Timestamp
+	389, // 0: organization.Organization.created_at:type_name -> google.protobuf.Timestamp
+	389, // 1: organization.Organization.updated_at:type_name -> google.protobuf.Timestamp
+	389, // 2: organization.Organization.deleted_at:type_name -> google.protobuf.Timestamp
 	0,   // 3: organization.CreateOrganizationResponse.organization:type_name -> organization.Organization
 	0,   // 4: organization.GetOrganizationResponse.organization:type_name -> organization.Organization
 	0,   // 5: organization.UpdateOrganizationResponse.organization:type_name -> organization.Organization
 	0,   // 6: organization.ListOrganizationsResponse.organizations:type_name -> organization.Organization
-	374, // 7: organization.AppUser.created_at:type_name -> google.protobuf.Timestamp
-	374, // 8: organization.AppUser.updated_at:type_name -> google.protobuf.Timestamp
-	374, // 9: organization.AppUser.deleted_at:type_name -> google.protobuf.Timestamp
+	389, // 7: organization.AppUser.created_at:type_name -> google.protobuf.Timestamp
+	389, // 8: organization.AppUser.updated_at:type_name -> google.protobuf.Timestamp
+	389, // 9: organization.AppUser.deleted_at:type_name -> google.protobuf.Timestamp
 	11,  // 10: organization.CreateAppUserResponse.app_user:type_name -> organization.AppUser
 	11,  // 11: organization.GetAppUserResponse.app_user:type_name -> organization.AppUser
 	11,  // 12: organization.GetAppUserByEmailResponse.app_user:type_name -> organization.AppUser
 	11,  // 13: organization.UpdateAppUserResponse.app_user:type_name -> organization.AppUser
 	11,  // 14: organization.ListAppUsersResponse.app_users:type_name -> organization.AppUser
-	374, // 15: organization.UserOrganization.created_at:type_name -> google.protobuf.Timestamp
-	374, // 16: organization.UserOrganization.updated_at:type_name -> google.protobuf.Timestamp
+	389, // 15: organization.UserOrganization.created_at:type_name -> google.protobuf.Timestamp
+	389, // 16: organization.UserOrganization.updated_at:type_name -> google.protobuf.Timestamp
 	24,  // 17: organization.CreateUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
 	24,  // 18: organization.GetUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
 	24,  // 19: organization.UpdateUserOrganizationResponse.user_organization:type_name -> organization.UserOrganization
@@ -35071,10 +36309,10 @@ var file_service_proto_depIdxs = []int32{
 	338, // 142: organization.ListDtakologsByOrganizationResponse.dtakologs:type_name -> organization.Dtakologs
 	11,  // 143: organization.AuthResponse.user:type_name -> organization.AppUser
 	11,  // 144: organization.ValidateTokenResponse.user:type_name -> organization.AppUser
-	374, // 145: organization.Invitation.expires_at:type_name -> google.protobuf.Timestamp
-	374, // 146: organization.Invitation.accepted_at:type_name -> google.protobuf.Timestamp
-	374, // 147: organization.Invitation.created_at:type_name -> google.protobuf.Timestamp
-	374, // 148: organization.Invitation.updated_at:type_name -> google.protobuf.Timestamp
+	389, // 145: organization.Invitation.expires_at:type_name -> google.protobuf.Timestamp
+	389, // 146: organization.Invitation.accepted_at:type_name -> google.protobuf.Timestamp
+	389, // 147: organization.Invitation.created_at:type_name -> google.protobuf.Timestamp
+	389, // 148: organization.Invitation.updated_at:type_name -> google.protobuf.Timestamp
 	359, // 149: organization.CreateInvitationResponse.invitation:type_name -> organization.Invitation
 	359, // 150: organization.GetInvitationResponse.invitation:type_name -> organization.Invitation
 	359, // 151: organization.GetInvitationByTokenResponse.invitation:type_name -> organization.Invitation
@@ -35082,359 +36320,387 @@ var file_service_proto_depIdxs = []int32{
 	24,  // 153: organization.AcceptInvitationResponse.user_organization:type_name -> organization.UserOrganization
 	359, // 154: organization.ListInvitationsResponse.invitations:type_name -> organization.Invitation
 	359, // 155: organization.ResendInvitationResponse.invitation:type_name -> organization.Invitation
-	1,   // 156: organization.OrganizationService.CreateOrganization:input_type -> organization.CreateOrganizationRequest
-	3,   // 157: organization.OrganizationService.GetOrganization:input_type -> organization.GetOrganizationRequest
-	5,   // 158: organization.OrganizationService.UpdateOrganization:input_type -> organization.UpdateOrganizationRequest
-	7,   // 159: organization.OrganizationService.DeleteOrganization:input_type -> organization.DeleteOrganizationRequest
-	9,   // 160: organization.OrganizationService.ListOrganizations:input_type -> organization.ListOrganizationsRequest
-	12,  // 161: organization.AppUserService.CreateAppUser:input_type -> organization.CreateAppUserRequest
-	14,  // 162: organization.AppUserService.GetAppUser:input_type -> organization.GetAppUserRequest
-	16,  // 163: organization.AppUserService.GetAppUserByEmail:input_type -> organization.GetAppUserByEmailRequest
-	18,  // 164: organization.AppUserService.UpdateAppUser:input_type -> organization.UpdateAppUserRequest
-	20,  // 165: organization.AppUserService.DeleteAppUser:input_type -> organization.DeleteAppUserRequest
-	22,  // 166: organization.AppUserService.ListAppUsers:input_type -> organization.ListAppUsersRequest
-	25,  // 167: organization.UserOrganizationService.CreateUserOrganization:input_type -> organization.CreateUserOrganizationRequest
-	27,  // 168: organization.UserOrganizationService.GetUserOrganization:input_type -> organization.GetUserOrganizationRequest
-	29,  // 169: organization.UserOrganizationService.UpdateUserOrganization:input_type -> organization.UpdateUserOrganizationRequest
-	31,  // 170: organization.UserOrganizationService.DeleteUserOrganization:input_type -> organization.DeleteUserOrganizationRequest
-	33,  // 171: organization.UserOrganizationService.ListUserOrganizations:input_type -> organization.ListUserOrganizationsRequest
-	35,  // 172: organization.UserOrganizationService.ListUserOrganizationsByUser:input_type -> organization.ListUserOrganizationsByUserRequest
-	37,  // 173: organization.UserOrganizationService.ListUserOrganizationsByOrg:input_type -> organization.ListUserOrganizationsByOrgRequest
-	40,  // 174: organization.FileService.CreateFile:input_type -> organization.CreateFileRequest
-	42,  // 175: organization.FileService.GetFile:input_type -> organization.GetFileRequest
-	44,  // 176: organization.FileService.UpdateFile:input_type -> organization.UpdateFileRequest
-	46,  // 177: organization.FileService.DeleteFile:input_type -> organization.DeleteFileRequest
-	48,  // 178: organization.FileService.ListFiles:input_type -> organization.ListFilesRequest
-	50,  // 179: organization.FileService.ListFilesByOrganization:input_type -> organization.ListFilesByOrganizationRequest
-	53,  // 180: organization.FlickrPhotoService.CreateFlickrPhoto:input_type -> organization.CreateFlickrPhotoRequest
-	55,  // 181: organization.FlickrPhotoService.GetFlickrPhoto:input_type -> organization.GetFlickrPhotoRequest
-	57,  // 182: organization.FlickrPhotoService.UpdateFlickrPhoto:input_type -> organization.UpdateFlickrPhotoRequest
-	59,  // 183: organization.FlickrPhotoService.DeleteFlickrPhoto:input_type -> organization.DeleteFlickrPhotoRequest
-	61,  // 184: organization.FlickrPhotoService.ListFlickrPhotos:input_type -> organization.ListFlickrPhotosRequest
-	63,  // 185: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:input_type -> organization.ListFlickrPhotosByOrganizationRequest
-	66,  // 186: organization.CamFileService.CreateCamFile:input_type -> organization.CreateCamFileRequest
-	68,  // 187: organization.CamFileService.GetCamFile:input_type -> organization.GetCamFileRequest
-	70,  // 188: organization.CamFileService.UpdateCamFile:input_type -> organization.UpdateCamFileRequest
-	72,  // 189: organization.CamFileService.DeleteCamFile:input_type -> organization.DeleteCamFileRequest
-	74,  // 190: organization.CamFileService.ListCamFiles:input_type -> organization.ListCamFilesRequest
-	76,  // 191: organization.CamFileService.ListCamFilesByOrganization:input_type -> organization.ListCamFilesByOrganizationRequest
-	79,  // 192: organization.CamFileExeService.CreateCamFileExe:input_type -> organization.CreateCamFileExeRequest
-	81,  // 193: organization.CamFileExeService.GetCamFileExe:input_type -> organization.GetCamFileExeRequest
-	83,  // 194: organization.CamFileExeService.UpdateCamFileExe:input_type -> organization.UpdateCamFileExeRequest
-	85,  // 195: organization.CamFileExeService.DeleteCamFileExe:input_type -> organization.DeleteCamFileExeRequest
-	87,  // 196: organization.CamFileExeService.ListCamFileExes:input_type -> organization.ListCamFileExesRequest
-	89,  // 197: organization.CamFileExeService.ListCamFileExesByOrganization:input_type -> organization.ListCamFileExesByOrganizationRequest
-	92,  // 198: organization.CamFileExeStageService.CreateCamFileExeStage:input_type -> organization.CreateCamFileExeStageRequest
-	94,  // 199: organization.CamFileExeStageService.GetCamFileExeStage:input_type -> organization.GetCamFileExeStageRequest
-	96,  // 200: organization.CamFileExeStageService.UpdateCamFileExeStage:input_type -> organization.UpdateCamFileExeStageRequest
-	98,  // 201: organization.CamFileExeStageService.DeleteCamFileExeStage:input_type -> organization.DeleteCamFileExeStageRequest
-	100, // 202: organization.CamFileExeStageService.ListCamFileExeStages:input_type -> organization.ListCamFileExeStagesRequest
-	102, // 203: organization.CamFileExeStageService.ListCamFileExeStagesByOrganization:input_type -> organization.ListCamFileExeStagesByOrganizationRequest
-	105, // 204: organization.IchibanCarService.CreateIchibanCar:input_type -> organization.CreateIchibanCarRequest
-	107, // 205: organization.IchibanCarService.GetIchibanCar:input_type -> organization.GetIchibanCarRequest
-	109, // 206: organization.IchibanCarService.UpdateIchibanCar:input_type -> organization.UpdateIchibanCarRequest
-	111, // 207: organization.IchibanCarService.DeleteIchibanCar:input_type -> organization.DeleteIchibanCarRequest
-	113, // 208: organization.IchibanCarService.ListIchibanCars:input_type -> organization.ListIchibanCarsRequest
-	115, // 209: organization.IchibanCarService.ListIchibanCarsByOrganization:input_type -> organization.ListIchibanCarsByOrganizationRequest
-	118, // 210: organization.DtakoCarsIchibanCarsService.CreateDtakoCarsIchibanCars:input_type -> organization.CreateDtakoCarsIchibanCarsRequest
-	120, // 211: organization.DtakoCarsIchibanCarsService.GetDtakoCarsIchibanCars:input_type -> organization.GetDtakoCarsIchibanCarsRequest
-	122, // 212: organization.DtakoCarsIchibanCarsService.UpdateDtakoCarsIchibanCars:input_type -> organization.UpdateDtakoCarsIchibanCarsRequest
-	124, // 213: organization.DtakoCarsIchibanCarsService.DeleteDtakoCarsIchibanCars:input_type -> organization.DeleteDtakoCarsIchibanCarsRequest
-	126, // 214: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCars:input_type -> organization.ListDtakoCarsIchibanCarsRequest
-	128, // 215: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCarsByOrganization:input_type -> organization.ListDtakoCarsIchibanCarsByOrganizationRequest
-	131, // 216: organization.UriageService.CreateUriage:input_type -> organization.CreateUriageRequest
-	133, // 217: organization.UriageService.GetUriage:input_type -> organization.GetUriageRequest
-	135, // 218: organization.UriageService.UpdateUriage:input_type -> organization.UpdateUriageRequest
-	137, // 219: organization.UriageService.DeleteUriage:input_type -> organization.DeleteUriageRequest
-	139, // 220: organization.UriageService.ListUriages:input_type -> organization.ListUriagesRequest
-	141, // 221: organization.UriageService.ListUriagesByOrganization:input_type -> organization.ListUriagesByOrganizationRequest
-	144, // 222: organization.UriageJishaService.CreateUriageJisha:input_type -> organization.CreateUriageJishaRequest
-	146, // 223: organization.UriageJishaService.GetUriageJisha:input_type -> organization.GetUriageJishaRequest
-	148, // 224: organization.UriageJishaService.UpdateUriageJisha:input_type -> organization.UpdateUriageJishaRequest
-	150, // 225: organization.UriageJishaService.DeleteUriageJisha:input_type -> organization.DeleteUriageJishaRequest
-	152, // 226: organization.UriageJishaService.ListUriageJishas:input_type -> organization.ListUriageJishasRequest
-	154, // 227: organization.UriageJishaService.ListUriageJishasByOrganization:input_type -> organization.ListUriageJishasByOrganizationRequest
-	157, // 228: organization.CarInspectionService.CreateCarInspection:input_type -> organization.CreateCarInspectionRequest
-	159, // 229: organization.CarInspectionService.GetCarInspection:input_type -> organization.GetCarInspectionRequest
-	161, // 230: organization.CarInspectionService.UpdateCarInspection:input_type -> organization.UpdateCarInspectionRequest
-	163, // 231: organization.CarInspectionService.DeleteCarInspection:input_type -> organization.DeleteCarInspectionRequest
-	165, // 232: organization.CarInspectionService.ListCarInspections:input_type -> organization.ListCarInspectionsRequest
-	167, // 233: organization.CarInspectionService.ListCarInspectionsByOrganization:input_type -> organization.ListCarInspectionsByOrganizationRequest
-	170, // 234: organization.CarInspectionFilesService.CreateCarInspectionFile:input_type -> organization.CreateCarInspectionFileRequest
-	172, // 235: organization.CarInspectionFilesService.GetCarInspectionFile:input_type -> organization.GetCarInspectionFileRequest
-	174, // 236: organization.CarInspectionFilesService.UpdateCarInspectionFile:input_type -> organization.UpdateCarInspectionFileRequest
-	176, // 237: organization.CarInspectionFilesService.DeleteCarInspectionFile:input_type -> organization.DeleteCarInspectionFileRequest
-	178, // 238: organization.CarInspectionFilesService.ListCarInspectionFiles:input_type -> organization.ListCarInspectionFilesRequest
-	180, // 239: organization.CarInspectionFilesService.ListCarInspectionFilesByOrganization:input_type -> organization.ListCarInspectionFilesByOrganizationRequest
-	183, // 240: organization.CarInspectionFilesAService.CreateCarInspectionFilesA:input_type -> organization.CreateCarInspectionFilesARequest
-	185, // 241: organization.CarInspectionFilesAService.GetCarInspectionFilesA:input_type -> organization.GetCarInspectionFilesARequest
-	187, // 242: organization.CarInspectionFilesAService.UpdateCarInspectionFilesA:input_type -> organization.UpdateCarInspectionFilesARequest
-	189, // 243: organization.CarInspectionFilesAService.DeleteCarInspectionFilesA:input_type -> organization.DeleteCarInspectionFilesARequest
-	191, // 244: organization.CarInspectionFilesAService.ListCarInspectionFilesAs:input_type -> organization.ListCarInspectionFilesAsRequest
-	193, // 245: organization.CarInspectionFilesAService.ListCarInspectionFilesAsByOrganization:input_type -> organization.ListCarInspectionFilesAsByOrganizationRequest
-	196, // 246: organization.CarInspectionFilesBService.CreateCarInspectionFilesB:input_type -> organization.CreateCarInspectionFilesBRequest
-	198, // 247: organization.CarInspectionFilesBService.GetCarInspectionFilesB:input_type -> organization.GetCarInspectionFilesBRequest
-	200, // 248: organization.CarInspectionFilesBService.UpdateCarInspectionFilesB:input_type -> organization.UpdateCarInspectionFilesBRequest
-	202, // 249: organization.CarInspectionFilesBService.DeleteCarInspectionFilesB:input_type -> organization.DeleteCarInspectionFilesBRequest
-	204, // 250: organization.CarInspectionFilesBService.ListCarInspectionFilesBs:input_type -> organization.ListCarInspectionFilesBsRequest
-	206, // 251: organization.CarInspectionFilesBService.ListCarInspectionFilesBsByOrganization:input_type -> organization.ListCarInspectionFilesBsByOrganizationRequest
-	209, // 252: organization.CarInspectionDeregistrationService.CreateCarInspectionDeregistration:input_type -> organization.CreateCarInspectionDeregistrationRequest
-	211, // 253: organization.CarInspectionDeregistrationService.GetCarInspectionDeregistration:input_type -> organization.GetCarInspectionDeregistrationRequest
-	213, // 254: organization.CarInspectionDeregistrationService.UpdateCarInspectionDeregistration:input_type -> organization.UpdateCarInspectionDeregistrationRequest
-	215, // 255: organization.CarInspectionDeregistrationService.DeleteCarInspectionDeregistration:input_type -> organization.DeleteCarInspectionDeregistrationRequest
-	217, // 256: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrations:input_type -> organization.ListCarInspectionDeregistrationsRequest
-	219, // 257: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrationsByOrganization:input_type -> organization.ListCarInspectionDeregistrationsByOrganizationRequest
-	222, // 258: organization.CarInspectionDeregistrationFilesService.CreateCarInspectionDeregistrationFiles:input_type -> organization.CreateCarInspectionDeregistrationFilesRequest
-	224, // 259: organization.CarInspectionDeregistrationFilesService.GetCarInspectionDeregistrationFiles:input_type -> organization.GetCarInspectionDeregistrationFilesRequest
-	226, // 260: organization.CarInspectionDeregistrationFilesService.UpdateCarInspectionDeregistrationFiles:input_type -> organization.UpdateCarInspectionDeregistrationFilesRequest
-	228, // 261: organization.CarInspectionDeregistrationFilesService.DeleteCarInspectionDeregistrationFiles:input_type -> organization.DeleteCarInspectionDeregistrationFilesRequest
-	230, // 262: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFiless:input_type -> organization.ListCarInspectionDeregistrationFilessRequest
-	232, // 263: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFilessByOrganization:input_type -> organization.ListCarInspectionDeregistrationFilessByOrganizationRequest
-	235, // 264: organization.CarInsSheetIchibanCarsService.CreateCarInsSheetIchibanCars:input_type -> organization.CreateCarInsSheetIchibanCarsRequest
-	237, // 265: organization.CarInsSheetIchibanCarsService.GetCarInsSheetIchibanCars:input_type -> organization.GetCarInsSheetIchibanCarsRequest
-	239, // 266: organization.CarInsSheetIchibanCarsService.UpdateCarInsSheetIchibanCars:input_type -> organization.UpdateCarInsSheetIchibanCarsRequest
-	241, // 267: organization.CarInsSheetIchibanCarsService.DeleteCarInsSheetIchibanCars:input_type -> organization.DeleteCarInsSheetIchibanCarsRequest
-	243, // 268: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarss:input_type -> organization.ListCarInsSheetIchibanCarssRequest
-	245, // 269: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarssByOrganization:input_type -> organization.ListCarInsSheetIchibanCarssByOrganizationRequest
-	248, // 270: organization.CarInsSheetIchibanCarsAService.CreateCarInsSheetIchibanCarsA:input_type -> organization.CreateCarInsSheetIchibanCarsARequest
-	250, // 271: organization.CarInsSheetIchibanCarsAService.GetCarInsSheetIchibanCarsA:input_type -> organization.GetCarInsSheetIchibanCarsARequest
-	252, // 272: organization.CarInsSheetIchibanCarsAService.UpdateCarInsSheetIchibanCarsA:input_type -> organization.UpdateCarInsSheetIchibanCarsARequest
-	254, // 273: organization.CarInsSheetIchibanCarsAService.DeleteCarInsSheetIchibanCarsA:input_type -> organization.DeleteCarInsSheetIchibanCarsARequest
-	256, // 274: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAs:input_type -> organization.ListCarInsSheetIchibanCarsAsRequest
-	258, // 275: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAsByOrganization:input_type -> organization.ListCarInsSheetIchibanCarsAsByOrganizationRequest
-	261, // 276: organization.KudgfryService.CreateKudgfry:input_type -> organization.CreateKudgfryRequest
-	263, // 277: organization.KudgfryService.GetKudgfry:input_type -> organization.GetKudgfryRequest
-	265, // 278: organization.KudgfryService.UpdateKudgfry:input_type -> organization.UpdateKudgfryRequest
-	267, // 279: organization.KudgfryService.DeleteKudgfry:input_type -> organization.DeleteKudgfryRequest
-	269, // 280: organization.KudgfryService.ListKudgfrys:input_type -> organization.ListKudgfrysRequest
-	271, // 281: organization.KudgfryService.ListKudgfrysByOrganization:input_type -> organization.ListKudgfrysByOrganizationRequest
-	274, // 282: organization.KudguriService.CreateKudguri:input_type -> organization.CreateKudguriRequest
-	276, // 283: organization.KudguriService.GetKudguri:input_type -> organization.GetKudguriRequest
-	278, // 284: organization.KudguriService.UpdateKudguri:input_type -> organization.UpdateKudguriRequest
-	280, // 285: organization.KudguriService.DeleteKudguri:input_type -> organization.DeleteKudguriRequest
-	282, // 286: organization.KudguriService.ListKudguris:input_type -> organization.ListKudgurisRequest
-	284, // 287: organization.KudguriService.ListKudgurisByOrganization:input_type -> organization.ListKudgurisByOrganizationRequest
-	287, // 288: organization.KudgcstService.CreateKudgcst:input_type -> organization.CreateKudgcstRequest
-	289, // 289: organization.KudgcstService.GetKudgcst:input_type -> organization.GetKudgcstRequest
-	291, // 290: organization.KudgcstService.UpdateKudgcst:input_type -> organization.UpdateKudgcstRequest
-	293, // 291: organization.KudgcstService.DeleteKudgcst:input_type -> organization.DeleteKudgcstRequest
-	295, // 292: organization.KudgcstService.ListKudgcsts:input_type -> organization.ListKudgcstsRequest
-	297, // 293: organization.KudgcstService.ListKudgcstsByOrganization:input_type -> organization.ListKudgcstsByOrganizationRequest
-	300, // 294: organization.KudgfulService.CreateKudgful:input_type -> organization.CreateKudgfulRequest
-	302, // 295: organization.KudgfulService.GetKudgful:input_type -> organization.GetKudgfulRequest
-	304, // 296: organization.KudgfulService.UpdateKudgful:input_type -> organization.UpdateKudgfulRequest
-	306, // 297: organization.KudgfulService.DeleteKudgful:input_type -> organization.DeleteKudgfulRequest
-	308, // 298: organization.KudgfulService.ListKudgfuls:input_type -> organization.ListKudgfulsRequest
-	310, // 299: organization.KudgfulService.ListKudgfulsByOrganization:input_type -> organization.ListKudgfulsByOrganizationRequest
-	313, // 300: organization.KudgsirService.CreateKudgsir:input_type -> organization.CreateKudgsirRequest
-	315, // 301: organization.KudgsirService.GetKudgsir:input_type -> organization.GetKudgsirRequest
-	317, // 302: organization.KudgsirService.UpdateKudgsir:input_type -> organization.UpdateKudgsirRequest
-	319, // 303: organization.KudgsirService.DeleteKudgsir:input_type -> organization.DeleteKudgsirRequest
-	321, // 304: organization.KudgsirService.ListKudgsirs:input_type -> organization.ListKudgsirsRequest
-	323, // 305: organization.KudgsirService.ListKudgsirsByOrganization:input_type -> organization.ListKudgsirsByOrganizationRequest
-	326, // 306: organization.KudgivtService.CreateKudgivt:input_type -> organization.CreateKudgivtRequest
-	328, // 307: organization.KudgivtService.GetKudgivt:input_type -> organization.GetKudgivtRequest
-	330, // 308: organization.KudgivtService.UpdateKudgivt:input_type -> organization.UpdateKudgivtRequest
-	332, // 309: organization.KudgivtService.DeleteKudgivt:input_type -> organization.DeleteKudgivtRequest
-	334, // 310: organization.KudgivtService.ListKudgivts:input_type -> organization.ListKudgivtsRequest
-	336, // 311: organization.KudgivtService.ListKudgivtsByOrganization:input_type -> organization.ListKudgivtsByOrganizationRequest
-	339, // 312: organization.DtakologsService.CreateDtakologs:input_type -> organization.CreateDtakologsRequest
-	341, // 313: organization.DtakologsService.GetDtakologs:input_type -> organization.GetDtakologsRequest
-	343, // 314: organization.DtakologsService.UpdateDtakologs:input_type -> organization.UpdateDtakologsRequest
-	345, // 315: organization.DtakologsService.DeleteDtakologs:input_type -> organization.DeleteDtakologsRequest
-	347, // 316: organization.DtakologsService.ListDtakologs:input_type -> organization.ListDtakologsRequest
-	349, // 317: organization.DtakologsService.ListDtakologsByOrganization:input_type -> organization.ListDtakologsByOrganizationRequest
-	352, // 318: organization.AuthService.AuthWithGoogle:input_type -> organization.AuthWithGoogleRequest
-	353, // 319: organization.AuthService.AuthWithLine:input_type -> organization.AuthWithLineRequest
-	354, // 320: organization.AuthService.RefreshToken:input_type -> organization.RefreshTokenRequest
-	355, // 321: organization.AuthService.GetAuthURL:input_type -> organization.GetAuthURLRequest
-	357, // 322: organization.AuthService.ValidateToken:input_type -> organization.ValidateTokenRequest
-	360, // 323: organization.InvitationService.CreateInvitation:input_type -> organization.CreateInvitationRequest
-	362, // 324: organization.InvitationService.GetInvitation:input_type -> organization.GetInvitationRequest
-	364, // 325: organization.InvitationService.GetInvitationByToken:input_type -> organization.GetInvitationByTokenRequest
-	366, // 326: organization.InvitationService.AcceptInvitation:input_type -> organization.AcceptInvitationRequest
-	368, // 327: organization.InvitationService.CancelInvitation:input_type -> organization.CancelInvitationRequest
-	370, // 328: organization.InvitationService.ListInvitations:input_type -> organization.ListInvitationsRequest
-	372, // 329: organization.InvitationService.ResendInvitation:input_type -> organization.ResendInvitationRequest
-	2,   // 330: organization.OrganizationService.CreateOrganization:output_type -> organization.CreateOrganizationResponse
-	4,   // 331: organization.OrganizationService.GetOrganization:output_type -> organization.GetOrganizationResponse
-	6,   // 332: organization.OrganizationService.UpdateOrganization:output_type -> organization.UpdateOrganizationResponse
-	8,   // 333: organization.OrganizationService.DeleteOrganization:output_type -> organization.DeleteOrganizationResponse
-	10,  // 334: organization.OrganizationService.ListOrganizations:output_type -> organization.ListOrganizationsResponse
-	13,  // 335: organization.AppUserService.CreateAppUser:output_type -> organization.CreateAppUserResponse
-	15,  // 336: organization.AppUserService.GetAppUser:output_type -> organization.GetAppUserResponse
-	17,  // 337: organization.AppUserService.GetAppUserByEmail:output_type -> organization.GetAppUserByEmailResponse
-	19,  // 338: organization.AppUserService.UpdateAppUser:output_type -> organization.UpdateAppUserResponse
-	21,  // 339: organization.AppUserService.DeleteAppUser:output_type -> organization.DeleteAppUserResponse
-	23,  // 340: organization.AppUserService.ListAppUsers:output_type -> organization.ListAppUsersResponse
-	26,  // 341: organization.UserOrganizationService.CreateUserOrganization:output_type -> organization.CreateUserOrganizationResponse
-	28,  // 342: organization.UserOrganizationService.GetUserOrganization:output_type -> organization.GetUserOrganizationResponse
-	30,  // 343: organization.UserOrganizationService.UpdateUserOrganization:output_type -> organization.UpdateUserOrganizationResponse
-	32,  // 344: organization.UserOrganizationService.DeleteUserOrganization:output_type -> organization.DeleteUserOrganizationResponse
-	34,  // 345: organization.UserOrganizationService.ListUserOrganizations:output_type -> organization.ListUserOrganizationsResponse
-	36,  // 346: organization.UserOrganizationService.ListUserOrganizationsByUser:output_type -> organization.ListUserOrganizationsByUserResponse
-	38,  // 347: organization.UserOrganizationService.ListUserOrganizationsByOrg:output_type -> organization.ListUserOrganizationsByOrgResponse
-	41,  // 348: organization.FileService.CreateFile:output_type -> organization.CreateFileResponse
-	43,  // 349: organization.FileService.GetFile:output_type -> organization.GetFileResponse
-	45,  // 350: organization.FileService.UpdateFile:output_type -> organization.UpdateFileResponse
-	47,  // 351: organization.FileService.DeleteFile:output_type -> organization.DeleteFileResponse
-	49,  // 352: organization.FileService.ListFiles:output_type -> organization.ListFilesResponse
-	51,  // 353: organization.FileService.ListFilesByOrganization:output_type -> organization.ListFilesByOrganizationResponse
-	54,  // 354: organization.FlickrPhotoService.CreateFlickrPhoto:output_type -> organization.CreateFlickrPhotoResponse
-	56,  // 355: organization.FlickrPhotoService.GetFlickrPhoto:output_type -> organization.GetFlickrPhotoResponse
-	58,  // 356: organization.FlickrPhotoService.UpdateFlickrPhoto:output_type -> organization.UpdateFlickrPhotoResponse
-	60,  // 357: organization.FlickrPhotoService.DeleteFlickrPhoto:output_type -> organization.DeleteFlickrPhotoResponse
-	62,  // 358: organization.FlickrPhotoService.ListFlickrPhotos:output_type -> organization.ListFlickrPhotosResponse
-	64,  // 359: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:output_type -> organization.ListFlickrPhotosByOrganizationResponse
-	67,  // 360: organization.CamFileService.CreateCamFile:output_type -> organization.CreateCamFileResponse
-	69,  // 361: organization.CamFileService.GetCamFile:output_type -> organization.GetCamFileResponse
-	71,  // 362: organization.CamFileService.UpdateCamFile:output_type -> organization.UpdateCamFileResponse
-	73,  // 363: organization.CamFileService.DeleteCamFile:output_type -> organization.DeleteCamFileResponse
-	75,  // 364: organization.CamFileService.ListCamFiles:output_type -> organization.ListCamFilesResponse
-	77,  // 365: organization.CamFileService.ListCamFilesByOrganization:output_type -> organization.ListCamFilesByOrganizationResponse
-	80,  // 366: organization.CamFileExeService.CreateCamFileExe:output_type -> organization.CreateCamFileExeResponse
-	82,  // 367: organization.CamFileExeService.GetCamFileExe:output_type -> organization.GetCamFileExeResponse
-	84,  // 368: organization.CamFileExeService.UpdateCamFileExe:output_type -> organization.UpdateCamFileExeResponse
-	86,  // 369: organization.CamFileExeService.DeleteCamFileExe:output_type -> organization.DeleteCamFileExeResponse
-	88,  // 370: organization.CamFileExeService.ListCamFileExes:output_type -> organization.ListCamFileExesResponse
-	90,  // 371: organization.CamFileExeService.ListCamFileExesByOrganization:output_type -> organization.ListCamFileExesByOrganizationResponse
-	93,  // 372: organization.CamFileExeStageService.CreateCamFileExeStage:output_type -> organization.CreateCamFileExeStageResponse
-	95,  // 373: organization.CamFileExeStageService.GetCamFileExeStage:output_type -> organization.GetCamFileExeStageResponse
-	97,  // 374: organization.CamFileExeStageService.UpdateCamFileExeStage:output_type -> organization.UpdateCamFileExeStageResponse
-	99,  // 375: organization.CamFileExeStageService.DeleteCamFileExeStage:output_type -> organization.DeleteCamFileExeStageResponse
-	101, // 376: organization.CamFileExeStageService.ListCamFileExeStages:output_type -> organization.ListCamFileExeStagesResponse
-	103, // 377: organization.CamFileExeStageService.ListCamFileExeStagesByOrganization:output_type -> organization.ListCamFileExeStagesByOrganizationResponse
-	106, // 378: organization.IchibanCarService.CreateIchibanCar:output_type -> organization.CreateIchibanCarResponse
-	108, // 379: organization.IchibanCarService.GetIchibanCar:output_type -> organization.GetIchibanCarResponse
-	110, // 380: organization.IchibanCarService.UpdateIchibanCar:output_type -> organization.UpdateIchibanCarResponse
-	112, // 381: organization.IchibanCarService.DeleteIchibanCar:output_type -> organization.DeleteIchibanCarResponse
-	114, // 382: organization.IchibanCarService.ListIchibanCars:output_type -> organization.ListIchibanCarsResponse
-	116, // 383: organization.IchibanCarService.ListIchibanCarsByOrganization:output_type -> organization.ListIchibanCarsByOrganizationResponse
-	119, // 384: organization.DtakoCarsIchibanCarsService.CreateDtakoCarsIchibanCars:output_type -> organization.CreateDtakoCarsIchibanCarsResponse
-	121, // 385: organization.DtakoCarsIchibanCarsService.GetDtakoCarsIchibanCars:output_type -> organization.GetDtakoCarsIchibanCarsResponse
-	123, // 386: organization.DtakoCarsIchibanCarsService.UpdateDtakoCarsIchibanCars:output_type -> organization.UpdateDtakoCarsIchibanCarsResponse
-	125, // 387: organization.DtakoCarsIchibanCarsService.DeleteDtakoCarsIchibanCars:output_type -> organization.DeleteDtakoCarsIchibanCarsResponse
-	127, // 388: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCars:output_type -> organization.ListDtakoCarsIchibanCarsResponse
-	129, // 389: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCarsByOrganization:output_type -> organization.ListDtakoCarsIchibanCarsByOrganizationResponse
-	132, // 390: organization.UriageService.CreateUriage:output_type -> organization.CreateUriageResponse
-	134, // 391: organization.UriageService.GetUriage:output_type -> organization.GetUriageResponse
-	136, // 392: organization.UriageService.UpdateUriage:output_type -> organization.UpdateUriageResponse
-	138, // 393: organization.UriageService.DeleteUriage:output_type -> organization.DeleteUriageResponse
-	140, // 394: organization.UriageService.ListUriages:output_type -> organization.ListUriagesResponse
-	142, // 395: organization.UriageService.ListUriagesByOrganization:output_type -> organization.ListUriagesByOrganizationResponse
-	145, // 396: organization.UriageJishaService.CreateUriageJisha:output_type -> organization.CreateUriageJishaResponse
-	147, // 397: organization.UriageJishaService.GetUriageJisha:output_type -> organization.GetUriageJishaResponse
-	149, // 398: organization.UriageJishaService.UpdateUriageJisha:output_type -> organization.UpdateUriageJishaResponse
-	151, // 399: organization.UriageJishaService.DeleteUriageJisha:output_type -> organization.DeleteUriageJishaResponse
-	153, // 400: organization.UriageJishaService.ListUriageJishas:output_type -> organization.ListUriageJishasResponse
-	155, // 401: organization.UriageJishaService.ListUriageJishasByOrganization:output_type -> organization.ListUriageJishasByOrganizationResponse
-	158, // 402: organization.CarInspectionService.CreateCarInspection:output_type -> organization.CreateCarInspectionResponse
-	160, // 403: organization.CarInspectionService.GetCarInspection:output_type -> organization.GetCarInspectionResponse
-	162, // 404: organization.CarInspectionService.UpdateCarInspection:output_type -> organization.UpdateCarInspectionResponse
-	164, // 405: organization.CarInspectionService.DeleteCarInspection:output_type -> organization.DeleteCarInspectionResponse
-	166, // 406: organization.CarInspectionService.ListCarInspections:output_type -> organization.ListCarInspectionsResponse
-	168, // 407: organization.CarInspectionService.ListCarInspectionsByOrganization:output_type -> organization.ListCarInspectionsByOrganizationResponse
-	171, // 408: organization.CarInspectionFilesService.CreateCarInspectionFile:output_type -> organization.CreateCarInspectionFileResponse
-	173, // 409: organization.CarInspectionFilesService.GetCarInspectionFile:output_type -> organization.GetCarInspectionFileResponse
-	175, // 410: organization.CarInspectionFilesService.UpdateCarInspectionFile:output_type -> organization.UpdateCarInspectionFileResponse
-	177, // 411: organization.CarInspectionFilesService.DeleteCarInspectionFile:output_type -> organization.DeleteCarInspectionFileResponse
-	179, // 412: organization.CarInspectionFilesService.ListCarInspectionFiles:output_type -> organization.ListCarInspectionFilesResponse
-	181, // 413: organization.CarInspectionFilesService.ListCarInspectionFilesByOrganization:output_type -> organization.ListCarInspectionFilesByOrganizationResponse
-	184, // 414: organization.CarInspectionFilesAService.CreateCarInspectionFilesA:output_type -> organization.CreateCarInspectionFilesAResponse
-	186, // 415: organization.CarInspectionFilesAService.GetCarInspectionFilesA:output_type -> organization.GetCarInspectionFilesAResponse
-	188, // 416: organization.CarInspectionFilesAService.UpdateCarInspectionFilesA:output_type -> organization.UpdateCarInspectionFilesAResponse
-	190, // 417: organization.CarInspectionFilesAService.DeleteCarInspectionFilesA:output_type -> organization.DeleteCarInspectionFilesAResponse
-	192, // 418: organization.CarInspectionFilesAService.ListCarInspectionFilesAs:output_type -> organization.ListCarInspectionFilesAsResponse
-	194, // 419: organization.CarInspectionFilesAService.ListCarInspectionFilesAsByOrganization:output_type -> organization.ListCarInspectionFilesAsByOrganizationResponse
-	197, // 420: organization.CarInspectionFilesBService.CreateCarInspectionFilesB:output_type -> organization.CreateCarInspectionFilesBResponse
-	199, // 421: organization.CarInspectionFilesBService.GetCarInspectionFilesB:output_type -> organization.GetCarInspectionFilesBResponse
-	201, // 422: organization.CarInspectionFilesBService.UpdateCarInspectionFilesB:output_type -> organization.UpdateCarInspectionFilesBResponse
-	203, // 423: organization.CarInspectionFilesBService.DeleteCarInspectionFilesB:output_type -> organization.DeleteCarInspectionFilesBResponse
-	205, // 424: organization.CarInspectionFilesBService.ListCarInspectionFilesBs:output_type -> organization.ListCarInspectionFilesBsResponse
-	207, // 425: organization.CarInspectionFilesBService.ListCarInspectionFilesBsByOrganization:output_type -> organization.ListCarInspectionFilesBsByOrganizationResponse
-	210, // 426: organization.CarInspectionDeregistrationService.CreateCarInspectionDeregistration:output_type -> organization.CreateCarInspectionDeregistrationResponse
-	212, // 427: organization.CarInspectionDeregistrationService.GetCarInspectionDeregistration:output_type -> organization.GetCarInspectionDeregistrationResponse
-	214, // 428: organization.CarInspectionDeregistrationService.UpdateCarInspectionDeregistration:output_type -> organization.UpdateCarInspectionDeregistrationResponse
-	216, // 429: organization.CarInspectionDeregistrationService.DeleteCarInspectionDeregistration:output_type -> organization.DeleteCarInspectionDeregistrationResponse
-	218, // 430: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrations:output_type -> organization.ListCarInspectionDeregistrationsResponse
-	220, // 431: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrationsByOrganization:output_type -> organization.ListCarInspectionDeregistrationsByOrganizationResponse
-	223, // 432: organization.CarInspectionDeregistrationFilesService.CreateCarInspectionDeregistrationFiles:output_type -> organization.CreateCarInspectionDeregistrationFilesResponse
-	225, // 433: organization.CarInspectionDeregistrationFilesService.GetCarInspectionDeregistrationFiles:output_type -> organization.GetCarInspectionDeregistrationFilesResponse
-	227, // 434: organization.CarInspectionDeregistrationFilesService.UpdateCarInspectionDeregistrationFiles:output_type -> organization.UpdateCarInspectionDeregistrationFilesResponse
-	229, // 435: organization.CarInspectionDeregistrationFilesService.DeleteCarInspectionDeregistrationFiles:output_type -> organization.DeleteCarInspectionDeregistrationFilesResponse
-	231, // 436: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFiless:output_type -> organization.ListCarInspectionDeregistrationFilessResponse
-	233, // 437: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFilessByOrganization:output_type -> organization.ListCarInspectionDeregistrationFilessByOrganizationResponse
-	236, // 438: organization.CarInsSheetIchibanCarsService.CreateCarInsSheetIchibanCars:output_type -> organization.CreateCarInsSheetIchibanCarsResponse
-	238, // 439: organization.CarInsSheetIchibanCarsService.GetCarInsSheetIchibanCars:output_type -> organization.GetCarInsSheetIchibanCarsResponse
-	240, // 440: organization.CarInsSheetIchibanCarsService.UpdateCarInsSheetIchibanCars:output_type -> organization.UpdateCarInsSheetIchibanCarsResponse
-	242, // 441: organization.CarInsSheetIchibanCarsService.DeleteCarInsSheetIchibanCars:output_type -> organization.DeleteCarInsSheetIchibanCarsResponse
-	244, // 442: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarss:output_type -> organization.ListCarInsSheetIchibanCarssResponse
-	246, // 443: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarssByOrganization:output_type -> organization.ListCarInsSheetIchibanCarssByOrganizationResponse
-	249, // 444: organization.CarInsSheetIchibanCarsAService.CreateCarInsSheetIchibanCarsA:output_type -> organization.CreateCarInsSheetIchibanCarsAResponse
-	251, // 445: organization.CarInsSheetIchibanCarsAService.GetCarInsSheetIchibanCarsA:output_type -> organization.GetCarInsSheetIchibanCarsAResponse
-	253, // 446: organization.CarInsSheetIchibanCarsAService.UpdateCarInsSheetIchibanCarsA:output_type -> organization.UpdateCarInsSheetIchibanCarsAResponse
-	255, // 447: organization.CarInsSheetIchibanCarsAService.DeleteCarInsSheetIchibanCarsA:output_type -> organization.DeleteCarInsSheetIchibanCarsAResponse
-	257, // 448: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAs:output_type -> organization.ListCarInsSheetIchibanCarsAsResponse
-	259, // 449: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAsByOrganization:output_type -> organization.ListCarInsSheetIchibanCarsAsByOrganizationResponse
-	262, // 450: organization.KudgfryService.CreateKudgfry:output_type -> organization.CreateKudgfryResponse
-	264, // 451: organization.KudgfryService.GetKudgfry:output_type -> organization.GetKudgfryResponse
-	266, // 452: organization.KudgfryService.UpdateKudgfry:output_type -> organization.UpdateKudgfryResponse
-	268, // 453: organization.KudgfryService.DeleteKudgfry:output_type -> organization.DeleteKudgfryResponse
-	270, // 454: organization.KudgfryService.ListKudgfrys:output_type -> organization.ListKudgfrysResponse
-	272, // 455: organization.KudgfryService.ListKudgfrysByOrganization:output_type -> organization.ListKudgfrysByOrganizationResponse
-	275, // 456: organization.KudguriService.CreateKudguri:output_type -> organization.CreateKudguriResponse
-	277, // 457: organization.KudguriService.GetKudguri:output_type -> organization.GetKudguriResponse
-	279, // 458: organization.KudguriService.UpdateKudguri:output_type -> organization.UpdateKudguriResponse
-	281, // 459: organization.KudguriService.DeleteKudguri:output_type -> organization.DeleteKudguriResponse
-	283, // 460: organization.KudguriService.ListKudguris:output_type -> organization.ListKudgurisResponse
-	285, // 461: organization.KudguriService.ListKudgurisByOrganization:output_type -> organization.ListKudgurisByOrganizationResponse
-	288, // 462: organization.KudgcstService.CreateKudgcst:output_type -> organization.CreateKudgcstResponse
-	290, // 463: organization.KudgcstService.GetKudgcst:output_type -> organization.GetKudgcstResponse
-	292, // 464: organization.KudgcstService.UpdateKudgcst:output_type -> organization.UpdateKudgcstResponse
-	294, // 465: organization.KudgcstService.DeleteKudgcst:output_type -> organization.DeleteKudgcstResponse
-	296, // 466: organization.KudgcstService.ListKudgcsts:output_type -> organization.ListKudgcstsResponse
-	298, // 467: organization.KudgcstService.ListKudgcstsByOrganization:output_type -> organization.ListKudgcstsByOrganizationResponse
-	301, // 468: organization.KudgfulService.CreateKudgful:output_type -> organization.CreateKudgfulResponse
-	303, // 469: organization.KudgfulService.GetKudgful:output_type -> organization.GetKudgfulResponse
-	305, // 470: organization.KudgfulService.UpdateKudgful:output_type -> organization.UpdateKudgfulResponse
-	307, // 471: organization.KudgfulService.DeleteKudgful:output_type -> organization.DeleteKudgfulResponse
-	309, // 472: organization.KudgfulService.ListKudgfuls:output_type -> organization.ListKudgfulsResponse
-	311, // 473: organization.KudgfulService.ListKudgfulsByOrganization:output_type -> organization.ListKudgfulsByOrganizationResponse
-	314, // 474: organization.KudgsirService.CreateKudgsir:output_type -> organization.CreateKudgsirResponse
-	316, // 475: organization.KudgsirService.GetKudgsir:output_type -> organization.GetKudgsirResponse
-	318, // 476: organization.KudgsirService.UpdateKudgsir:output_type -> organization.UpdateKudgsirResponse
-	320, // 477: organization.KudgsirService.DeleteKudgsir:output_type -> organization.DeleteKudgsirResponse
-	322, // 478: organization.KudgsirService.ListKudgsirs:output_type -> organization.ListKudgsirsResponse
-	324, // 479: organization.KudgsirService.ListKudgsirsByOrganization:output_type -> organization.ListKudgsirsByOrganizationResponse
-	327, // 480: organization.KudgivtService.CreateKudgivt:output_type -> organization.CreateKudgivtResponse
-	329, // 481: organization.KudgivtService.GetKudgivt:output_type -> organization.GetKudgivtResponse
-	331, // 482: organization.KudgivtService.UpdateKudgivt:output_type -> organization.UpdateKudgivtResponse
-	333, // 483: organization.KudgivtService.DeleteKudgivt:output_type -> organization.DeleteKudgivtResponse
-	335, // 484: organization.KudgivtService.ListKudgivts:output_type -> organization.ListKudgivtsResponse
-	337, // 485: organization.KudgivtService.ListKudgivtsByOrganization:output_type -> organization.ListKudgivtsByOrganizationResponse
-	340, // 486: organization.DtakologsService.CreateDtakologs:output_type -> organization.CreateDtakologsResponse
-	342, // 487: organization.DtakologsService.GetDtakologs:output_type -> organization.GetDtakologsResponse
-	344, // 488: organization.DtakologsService.UpdateDtakologs:output_type -> organization.UpdateDtakologsResponse
-	346, // 489: organization.DtakologsService.DeleteDtakologs:output_type -> organization.DeleteDtakologsResponse
-	348, // 490: organization.DtakologsService.ListDtakologs:output_type -> organization.ListDtakologsResponse
-	350, // 491: organization.DtakologsService.ListDtakologsByOrganization:output_type -> organization.ListDtakologsByOrganizationResponse
-	351, // 492: organization.AuthService.AuthWithGoogle:output_type -> organization.AuthResponse
-	351, // 493: organization.AuthService.AuthWithLine:output_type -> organization.AuthResponse
-	351, // 494: organization.AuthService.RefreshToken:output_type -> organization.AuthResponse
-	356, // 495: organization.AuthService.GetAuthURL:output_type -> organization.GetAuthURLResponse
-	358, // 496: organization.AuthService.ValidateToken:output_type -> organization.ValidateTokenResponse
-	361, // 497: organization.InvitationService.CreateInvitation:output_type -> organization.CreateInvitationResponse
-	363, // 498: organization.InvitationService.GetInvitation:output_type -> organization.GetInvitationResponse
-	365, // 499: organization.InvitationService.GetInvitationByToken:output_type -> organization.GetInvitationByTokenResponse
-	367, // 500: organization.InvitationService.AcceptInvitation:output_type -> organization.AcceptInvitationResponse
-	369, // 501: organization.InvitationService.CancelInvitation:output_type -> organization.CancelInvitationResponse
-	371, // 502: organization.InvitationService.ListInvitations:output_type -> organization.ListInvitationsResponse
-	373, // 503: organization.InvitationService.ResendInvitation:output_type -> organization.ResendInvitationResponse
-	330, // [330:504] is the sub-list for method output_type
-	156, // [156:330] is the sub-list for method input_type
-	156, // [156:156] is the sub-list for extension type_name
-	156, // [156:156] is the sub-list for extension extendee
-	0,   // [0:156] is the sub-list for field type_name
+	389, // 156: organization.ETCMeisai.date_fr:type_name -> google.protobuf.Timestamp
+	389, // 157: organization.ETCMeisai.date_to:type_name -> google.protobuf.Timestamp
+	389, // 158: organization.ETCMeisai.created_at:type_name -> google.protobuf.Timestamp
+	389, // 159: organization.ETCMeisai.updated_at:type_name -> google.protobuf.Timestamp
+	389, // 160: organization.CreateETCMeisaiRequest.date_fr:type_name -> google.protobuf.Timestamp
+	389, // 161: organization.CreateETCMeisaiRequest.date_to:type_name -> google.protobuf.Timestamp
+	374, // 162: organization.CreateETCMeisaiResponse.etc_meisai:type_name -> organization.ETCMeisai
+	374, // 163: organization.GetETCMeisaiResponse.etc_meisai:type_name -> organization.ETCMeisai
+	374, // 164: organization.GetETCMeisaiByHashResponse.etc_meisai:type_name -> organization.ETCMeisai
+	389, // 165: organization.UpdateETCMeisaiRequest.date_fr:type_name -> google.protobuf.Timestamp
+	389, // 166: organization.UpdateETCMeisaiRequest.date_to:type_name -> google.protobuf.Timestamp
+	374, // 167: organization.UpdateETCMeisaiResponse.etc_meisai:type_name -> organization.ETCMeisai
+	374, // 168: organization.ListETCMeisaiResponse.etc_meisai_list:type_name -> organization.ETCMeisai
+	375, // 169: organization.BulkCreateETCMeisaiRequest.records:type_name -> organization.CreateETCMeisaiRequest
+	1,   // 170: organization.OrganizationService.CreateOrganization:input_type -> organization.CreateOrganizationRequest
+	3,   // 171: organization.OrganizationService.GetOrganization:input_type -> organization.GetOrganizationRequest
+	5,   // 172: organization.OrganizationService.UpdateOrganization:input_type -> organization.UpdateOrganizationRequest
+	7,   // 173: organization.OrganizationService.DeleteOrganization:input_type -> organization.DeleteOrganizationRequest
+	9,   // 174: organization.OrganizationService.ListOrganizations:input_type -> organization.ListOrganizationsRequest
+	12,  // 175: organization.AppUserService.CreateAppUser:input_type -> organization.CreateAppUserRequest
+	14,  // 176: organization.AppUserService.GetAppUser:input_type -> organization.GetAppUserRequest
+	16,  // 177: organization.AppUserService.GetAppUserByEmail:input_type -> organization.GetAppUserByEmailRequest
+	18,  // 178: organization.AppUserService.UpdateAppUser:input_type -> organization.UpdateAppUserRequest
+	20,  // 179: organization.AppUserService.DeleteAppUser:input_type -> organization.DeleteAppUserRequest
+	22,  // 180: organization.AppUserService.ListAppUsers:input_type -> organization.ListAppUsersRequest
+	25,  // 181: organization.UserOrganizationService.CreateUserOrganization:input_type -> organization.CreateUserOrganizationRequest
+	27,  // 182: organization.UserOrganizationService.GetUserOrganization:input_type -> organization.GetUserOrganizationRequest
+	29,  // 183: organization.UserOrganizationService.UpdateUserOrganization:input_type -> organization.UpdateUserOrganizationRequest
+	31,  // 184: organization.UserOrganizationService.DeleteUserOrganization:input_type -> organization.DeleteUserOrganizationRequest
+	33,  // 185: organization.UserOrganizationService.ListUserOrganizations:input_type -> organization.ListUserOrganizationsRequest
+	35,  // 186: organization.UserOrganizationService.ListUserOrganizationsByUser:input_type -> organization.ListUserOrganizationsByUserRequest
+	37,  // 187: organization.UserOrganizationService.ListUserOrganizationsByOrg:input_type -> organization.ListUserOrganizationsByOrgRequest
+	40,  // 188: organization.FileService.CreateFile:input_type -> organization.CreateFileRequest
+	42,  // 189: organization.FileService.GetFile:input_type -> organization.GetFileRequest
+	44,  // 190: organization.FileService.UpdateFile:input_type -> organization.UpdateFileRequest
+	46,  // 191: organization.FileService.DeleteFile:input_type -> organization.DeleteFileRequest
+	48,  // 192: organization.FileService.ListFiles:input_type -> organization.ListFilesRequest
+	50,  // 193: organization.FileService.ListFilesByOrganization:input_type -> organization.ListFilesByOrganizationRequest
+	53,  // 194: organization.FlickrPhotoService.CreateFlickrPhoto:input_type -> organization.CreateFlickrPhotoRequest
+	55,  // 195: organization.FlickrPhotoService.GetFlickrPhoto:input_type -> organization.GetFlickrPhotoRequest
+	57,  // 196: organization.FlickrPhotoService.UpdateFlickrPhoto:input_type -> organization.UpdateFlickrPhotoRequest
+	59,  // 197: organization.FlickrPhotoService.DeleteFlickrPhoto:input_type -> organization.DeleteFlickrPhotoRequest
+	61,  // 198: organization.FlickrPhotoService.ListFlickrPhotos:input_type -> organization.ListFlickrPhotosRequest
+	63,  // 199: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:input_type -> organization.ListFlickrPhotosByOrganizationRequest
+	66,  // 200: organization.CamFileService.CreateCamFile:input_type -> organization.CreateCamFileRequest
+	68,  // 201: organization.CamFileService.GetCamFile:input_type -> organization.GetCamFileRequest
+	70,  // 202: organization.CamFileService.UpdateCamFile:input_type -> organization.UpdateCamFileRequest
+	72,  // 203: organization.CamFileService.DeleteCamFile:input_type -> organization.DeleteCamFileRequest
+	74,  // 204: organization.CamFileService.ListCamFiles:input_type -> organization.ListCamFilesRequest
+	76,  // 205: organization.CamFileService.ListCamFilesByOrganization:input_type -> organization.ListCamFilesByOrganizationRequest
+	79,  // 206: organization.CamFileExeService.CreateCamFileExe:input_type -> organization.CreateCamFileExeRequest
+	81,  // 207: organization.CamFileExeService.GetCamFileExe:input_type -> organization.GetCamFileExeRequest
+	83,  // 208: organization.CamFileExeService.UpdateCamFileExe:input_type -> organization.UpdateCamFileExeRequest
+	85,  // 209: organization.CamFileExeService.DeleteCamFileExe:input_type -> organization.DeleteCamFileExeRequest
+	87,  // 210: organization.CamFileExeService.ListCamFileExes:input_type -> organization.ListCamFileExesRequest
+	89,  // 211: organization.CamFileExeService.ListCamFileExesByOrganization:input_type -> organization.ListCamFileExesByOrganizationRequest
+	92,  // 212: organization.CamFileExeStageService.CreateCamFileExeStage:input_type -> organization.CreateCamFileExeStageRequest
+	94,  // 213: organization.CamFileExeStageService.GetCamFileExeStage:input_type -> organization.GetCamFileExeStageRequest
+	96,  // 214: organization.CamFileExeStageService.UpdateCamFileExeStage:input_type -> organization.UpdateCamFileExeStageRequest
+	98,  // 215: organization.CamFileExeStageService.DeleteCamFileExeStage:input_type -> organization.DeleteCamFileExeStageRequest
+	100, // 216: organization.CamFileExeStageService.ListCamFileExeStages:input_type -> organization.ListCamFileExeStagesRequest
+	102, // 217: organization.CamFileExeStageService.ListCamFileExeStagesByOrganization:input_type -> organization.ListCamFileExeStagesByOrganizationRequest
+	105, // 218: organization.IchibanCarService.CreateIchibanCar:input_type -> organization.CreateIchibanCarRequest
+	107, // 219: organization.IchibanCarService.GetIchibanCar:input_type -> organization.GetIchibanCarRequest
+	109, // 220: organization.IchibanCarService.UpdateIchibanCar:input_type -> organization.UpdateIchibanCarRequest
+	111, // 221: organization.IchibanCarService.DeleteIchibanCar:input_type -> organization.DeleteIchibanCarRequest
+	113, // 222: organization.IchibanCarService.ListIchibanCars:input_type -> organization.ListIchibanCarsRequest
+	115, // 223: organization.IchibanCarService.ListIchibanCarsByOrganization:input_type -> organization.ListIchibanCarsByOrganizationRequest
+	118, // 224: organization.DtakoCarsIchibanCarsService.CreateDtakoCarsIchibanCars:input_type -> organization.CreateDtakoCarsIchibanCarsRequest
+	120, // 225: organization.DtakoCarsIchibanCarsService.GetDtakoCarsIchibanCars:input_type -> organization.GetDtakoCarsIchibanCarsRequest
+	122, // 226: organization.DtakoCarsIchibanCarsService.UpdateDtakoCarsIchibanCars:input_type -> organization.UpdateDtakoCarsIchibanCarsRequest
+	124, // 227: organization.DtakoCarsIchibanCarsService.DeleteDtakoCarsIchibanCars:input_type -> organization.DeleteDtakoCarsIchibanCarsRequest
+	126, // 228: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCars:input_type -> organization.ListDtakoCarsIchibanCarsRequest
+	128, // 229: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCarsByOrganization:input_type -> organization.ListDtakoCarsIchibanCarsByOrganizationRequest
+	131, // 230: organization.UriageService.CreateUriage:input_type -> organization.CreateUriageRequest
+	133, // 231: organization.UriageService.GetUriage:input_type -> organization.GetUriageRequest
+	135, // 232: organization.UriageService.UpdateUriage:input_type -> organization.UpdateUriageRequest
+	137, // 233: organization.UriageService.DeleteUriage:input_type -> organization.DeleteUriageRequest
+	139, // 234: organization.UriageService.ListUriages:input_type -> organization.ListUriagesRequest
+	141, // 235: organization.UriageService.ListUriagesByOrganization:input_type -> organization.ListUriagesByOrganizationRequest
+	144, // 236: organization.UriageJishaService.CreateUriageJisha:input_type -> organization.CreateUriageJishaRequest
+	146, // 237: organization.UriageJishaService.GetUriageJisha:input_type -> organization.GetUriageJishaRequest
+	148, // 238: organization.UriageJishaService.UpdateUriageJisha:input_type -> organization.UpdateUriageJishaRequest
+	150, // 239: organization.UriageJishaService.DeleteUriageJisha:input_type -> organization.DeleteUriageJishaRequest
+	152, // 240: organization.UriageJishaService.ListUriageJishas:input_type -> organization.ListUriageJishasRequest
+	154, // 241: organization.UriageJishaService.ListUriageJishasByOrganization:input_type -> organization.ListUriageJishasByOrganizationRequest
+	157, // 242: organization.CarInspectionService.CreateCarInspection:input_type -> organization.CreateCarInspectionRequest
+	159, // 243: organization.CarInspectionService.GetCarInspection:input_type -> organization.GetCarInspectionRequest
+	161, // 244: organization.CarInspectionService.UpdateCarInspection:input_type -> organization.UpdateCarInspectionRequest
+	163, // 245: organization.CarInspectionService.DeleteCarInspection:input_type -> organization.DeleteCarInspectionRequest
+	165, // 246: organization.CarInspectionService.ListCarInspections:input_type -> organization.ListCarInspectionsRequest
+	167, // 247: organization.CarInspectionService.ListCarInspectionsByOrganization:input_type -> organization.ListCarInspectionsByOrganizationRequest
+	170, // 248: organization.CarInspectionFilesService.CreateCarInspectionFile:input_type -> organization.CreateCarInspectionFileRequest
+	172, // 249: organization.CarInspectionFilesService.GetCarInspectionFile:input_type -> organization.GetCarInspectionFileRequest
+	174, // 250: organization.CarInspectionFilesService.UpdateCarInspectionFile:input_type -> organization.UpdateCarInspectionFileRequest
+	176, // 251: organization.CarInspectionFilesService.DeleteCarInspectionFile:input_type -> organization.DeleteCarInspectionFileRequest
+	178, // 252: organization.CarInspectionFilesService.ListCarInspectionFiles:input_type -> organization.ListCarInspectionFilesRequest
+	180, // 253: organization.CarInspectionFilesService.ListCarInspectionFilesByOrganization:input_type -> organization.ListCarInspectionFilesByOrganizationRequest
+	183, // 254: organization.CarInspectionFilesAService.CreateCarInspectionFilesA:input_type -> organization.CreateCarInspectionFilesARequest
+	185, // 255: organization.CarInspectionFilesAService.GetCarInspectionFilesA:input_type -> organization.GetCarInspectionFilesARequest
+	187, // 256: organization.CarInspectionFilesAService.UpdateCarInspectionFilesA:input_type -> organization.UpdateCarInspectionFilesARequest
+	189, // 257: organization.CarInspectionFilesAService.DeleteCarInspectionFilesA:input_type -> organization.DeleteCarInspectionFilesARequest
+	191, // 258: organization.CarInspectionFilesAService.ListCarInspectionFilesAs:input_type -> organization.ListCarInspectionFilesAsRequest
+	193, // 259: organization.CarInspectionFilesAService.ListCarInspectionFilesAsByOrganization:input_type -> organization.ListCarInspectionFilesAsByOrganizationRequest
+	196, // 260: organization.CarInspectionFilesBService.CreateCarInspectionFilesB:input_type -> organization.CreateCarInspectionFilesBRequest
+	198, // 261: organization.CarInspectionFilesBService.GetCarInspectionFilesB:input_type -> organization.GetCarInspectionFilesBRequest
+	200, // 262: organization.CarInspectionFilesBService.UpdateCarInspectionFilesB:input_type -> organization.UpdateCarInspectionFilesBRequest
+	202, // 263: organization.CarInspectionFilesBService.DeleteCarInspectionFilesB:input_type -> organization.DeleteCarInspectionFilesBRequest
+	204, // 264: organization.CarInspectionFilesBService.ListCarInspectionFilesBs:input_type -> organization.ListCarInspectionFilesBsRequest
+	206, // 265: organization.CarInspectionFilesBService.ListCarInspectionFilesBsByOrganization:input_type -> organization.ListCarInspectionFilesBsByOrganizationRequest
+	209, // 266: organization.CarInspectionDeregistrationService.CreateCarInspectionDeregistration:input_type -> organization.CreateCarInspectionDeregistrationRequest
+	211, // 267: organization.CarInspectionDeregistrationService.GetCarInspectionDeregistration:input_type -> organization.GetCarInspectionDeregistrationRequest
+	213, // 268: organization.CarInspectionDeregistrationService.UpdateCarInspectionDeregistration:input_type -> organization.UpdateCarInspectionDeregistrationRequest
+	215, // 269: organization.CarInspectionDeregistrationService.DeleteCarInspectionDeregistration:input_type -> organization.DeleteCarInspectionDeregistrationRequest
+	217, // 270: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrations:input_type -> organization.ListCarInspectionDeregistrationsRequest
+	219, // 271: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrationsByOrganization:input_type -> organization.ListCarInspectionDeregistrationsByOrganizationRequest
+	222, // 272: organization.CarInspectionDeregistrationFilesService.CreateCarInspectionDeregistrationFiles:input_type -> organization.CreateCarInspectionDeregistrationFilesRequest
+	224, // 273: organization.CarInspectionDeregistrationFilesService.GetCarInspectionDeregistrationFiles:input_type -> organization.GetCarInspectionDeregistrationFilesRequest
+	226, // 274: organization.CarInspectionDeregistrationFilesService.UpdateCarInspectionDeregistrationFiles:input_type -> organization.UpdateCarInspectionDeregistrationFilesRequest
+	228, // 275: organization.CarInspectionDeregistrationFilesService.DeleteCarInspectionDeregistrationFiles:input_type -> organization.DeleteCarInspectionDeregistrationFilesRequest
+	230, // 276: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFiless:input_type -> organization.ListCarInspectionDeregistrationFilessRequest
+	232, // 277: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFilessByOrganization:input_type -> organization.ListCarInspectionDeregistrationFilessByOrganizationRequest
+	235, // 278: organization.CarInsSheetIchibanCarsService.CreateCarInsSheetIchibanCars:input_type -> organization.CreateCarInsSheetIchibanCarsRequest
+	237, // 279: organization.CarInsSheetIchibanCarsService.GetCarInsSheetIchibanCars:input_type -> organization.GetCarInsSheetIchibanCarsRequest
+	239, // 280: organization.CarInsSheetIchibanCarsService.UpdateCarInsSheetIchibanCars:input_type -> organization.UpdateCarInsSheetIchibanCarsRequest
+	241, // 281: organization.CarInsSheetIchibanCarsService.DeleteCarInsSheetIchibanCars:input_type -> organization.DeleteCarInsSheetIchibanCarsRequest
+	243, // 282: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarss:input_type -> organization.ListCarInsSheetIchibanCarssRequest
+	245, // 283: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarssByOrganization:input_type -> organization.ListCarInsSheetIchibanCarssByOrganizationRequest
+	248, // 284: organization.CarInsSheetIchibanCarsAService.CreateCarInsSheetIchibanCarsA:input_type -> organization.CreateCarInsSheetIchibanCarsARequest
+	250, // 285: organization.CarInsSheetIchibanCarsAService.GetCarInsSheetIchibanCarsA:input_type -> organization.GetCarInsSheetIchibanCarsARequest
+	252, // 286: organization.CarInsSheetIchibanCarsAService.UpdateCarInsSheetIchibanCarsA:input_type -> organization.UpdateCarInsSheetIchibanCarsARequest
+	254, // 287: organization.CarInsSheetIchibanCarsAService.DeleteCarInsSheetIchibanCarsA:input_type -> organization.DeleteCarInsSheetIchibanCarsARequest
+	256, // 288: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAs:input_type -> organization.ListCarInsSheetIchibanCarsAsRequest
+	258, // 289: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAsByOrganization:input_type -> organization.ListCarInsSheetIchibanCarsAsByOrganizationRequest
+	261, // 290: organization.KudgfryService.CreateKudgfry:input_type -> organization.CreateKudgfryRequest
+	263, // 291: organization.KudgfryService.GetKudgfry:input_type -> organization.GetKudgfryRequest
+	265, // 292: organization.KudgfryService.UpdateKudgfry:input_type -> organization.UpdateKudgfryRequest
+	267, // 293: organization.KudgfryService.DeleteKudgfry:input_type -> organization.DeleteKudgfryRequest
+	269, // 294: organization.KudgfryService.ListKudgfrys:input_type -> organization.ListKudgfrysRequest
+	271, // 295: organization.KudgfryService.ListKudgfrysByOrganization:input_type -> organization.ListKudgfrysByOrganizationRequest
+	274, // 296: organization.KudguriService.CreateKudguri:input_type -> organization.CreateKudguriRequest
+	276, // 297: organization.KudguriService.GetKudguri:input_type -> organization.GetKudguriRequest
+	278, // 298: organization.KudguriService.UpdateKudguri:input_type -> organization.UpdateKudguriRequest
+	280, // 299: organization.KudguriService.DeleteKudguri:input_type -> organization.DeleteKudguriRequest
+	282, // 300: organization.KudguriService.ListKudguris:input_type -> organization.ListKudgurisRequest
+	284, // 301: organization.KudguriService.ListKudgurisByOrganization:input_type -> organization.ListKudgurisByOrganizationRequest
+	287, // 302: organization.KudgcstService.CreateKudgcst:input_type -> organization.CreateKudgcstRequest
+	289, // 303: organization.KudgcstService.GetKudgcst:input_type -> organization.GetKudgcstRequest
+	291, // 304: organization.KudgcstService.UpdateKudgcst:input_type -> organization.UpdateKudgcstRequest
+	293, // 305: organization.KudgcstService.DeleteKudgcst:input_type -> organization.DeleteKudgcstRequest
+	295, // 306: organization.KudgcstService.ListKudgcsts:input_type -> organization.ListKudgcstsRequest
+	297, // 307: organization.KudgcstService.ListKudgcstsByOrganization:input_type -> organization.ListKudgcstsByOrganizationRequest
+	300, // 308: organization.KudgfulService.CreateKudgful:input_type -> organization.CreateKudgfulRequest
+	302, // 309: organization.KudgfulService.GetKudgful:input_type -> organization.GetKudgfulRequest
+	304, // 310: organization.KudgfulService.UpdateKudgful:input_type -> organization.UpdateKudgfulRequest
+	306, // 311: organization.KudgfulService.DeleteKudgful:input_type -> organization.DeleteKudgfulRequest
+	308, // 312: organization.KudgfulService.ListKudgfuls:input_type -> organization.ListKudgfulsRequest
+	310, // 313: organization.KudgfulService.ListKudgfulsByOrganization:input_type -> organization.ListKudgfulsByOrganizationRequest
+	313, // 314: organization.KudgsirService.CreateKudgsir:input_type -> organization.CreateKudgsirRequest
+	315, // 315: organization.KudgsirService.GetKudgsir:input_type -> organization.GetKudgsirRequest
+	317, // 316: organization.KudgsirService.UpdateKudgsir:input_type -> organization.UpdateKudgsirRequest
+	319, // 317: organization.KudgsirService.DeleteKudgsir:input_type -> organization.DeleteKudgsirRequest
+	321, // 318: organization.KudgsirService.ListKudgsirs:input_type -> organization.ListKudgsirsRequest
+	323, // 319: organization.KudgsirService.ListKudgsirsByOrganization:input_type -> organization.ListKudgsirsByOrganizationRequest
+	326, // 320: organization.KudgivtService.CreateKudgivt:input_type -> organization.CreateKudgivtRequest
+	328, // 321: organization.KudgivtService.GetKudgivt:input_type -> organization.GetKudgivtRequest
+	330, // 322: organization.KudgivtService.UpdateKudgivt:input_type -> organization.UpdateKudgivtRequest
+	332, // 323: organization.KudgivtService.DeleteKudgivt:input_type -> organization.DeleteKudgivtRequest
+	334, // 324: organization.KudgivtService.ListKudgivts:input_type -> organization.ListKudgivtsRequest
+	336, // 325: organization.KudgivtService.ListKudgivtsByOrganization:input_type -> organization.ListKudgivtsByOrganizationRequest
+	339, // 326: organization.DtakologsService.CreateDtakologs:input_type -> organization.CreateDtakologsRequest
+	341, // 327: organization.DtakologsService.GetDtakologs:input_type -> organization.GetDtakologsRequest
+	343, // 328: organization.DtakologsService.UpdateDtakologs:input_type -> organization.UpdateDtakologsRequest
+	345, // 329: organization.DtakologsService.DeleteDtakologs:input_type -> organization.DeleteDtakologsRequest
+	347, // 330: organization.DtakologsService.ListDtakologs:input_type -> organization.ListDtakologsRequest
+	349, // 331: organization.DtakologsService.ListDtakologsByOrganization:input_type -> organization.ListDtakologsByOrganizationRequest
+	352, // 332: organization.AuthService.AuthWithGoogle:input_type -> organization.AuthWithGoogleRequest
+	353, // 333: organization.AuthService.AuthWithLine:input_type -> organization.AuthWithLineRequest
+	354, // 334: organization.AuthService.RefreshToken:input_type -> organization.RefreshTokenRequest
+	355, // 335: organization.AuthService.GetAuthURL:input_type -> organization.GetAuthURLRequest
+	357, // 336: organization.AuthService.ValidateToken:input_type -> organization.ValidateTokenRequest
+	360, // 337: organization.InvitationService.CreateInvitation:input_type -> organization.CreateInvitationRequest
+	362, // 338: organization.InvitationService.GetInvitation:input_type -> organization.GetInvitationRequest
+	364, // 339: organization.InvitationService.GetInvitationByToken:input_type -> organization.GetInvitationByTokenRequest
+	366, // 340: organization.InvitationService.AcceptInvitation:input_type -> organization.AcceptInvitationRequest
+	368, // 341: organization.InvitationService.CancelInvitation:input_type -> organization.CancelInvitationRequest
+	370, // 342: organization.InvitationService.ListInvitations:input_type -> organization.ListInvitationsRequest
+	372, // 343: organization.InvitationService.ResendInvitation:input_type -> organization.ResendInvitationRequest
+	375, // 344: organization.ETCMeisaiService.CreateETCMeisai:input_type -> organization.CreateETCMeisaiRequest
+	377, // 345: organization.ETCMeisaiService.GetETCMeisai:input_type -> organization.GetETCMeisaiRequest
+	379, // 346: organization.ETCMeisaiService.GetETCMeisaiByHash:input_type -> organization.GetETCMeisaiByHashRequest
+	381, // 347: organization.ETCMeisaiService.UpdateETCMeisai:input_type -> organization.UpdateETCMeisaiRequest
+	383, // 348: organization.ETCMeisaiService.DeleteETCMeisai:input_type -> organization.DeleteETCMeisaiRequest
+	385, // 349: organization.ETCMeisaiService.ListETCMeisai:input_type -> organization.ListETCMeisaiRequest
+	387, // 350: organization.ETCMeisaiService.BulkCreateETCMeisai:input_type -> organization.BulkCreateETCMeisaiRequest
+	2,   // 351: organization.OrganizationService.CreateOrganization:output_type -> organization.CreateOrganizationResponse
+	4,   // 352: organization.OrganizationService.GetOrganization:output_type -> organization.GetOrganizationResponse
+	6,   // 353: organization.OrganizationService.UpdateOrganization:output_type -> organization.UpdateOrganizationResponse
+	8,   // 354: organization.OrganizationService.DeleteOrganization:output_type -> organization.DeleteOrganizationResponse
+	10,  // 355: organization.OrganizationService.ListOrganizations:output_type -> organization.ListOrganizationsResponse
+	13,  // 356: organization.AppUserService.CreateAppUser:output_type -> organization.CreateAppUserResponse
+	15,  // 357: organization.AppUserService.GetAppUser:output_type -> organization.GetAppUserResponse
+	17,  // 358: organization.AppUserService.GetAppUserByEmail:output_type -> organization.GetAppUserByEmailResponse
+	19,  // 359: organization.AppUserService.UpdateAppUser:output_type -> organization.UpdateAppUserResponse
+	21,  // 360: organization.AppUserService.DeleteAppUser:output_type -> organization.DeleteAppUserResponse
+	23,  // 361: organization.AppUserService.ListAppUsers:output_type -> organization.ListAppUsersResponse
+	26,  // 362: organization.UserOrganizationService.CreateUserOrganization:output_type -> organization.CreateUserOrganizationResponse
+	28,  // 363: organization.UserOrganizationService.GetUserOrganization:output_type -> organization.GetUserOrganizationResponse
+	30,  // 364: organization.UserOrganizationService.UpdateUserOrganization:output_type -> organization.UpdateUserOrganizationResponse
+	32,  // 365: organization.UserOrganizationService.DeleteUserOrganization:output_type -> organization.DeleteUserOrganizationResponse
+	34,  // 366: organization.UserOrganizationService.ListUserOrganizations:output_type -> organization.ListUserOrganizationsResponse
+	36,  // 367: organization.UserOrganizationService.ListUserOrganizationsByUser:output_type -> organization.ListUserOrganizationsByUserResponse
+	38,  // 368: organization.UserOrganizationService.ListUserOrganizationsByOrg:output_type -> organization.ListUserOrganizationsByOrgResponse
+	41,  // 369: organization.FileService.CreateFile:output_type -> organization.CreateFileResponse
+	43,  // 370: organization.FileService.GetFile:output_type -> organization.GetFileResponse
+	45,  // 371: organization.FileService.UpdateFile:output_type -> organization.UpdateFileResponse
+	47,  // 372: organization.FileService.DeleteFile:output_type -> organization.DeleteFileResponse
+	49,  // 373: organization.FileService.ListFiles:output_type -> organization.ListFilesResponse
+	51,  // 374: organization.FileService.ListFilesByOrganization:output_type -> organization.ListFilesByOrganizationResponse
+	54,  // 375: organization.FlickrPhotoService.CreateFlickrPhoto:output_type -> organization.CreateFlickrPhotoResponse
+	56,  // 376: organization.FlickrPhotoService.GetFlickrPhoto:output_type -> organization.GetFlickrPhotoResponse
+	58,  // 377: organization.FlickrPhotoService.UpdateFlickrPhoto:output_type -> organization.UpdateFlickrPhotoResponse
+	60,  // 378: organization.FlickrPhotoService.DeleteFlickrPhoto:output_type -> organization.DeleteFlickrPhotoResponse
+	62,  // 379: organization.FlickrPhotoService.ListFlickrPhotos:output_type -> organization.ListFlickrPhotosResponse
+	64,  // 380: organization.FlickrPhotoService.ListFlickrPhotosByOrganization:output_type -> organization.ListFlickrPhotosByOrganizationResponse
+	67,  // 381: organization.CamFileService.CreateCamFile:output_type -> organization.CreateCamFileResponse
+	69,  // 382: organization.CamFileService.GetCamFile:output_type -> organization.GetCamFileResponse
+	71,  // 383: organization.CamFileService.UpdateCamFile:output_type -> organization.UpdateCamFileResponse
+	73,  // 384: organization.CamFileService.DeleteCamFile:output_type -> organization.DeleteCamFileResponse
+	75,  // 385: organization.CamFileService.ListCamFiles:output_type -> organization.ListCamFilesResponse
+	77,  // 386: organization.CamFileService.ListCamFilesByOrganization:output_type -> organization.ListCamFilesByOrganizationResponse
+	80,  // 387: organization.CamFileExeService.CreateCamFileExe:output_type -> organization.CreateCamFileExeResponse
+	82,  // 388: organization.CamFileExeService.GetCamFileExe:output_type -> organization.GetCamFileExeResponse
+	84,  // 389: organization.CamFileExeService.UpdateCamFileExe:output_type -> organization.UpdateCamFileExeResponse
+	86,  // 390: organization.CamFileExeService.DeleteCamFileExe:output_type -> organization.DeleteCamFileExeResponse
+	88,  // 391: organization.CamFileExeService.ListCamFileExes:output_type -> organization.ListCamFileExesResponse
+	90,  // 392: organization.CamFileExeService.ListCamFileExesByOrganization:output_type -> organization.ListCamFileExesByOrganizationResponse
+	93,  // 393: organization.CamFileExeStageService.CreateCamFileExeStage:output_type -> organization.CreateCamFileExeStageResponse
+	95,  // 394: organization.CamFileExeStageService.GetCamFileExeStage:output_type -> organization.GetCamFileExeStageResponse
+	97,  // 395: organization.CamFileExeStageService.UpdateCamFileExeStage:output_type -> organization.UpdateCamFileExeStageResponse
+	99,  // 396: organization.CamFileExeStageService.DeleteCamFileExeStage:output_type -> organization.DeleteCamFileExeStageResponse
+	101, // 397: organization.CamFileExeStageService.ListCamFileExeStages:output_type -> organization.ListCamFileExeStagesResponse
+	103, // 398: organization.CamFileExeStageService.ListCamFileExeStagesByOrganization:output_type -> organization.ListCamFileExeStagesByOrganizationResponse
+	106, // 399: organization.IchibanCarService.CreateIchibanCar:output_type -> organization.CreateIchibanCarResponse
+	108, // 400: organization.IchibanCarService.GetIchibanCar:output_type -> organization.GetIchibanCarResponse
+	110, // 401: organization.IchibanCarService.UpdateIchibanCar:output_type -> organization.UpdateIchibanCarResponse
+	112, // 402: organization.IchibanCarService.DeleteIchibanCar:output_type -> organization.DeleteIchibanCarResponse
+	114, // 403: organization.IchibanCarService.ListIchibanCars:output_type -> organization.ListIchibanCarsResponse
+	116, // 404: organization.IchibanCarService.ListIchibanCarsByOrganization:output_type -> organization.ListIchibanCarsByOrganizationResponse
+	119, // 405: organization.DtakoCarsIchibanCarsService.CreateDtakoCarsIchibanCars:output_type -> organization.CreateDtakoCarsIchibanCarsResponse
+	121, // 406: organization.DtakoCarsIchibanCarsService.GetDtakoCarsIchibanCars:output_type -> organization.GetDtakoCarsIchibanCarsResponse
+	123, // 407: organization.DtakoCarsIchibanCarsService.UpdateDtakoCarsIchibanCars:output_type -> organization.UpdateDtakoCarsIchibanCarsResponse
+	125, // 408: organization.DtakoCarsIchibanCarsService.DeleteDtakoCarsIchibanCars:output_type -> organization.DeleteDtakoCarsIchibanCarsResponse
+	127, // 409: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCars:output_type -> organization.ListDtakoCarsIchibanCarsResponse
+	129, // 410: organization.DtakoCarsIchibanCarsService.ListDtakoCarsIchibanCarsByOrganization:output_type -> organization.ListDtakoCarsIchibanCarsByOrganizationResponse
+	132, // 411: organization.UriageService.CreateUriage:output_type -> organization.CreateUriageResponse
+	134, // 412: organization.UriageService.GetUriage:output_type -> organization.GetUriageResponse
+	136, // 413: organization.UriageService.UpdateUriage:output_type -> organization.UpdateUriageResponse
+	138, // 414: organization.UriageService.DeleteUriage:output_type -> organization.DeleteUriageResponse
+	140, // 415: organization.UriageService.ListUriages:output_type -> organization.ListUriagesResponse
+	142, // 416: organization.UriageService.ListUriagesByOrganization:output_type -> organization.ListUriagesByOrganizationResponse
+	145, // 417: organization.UriageJishaService.CreateUriageJisha:output_type -> organization.CreateUriageJishaResponse
+	147, // 418: organization.UriageJishaService.GetUriageJisha:output_type -> organization.GetUriageJishaResponse
+	149, // 419: organization.UriageJishaService.UpdateUriageJisha:output_type -> organization.UpdateUriageJishaResponse
+	151, // 420: organization.UriageJishaService.DeleteUriageJisha:output_type -> organization.DeleteUriageJishaResponse
+	153, // 421: organization.UriageJishaService.ListUriageJishas:output_type -> organization.ListUriageJishasResponse
+	155, // 422: organization.UriageJishaService.ListUriageJishasByOrganization:output_type -> organization.ListUriageJishasByOrganizationResponse
+	158, // 423: organization.CarInspectionService.CreateCarInspection:output_type -> organization.CreateCarInspectionResponse
+	160, // 424: organization.CarInspectionService.GetCarInspection:output_type -> organization.GetCarInspectionResponse
+	162, // 425: organization.CarInspectionService.UpdateCarInspection:output_type -> organization.UpdateCarInspectionResponse
+	164, // 426: organization.CarInspectionService.DeleteCarInspection:output_type -> organization.DeleteCarInspectionResponse
+	166, // 427: organization.CarInspectionService.ListCarInspections:output_type -> organization.ListCarInspectionsResponse
+	168, // 428: organization.CarInspectionService.ListCarInspectionsByOrganization:output_type -> organization.ListCarInspectionsByOrganizationResponse
+	171, // 429: organization.CarInspectionFilesService.CreateCarInspectionFile:output_type -> organization.CreateCarInspectionFileResponse
+	173, // 430: organization.CarInspectionFilesService.GetCarInspectionFile:output_type -> organization.GetCarInspectionFileResponse
+	175, // 431: organization.CarInspectionFilesService.UpdateCarInspectionFile:output_type -> organization.UpdateCarInspectionFileResponse
+	177, // 432: organization.CarInspectionFilesService.DeleteCarInspectionFile:output_type -> organization.DeleteCarInspectionFileResponse
+	179, // 433: organization.CarInspectionFilesService.ListCarInspectionFiles:output_type -> organization.ListCarInspectionFilesResponse
+	181, // 434: organization.CarInspectionFilesService.ListCarInspectionFilesByOrganization:output_type -> organization.ListCarInspectionFilesByOrganizationResponse
+	184, // 435: organization.CarInspectionFilesAService.CreateCarInspectionFilesA:output_type -> organization.CreateCarInspectionFilesAResponse
+	186, // 436: organization.CarInspectionFilesAService.GetCarInspectionFilesA:output_type -> organization.GetCarInspectionFilesAResponse
+	188, // 437: organization.CarInspectionFilesAService.UpdateCarInspectionFilesA:output_type -> organization.UpdateCarInspectionFilesAResponse
+	190, // 438: organization.CarInspectionFilesAService.DeleteCarInspectionFilesA:output_type -> organization.DeleteCarInspectionFilesAResponse
+	192, // 439: organization.CarInspectionFilesAService.ListCarInspectionFilesAs:output_type -> organization.ListCarInspectionFilesAsResponse
+	194, // 440: organization.CarInspectionFilesAService.ListCarInspectionFilesAsByOrganization:output_type -> organization.ListCarInspectionFilesAsByOrganizationResponse
+	197, // 441: organization.CarInspectionFilesBService.CreateCarInspectionFilesB:output_type -> organization.CreateCarInspectionFilesBResponse
+	199, // 442: organization.CarInspectionFilesBService.GetCarInspectionFilesB:output_type -> organization.GetCarInspectionFilesBResponse
+	201, // 443: organization.CarInspectionFilesBService.UpdateCarInspectionFilesB:output_type -> organization.UpdateCarInspectionFilesBResponse
+	203, // 444: organization.CarInspectionFilesBService.DeleteCarInspectionFilesB:output_type -> organization.DeleteCarInspectionFilesBResponse
+	205, // 445: organization.CarInspectionFilesBService.ListCarInspectionFilesBs:output_type -> organization.ListCarInspectionFilesBsResponse
+	207, // 446: organization.CarInspectionFilesBService.ListCarInspectionFilesBsByOrganization:output_type -> organization.ListCarInspectionFilesBsByOrganizationResponse
+	210, // 447: organization.CarInspectionDeregistrationService.CreateCarInspectionDeregistration:output_type -> organization.CreateCarInspectionDeregistrationResponse
+	212, // 448: organization.CarInspectionDeregistrationService.GetCarInspectionDeregistration:output_type -> organization.GetCarInspectionDeregistrationResponse
+	214, // 449: organization.CarInspectionDeregistrationService.UpdateCarInspectionDeregistration:output_type -> organization.UpdateCarInspectionDeregistrationResponse
+	216, // 450: organization.CarInspectionDeregistrationService.DeleteCarInspectionDeregistration:output_type -> organization.DeleteCarInspectionDeregistrationResponse
+	218, // 451: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrations:output_type -> organization.ListCarInspectionDeregistrationsResponse
+	220, // 452: organization.CarInspectionDeregistrationService.ListCarInspectionDeregistrationsByOrganization:output_type -> organization.ListCarInspectionDeregistrationsByOrganizationResponse
+	223, // 453: organization.CarInspectionDeregistrationFilesService.CreateCarInspectionDeregistrationFiles:output_type -> organization.CreateCarInspectionDeregistrationFilesResponse
+	225, // 454: organization.CarInspectionDeregistrationFilesService.GetCarInspectionDeregistrationFiles:output_type -> organization.GetCarInspectionDeregistrationFilesResponse
+	227, // 455: organization.CarInspectionDeregistrationFilesService.UpdateCarInspectionDeregistrationFiles:output_type -> organization.UpdateCarInspectionDeregistrationFilesResponse
+	229, // 456: organization.CarInspectionDeregistrationFilesService.DeleteCarInspectionDeregistrationFiles:output_type -> organization.DeleteCarInspectionDeregistrationFilesResponse
+	231, // 457: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFiless:output_type -> organization.ListCarInspectionDeregistrationFilessResponse
+	233, // 458: organization.CarInspectionDeregistrationFilesService.ListCarInspectionDeregistrationFilessByOrganization:output_type -> organization.ListCarInspectionDeregistrationFilessByOrganizationResponse
+	236, // 459: organization.CarInsSheetIchibanCarsService.CreateCarInsSheetIchibanCars:output_type -> organization.CreateCarInsSheetIchibanCarsResponse
+	238, // 460: organization.CarInsSheetIchibanCarsService.GetCarInsSheetIchibanCars:output_type -> organization.GetCarInsSheetIchibanCarsResponse
+	240, // 461: organization.CarInsSheetIchibanCarsService.UpdateCarInsSheetIchibanCars:output_type -> organization.UpdateCarInsSheetIchibanCarsResponse
+	242, // 462: organization.CarInsSheetIchibanCarsService.DeleteCarInsSheetIchibanCars:output_type -> organization.DeleteCarInsSheetIchibanCarsResponse
+	244, // 463: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarss:output_type -> organization.ListCarInsSheetIchibanCarssResponse
+	246, // 464: organization.CarInsSheetIchibanCarsService.ListCarInsSheetIchibanCarssByOrganization:output_type -> organization.ListCarInsSheetIchibanCarssByOrganizationResponse
+	249, // 465: organization.CarInsSheetIchibanCarsAService.CreateCarInsSheetIchibanCarsA:output_type -> organization.CreateCarInsSheetIchibanCarsAResponse
+	251, // 466: organization.CarInsSheetIchibanCarsAService.GetCarInsSheetIchibanCarsA:output_type -> organization.GetCarInsSheetIchibanCarsAResponse
+	253, // 467: organization.CarInsSheetIchibanCarsAService.UpdateCarInsSheetIchibanCarsA:output_type -> organization.UpdateCarInsSheetIchibanCarsAResponse
+	255, // 468: organization.CarInsSheetIchibanCarsAService.DeleteCarInsSheetIchibanCarsA:output_type -> organization.DeleteCarInsSheetIchibanCarsAResponse
+	257, // 469: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAs:output_type -> organization.ListCarInsSheetIchibanCarsAsResponse
+	259, // 470: organization.CarInsSheetIchibanCarsAService.ListCarInsSheetIchibanCarsAsByOrganization:output_type -> organization.ListCarInsSheetIchibanCarsAsByOrganizationResponse
+	262, // 471: organization.KudgfryService.CreateKudgfry:output_type -> organization.CreateKudgfryResponse
+	264, // 472: organization.KudgfryService.GetKudgfry:output_type -> organization.GetKudgfryResponse
+	266, // 473: organization.KudgfryService.UpdateKudgfry:output_type -> organization.UpdateKudgfryResponse
+	268, // 474: organization.KudgfryService.DeleteKudgfry:output_type -> organization.DeleteKudgfryResponse
+	270, // 475: organization.KudgfryService.ListKudgfrys:output_type -> organization.ListKudgfrysResponse
+	272, // 476: organization.KudgfryService.ListKudgfrysByOrganization:output_type -> organization.ListKudgfrysByOrganizationResponse
+	275, // 477: organization.KudguriService.CreateKudguri:output_type -> organization.CreateKudguriResponse
+	277, // 478: organization.KudguriService.GetKudguri:output_type -> organization.GetKudguriResponse
+	279, // 479: organization.KudguriService.UpdateKudguri:output_type -> organization.UpdateKudguriResponse
+	281, // 480: organization.KudguriService.DeleteKudguri:output_type -> organization.DeleteKudguriResponse
+	283, // 481: organization.KudguriService.ListKudguris:output_type -> organization.ListKudgurisResponse
+	285, // 482: organization.KudguriService.ListKudgurisByOrganization:output_type -> organization.ListKudgurisByOrganizationResponse
+	288, // 483: organization.KudgcstService.CreateKudgcst:output_type -> organization.CreateKudgcstResponse
+	290, // 484: organization.KudgcstService.GetKudgcst:output_type -> organization.GetKudgcstResponse
+	292, // 485: organization.KudgcstService.UpdateKudgcst:output_type -> organization.UpdateKudgcstResponse
+	294, // 486: organization.KudgcstService.DeleteKudgcst:output_type -> organization.DeleteKudgcstResponse
+	296, // 487: organization.KudgcstService.ListKudgcsts:output_type -> organization.ListKudgcstsResponse
+	298, // 488: organization.KudgcstService.ListKudgcstsByOrganization:output_type -> organization.ListKudgcstsByOrganizationResponse
+	301, // 489: organization.KudgfulService.CreateKudgful:output_type -> organization.CreateKudgfulResponse
+	303, // 490: organization.KudgfulService.GetKudgful:output_type -> organization.GetKudgfulResponse
+	305, // 491: organization.KudgfulService.UpdateKudgful:output_type -> organization.UpdateKudgfulResponse
+	307, // 492: organization.KudgfulService.DeleteKudgful:output_type -> organization.DeleteKudgfulResponse
+	309, // 493: organization.KudgfulService.ListKudgfuls:output_type -> organization.ListKudgfulsResponse
+	311, // 494: organization.KudgfulService.ListKudgfulsByOrganization:output_type -> organization.ListKudgfulsByOrganizationResponse
+	314, // 495: organization.KudgsirService.CreateKudgsir:output_type -> organization.CreateKudgsirResponse
+	316, // 496: organization.KudgsirService.GetKudgsir:output_type -> organization.GetKudgsirResponse
+	318, // 497: organization.KudgsirService.UpdateKudgsir:output_type -> organization.UpdateKudgsirResponse
+	320, // 498: organization.KudgsirService.DeleteKudgsir:output_type -> organization.DeleteKudgsirResponse
+	322, // 499: organization.KudgsirService.ListKudgsirs:output_type -> organization.ListKudgsirsResponse
+	324, // 500: organization.KudgsirService.ListKudgsirsByOrganization:output_type -> organization.ListKudgsirsByOrganizationResponse
+	327, // 501: organization.KudgivtService.CreateKudgivt:output_type -> organization.CreateKudgivtResponse
+	329, // 502: organization.KudgivtService.GetKudgivt:output_type -> organization.GetKudgivtResponse
+	331, // 503: organization.KudgivtService.UpdateKudgivt:output_type -> organization.UpdateKudgivtResponse
+	333, // 504: organization.KudgivtService.DeleteKudgivt:output_type -> organization.DeleteKudgivtResponse
+	335, // 505: organization.KudgivtService.ListKudgivts:output_type -> organization.ListKudgivtsResponse
+	337, // 506: organization.KudgivtService.ListKudgivtsByOrganization:output_type -> organization.ListKudgivtsByOrganizationResponse
+	340, // 507: organization.DtakologsService.CreateDtakologs:output_type -> organization.CreateDtakologsResponse
+	342, // 508: organization.DtakologsService.GetDtakologs:output_type -> organization.GetDtakologsResponse
+	344, // 509: organization.DtakologsService.UpdateDtakologs:output_type -> organization.UpdateDtakologsResponse
+	346, // 510: organization.DtakologsService.DeleteDtakologs:output_type -> organization.DeleteDtakologsResponse
+	348, // 511: organization.DtakologsService.ListDtakologs:output_type -> organization.ListDtakologsResponse
+	350, // 512: organization.DtakologsService.ListDtakologsByOrganization:output_type -> organization.ListDtakologsByOrganizationResponse
+	351, // 513: organization.AuthService.AuthWithGoogle:output_type -> organization.AuthResponse
+	351, // 514: organization.AuthService.AuthWithLine:output_type -> organization.AuthResponse
+	351, // 515: organization.AuthService.RefreshToken:output_type -> organization.AuthResponse
+	356, // 516: organization.AuthService.GetAuthURL:output_type -> organization.GetAuthURLResponse
+	358, // 517: organization.AuthService.ValidateToken:output_type -> organization.ValidateTokenResponse
+	361, // 518: organization.InvitationService.CreateInvitation:output_type -> organization.CreateInvitationResponse
+	363, // 519: organization.InvitationService.GetInvitation:output_type -> organization.GetInvitationResponse
+	365, // 520: organization.InvitationService.GetInvitationByToken:output_type -> organization.GetInvitationByTokenResponse
+	367, // 521: organization.InvitationService.AcceptInvitation:output_type -> organization.AcceptInvitationResponse
+	369, // 522: organization.InvitationService.CancelInvitation:output_type -> organization.CancelInvitationResponse
+	371, // 523: organization.InvitationService.ListInvitations:output_type -> organization.ListInvitationsResponse
+	373, // 524: organization.InvitationService.ResendInvitation:output_type -> organization.ResendInvitationResponse
+	376, // 525: organization.ETCMeisaiService.CreateETCMeisai:output_type -> organization.CreateETCMeisaiResponse
+	378, // 526: organization.ETCMeisaiService.GetETCMeisai:output_type -> organization.GetETCMeisaiResponse
+	380, // 527: organization.ETCMeisaiService.GetETCMeisaiByHash:output_type -> organization.GetETCMeisaiByHashResponse
+	382, // 528: organization.ETCMeisaiService.UpdateETCMeisai:output_type -> organization.UpdateETCMeisaiResponse
+	384, // 529: organization.ETCMeisaiService.DeleteETCMeisai:output_type -> organization.DeleteETCMeisaiResponse
+	386, // 530: organization.ETCMeisaiService.ListETCMeisai:output_type -> organization.ListETCMeisaiResponse
+	388, // 531: organization.ETCMeisaiService.BulkCreateETCMeisai:output_type -> organization.BulkCreateETCMeisaiResponse
+	351, // [351:532] is the sub-list for method output_type
+	170, // [170:351] is the sub-list for method input_type
+	170, // [170:170] is the sub-list for extension type_name
+	170, // [170:170] is the sub-list for extension extendee
+	0,   // [0:170] is the sub-list for field type_name
 }
 
 func init() { file_service_proto_init() }
@@ -35495,15 +36761,19 @@ func file_service_proto_init() {
 	file_service_proto_msgTypes[339].OneofWrappers = []any{}
 	file_service_proto_msgTypes[343].OneofWrappers = []any{}
 	file_service_proto_msgTypes[359].OneofWrappers = []any{}
+	file_service_proto_msgTypes[374].OneofWrappers = []any{}
+	file_service_proto_msgTypes[375].OneofWrappers = []any{}
+	file_service_proto_msgTypes[381].OneofWrappers = []any{}
+	file_service_proto_msgTypes[385].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_service_proto_rawDesc), len(file_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   374,
+			NumMessages:   389,
 			NumExtensions: 0,
-			NumServices:   29,
+			NumServices:   30,
 		},
 		GoTypes:           file_service_proto_goTypes,
 		DependencyIndexes: file_service_proto_depIdxs,
