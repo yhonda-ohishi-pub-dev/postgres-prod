@@ -6,6 +6,7 @@ Cloud Run上で動作するGoサービス。Cloud SQL PostgreSQLにIAM認証で�
 
 - **Cloud SQL IAM認証**: パスワード不要のセキュアな接続
 - **gRPC API**: 28サービス（29テーブル対応）のCRUD API
+- **gRPC-Web対応**: Envoyサイドカーによるブラウザからの直接アクセス
 - **OAuth2認証**: Google/LINEログイン対応（JWT発行）
 - **Row-Level Security**: 組織ごとのデータ分離（マルチテナント対応）
 - **Repository層**: 29テーブル分のCRUD実装（統合テスト完備）
@@ -91,7 +92,21 @@ pkg/
   pb/                    - 生成されたProtobufコード
   repository/            - データベース操作（29テーブル分のCRUD + 統合テスト）
 proto/service.proto      - gRPCサービス定義
+envoy.yaml               - Envoyプロキシ設定（gRPC-Web変換）
 ```
+
+## gRPC-Web (Envoy Sidecar)
+
+ブラウザからgRPC APIに直接アクセスするため、EnvoyプロキシをCloud Runサイドカーとして構成:
+
+```
+Browser (gRPC-Web) → Envoy (:8080) → gRPC Server (:9090)
+```
+
+**Envoyの役割:**
+- gRPC-Web → gRPCプロトコル変換
+- CORS処理
+- HTTP/1.1 → HTTP/2変換
 
 ## Deployment
 

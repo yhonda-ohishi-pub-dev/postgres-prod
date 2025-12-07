@@ -12,6 +12,10 @@
 - Envoyサイドカー設定: 完了 ✅
 - Cloud Run: デプロイ完了、28サービス動作確認済み ✅
   - URL: https://postgres-prod-747065218280.asia-northeast1.run.app
+- HTTPエンドポイント対応: 完了 ✅
+  - /auth/google, /auth/line (OAuth2リダイレクト)
+  - /health (ヘルスチェック)
+  - gRPCとHTTPの同一ポート共存 (h2c)
 
 ## 目標
 

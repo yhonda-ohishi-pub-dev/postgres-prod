@@ -8,19 +8,19 @@ spec:
   template:
     metadata:
       annotations:
-        run.googleapis.com/cloudsql-instances: ${PROJECT_ID}:${REGION}:${CLOUDSQL_INSTANCE}
+        run.googleapis.com/cloudsql-instances: cloudsql-sv:asia-northeast1:postgres-prod
         run.googleapis.com/execution-environment: gen2
         run.googleapis.com/container-dependencies: '{"grpc-server":["envoy"]}'
         autoscaling.knative.dev/minScale: "0"
         autoscaling.knative.dev/maxScale: "10"
     spec:
-      serviceAccountName: ${SERVICE_ACCOUNT}
+      serviceAccountName: 747065218280-compute@developer.gserviceaccount.com
       containerConcurrency: 80
       timeoutSeconds: 300
       containers:
         # Envoy sidecar - ingress container (receives traffic on port 8080)
         - name: envoy
-          image: ${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/postgres-prod-envoy:${TAG}
+          image: asia-northeast1-docker.pkg.dev/cloudsql-sv/postgres-prod/postgres-prod-envoy@sha256:191095351e0dd0846a4b97ee31e98b9883dd64c4435524d1a13bc751ed79c8d3
           ports:
             - name: http1
               containerPort: 8080
@@ -37,20 +37,20 @@ spec:
 
         # gRPC server - main application (internal, port 9090)
         - name: grpc-server
-          image: ${REGION}-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/postgres-prod:${TAG}
+          image: asia-northeast1-docker.pkg.dev/cloudsql-sv/postgres-prod/postgres-prod@sha256:854f970755d1f6abd918d0fde7b2f370f426fd9401b489b7c6f7b7ebd2302092
           env:
             - name: PORT
               value: "9090"
             - name: GCP_PROJECT_ID
-              value: ${PROJECT_ID}
+              value: cloudsql-sv
             - name: GCP_REGION
-              value: ${REGION}
+              value: asia-northeast1
             - name: CLOUDSQL_INSTANCE_NAME
-              value: ${CLOUDSQL_INSTANCE}
+              value: postgres-prod
             - name: DB_NAME
-              value: ${DB_NAME}
+              value: myapp
             - name: DB_USER
-              value: ${DB_USER}
+              value: 747065218280-compute@developer
           resources:
             limits:
               cpu: "1000m"

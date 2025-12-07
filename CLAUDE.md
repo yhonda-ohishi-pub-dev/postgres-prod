@@ -10,11 +10,11 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
+| 5182d57 | ドキュメント更新: OAuth2/RLS機能を反映 |
 | 1549526 | 統合テスト修正: OAuth2対応のAPI変更に追従 |
 | ea4baf1 | OAuth2認証機能追加: Google/LINE対応 |
 | 0e96c07 | RLS統合テスト追加: データ分離の検証 |
 | 66dbeca | ドキュメント更新: 27サービス詳細とデプロイ情報追加 |
-| 752206e | RLS対応: gRPCリクエストごとにorganization_idを設定 |
 
 ## Build and Run
 

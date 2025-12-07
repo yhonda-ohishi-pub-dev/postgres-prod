@@ -512,3 +512,105 @@ grpcurl -H "x-organization-id: test-org" postgres-prod-747065218280.asia-northea
 
 - Cloud BuildのサービスアカウントにIAM Policy設定権限が不足していたため、`run.services.setIamPolicy`のエラーが発生したが、デプロイ自体は成功
 - デフォルトのCompute Service Account (`747065218280-compute@developer.gserviceaccount.com`) を使用
+
+---
+
+## 完了: Phase 4-5 HTTPエンドポイント対応 (2025-12-07)
+
+### 概要
+
+gRPC-Webフィルターをバイパスする必要があるHTTPエンドポイント（OAuth認証リダイレクト、ヘルスチェック）を追加。同一ポートでgRPCとHTTPの両方をサポートするためh2c (HTTP/2 cleartext)を実装。
+
+### 背景
+
+フロントエンド（front-js-gcp）からのOAuth認証フローでは、ブラウザがHTTPリダイレクト（302）を受け取る必要がある。しかし、全リクエストがEnvoyのgRPC-Webフィルターを通過すると、HTTPレスポンスが正しく処理されない問題があった。
+
+### 作成ファイル
+
+```
+pkg/http/auth_handler.go     # HTTPエンドポイントハンドラー
+```
+
+### 更新ファイル
+
+```
+envoy.yaml                   # HTTP用クラスター・ルート追加
+cmd/server/main.go           # h2cハンドラー追加、HTTP+gRPC共存
+service.yaml                 # startup probeをgRPCからhttpGetに変更
+service-resolved.yaml        # 最新イメージダイジェストに更新
+```
+
+### 技術詳細
+
+#### Envoy設定更新
+
+```yaml
+routes:
+  # HTTP endpoints - bypass gRPC-Web filter
+  - match:
+      prefix: "/auth/"
+    route:
+      cluster: http_service
+  - match:
+      prefix: "/health"
+    route:
+      cluster: http_service
+  # gRPC endpoints
+  - match:
+      prefix: "/"
+    route:
+      cluster: grpc_service
+
+clusters:
+  - name: http_service
+    typed_extension_protocol_options:
+      envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+        explicit_http_config:
+          http_protocol_options: {}  # HTTP/1.1
+```
+
+#### gRPC + HTTP同一ポート共存 (h2c)
+
+```go
+handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+    if r.ProtoMajor == 2 && strings.HasPrefix(contentType, "application/grpc") {
+        grpcServer.ServeHTTP(w, r)
+        return
+    }
+    httpMux.ServeHTTP(w, r)
+})
+h2cHandler := h2c.NewHandler(handler, &http2.Server{})
+```
+
+#### HTTPエンドポイント
+
+| パス | 動作 |
+|------|------|
+| /auth/google | Google OAuth認可URLへ302リダイレクト |
+| /auth/google/callback | Google OAuth2コールバック処理 |
+| /auth/line | LINE OAuth認可URLへ302リダイレクト |
+| /auth/line/callback | LINE OAuth2コールバック処理 |
+| /health | ヘルスチェック (200 OK) |
+
+### 動作確認
+
+```bash
+# HTTPエンドポイント
+curl -I https://postgres-prod-747065218280.asia-northeast1.run.app/health
+# HTTP/1.1 200 OK
+
+curl -I https://postgres-prod-747065218280.asia-northeast1.run.app/auth/google
+# HTTP/1.1 302 Found
+# Location: https://accounts.google.com/o/oauth2/v2/auth?...
+
+# gRPCエンドポイント
+grpcurl postgres-prod-747065218280.asia-northeast1.run.app:443 list
+# organization.AppUserService
+# organization.AuthService
+# ... (28サービス)
+```
+
+### 備考
+
+- startup probeをgRPCプロトコルからHTTP GETに変更（/healthエンドポイント使用）
+- Envoyはバックエンドへの接続プロトコルを明示的に指定（gRPC=HTTP/2、HTTP=HTTP/1.1）

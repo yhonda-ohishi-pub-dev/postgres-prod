@@ -3,12 +3,15 @@ package main
 import (
 	"context"
 	"log"
-	"net"
+	"net/http"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 
+	"golang.org/x/net/http2"
+	"golang.org/x/net/http2/h2c"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"
@@ -18,6 +21,7 @@ import (
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/auth"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/db"
 	grpcserver "github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/grpc"
+	httphandler "github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/http"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/pb"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/repository"
 )
@@ -127,6 +131,9 @@ func main() {
 	dtakologsServer := grpcserver.NewDtakologsServer(dtakologsRepo)
 	authServer := grpcserver.NewAuthServer(appUserRepo, oauthAccountRepo, jwtService, googleClient, lineClient)
 
+	// Create HTTP auth handler
+	authHandler := httphandler.NewAuthHandler(googleClient, lineClient, jwtService, appUserRepo, oauthAccountRepo)
+
 	// Create gRPC server with health check and RLS interceptor
 	grpcServer := grpc.NewServer(
 		grpc.UnaryInterceptor(grpcserver.RLSUnaryInterceptor()),
@@ -170,15 +177,35 @@ func main() {
 
 	reflection.Register(grpcServer)
 
-	// Use PORT env (Cloud Run sets this to 8080)
+	// Use PORT env (Cloud Run sets this to 9090 for gRPC in sidecar setup)
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080"
+		port = "9090"
 	}
 
-	listener, err := net.Listen("tcp", ":"+port)
-	if err != nil {
-		log.Fatalf("Failed to listen: %v", err)
+	// Create HTTP mux for auth endpoints
+	httpMux := http.NewServeMux()
+	authHandler.RegisterRoutes(httpMux)
+
+	// Create a handler that routes based on content-type and HTTP/2
+	// gRPC uses HTTP/2 with content-type starting with "application/grpc"
+	handler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		contentType := r.Header.Get("Content-Type")
+		// gRPC requests: HTTP/2 with application/grpc content type
+		if r.ProtoMajor == 2 && strings.HasPrefix(contentType, "application/grpc") {
+			grpcServer.ServeHTTP(w, r)
+			return
+		}
+		httpMux.ServeHTTP(w, r)
+	})
+
+	// Use h2c to support HTTP/2 cleartext (required for gRPC without TLS)
+	h2s := &http2.Server{}
+	h2cHandler := h2c.NewHandler(handler, h2s)
+
+	httpServer := &http.Server{
+		Addr:    ":" + port,
+		Handler: h2cHandler,
 	}
 
 	// Graceful shutdown
@@ -187,13 +214,14 @@ func main() {
 		signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
 		<-sigCh
 
-		log.Println("Shutting down gRPC server...")
+		log.Println("Shutting down servers...")
 		grpcServer.GracefulStop()
+		httpServer.Shutdown(context.Background())
 	}()
 
-	log.Printf("Starting gRPC server on port %s", port)
-	if err := grpcServer.Serve(listener); err != nil {
-		log.Fatalf("gRPC server error: %v", err)
+	log.Printf("Starting server on port %s (HTTP + gRPC with h2c)", port)
+	if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		log.Fatalf("Server error: %v", err)
 	}
 
 	log.Println("Server stopped")
