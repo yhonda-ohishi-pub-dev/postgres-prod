@@ -17,7 +17,40 @@
 
 ## 次のステップ（予定）
 
-### Phase 3: Cloud Runデプロイ確認
+### Phase 3: OAuth2認証機能の実装
+
+userをOAuth2対応させ、LINE/Googleログインを実装する。
+
+#### 3-1. テーブル設計・Repository
+- [ ] `oauth_accounts`テーブル作成（マイグレーションSQL）
+  - provider, provider_user_id, app_user_id, tokens等
+- [ ] `pkg/repository/oauth_accounts.go` 新規作成
+  - Create, GetByProvider, GetByAppUserID, Update, Delete
+
+#### 3-2. 認証ロジック
+- [ ] `pkg/auth/jwt.go` - JWT発行・検証
+- [ ] `pkg/auth/google.go` - Google OAuth2クライアント
+- [ ] `pkg/auth/line.go` - LINE OAuth2クライアント
+
+#### 3-3. Proto定義・gRPCサービス
+- [ ] `proto/auth.proto` - AuthService定義
+  - AuthWithGoogle(code) → AuthResponse(jwt, refresh_token, user)
+  - AuthWithLine(code) → AuthResponse
+  - RefreshToken(refresh_token) → AuthResponse
+- [ ] `pkg/grpc/auth_server.go` - AuthService実装
+
+#### 3-4. 統合・テスト
+- [ ] main.goにAuthService登録
+- [ ] 環境変数追加（GOOGLE_CLIENT_ID, LINE_CHANNEL_ID等）
+- [ ] 統合テスト作成
+
+#### 備考
+- app_usersテーブルの変更は別リポジトリで対応（指示待ち）
+- クライアント: Web（将来的にモバイル対応）
+
+---
+
+### Phase 4: Cloud Runデプロイ確認
 
 ```bash
 gcloud builds submit --config=cloudbuild.yaml \

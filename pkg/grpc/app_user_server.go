@@ -25,14 +25,11 @@ func NewAppUserServer(repo *repository.AppUserRepository) *AppUserServer {
 
 // CreateAppUser creates a new app user
 func (s *AppUserServer) CreateAppUser(ctx context.Context, req *pb.CreateAppUserRequest) (*pb.CreateAppUserResponse, error) {
-	if req.IamEmail == "" {
-		return nil, status.Error(codes.InvalidArgument, "iam_email is required")
-	}
 	if req.DisplayName == "" {
 		return nil, status.Error(codes.InvalidArgument, "display_name is required")
 	}
 
-	user, err := s.repo.Create(ctx, req.IamEmail, req.DisplayName, req.IsSuperadmin)
+	user, err := s.repo.Create(ctx, req.Email, req.DisplayName, req.AvatarUrl, req.IsSuperadmin)
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to create app user: %v", err)
 	}
@@ -61,13 +58,13 @@ func (s *AppUserServer) GetAppUser(ctx context.Context, req *pb.GetAppUserReques
 	}, nil
 }
 
-// GetAppUserByIamEmail retrieves an app user by IAM email
-func (s *AppUserServer) GetAppUserByIamEmail(ctx context.Context, req *pb.GetAppUserByIamEmailRequest) (*pb.GetAppUserByIamEmailResponse, error) {
-	if req.IamEmail == "" {
-		return nil, status.Error(codes.InvalidArgument, "iam_email is required")
+// GetAppUserByEmail retrieves an app user by email
+func (s *AppUserServer) GetAppUserByEmail(ctx context.Context, req *pb.GetAppUserByEmailRequest) (*pb.GetAppUserByEmailResponse, error) {
+	if req.Email == "" {
+		return nil, status.Error(codes.InvalidArgument, "email is required")
 	}
 
-	user, err := s.repo.GetByIamEmail(ctx, req.IamEmail)
+	user, err := s.repo.GetByEmail(ctx, req.Email)
 	if err != nil {
 		if errors.Is(err, repository.ErrAppUserNotFound) {
 			return nil, status.Error(codes.NotFound, "app user not found")
@@ -75,7 +72,7 @@ func (s *AppUserServer) GetAppUserByIamEmail(ctx context.Context, req *pb.GetApp
 		return nil, status.Errorf(codes.Internal, "failed to get app user: %v", err)
 	}
 
-	return &pb.GetAppUserByIamEmailResponse{
+	return &pb.GetAppUserByEmailResponse{
 		AppUser: toProtoAppUser(user),
 	}, nil
 }
@@ -89,7 +86,7 @@ func (s *AppUserServer) UpdateAppUser(ctx context.Context, req *pb.UpdateAppUser
 		return nil, status.Error(codes.InvalidArgument, "display_name is required")
 	}
 
-	user, err := s.repo.Update(ctx, req.Id, req.DisplayName, req.IsSuperadmin)
+	user, err := s.repo.Update(ctx, req.Id, req.DisplayName, req.AvatarUrl, req.IsSuperadmin)
 	if err != nil {
 		if errors.Is(err, repository.ErrAppUserNotFound) {
 			return nil, status.Error(codes.NotFound, "app user not found")
@@ -161,8 +158,9 @@ func (s *AppUserServer) ListAppUsers(ctx context.Context, req *pb.ListAppUsersRe
 func toProtoAppUser(user *repository.AppUser) *pb.AppUser {
 	proto := &pb.AppUser{
 		Id:           user.ID,
-		IamEmail:     user.IamEmail,
+		Email:        user.Email,
 		DisplayName:  user.DisplayName,
+		AvatarUrl:    user.AvatarURL,
 		IsSuperadmin: user.IsSuperadmin,
 		CreatedAt:    timestamppb.New(user.CreatedAt),
 		UpdatedAt:    timestamppb.New(user.UpdatedAt),

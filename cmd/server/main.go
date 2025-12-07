@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
@@ -14,6 +15,7 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/internal/config"
+	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/auth"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/db"
 	grpcserver "github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/grpc"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/pb"
@@ -74,6 +76,26 @@ func main() {
 	kudgsirRepo := repository.NewKudgsirRepositoryWithDB(rlsPool)
 	kudgivtRepo := repository.NewKudgivtRepositoryWithDB(rlsPool)
 	dtakologsRepo := repository.NewDtakologsRepositoryWithDB(rlsPool)
+	oauthAccountRepo := repository.NewOAuthAccountRepositoryWithDB(rlsPool)
+
+	// Create auth services
+	jwtSecret := os.Getenv("JWT_SECRET")
+	if jwtSecret == "" {
+		jwtSecret = "default-secret-change-in-production"
+		log.Println("WARNING: JWT_SECRET not set, using default secret")
+	}
+	jwtService := auth.NewJWTService(jwtSecret, 15*time.Minute, 7*24*time.Hour)
+
+	googleClient := auth.NewGoogleOAuthClient(
+		os.Getenv("GOOGLE_CLIENT_ID"),
+		os.Getenv("GOOGLE_CLIENT_SECRET"),
+		os.Getenv("GOOGLE_REDIRECT_URI"),
+	)
+	lineClient := auth.NewLineOAuthClient(
+		os.Getenv("LINE_CHANNEL_ID"),
+		os.Getenv("LINE_CHANNEL_SECRET"),
+		os.Getenv("LINE_REDIRECT_URI"),
+	)
 
 	// Create gRPC servers
 	orgServer := grpcserver.NewOrganizationServer(orgRepo)
@@ -103,6 +125,7 @@ func main() {
 	kudgsirServer := grpcserver.NewKudgsirServer(kudgsirRepo)
 	kudgivtServer := grpcserver.NewKudgivtServer(kudgivtRepo)
 	dtakologsServer := grpcserver.NewDtakologsServer(dtakologsRepo)
+	authServer := grpcserver.NewAuthServer(appUserRepo, oauthAccountRepo, jwtService, googleClient, lineClient)
 
 	// Create gRPC server with health check and RLS interceptor
 	grpcServer := grpc.NewServer(
@@ -138,6 +161,7 @@ func main() {
 	pb.RegisterKudgsirServiceServer(grpcServer, kudgsirServer)
 	pb.RegisterKudgivtServiceServer(grpcServer, kudgivtServer)
 	pb.RegisterDtakologsServiceServer(grpcServer, dtakologsServer)
+	pb.RegisterAuthServiceServer(grpcServer, authServer)
 
 	// Register health check service for Cloud Run
 	healthServer := health.NewServer()

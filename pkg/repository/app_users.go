@@ -17,8 +17,9 @@ var (
 // AppUser represents the database model
 type AppUser struct {
 	ID           string
-	IamEmail     string
+	Email        *string // nullable (LINE may not provide email)
 	DisplayName  string
+	AvatarURL    *string // nullable
 	IsSuperadmin bool
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
@@ -41,19 +42,19 @@ func NewAppUserRepositoryWithDB(db DB) *AppUserRepository {
 }
 
 // Create inserts a new app user
-func (r *AppUserRepository) Create(ctx context.Context, iamEmail, displayName string, isSuperadmin bool) (*AppUser, error) {
+func (r *AppUserRepository) Create(ctx context.Context, email *string, displayName string, avatarURL *string, isSuperadmin bool) (*AppUser, error) {
 	id := uuid.New().String()
 	now := time.Now()
 
 	query := `
-		INSERT INTO app_users (id, iam_email, display_name, is_superadmin, created_at, updated_at)
-		VALUES ($1, $2, $3, $4, $5, $6)
-		RETURNING id, iam_email, display_name, is_superadmin, created_at, updated_at, deleted_at
+		INSERT INTO app_users (id, email, display_name, avatar_url, is_superadmin, created_at, updated_at)
+		VALUES ($1, $2, $3, $4, $5, $6, $7)
+		RETURNING id, email, display_name, avatar_url, is_superadmin, created_at, updated_at, deleted_at
 	`
 
 	var user AppUser
-	err := r.db.QueryRow(ctx, query, id, iamEmail, displayName, isSuperadmin, now, now).Scan(
-		&user.ID, &user.IamEmail, &user.DisplayName, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
+	err := r.db.QueryRow(ctx, query, id, email, displayName, avatarURL, isSuperadmin, now, now).Scan(
+		&user.ID, &user.Email, &user.DisplayName, &user.AvatarURL, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
 	)
 	if err != nil {
 		return nil, err
@@ -65,14 +66,14 @@ func (r *AppUserRepository) Create(ctx context.Context, iamEmail, displayName st
 // GetByID retrieves an app user by ID
 func (r *AppUserRepository) GetByID(ctx context.Context, id string) (*AppUser, error) {
 	query := `
-		SELECT id, iam_email, display_name, is_superadmin, created_at, updated_at, deleted_at
+		SELECT id, email, display_name, avatar_url, is_superadmin, created_at, updated_at, deleted_at
 		FROM app_users
 		WHERE id = $1 AND deleted_at IS NULL
 	`
 
 	var user AppUser
 	err := r.db.QueryRow(ctx, query, id).Scan(
-		&user.ID, &user.IamEmail, &user.DisplayName, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
+		&user.ID, &user.Email, &user.DisplayName, &user.AvatarURL, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
 	)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
@@ -84,17 +85,17 @@ func (r *AppUserRepository) GetByID(ctx context.Context, id string) (*AppUser, e
 	return &user, nil
 }
 
-// GetByIamEmail retrieves an app user by IAM email
-func (r *AppUserRepository) GetByIamEmail(ctx context.Context, iamEmail string) (*AppUser, error) {
+// GetByEmail retrieves an app user by email
+func (r *AppUserRepository) GetByEmail(ctx context.Context, email string) (*AppUser, error) {
 	query := `
-		SELECT id, iam_email, display_name, is_superadmin, created_at, updated_at, deleted_at
+		SELECT id, email, display_name, avatar_url, is_superadmin, created_at, updated_at, deleted_at
 		FROM app_users
-		WHERE iam_email = $1 AND deleted_at IS NULL
+		WHERE email = $1 AND deleted_at IS NULL
 	`
 
 	var user AppUser
-	err := r.db.QueryRow(ctx, query, iamEmail).Scan(
-		&user.ID, &user.IamEmail, &user.DisplayName, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
+	err := r.db.QueryRow(ctx, query, email).Scan(
+		&user.ID, &user.Email, &user.DisplayName, &user.AvatarURL, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
 	)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
@@ -107,17 +108,17 @@ func (r *AppUserRepository) GetByIamEmail(ctx context.Context, iamEmail string) 
 }
 
 // Update modifies an existing app user
-func (r *AppUserRepository) Update(ctx context.Context, id, displayName string, isSuperadmin bool) (*AppUser, error) {
+func (r *AppUserRepository) Update(ctx context.Context, id, displayName string, avatarURL *string, isSuperadmin bool) (*AppUser, error) {
 	query := `
 		UPDATE app_users
-		SET display_name = $2, is_superadmin = $3, updated_at = $4
+		SET display_name = $2, avatar_url = $3, is_superadmin = $4, updated_at = $5
 		WHERE id = $1 AND deleted_at IS NULL
-		RETURNING id, iam_email, display_name, is_superadmin, created_at, updated_at, deleted_at
+		RETURNING id, email, display_name, avatar_url, is_superadmin, created_at, updated_at, deleted_at
 	`
 
 	var user AppUser
-	err := r.db.QueryRow(ctx, query, id, displayName, isSuperadmin, time.Now()).Scan(
-		&user.ID, &user.IamEmail, &user.DisplayName, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
+	err := r.db.QueryRow(ctx, query, id, displayName, avatarURL, isSuperadmin, time.Now()).Scan(
+		&user.ID, &user.Email, &user.DisplayName, &user.AvatarURL, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt,
 	)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
@@ -159,7 +160,7 @@ func (r *AppUserRepository) List(ctx context.Context, limit int, offset int) ([]
 	}
 
 	query := `
-		SELECT id, iam_email, display_name, is_superadmin, created_at, updated_at, deleted_at
+		SELECT id, email, display_name, avatar_url, is_superadmin, created_at, updated_at, deleted_at
 		FROM app_users
 		WHERE deleted_at IS NULL
 		ORDER BY created_at DESC
@@ -175,7 +176,7 @@ func (r *AppUserRepository) List(ctx context.Context, limit int, offset int) ([]
 	var users []*AppUser
 	for rows.Next() {
 		var user AppUser
-		err := rows.Scan(&user.ID, &user.IamEmail, &user.DisplayName, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt)
+		err := rows.Scan(&user.ID, &user.Email, &user.DisplayName, &user.AvatarURL, &user.IsSuperadmin, &user.CreatedAt, &user.UpdatedAt, &user.DeletedAt)
 		if err != nil {
 			return nil, err
 		}

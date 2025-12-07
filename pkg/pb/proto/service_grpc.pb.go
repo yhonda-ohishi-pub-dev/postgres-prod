@@ -277,12 +277,12 @@ var OrganizationService_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	AppUserService_CreateAppUser_FullMethodName        = "/organization.AppUserService/CreateAppUser"
-	AppUserService_GetAppUser_FullMethodName           = "/organization.AppUserService/GetAppUser"
-	AppUserService_GetAppUserByIamEmail_FullMethodName = "/organization.AppUserService/GetAppUserByIamEmail"
-	AppUserService_UpdateAppUser_FullMethodName        = "/organization.AppUserService/UpdateAppUser"
-	AppUserService_DeleteAppUser_FullMethodName        = "/organization.AppUserService/DeleteAppUser"
-	AppUserService_ListAppUsers_FullMethodName         = "/organization.AppUserService/ListAppUsers"
+	AppUserService_CreateAppUser_FullMethodName     = "/organization.AppUserService/CreateAppUser"
+	AppUserService_GetAppUser_FullMethodName        = "/organization.AppUserService/GetAppUser"
+	AppUserService_GetAppUserByEmail_FullMethodName = "/organization.AppUserService/GetAppUserByEmail"
+	AppUserService_UpdateAppUser_FullMethodName     = "/organization.AppUserService/UpdateAppUser"
+	AppUserService_DeleteAppUser_FullMethodName     = "/organization.AppUserService/DeleteAppUser"
+	AppUserService_ListAppUsers_FullMethodName      = "/organization.AppUserService/ListAppUsers"
 )
 
 // AppUserServiceClient is the client API for AppUserService service.
@@ -291,7 +291,7 @@ const (
 type AppUserServiceClient interface {
 	CreateAppUser(ctx context.Context, in *CreateAppUserRequest, opts ...grpc.CallOption) (*CreateAppUserResponse, error)
 	GetAppUser(ctx context.Context, in *GetAppUserRequest, opts ...grpc.CallOption) (*GetAppUserResponse, error)
-	GetAppUserByIamEmail(ctx context.Context, in *GetAppUserByIamEmailRequest, opts ...grpc.CallOption) (*GetAppUserByIamEmailResponse, error)
+	GetAppUserByEmail(ctx context.Context, in *GetAppUserByEmailRequest, opts ...grpc.CallOption) (*GetAppUserByEmailResponse, error)
 	UpdateAppUser(ctx context.Context, in *UpdateAppUserRequest, opts ...grpc.CallOption) (*UpdateAppUserResponse, error)
 	DeleteAppUser(ctx context.Context, in *DeleteAppUserRequest, opts ...grpc.CallOption) (*DeleteAppUserResponse, error)
 	ListAppUsers(ctx context.Context, in *ListAppUsersRequest, opts ...grpc.CallOption) (*ListAppUsersResponse, error)
@@ -325,10 +325,10 @@ func (c *appUserServiceClient) GetAppUser(ctx context.Context, in *GetAppUserReq
 	return out, nil
 }
 
-func (c *appUserServiceClient) GetAppUserByIamEmail(ctx context.Context, in *GetAppUserByIamEmailRequest, opts ...grpc.CallOption) (*GetAppUserByIamEmailResponse, error) {
+func (c *appUserServiceClient) GetAppUserByEmail(ctx context.Context, in *GetAppUserByEmailRequest, opts ...grpc.CallOption) (*GetAppUserByEmailResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAppUserByIamEmailResponse)
-	err := c.cc.Invoke(ctx, AppUserService_GetAppUserByIamEmail_FullMethodName, in, out, cOpts...)
+	out := new(GetAppUserByEmailResponse)
+	err := c.cc.Invoke(ctx, AppUserService_GetAppUserByEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -371,7 +371,7 @@ func (c *appUserServiceClient) ListAppUsers(ctx context.Context, in *ListAppUser
 type AppUserServiceServer interface {
 	CreateAppUser(context.Context, *CreateAppUserRequest) (*CreateAppUserResponse, error)
 	GetAppUser(context.Context, *GetAppUserRequest) (*GetAppUserResponse, error)
-	GetAppUserByIamEmail(context.Context, *GetAppUserByIamEmailRequest) (*GetAppUserByIamEmailResponse, error)
+	GetAppUserByEmail(context.Context, *GetAppUserByEmailRequest) (*GetAppUserByEmailResponse, error)
 	UpdateAppUser(context.Context, *UpdateAppUserRequest) (*UpdateAppUserResponse, error)
 	DeleteAppUser(context.Context, *DeleteAppUserRequest) (*DeleteAppUserResponse, error)
 	ListAppUsers(context.Context, *ListAppUsersRequest) (*ListAppUsersResponse, error)
@@ -391,8 +391,8 @@ func (UnimplementedAppUserServiceServer) CreateAppUser(context.Context, *CreateA
 func (UnimplementedAppUserServiceServer) GetAppUser(context.Context, *GetAppUserRequest) (*GetAppUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAppUser not implemented")
 }
-func (UnimplementedAppUserServiceServer) GetAppUserByIamEmail(context.Context, *GetAppUserByIamEmailRequest) (*GetAppUserByIamEmailResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAppUserByIamEmail not implemented")
+func (UnimplementedAppUserServiceServer) GetAppUserByEmail(context.Context, *GetAppUserByEmailRequest) (*GetAppUserByEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAppUserByEmail not implemented")
 }
 func (UnimplementedAppUserServiceServer) UpdateAppUser(context.Context, *UpdateAppUserRequest) (*UpdateAppUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppUser not implemented")
@@ -460,20 +460,20 @@ func _AppUserService_GetAppUser_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AppUserService_GetAppUserByIamEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAppUserByIamEmailRequest)
+func _AppUserService_GetAppUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAppUserByEmailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AppUserServiceServer).GetAppUserByIamEmail(ctx, in)
+		return srv.(AppUserServiceServer).GetAppUserByEmail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AppUserService_GetAppUserByIamEmail_FullMethodName,
+		FullMethod: AppUserService_GetAppUserByEmail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AppUserServiceServer).GetAppUserByIamEmail(ctx, req.(*GetAppUserByIamEmailRequest))
+		return srv.(AppUserServiceServer).GetAppUserByEmail(ctx, req.(*GetAppUserByEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -548,8 +548,8 @@ var AppUserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AppUserService_GetAppUser_Handler,
 		},
 		{
-			MethodName: "GetAppUserByIamEmail",
-			Handler:    _AppUserService_GetAppUserByIamEmail_Handler,
+			MethodName: "GetAppUserByEmail",
+			Handler:    _AppUserService_GetAppUserByEmail_Handler,
 		},
 		{
 			MethodName: "UpdateAppUser",
@@ -7910,6 +7910,270 @@ var DtakologsService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListDtakologsByOrganization",
 			Handler:    _DtakologsService_ListDtakologsByOrganization_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/service.proto",
+}
+
+const (
+	AuthService_AuthWithGoogle_FullMethodName = "/organization.AuthService/AuthWithGoogle"
+	AuthService_AuthWithLine_FullMethodName   = "/organization.AuthService/AuthWithLine"
+	AuthService_RefreshToken_FullMethodName   = "/organization.AuthService/RefreshToken"
+	AuthService_GetAuthURL_FullMethodName     = "/organization.AuthService/GetAuthURL"
+	AuthService_ValidateToken_FullMethodName  = "/organization.AuthService/ValidateToken"
+)
+
+// AuthServiceClient is the client API for AuthService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type AuthServiceClient interface {
+	// OAuth2 authentication with Google
+	AuthWithGoogle(ctx context.Context, in *AuthWithGoogleRequest, opts ...grpc.CallOption) (*AuthResponse, error)
+	// OAuth2 authentication with LINE
+	AuthWithLine(ctx context.Context, in *AuthWithLineRequest, opts ...grpc.CallOption) (*AuthResponse, error)
+	// Refresh access token
+	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*AuthResponse, error)
+	// Get OAuth authorization URL
+	GetAuthURL(ctx context.Context, in *GetAuthURLRequest, opts ...grpc.CallOption) (*GetAuthURLResponse, error)
+	// Validate access token
+	ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error)
+}
+
+type authServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewAuthServiceClient(cc grpc.ClientConnInterface) AuthServiceClient {
+	return &authServiceClient{cc}
+}
+
+func (c *authServiceClient) AuthWithGoogle(ctx context.Context, in *AuthWithGoogleRequest, opts ...grpc.CallOption) (*AuthResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AuthResponse)
+	err := c.cc.Invoke(ctx, AuthService_AuthWithGoogle_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) AuthWithLine(ctx context.Context, in *AuthWithLineRequest, opts ...grpc.CallOption) (*AuthResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AuthResponse)
+	err := c.cc.Invoke(ctx, AuthService_AuthWithLine_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*AuthResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AuthResponse)
+	err := c.cc.Invoke(ctx, AuthService_RefreshToken_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) GetAuthURL(ctx context.Context, in *GetAuthURLRequest, opts ...grpc.CallOption) (*GetAuthURLResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAuthURLResponse)
+	err := c.cc.Invoke(ctx, AuthService_GetAuthURL_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authServiceClient) ValidateToken(ctx context.Context, in *ValidateTokenRequest, opts ...grpc.CallOption) (*ValidateTokenResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ValidateTokenResponse)
+	err := c.cc.Invoke(ctx, AuthService_ValidateToken_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// AuthServiceServer is the server API for AuthService service.
+// All implementations must embed UnimplementedAuthServiceServer
+// for forward compatibility.
+type AuthServiceServer interface {
+	// OAuth2 authentication with Google
+	AuthWithGoogle(context.Context, *AuthWithGoogleRequest) (*AuthResponse, error)
+	// OAuth2 authentication with LINE
+	AuthWithLine(context.Context, *AuthWithLineRequest) (*AuthResponse, error)
+	// Refresh access token
+	RefreshToken(context.Context, *RefreshTokenRequest) (*AuthResponse, error)
+	// Get OAuth authorization URL
+	GetAuthURL(context.Context, *GetAuthURLRequest) (*GetAuthURLResponse, error)
+	// Validate access token
+	ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error)
+	mustEmbedUnimplementedAuthServiceServer()
+}
+
+// UnimplementedAuthServiceServer must be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedAuthServiceServer struct{}
+
+func (UnimplementedAuthServiceServer) AuthWithGoogle(context.Context, *AuthWithGoogleRequest) (*AuthResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthWithGoogle not implemented")
+}
+func (UnimplementedAuthServiceServer) AuthWithLine(context.Context, *AuthWithLineRequest) (*AuthResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthWithLine not implemented")
+}
+func (UnimplementedAuthServiceServer) RefreshToken(context.Context, *RefreshTokenRequest) (*AuthResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RefreshToken not implemented")
+}
+func (UnimplementedAuthServiceServer) GetAuthURL(context.Context, *GetAuthURLRequest) (*GetAuthURLResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAuthURL not implemented")
+}
+func (UnimplementedAuthServiceServer) ValidateToken(context.Context, *ValidateTokenRequest) (*ValidateTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ValidateToken not implemented")
+}
+func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
+func (UnimplementedAuthServiceServer) testEmbeddedByValue()                     {}
+
+// UnsafeAuthServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to AuthServiceServer will
+// result in compilation errors.
+type UnsafeAuthServiceServer interface {
+	mustEmbedUnimplementedAuthServiceServer()
+}
+
+func RegisterAuthServiceServer(s grpc.ServiceRegistrar, srv AuthServiceServer) {
+	// If the following call pancis, it indicates UnimplementedAuthServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&AuthService_ServiceDesc, srv)
+}
+
+func _AuthService_AuthWithGoogle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthWithGoogleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).AuthWithGoogle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_AuthWithGoogle_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).AuthWithGoogle(ctx, req.(*AuthWithGoogleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_AuthWithLine_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AuthWithLineRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).AuthWithLine(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_AuthWithLine_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).AuthWithLine(ctx, req.(*AuthWithLineRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_RefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RefreshTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).RefreshToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_RefreshToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).RefreshToken(ctx, req.(*RefreshTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_GetAuthURL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAuthURLRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).GetAuthURL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_GetAuthURL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).GetAuthURL(ctx, req.(*GetAuthURLRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthService_ValidateToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ValidateTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).ValidateToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_ValidateToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).ValidateToken(ctx, req.(*ValidateTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var AuthService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "organization.AuthService",
+	HandlerType: (*AuthServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "AuthWithGoogle",
+			Handler:    _AuthService_AuthWithGoogle_Handler,
+		},
+		{
+			MethodName: "AuthWithLine",
+			Handler:    _AuthService_AuthWithLine_Handler,
+		},
+		{
+			MethodName: "RefreshToken",
+			Handler:    _AuthService_RefreshToken_Handler,
+		},
+		{
+			MethodName: "GetAuthURL",
+			Handler:    _AuthService_GetAuthURL_Handler,
+		},
+		{
+			MethodName: "ValidateToken",
+			Handler:    _AuthService_ValidateToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

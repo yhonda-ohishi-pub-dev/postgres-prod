@@ -4,6 +4,7 @@ go 1.22
 
 require (
 	cloud.google.com/go/cloudsqlconn v1.11.0
+	github.com/golang-jwt/jwt/v5 v5.3.0
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.7.1
 	google.golang.org/grpc v1.64.0

@@ -591,12 +591,13 @@ func (x *ListOrganizationsResponse) GetNextPageToken() string {
 type AppUser struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	IamEmail      string                 `protobuf:"bytes,2,opt,name=iam_email,json=iamEmail,proto3" json:"iam_email,omitempty"`
+	Email         *string                `protobuf:"bytes,2,opt,name=email,proto3,oneof" json:"email,omitempty"` // nullable (LINE may not provide email)
 	DisplayName   string                 `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	IsSuperadmin  bool                   `protobuf:"varint,4,opt,name=is_superadmin,json=isSuperadmin,proto3" json:"is_superadmin,omitempty"`
-	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,5,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at,omitempty"`
+	AvatarUrl     *string                `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"` // profile image URL from OAuth2
+	IsSuperadmin  bool                   `protobuf:"varint,5,opt,name=is_superadmin,json=isSuperadmin,proto3" json:"is_superadmin,omitempty"`
+	CreatedAt     *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt     *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	DeletedAt     *timestamppb.Timestamp `protobuf:"bytes,8,opt,name=deleted_at,json=deletedAt,proto3,oneof" json:"deleted_at,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -638,9 +639,9 @@ func (x *AppUser) GetId() string {
 	return ""
 }
 
-func (x *AppUser) GetIamEmail() string {
-	if x != nil {
-		return x.IamEmail
+func (x *AppUser) GetEmail() string {
+	if x != nil && x.Email != nil {
+		return *x.Email
 	}
 	return ""
 }
@@ -648,6 +649,13 @@ func (x *AppUser) GetIamEmail() string {
 func (x *AppUser) GetDisplayName() string {
 	if x != nil {
 		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *AppUser) GetAvatarUrl() string {
+	if x != nil && x.AvatarUrl != nil {
+		return *x.AvatarUrl
 	}
 	return ""
 }
@@ -682,9 +690,10 @@ func (x *AppUser) GetDeletedAt() *timestamppb.Timestamp {
 
 type CreateAppUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IamEmail      string                 `protobuf:"bytes,1,opt,name=iam_email,json=iamEmail,proto3" json:"iam_email,omitempty"`
+	Email         *string                `protobuf:"bytes,1,opt,name=email,proto3,oneof" json:"email,omitempty"` // nullable
 	DisplayName   string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	IsSuperadmin  bool                   `protobuf:"varint,3,opt,name=is_superadmin,json=isSuperadmin,proto3" json:"is_superadmin,omitempty"`
+	AvatarUrl     *string                `protobuf:"bytes,3,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
+	IsSuperadmin  bool                   `protobuf:"varint,4,opt,name=is_superadmin,json=isSuperadmin,proto3" json:"is_superadmin,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -719,9 +728,9 @@ func (*CreateAppUserRequest) Descriptor() ([]byte, []int) {
 	return file_proto_service_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *CreateAppUserRequest) GetIamEmail() string {
-	if x != nil {
-		return x.IamEmail
+func (x *CreateAppUserRequest) GetEmail() string {
+	if x != nil && x.Email != nil {
+		return *x.Email
 	}
 	return ""
 }
@@ -729,6 +738,13 @@ func (x *CreateAppUserRequest) GetIamEmail() string {
 func (x *CreateAppUserRequest) GetDisplayName() string {
 	if x != nil {
 		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *CreateAppUserRequest) GetAvatarUrl() string {
+	if x != nil && x.AvatarUrl != nil {
+		return *x.AvatarUrl
 	}
 	return ""
 }
@@ -872,27 +888,27 @@ func (x *GetAppUserResponse) GetAppUser() *AppUser {
 	return nil
 }
 
-type GetAppUserByIamEmailRequest struct {
+type GetAppUserByEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IamEmail      string                 `protobuf:"bytes,1,opt,name=iam_email,json=iamEmail,proto3" json:"iam_email,omitempty"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetAppUserByIamEmailRequest) Reset() {
-	*x = GetAppUserByIamEmailRequest{}
+func (x *GetAppUserByEmailRequest) Reset() {
+	*x = GetAppUserByEmailRequest{}
 	mi := &file_proto_service_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetAppUserByIamEmailRequest) String() string {
+func (x *GetAppUserByEmailRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetAppUserByIamEmailRequest) ProtoMessage() {}
+func (*GetAppUserByEmailRequest) ProtoMessage() {}
 
-func (x *GetAppUserByIamEmailRequest) ProtoReflect() protoreflect.Message {
+func (x *GetAppUserByEmailRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_service_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -904,39 +920,39 @@ func (x *GetAppUserByIamEmailRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetAppUserByIamEmailRequest.ProtoReflect.Descriptor instead.
-func (*GetAppUserByIamEmailRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetAppUserByEmailRequest.ProtoReflect.Descriptor instead.
+func (*GetAppUserByEmailRequest) Descriptor() ([]byte, []int) {
 	return file_proto_service_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *GetAppUserByIamEmailRequest) GetIamEmail() string {
+func (x *GetAppUserByEmailRequest) GetEmail() string {
 	if x != nil {
-		return x.IamEmail
+		return x.Email
 	}
 	return ""
 }
 
-type GetAppUserByIamEmailResponse struct {
+type GetAppUserByEmailResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AppUser       *AppUser               `protobuf:"bytes,1,opt,name=app_user,json=appUser,proto3" json:"app_user,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetAppUserByIamEmailResponse) Reset() {
-	*x = GetAppUserByIamEmailResponse{}
+func (x *GetAppUserByEmailResponse) Reset() {
+	*x = GetAppUserByEmailResponse{}
 	mi := &file_proto_service_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetAppUserByIamEmailResponse) String() string {
+func (x *GetAppUserByEmailResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetAppUserByIamEmailResponse) ProtoMessage() {}
+func (*GetAppUserByEmailResponse) ProtoMessage() {}
 
-func (x *GetAppUserByIamEmailResponse) ProtoReflect() protoreflect.Message {
+func (x *GetAppUserByEmailResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_service_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -948,12 +964,12 @@ func (x *GetAppUserByIamEmailResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetAppUserByIamEmailResponse.ProtoReflect.Descriptor instead.
-func (*GetAppUserByIamEmailResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetAppUserByEmailResponse.ProtoReflect.Descriptor instead.
+func (*GetAppUserByEmailResponse) Descriptor() ([]byte, []int) {
 	return file_proto_service_proto_rawDescGZIP(), []int{17}
 }
 
-func (x *GetAppUserByIamEmailResponse) GetAppUser() *AppUser {
+func (x *GetAppUserByEmailResponse) GetAppUser() *AppUser {
 	if x != nil {
 		return x.AppUser
 	}
@@ -964,7 +980,8 @@ type UpdateAppUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	DisplayName   string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	IsSuperadmin  bool                   `protobuf:"varint,3,opt,name=is_superadmin,json=isSuperadmin,proto3" json:"is_superadmin,omitempty"`
+	AvatarUrl     *string                `protobuf:"bytes,3,opt,name=avatar_url,json=avatarUrl,proto3,oneof" json:"avatar_url,omitempty"`
+	IsSuperadmin  bool                   `protobuf:"varint,4,opt,name=is_superadmin,json=isSuperadmin,proto3" json:"is_superadmin,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1009,6 +1026,13 @@ func (x *UpdateAppUserRequest) GetId() string {
 func (x *UpdateAppUserRequest) GetDisplayName() string {
 	if x != nil {
 		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *UpdateAppUserRequest) GetAvatarUrl() string {
+	if x != nil && x.AvatarUrl != nil {
+		return *x.AvatarUrl
 	}
 	return ""
 }
@@ -29278,37 +29302,48 @@ const file_proto_service_proto_rawDesc = "" +
 	"page_token\x18\x02 \x01(\tR\tpageToken\"\x85\x01\n" +
 	"\x19ListOrganizationsResponse\x12@\n" +
 	"\rorganizations\x18\x01 \x03(\v2\x1a.organization.OrganizationR\rorganizations\x12&\n" +
-	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\xc3\x02\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken\"\xfe\x02\n" +
 	"\aAppUser\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
-	"\tiam_email\x18\x02 \x01(\tR\biamEmail\x12!\n" +
-	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12#\n" +
-	"\ris_superadmin\x18\x04 \x01(\bR\fisSuperadmin\x129\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
+	"\x05email\x18\x02 \x01(\tH\x00R\x05email\x88\x01\x01\x12!\n" +
+	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12\"\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
+	"avatar_url\x18\x04 \x01(\tH\x01R\tavatarUrl\x88\x01\x01\x12#\n" +
+	"\ris_superadmin\x18\x05 \x01(\bR\fisSuperadmin\x129\n" +
 	"\n" +
-	"updated_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12>\n" +
+	"created_at\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
-	"deleted_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampH\x00R\tdeletedAt\x88\x01\x01B\r\n" +
-	"\v_deleted_at\"{\n" +
-	"\x14CreateAppUserRequest\x12\x1b\n" +
-	"\tiam_email\x18\x01 \x01(\tR\biamEmail\x12!\n" +
-	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12#\n" +
-	"\ris_superadmin\x18\x03 \x01(\bR\fisSuperadmin\"I\n" +
+	"updated_at\x18\a \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x12>\n" +
+	"\n" +
+	"deleted_at\x18\b \x01(\v2\x1a.google.protobuf.TimestampH\x02R\tdeletedAt\x88\x01\x01B\b\n" +
+	"\x06_emailB\r\n" +
+	"\v_avatar_urlB\r\n" +
+	"\v_deleted_at\"\xb6\x01\n" +
+	"\x14CreateAppUserRequest\x12\x19\n" +
+	"\x05email\x18\x01 \x01(\tH\x00R\x05email\x88\x01\x01\x12!\n" +
+	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12\"\n" +
+	"\n" +
+	"avatar_url\x18\x03 \x01(\tH\x01R\tavatarUrl\x88\x01\x01\x12#\n" +
+	"\ris_superadmin\x18\x04 \x01(\bR\fisSuperadminB\b\n" +
+	"\x06_emailB\r\n" +
+	"\v_avatar_url\"I\n" +
 	"\x15CreateAppUserResponse\x120\n" +
 	"\bapp_user\x18\x01 \x01(\v2\x15.organization.AppUserR\aappUser\"#\n" +
 	"\x11GetAppUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\"F\n" +
 	"\x12GetAppUserResponse\x120\n" +
-	"\bapp_user\x18\x01 \x01(\v2\x15.organization.AppUserR\aappUser\":\n" +
-	"\x1bGetAppUserByIamEmailRequest\x12\x1b\n" +
-	"\tiam_email\x18\x01 \x01(\tR\biamEmail\"P\n" +
-	"\x1cGetAppUserByIamEmailResponse\x120\n" +
-	"\bapp_user\x18\x01 \x01(\v2\x15.organization.AppUserR\aappUser\"n\n" +
+	"\bapp_user\x18\x01 \x01(\v2\x15.organization.AppUserR\aappUser\"0\n" +
+	"\x18GetAppUserByEmailRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"M\n" +
+	"\x19GetAppUserByEmailResponse\x120\n" +
+	"\bapp_user\x18\x01 \x01(\v2\x15.organization.AppUserR\aappUser\"\xa1\x01\n" +
 	"\x14UpdateAppUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12!\n" +
-	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12#\n" +
-	"\ris_superadmin\x18\x03 \x01(\bR\fisSuperadmin\"I\n" +
+	"\fdisplay_name\x18\x02 \x01(\tR\vdisplayName\x12\"\n" +
+	"\n" +
+	"avatar_url\x18\x03 \x01(\tH\x00R\tavatarUrl\x88\x01\x01\x12#\n" +
+	"\ris_superadmin\x18\x04 \x01(\bR\fisSuperadminB\r\n" +
+	"\v_avatar_url\"I\n" +
 	"\x15UpdateAppUserResponse\x120\n" +
 	"\bapp_user\x18\x01 \x01(\v2\x15.organization.AppUserR\aappUser\"&\n" +
 	"\x14DeleteAppUserRequest\x12\x0e\n" +
@@ -32984,12 +33019,12 @@ const file_proto_service_proto_rawDesc = "" +
 	"\x0fGetOrganization\x12$.organization.GetOrganizationRequest\x1a%.organization.GetOrganizationResponse\x12g\n" +
 	"\x12UpdateOrganization\x12'.organization.UpdateOrganizationRequest\x1a(.organization.UpdateOrganizationResponse\x12g\n" +
 	"\x12DeleteOrganization\x12'.organization.DeleteOrganizationRequest\x1a(.organization.DeleteOrganizationResponse\x12d\n" +
-	"\x11ListOrganizations\x12&.organization.ListOrganizationsRequest\x1a'.organization.ListOrganizationsResponse2\xb5\x04\n" +
+	"\x11ListOrganizations\x12&.organization.ListOrganizationsRequest\x1a'.organization.ListOrganizationsResponse2\xac\x04\n" +
 	"\x0eAppUserService\x12X\n" +
 	"\rCreateAppUser\x12\".organization.CreateAppUserRequest\x1a#.organization.CreateAppUserResponse\x12O\n" +
 	"\n" +
-	"GetAppUser\x12\x1f.organization.GetAppUserRequest\x1a .organization.GetAppUserResponse\x12m\n" +
-	"\x14GetAppUserByIamEmail\x12).organization.GetAppUserByIamEmailRequest\x1a*.organization.GetAppUserByIamEmailResponse\x12X\n" +
+	"GetAppUser\x12\x1f.organization.GetAppUserRequest\x1a .organization.GetAppUserResponse\x12d\n" +
+	"\x11GetAppUserByEmail\x12&.organization.GetAppUserByEmailRequest\x1a'.organization.GetAppUserByEmailResponse\x12X\n" +
 	"\rUpdateAppUser\x12\".organization.UpdateAppUserRequest\x1a#.organization.UpdateAppUserResponse\x12X\n" +
 	"\rDeleteAppUser\x12\".organization.DeleteAppUserRequest\x1a#.organization.DeleteAppUserResponse\x12U\n" +
 	"\fListAppUsers\x12!.organization.ListAppUsersRequest\x1a\".organization.ListAppUsersResponse2\xdc\x06\n" +
@@ -33210,8 +33245,8 @@ var file_proto_service_proto_goTypes = []any{
 	(*CreateAppUserResponse)(nil),               // 13: organization.CreateAppUserResponse
 	(*GetAppUserRequest)(nil),                   // 14: organization.GetAppUserRequest
 	(*GetAppUserResponse)(nil),                  // 15: organization.GetAppUserResponse
-	(*GetAppUserByIamEmailRequest)(nil),         // 16: organization.GetAppUserByIamEmailRequest
-	(*GetAppUserByIamEmailResponse)(nil),        // 17: organization.GetAppUserByIamEmailResponse
+	(*GetAppUserByEmailRequest)(nil),            // 16: organization.GetAppUserByEmailRequest
+	(*GetAppUserByEmailResponse)(nil),           // 17: organization.GetAppUserByEmailResponse
 	(*UpdateAppUserRequest)(nil),                // 18: organization.UpdateAppUserRequest
 	(*UpdateAppUserResponse)(nil),               // 19: organization.UpdateAppUserResponse
 	(*DeleteAppUserRequest)(nil),                // 20: organization.DeleteAppUserRequest
@@ -33560,7 +33595,7 @@ var file_proto_service_proto_depIdxs = []int32{
 	351, // 9: organization.AppUser.deleted_at:type_name -> google.protobuf.Timestamp
 	11,  // 10: organization.CreateAppUserResponse.app_user:type_name -> organization.AppUser
 	11,  // 11: organization.GetAppUserResponse.app_user:type_name -> organization.AppUser
-	11,  // 12: organization.GetAppUserByIamEmailResponse.app_user:type_name -> organization.AppUser
+	11,  // 12: organization.GetAppUserByEmailResponse.app_user:type_name -> organization.AppUser
 	11,  // 13: organization.UpdateAppUserResponse.app_user:type_name -> organization.AppUser
 	11,  // 14: organization.ListAppUsersResponse.app_users:type_name -> organization.AppUser
 	351, // 15: organization.UserOrganization.created_at:type_name -> google.protobuf.Timestamp
@@ -33698,7 +33733,7 @@ var file_proto_service_proto_depIdxs = []int32{
 	9,   // 147: organization.OrganizationService.ListOrganizations:input_type -> organization.ListOrganizationsRequest
 	12,  // 148: organization.AppUserService.CreateAppUser:input_type -> organization.CreateAppUserRequest
 	14,  // 149: organization.AppUserService.GetAppUser:input_type -> organization.GetAppUserRequest
-	16,  // 150: organization.AppUserService.GetAppUserByIamEmail:input_type -> organization.GetAppUserByIamEmailRequest
+	16,  // 150: organization.AppUserService.GetAppUserByEmail:input_type -> organization.GetAppUserByEmailRequest
 	18,  // 151: organization.AppUserService.UpdateAppUser:input_type -> organization.UpdateAppUserRequest
 	20,  // 152: organization.AppUserService.DeleteAppUser:input_type -> organization.DeleteAppUserRequest
 	22,  // 153: organization.AppUserService.ListAppUsers:input_type -> organization.ListAppUsersRequest
@@ -33860,7 +33895,7 @@ var file_proto_service_proto_depIdxs = []int32{
 	10,  // 309: organization.OrganizationService.ListOrganizations:output_type -> organization.ListOrganizationsResponse
 	13,  // 310: organization.AppUserService.CreateAppUser:output_type -> organization.CreateAppUserResponse
 	15,  // 311: organization.AppUserService.GetAppUser:output_type -> organization.GetAppUserResponse
-	17,  // 312: organization.AppUserService.GetAppUserByIamEmail:output_type -> organization.GetAppUserByIamEmailResponse
+	17,  // 312: organization.AppUserService.GetAppUserByEmail:output_type -> organization.GetAppUserByEmailResponse
 	19,  // 313: organization.AppUserService.UpdateAppUser:output_type -> organization.UpdateAppUserResponse
 	21,  // 314: organization.AppUserService.DeleteAppUser:output_type -> organization.DeleteAppUserResponse
 	23,  // 315: organization.AppUserService.ListAppUsers:output_type -> organization.ListAppUsersResponse
@@ -34029,6 +34064,8 @@ func file_proto_service_proto_init() {
 	}
 	file_proto_service_proto_msgTypes[0].OneofWrappers = []any{}
 	file_proto_service_proto_msgTypes[11].OneofWrappers = []any{}
+	file_proto_service_proto_msgTypes[12].OneofWrappers = []any{}
+	file_proto_service_proto_msgTypes[18].OneofWrappers = []any{}
 	file_proto_service_proto_msgTypes[39].OneofWrappers = []any{}
 	file_proto_service_proto_msgTypes[40].OneofWrappers = []any{}
 	file_proto_service_proto_msgTypes[44].OneofWrappers = []any{}

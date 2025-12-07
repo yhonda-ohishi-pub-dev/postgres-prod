@@ -77,18 +77,20 @@ service OrganizationService {
 
 message AppUser {
   string id = 1;
-  string iam_email = 2;
+  optional string email = 2;           // nullable (LINE may not provide email)
   string display_name = 3;
-  bool is_superadmin = 4;
-  google.protobuf.Timestamp created_at = 5;
-  google.protobuf.Timestamp updated_at = 6;
-  optional google.protobuf.Timestamp deleted_at = 7;
+  optional string avatar_url = 4;      // profile image URL from OAuth2
+  bool is_superadmin = 5;
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp updated_at = 7;
+  optional google.protobuf.Timestamp deleted_at = 8;
 }
 
 message CreateAppUserRequest {
-  string iam_email = 1;
+  optional string email = 1;           // nullable
   string display_name = 2;
-  bool is_superadmin = 3;
+  optional string avatar_url = 3;
+  bool is_superadmin = 4;
 }
 
 message CreateAppUserResponse {
@@ -103,18 +105,19 @@ message GetAppUserResponse {
   AppUser app_user = 1;
 }
 
-message GetAppUserByIamEmailRequest {
-  string iam_email = 1;
+message GetAppUserByEmailRequest {
+  string email = 1;
 }
 
-message GetAppUserByIamEmailResponse {
+message GetAppUserByEmailResponse {
   AppUser app_user = 1;
 }
 
 message UpdateAppUserRequest {
   string id = 1;
   string display_name = 2;
-  bool is_superadmin = 3;
+  optional string avatar_url = 3;
+  bool is_superadmin = 4;
 }
 
 message UpdateAppUserResponse {
@@ -142,7 +145,7 @@ message ListAppUsersResponse {
 service AppUserService {
   rpc CreateAppUser(CreateAppUserRequest) returns (CreateAppUserResponse);
   rpc GetAppUser(GetAppUserRequest) returns (GetAppUserResponse);
-  rpc GetAppUserByIamEmail(GetAppUserByIamEmailRequest) returns (GetAppUserByIamEmailResponse);
+  rpc GetAppUserByEmail(GetAppUserByEmailRequest) returns (GetAppUserByEmailResponse);
   rpc UpdateAppUser(UpdateAppUserRequest) returns (UpdateAppUserResponse);
   rpc DeleteAppUser(DeleteAppUserRequest) returns (DeleteAppUserResponse);
   rpc ListAppUsers(ListAppUsersRequest) returns (ListAppUsersResponse);
@@ -3480,4 +3483,58 @@ service DtakologsService {
   rpc DeleteDtakologs(DeleteDtakologsRequest) returns (DeleteDtakologsResponse);
   rpc ListDtakologs(ListDtakologsRequest) returns (ListDtakologsResponse);
   rpc ListDtakologsByOrganization(ListDtakologsByOrganizationRequest) returns (ListDtakologsByOrganizationResponse);
+}
+
+// ============================================================
+// AuthService - OAuth2 Authentication
+// ============================================================
+
+message AuthResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  int64 expires_in = 3;  // seconds until access token expires
+  AppUser user = 4;
+}
+
+message AuthWithGoogleRequest {
+  string code = 1;  // authorization code from Google OAuth
+}
+
+message AuthWithLineRequest {
+  string code = 1;  // authorization code from LINE OAuth
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+}
+
+message GetAuthURLRequest {
+  string provider = 1;  // 'google' or 'line'
+  string state = 2;     // CSRF protection state
+}
+
+message GetAuthURLResponse {
+  string url = 1;
+}
+
+message ValidateTokenRequest {
+  string access_token = 1;
+}
+
+message ValidateTokenResponse {
+  bool valid = 1;
+  AppUser user = 2;
+}
+
+service AuthService {
+  // OAuth2 authentication with Google
+  rpc AuthWithGoogle(AuthWithGoogleRequest) returns (AuthResponse);
+  // OAuth2 authentication with LINE
+  rpc AuthWithLine(AuthWithLineRequest) returns (AuthResponse);
+  // Refresh access token
+  rpc RefreshToken(RefreshTokenRequest) returns (AuthResponse);
+  // Get OAuth authorization URL
+  rpc GetAuthURL(GetAuthURLRequest) returns (GetAuthURLResponse);
+  // Validate access token
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
 }

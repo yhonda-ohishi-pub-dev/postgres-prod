@@ -277,12 +277,12 @@ var OrganizationService_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	AppUserService_CreateAppUser_FullMethodName        = "/organization.AppUserService/CreateAppUser"
-	AppUserService_GetAppUser_FullMethodName           = "/organization.AppUserService/GetAppUser"
-	AppUserService_GetAppUserByIamEmail_FullMethodName = "/organization.AppUserService/GetAppUserByIamEmail"
-	AppUserService_UpdateAppUser_FullMethodName        = "/organization.AppUserService/UpdateAppUser"
-	AppUserService_DeleteAppUser_FullMethodName        = "/organization.AppUserService/DeleteAppUser"
-	AppUserService_ListAppUsers_FullMethodName         = "/organization.AppUserService/ListAppUsers"
+	AppUserService_CreateAppUser_FullMethodName     = "/organization.AppUserService/CreateAppUser"
+	AppUserService_GetAppUser_FullMethodName        = "/organization.AppUserService/GetAppUser"
+	AppUserService_GetAppUserByEmail_FullMethodName = "/organization.AppUserService/GetAppUserByEmail"
+	AppUserService_UpdateAppUser_FullMethodName     = "/organization.AppUserService/UpdateAppUser"
+	AppUserService_DeleteAppUser_FullMethodName     = "/organization.AppUserService/DeleteAppUser"
+	AppUserService_ListAppUsers_FullMethodName      = "/organization.AppUserService/ListAppUsers"
 )
 
 // AppUserServiceClient is the client API for AppUserService service.
@@ -291,7 +291,7 @@ const (
 type AppUserServiceClient interface {
 	CreateAppUser(ctx context.Context, in *CreateAppUserRequest, opts ...grpc.CallOption) (*CreateAppUserResponse, error)
 	GetAppUser(ctx context.Context, in *GetAppUserRequest, opts ...grpc.CallOption) (*GetAppUserResponse, error)
-	GetAppUserByIamEmail(ctx context.Context, in *GetAppUserByIamEmailRequest, opts ...grpc.CallOption) (*GetAppUserByIamEmailResponse, error)
+	GetAppUserByEmail(ctx context.Context, in *GetAppUserByEmailRequest, opts ...grpc.CallOption) (*GetAppUserByEmailResponse, error)
 	UpdateAppUser(ctx context.Context, in *UpdateAppUserRequest, opts ...grpc.CallOption) (*UpdateAppUserResponse, error)
 	DeleteAppUser(ctx context.Context, in *DeleteAppUserRequest, opts ...grpc.CallOption) (*DeleteAppUserResponse, error)
 	ListAppUsers(ctx context.Context, in *ListAppUsersRequest, opts ...grpc.CallOption) (*ListAppUsersResponse, error)
@@ -325,10 +325,10 @@ func (c *appUserServiceClient) GetAppUser(ctx context.Context, in *GetAppUserReq
 	return out, nil
 }
 
-func (c *appUserServiceClient) GetAppUserByIamEmail(ctx context.Context, in *GetAppUserByIamEmailRequest, opts ...grpc.CallOption) (*GetAppUserByIamEmailResponse, error) {
+func (c *appUserServiceClient) GetAppUserByEmail(ctx context.Context, in *GetAppUserByEmailRequest, opts ...grpc.CallOption) (*GetAppUserByEmailResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetAppUserByIamEmailResponse)
-	err := c.cc.Invoke(ctx, AppUserService_GetAppUserByIamEmail_FullMethodName, in, out, cOpts...)
+	out := new(GetAppUserByEmailResponse)
+	err := c.cc.Invoke(ctx, AppUserService_GetAppUserByEmail_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -371,7 +371,7 @@ func (c *appUserServiceClient) ListAppUsers(ctx context.Context, in *ListAppUser
 type AppUserServiceServer interface {
 	CreateAppUser(context.Context, *CreateAppUserRequest) (*CreateAppUserResponse, error)
 	GetAppUser(context.Context, *GetAppUserRequest) (*GetAppUserResponse, error)
-	GetAppUserByIamEmail(context.Context, *GetAppUserByIamEmailRequest) (*GetAppUserByIamEmailResponse, error)
+	GetAppUserByEmail(context.Context, *GetAppUserByEmailRequest) (*GetAppUserByEmailResponse, error)
 	UpdateAppUser(context.Context, *UpdateAppUserRequest) (*UpdateAppUserResponse, error)
 	DeleteAppUser(context.Context, *DeleteAppUserRequest) (*DeleteAppUserResponse, error)
 	ListAppUsers(context.Context, *ListAppUsersRequest) (*ListAppUsersResponse, error)
@@ -391,8 +391,8 @@ func (UnimplementedAppUserServiceServer) CreateAppUser(context.Context, *CreateA
 func (UnimplementedAppUserServiceServer) GetAppUser(context.Context, *GetAppUserRequest) (*GetAppUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAppUser not implemented")
 }
-func (UnimplementedAppUserServiceServer) GetAppUserByIamEmail(context.Context, *GetAppUserByIamEmailRequest) (*GetAppUserByIamEmailResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAppUserByIamEmail not implemented")
+func (UnimplementedAppUserServiceServer) GetAppUserByEmail(context.Context, *GetAppUserByEmailRequest) (*GetAppUserByEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAppUserByEmail not implemented")
 }
 func (UnimplementedAppUserServiceServer) UpdateAppUser(context.Context, *UpdateAppUserRequest) (*UpdateAppUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAppUser not implemented")
@@ -460,20 +460,20 @@ func _AppUserService_GetAppUser_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _AppUserService_GetAppUserByIamEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetAppUserByIamEmailRequest)
+func _AppUserService_GetAppUserByEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAppUserByEmailRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AppUserServiceServer).GetAppUserByIamEmail(ctx, in)
+		return srv.(AppUserServiceServer).GetAppUserByEmail(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: AppUserService_GetAppUserByIamEmail_FullMethodName,
+		FullMethod: AppUserService_GetAppUserByEmail_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AppUserServiceServer).GetAppUserByIamEmail(ctx, req.(*GetAppUserByIamEmailRequest))
+		return srv.(AppUserServiceServer).GetAppUserByEmail(ctx, req.(*GetAppUserByEmailRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -548,8 +548,8 @@ var AppUserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AppUserService_GetAppUser_Handler,
 		},
 		{
-			MethodName: "GetAppUserByIamEmail",
-			Handler:    _AppUserService_GetAppUserByIamEmail_Handler,
+			MethodName: "GetAppUserByEmail",
+			Handler:    _AppUserService_GetAppUserByEmail_Handler,
 		},
 		{
 			MethodName: "UpdateAppUser",
