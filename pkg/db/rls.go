@@ -186,3 +186,59 @@ type errorRow struct {
 func (r *errorRow) Scan(dest ...any) error {
 	return r.err
 }
+
+// Tx is the transaction interface
+type Tx interface {
+	QueryRow(ctx context.Context, sql string, args ...any) pgx.Row
+	Query(ctx context.Context, sql string, args ...any) (pgx.Rows, error)
+	Exec(ctx context.Context, sql string, args ...any) (pgconn.CommandTag, error)
+	Commit(ctx context.Context) error
+	Rollback(ctx context.Context) error
+}
+
+// rlsTx wraps pgx.Tx with connection release on commit/rollback
+type rlsTx struct {
+	conn *pgxpool.Conn
+	tx   pgx.Tx
+}
+
+func (t *rlsTx) QueryRow(ctx context.Context, sql string, args ...any) pgx.Row {
+	return t.tx.QueryRow(ctx, sql, args...)
+}
+
+func (t *rlsTx) Query(ctx context.Context, sql string, args ...any) (pgx.Rows, error) {
+	return t.tx.Query(ctx, sql, args...)
+}
+
+func (t *rlsTx) Exec(ctx context.Context, sql string, args ...any) (pgconn.CommandTag, error) {
+	return t.tx.Exec(ctx, sql, args...)
+}
+
+func (t *rlsTx) Commit(ctx context.Context) error {
+	err := t.tx.Commit(ctx)
+	t.conn.Release()
+	return err
+}
+
+func (t *rlsTx) Rollback(ctx context.Context) error {
+	err := t.tx.Rollback(ctx)
+	t.conn.Release()
+	return err
+}
+
+// Begin starts a new transaction. RLS context is NOT applied to transactions
+// since organization management operations typically need to bypass RLS.
+func (r *RLSPool) Begin(ctx context.Context) (Tx, error) {
+	conn, err := r.pool.Acquire(ctx)
+	if err != nil {
+		return nil, fmt.Errorf("failed to acquire connection: %w", err)
+	}
+
+	tx, err := conn.Begin(ctx)
+	if err != nil {
+		conn.Release()
+		return nil, fmt.Errorf("failed to begin transaction: %w", err)
+	}
+
+	return &rlsTx{conn: conn, tx: tx}, nil
+}

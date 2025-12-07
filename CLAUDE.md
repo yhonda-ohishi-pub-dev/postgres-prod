@@ -10,11 +10,11 @@ Go service for Cloud Run that connects to Cloud SQL PostgreSQL using IAM authent
 
 | Commit | Description |
 |--------|-------------|
+| 83f7b9e | gitignore |
+| 89c7442 | .gitignore: service-resolved.yaml追加（生成ファイル除外） |
+| a60bdc8 | Makefile: ローカルデプロイ機能追加（Cloud Build不要） |
+| cf2b3d9 | Cloud Build: ログ設定追加（CLOUD_LOGGING_ONLY） |
 | c383187 | Cloud Build修正・RLSインターセプター改善・CORS設定更新 |
-| c44b8b6 | OAuth認証リダイレクト方式追加: フロントエンドへトークン転送 |
-| ecb7f0d | CLAUDE.md更新: 最新コミット履歴を反映 |
-| 3f6fede | ドキュメント更新: HTTPエンドポイント対応を反映 |
-| 9cc9a34 | Phase 4-5完了: HTTPエンドポイント対応 (gRPC+HTTP共存) |
 
 ## Build and Run
 
@@ -26,6 +26,10 @@ make run       # Build and run
 make test      # Run tests
 make proto     # Generate protobuf code
 make check     # Run vet, test, build
+
+# Local deployment (no Cloud Build charges)
+make deploy-local  # Docker build → push → Cloud Run deploy
+make deploy-force  # Timestamp tag for forcing new revision
 
 # Manual commands
 go mod tidy

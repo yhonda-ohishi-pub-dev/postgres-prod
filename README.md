@@ -33,6 +33,10 @@ make test      # テスト実行
 make proto     # Protobufコード生成
 make check     # vet, test, build を実行
 
+# ローカルデプロイ（Cloud Build料金不要）
+make deploy-local  # Dockerビルド → push → Cloud Runデプロイ
+make deploy-force  # タイムスタンプタグで強制新リビジョン
+
 # 手動コマンド
 go mod tidy
 go build -o server ./cmd/server

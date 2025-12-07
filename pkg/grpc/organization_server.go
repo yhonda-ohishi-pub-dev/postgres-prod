@@ -23,7 +23,8 @@ func NewOrganizationServer(repo *repository.OrganizationRepository) *Organizatio
 	return &OrganizationServer{repo: repo}
 }
 
-// CreateOrganization creates a new organization
+// CreateOrganization creates a new organization and links it to the current user as owner.
+// Requires JWT authentication to identify the user.
 func (s *OrganizationServer) CreateOrganization(ctx context.Context, req *pb.CreateOrganizationRequest) (*pb.CreateOrganizationResponse, error) {
 	if req.Name == "" {
 		return nil, status.Error(codes.InvalidArgument, "name is required")
@@ -32,13 +33,27 @@ func (s *OrganizationServer) CreateOrganization(ctx context.Context, req *pb.Cre
 		return nil, status.Error(codes.InvalidArgument, "slug is required")
 	}
 
-	org, err := s.repo.Create(ctx, req.Name, req.Slug)
+	// Get user ID from JWT context
+	userID, ok := GetUserIDFromContext(ctx)
+	if !ok {
+		// Fallback to old behavior if no JWT (for backwards compatibility or testing)
+		org, err := s.repo.Create(ctx, req.Name, req.Slug)
+		if err != nil {
+			return nil, status.Errorf(codes.Internal, "failed to create organization: %v", err)
+		}
+		return &pb.CreateOrganizationResponse{
+			Organization: toProtoOrganization(org),
+		}, nil
+	}
+
+	// Create organization with owner link in a transaction
+	result, err := s.repo.CreateWithOwner(ctx, req.Name, req.Slug, userID)
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to create organization: %v", err)
 	}
 
 	return &pb.CreateOrganizationResponse{
-		Organization: toProtoOrganization(org),
+		Organization: toProtoOrganization(result.Organization),
 	}, nil
 }
 

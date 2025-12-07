@@ -134,9 +134,14 @@ func main() {
 	// Create HTTP auth handler
 	authHandler := httphandler.NewAuthHandler(googleClient, lineClient, jwtService, appUserRepo, oauthAccountRepo, cfg.FrontendURL)
 
-	// Create gRPC server with health check and RLS interceptor
+	// Create gRPC server with health check, JWT auth, and RLS interceptor
+	// JWT interceptor runs first (validates token and sets user context),
+	// then RLS interceptor (sets organization context)
 	grpcServer := grpc.NewServer(
-		grpc.UnaryInterceptor(grpcserver.RLSUnaryInterceptor()),
+		grpc.ChainUnaryInterceptor(
+			grpcserver.JWTUnaryInterceptor(jwtService),
+			grpcserver.RLSUnaryInterceptor(),
+		),
 		grpc.StreamInterceptor(grpcserver.RLSStreamInterceptor()),
 	)
 

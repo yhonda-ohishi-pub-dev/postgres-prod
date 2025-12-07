@@ -2,13 +2,25 @@ package grpc
 
 import (
 	"context"
+	"strings"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 
+	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/auth"
 	"github.com/yhonda-ohishi-pub-dev/postgres-prod/pkg/db"
+)
+
+// Context keys for user info
+type contextKey string
+
+const (
+	UserIDKey       contextKey = "user_id"
+	UserEmailKey    contextKey = "user_email"
+	UserNameKey     contextKey = "user_name"
+	IsSuperadminKey contextKey = "is_superadmin"
 )
 
 const (
@@ -124,4 +136,87 @@ type wrappedServerStream struct {
 
 func (w *wrappedServerStream) Context() context.Context {
 	return w.ctx
+}
+
+// skipAuthPrefixes are method prefixes that don't require JWT authentication
+var skipAuthPrefixes = []string{
+	"/grpc.health.v1.Health/",
+	"/grpc.reflection.v1alpha.ServerReflection/",
+	"/grpc.reflection.v1.ServerReflection/",
+	"/auth.AuthService/",
+}
+
+// shouldSkipAuth checks if the method should skip JWT authentication
+func shouldSkipAuth(fullMethod string) bool {
+	for _, prefix := range skipAuthPrefixes {
+		if len(fullMethod) >= len(prefix) && fullMethod[:len(prefix)] == prefix {
+			return true
+		}
+	}
+	return false
+}
+
+// JWTUnaryInterceptor validates JWT token and adds user info to context
+func JWTUnaryInterceptor(jwtService *auth.JWTService) grpc.UnaryServerInterceptor {
+	return func(
+		ctx context.Context,
+		req interface{},
+		info *grpc.UnaryServerInfo,
+		handler grpc.UnaryHandler,
+	) (interface{}, error) {
+		// Skip auth for public methods
+		if shouldSkipAuth(info.FullMethod) {
+			return handler(ctx, req)
+		}
+
+		// Extract Authorization header from metadata
+		md, ok := metadata.FromIncomingContext(ctx)
+		if !ok {
+			return nil, status.Error(codes.Unauthenticated, "missing metadata")
+		}
+
+		authHeaders := md.Get("authorization")
+		if len(authHeaders) == 0 {
+			return nil, status.Error(codes.Unauthenticated, "missing authorization header")
+		}
+
+		// Parse "Bearer <token>"
+		authHeader := authHeaders[0]
+		if !strings.HasPrefix(authHeader, "Bearer ") {
+			return nil, status.Error(codes.Unauthenticated, "invalid authorization format")
+		}
+		token := strings.TrimPrefix(authHeader, "Bearer ")
+
+		// Validate token
+		claims, err := jwtService.ValidateAccessToken(token)
+		if err != nil {
+			return nil, status.Errorf(codes.Unauthenticated, "invalid token: %v", err)
+		}
+
+		// Add user info to context
+		ctx = context.WithValue(ctx, UserIDKey, claims.UserID)
+		ctx = context.WithValue(ctx, UserEmailKey, claims.Email)
+		ctx = context.WithValue(ctx, UserNameKey, claims.DisplayName)
+		ctx = context.WithValue(ctx, IsSuperadminKey, claims.IsSuperadmin)
+
+		return handler(ctx, req)
+	}
+}
+
+// GetUserIDFromContext extracts user_id from context
+func GetUserIDFromContext(ctx context.Context) (string, bool) {
+	userID, ok := ctx.Value(UserIDKey).(string)
+	return userID, ok && userID != ""
+}
+
+// GetUserEmailFromContext extracts user_email from context
+func GetUserEmailFromContext(ctx context.Context) (string, bool) {
+	email, ok := ctx.Value(UserEmailKey).(string)
+	return email, ok
+}
+
+// GetIsSuperadminFromContext extracts is_superadmin from context
+func GetIsSuperadminFromContext(ctx context.Context) bool {
+	isSuperadmin, ok := ctx.Value(IsSuperadminKey).(bool)
+	return ok && isSuperadmin
 }
