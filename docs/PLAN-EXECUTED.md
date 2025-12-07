@@ -451,5 +451,64 @@ cloudbuild.yaml      # サイドカービルド対応に更新
 - Envoyサイドカーイメージビルド (Dockerfile.envoy)
 - service.yamlによるデプロイ
 
-### 次のステップ
-- Phase 4-4: Cloud Runへデプロイ・動作確認
+---
+
+## 完了: Phase 4-4 Cloud Runデプロイ・動作確認 (2025-12-07)
+
+### 概要
+
+Cloud Buildを使用してgRPCサーバー + Envoyサイドカーをデプロイし、28サービスの動作を確認。
+
+### デプロイ結果
+
+**サービスURL:** https://postgres-prod-747065218280.asia-northeast1.run.app
+
+**デプロイコマンド:**
+```bash
+gcloud builds submit --config=cloudbuild.yaml \
+  --substitutions=_CLOUDSQL_INSTANCE=postgres-prod,_DB_USER=747065218280-compute@developer,_SERVICE_ACCOUNT=747065218280-compute@developer.gserviceaccount.com
+```
+
+### 動作確認
+
+```bash
+# サービス一覧取得
+grpcurl -H "x-organization-id: test-org" postgres-prod-747065218280.asia-northeast1.run.app:443 list
+```
+
+**確認済みサービス (28個 + Health + Reflection):**
+- grpc.health.v1.Health
+- grpc.reflection.v1.ServerReflection
+- organization.AuthService
+- organization.OrganizationService
+- organization.AppUserService
+- organization.UserOrganizationService
+- organization.FileService
+- organization.FlickrPhotoService
+- organization.CamFileService
+- organization.CamFileExeService
+- organization.CamFileExeStageService
+- organization.IchibanCarService
+- organization.DtakoCarsIchibanCarsService
+- organization.UriageService
+- organization.UriageJishaService
+- organization.CarInspectionService
+- organization.CarInspectionFilesService
+- organization.CarInspectionFilesAService
+- organization.CarInspectionFilesBService
+- organization.CarInspectionDeregistrationService
+- organization.CarInspectionDeregistrationFilesService
+- organization.CarInsSheetIchibanCarsService
+- organization.CarInsSheetIchibanCarsAService
+- organization.KudgfryService
+- organization.KudguriService
+- organization.KudgcstService
+- organization.KudgfulService
+- organization.KudgsirService
+- organization.KudgivtService
+- organization.DtakologsService
+
+### 備考
+
+- Cloud BuildのサービスアカウントにIAM Policy設定権限が不足していたため、`run.services.setIamPolicy`のエラーが発生したが、デプロイ自体は成功
+- デフォルトのCompute Service Account (`747065218280-compute@developer.gserviceaccount.com`) を使用

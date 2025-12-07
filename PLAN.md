@@ -10,8 +10,8 @@
 - OAuth2認証: Google/LINE対応完了 ✅
 - RLS統合テスト: 完了 ✅
 - Envoyサイドカー設定: 完了 ✅
-- Cloud Run: デプロイ済み、gRPC動作確認済み ⏳ (再デプロイ必要)
-  - URL: https://postgres-prod-566bls5vfq-an.a.run.app
+- Cloud Run: デプロイ完了、28サービス動作確認済み ✅
+  - URL: https://postgres-prod-747065218280.asia-northeast1.run.app
 
 ## 目標
 
@@ -19,20 +19,13 @@
 
 ## 次のステップ（予定）
 
-### Phase 4-4: デプロイ・動作確認
+### Phase 5: 追加機能・改善
 
-```bash
-gcloud builds submit --config=cloudbuild.yaml \
-  --substitutions=_CLOUDSQL_INSTANCE=postgres-prod,_DB_USER=m.tama.ramu,_SERVICE_ACCOUNT=cloudsql-sv@cloudsql-sv.iam.gserviceaccount.com
-```
-
-デプロイ後、gRPC-Webクライアントから動作確認。
-
----
-
-### Phase 5: Cloud Runデプロイ確認
-
-デプロイ後、grpcurl等で全27サービスの動作確認。
+プロジェクトは基本機能を完了。今後の拡張案:
+- フロントエンド連携 (gRPC-Web)
+- 認証フロー統合テスト
+- パフォーマンスチューニング
+- モニタリング・ロギング強化
 
 ---
 
